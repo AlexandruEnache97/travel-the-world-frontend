@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 const { INPUT_PATH, OUTPUT_PATH } = require('./constants.js');
 
@@ -21,6 +22,7 @@ const config = {
       template: `${INPUT_PATH}/index.ejs`,
       filename: `${OUTPUT_PATH}/index.html`,
     }),
+    new ESLintPlugin(),
   ],
   module: {
     rules: [
