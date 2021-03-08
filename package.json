@@ -1,7 +1,6 @@
 {
-  "name": "ConfigureIT",
+  "name": "configure_it",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "start:dev": "webpack serve --config webpack/webpack.dev.js"
   },
@@ -22,5 +21,15 @@
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlexandruEnache97/ConfigureIT.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AlexandruEnache97/ConfigureIT/issues"
+  },
+  "homepage": "https://github.com/AlexandruEnache97/ConfigureIT#readme",
+  "description": ""
 }
