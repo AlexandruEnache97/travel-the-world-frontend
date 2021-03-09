@@ -22,22 +22,23 @@
 }
 
 .content {
-    width: 87rem;
+    width: 90rem;
     position: relative;
 
     &-title {
         position: absolute;
-        top: 5rem;
-        left: 5rem;
+        top: 3rem;
+        left: 9rem;
         font-size: 3.5rem;
         border-bottom: 0.7rem solid #fff;
         border-radius: 0.7rem;
+        font-weight: 500;
     }
 
     &-description {
         position: absolute;
-        top: 23rem;
-        left: 6rem;
+        top: 22rem;
+        left: 11rem;
         font-size: 2rem;
         display: block;
         width: 29rem;
@@ -48,7 +49,7 @@
     &-text {
         position: absolute;
         top: 17.5rem;
-        right: 3rem;
+        right: 8rem;
         font-size: 2.6rem;
         display: block;
         width: 25rem;
@@ -67,18 +68,17 @@
 
     &-signIn {
         position: absolute;
-        top: 14rem;
-        left: 9rem;
+        top: 12rem;
+        left: 13rem;
     }
 
     &-signUp {
         position: absolute;
-        top: 14rem;
-        left: 33rem;
+        top: 12rem;
+        left: 36rem;
     }
 
     &-background {
         z-index: 100;
-        border-radius: 4rem 4rem 0rem 0rem;
     }
 }
