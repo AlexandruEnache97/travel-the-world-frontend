@@ -1,0 +1,84 @@
+.landing-container {
+    width: 100%;
+    height: 100%;
+
+    .landing-background {
+        position: fixed;
+        top: 0;
+        z-index: -10;
+        width: 100%;
+        height: inherit;
+    }
+
+    .landing-content {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.content {
+    width: 87rem;
+    position: relative;
+
+    &-title {
+        position: absolute;
+        top: 5rem;
+        left: 5rem;
+        font-size: 3.5rem;
+        border-bottom: 0.7rem solid #fff;
+        border-radius: 0.7rem;
+    }
+
+    &-description {
+        position: absolute;
+        top: 23rem;
+        left: 6rem;
+        font-size: 2rem;
+        display: block;
+        width: 29rem;
+        text-align: center;
+        font-weight: 300;
+    }
+
+    &-text {
+        position: absolute;
+        top: 17.5rem;
+        right: 3rem;
+        font-size: 2.6rem;
+        display: block;
+        width: 25rem;
+        text-align: center;
+        font-weight: 300;
+    }
+
+    button {
+        padding: 0.7rem 5rem;
+        border: none;
+        border-radius: 2rem 0rem;
+        font-size: 2.2rem;
+        outline: none;
+        font-weight: 300;
+    }
+
+    &-signIn {
+        position: absolute;
+        top: 14rem;
+        left: 9rem;
+    }
+
+    &-signUp {
+        position: absolute;
+        top: 14rem;
+        left: 33rem;
+    }
+
+    &-background {
+        z-index: 100;
+        border-radius: 4rem 4rem 0rem 0rem;
+    }
+}
