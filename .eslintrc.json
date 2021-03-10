@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -15,9 +16,17 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "jest",
+        "testing-library"
     ],
     "rules": {
         "linebreak-style": 0
-    }
+    },
+    "ignorePatterns": [
+        ".ejs",
+        ".svg",
+        ".scss",
+        ".json"
+    ]
 }

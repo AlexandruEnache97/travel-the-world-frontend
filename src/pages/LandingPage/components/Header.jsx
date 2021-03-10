@@ -1,10 +1,10 @@
 import React from 'react';
-import Logo from '../../../images/LogoHeader.png';
+import logo from '../../../images/LogoHeader.png';
 import './Header.scss';
 
 const Header = () => (
   <div className="landing-header">
-    <img className="logo" src={Logo} alt="logo" />
+    <img className="logo" src={logo} alt="logoHeader" />
   </div>
 );
 
