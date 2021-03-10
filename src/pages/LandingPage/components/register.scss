@@ -1,0 +1,47 @@
+.register-container {
+    position: relative;
+    width: 100rem;
+
+    .form-container {
+        position: absolute;
+        background-color: rgba(80, 12, 21, 0.63);
+        padding: 2rem;
+        top: 12.5rem;
+        left: 21rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2rem;
+        color: #fff;
+    }
+
+    label {
+        font-size: 1.7rem;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+        margin-bottom: 2rem;
+        height: 2.4rem;
+    }
+
+    input {
+        font-size: 1.5rem;
+        width: 22rem;
+        padding: 0.3rem 1rem;
+        border: none;
+        border-radius: 1rem;
+        outline: none;
+        margin-bottom: 2rem;
+        height: 2.4rem;
+    }
+
+    button {
+        margin-top: 1rem;
+    }
+
+    .form-link {
+        color: fff;
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import './LandingPage.scss';
-import LandingContainer from './components/LandingContainer';
+import LandingContainer from './LandingContainer';
 
 const LandingPage = () => (
   <div className="landing-container">

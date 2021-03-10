@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow: hidden;
+}
+
 html, button {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
