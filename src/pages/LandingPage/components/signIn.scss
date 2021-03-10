@@ -1,0 +1,39 @@
+.sign-in-container {
+    position: relative;
+    width: 90rem;
+
+    .form-container {
+        position: absolute;
+        top: 11rem;
+        left: 14rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        label {
+            font-size: 1.7rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            font-size: 1.5rem;
+            width: 22rem;
+            padding: 0.3rem 1rem;
+            border: none;
+            border-radius: 1rem;
+            outline: none;
+            margin-bottom: 2rem;
+        }
+
+        button {
+            margin-top: 1rem;
+        }
+
+        .form-link {
+            color: rgb(75, 0, 0);
+            font-size: 1.2rem;
+        }
+    }
+}
