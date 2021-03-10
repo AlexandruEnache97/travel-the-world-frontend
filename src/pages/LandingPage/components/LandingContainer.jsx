@@ -7,11 +7,11 @@ const LandingContainer = () => (
     <span className="content-title">Welcome to Travel the World</span>
     <span className="content-description">Share your travel experiences and enhance new ones by enjoying this world together!</span>
     <span className="content-text">Conquer the world and discover it!</span>
-    <img className="content-logo" src={logo} alt="logo-planet" />
+    <img className="content-logo" src={logo} alt="logoPlanet" />
     <button className="content-signIn" type="button">Sign In</button>
     <button className="content-signUp" type="button">Sign Up</button>
     <span>
-      <img className="content-background" src={mountains} alt="" />
+      <img className="content-background" src={mountains} alt="backgroundContainer" />
     </span>
   </div>
 );
