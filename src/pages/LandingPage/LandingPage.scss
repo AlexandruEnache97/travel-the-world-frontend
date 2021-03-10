@@ -57,6 +57,13 @@
         font-weight: 300;
     }
 
+    &-logo {
+        position: absolute;
+        top: 1.7rem;
+        right: 10rem;
+        width: 10rem;
+    }
+
     button {
         padding: 0.7rem 5rem;
         border: none;
