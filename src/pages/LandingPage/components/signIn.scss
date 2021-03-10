@@ -1,15 +1,19 @@
 .sign-in-container {
     position: relative;
-    width: 90rem;
+    width: 100rem;
 
     .form-container {
         position: absolute;
-        top: 11rem;
-        left: 14rem;
+        background-color: rgba(80, 12, 21, 0.63);
+        padding: 3rem 2rem;
+        top: 13.5rem;
+        left: 19rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        border-radius: 2rem;
+        color: #fff;
 
         label {
             font-size: 1.7rem;
@@ -28,12 +32,13 @@
         }
 
         button {
-            margin-top: 1rem;
+            margin-top: 2rem;
         }
 
         .form-link {
-            color: rgb(75, 0, 0);
-            font-size: 1.2rem;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
         }
     }
 }

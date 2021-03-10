@@ -1,7 +1,8 @@
 import React from 'react';
-import mountains from '../../../images/Flat-Mountains.svg';
-import logo from '../../../images/logo_planet.png';
-import SignIn from './SignIn';
+import mountains from '../../images/Flat-Mountains.svg';
+import logo from '../../images/logo_planet.png';
+import Register from './components/Register';
+import SignIn from './components/SignIn';
 
 const LandingContainer = () => (
   <div className="content">
