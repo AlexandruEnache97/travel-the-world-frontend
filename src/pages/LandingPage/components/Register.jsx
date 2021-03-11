@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './register.scss';
 
 const Register = () => {
@@ -20,6 +21,7 @@ const Register = () => {
   const onSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <div className="register-container">
       <form className="form-container" onSubmit={onSubmit}>
@@ -73,7 +75,7 @@ const Register = () => {
           id="country"
         />
 
-        <p className="form-link">Have an account? Click to sign in!</p>
+        <Link to="/login" className="form-link">Have an account? Click to sign in!</Link>
         <button type="submit">Sign Up</button>
       </form>
     </div>

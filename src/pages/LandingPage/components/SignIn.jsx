@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './signIn.scss';
 
 const SignIn = () => {
@@ -39,7 +40,7 @@ const SignIn = () => {
           required
           id="password"
         />
-        <p className="form-link">Not registered? Click to create an account!</p>
+        <Link to="/register" className="form-link">Not registered? Click to create an account!</Link>
         <button type="submit">Sign In</button>
       </form>
     </div>
