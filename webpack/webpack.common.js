@@ -45,7 +45,7 @@ const config = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]',
+              name: '[name].[ext]',
               outputPath: 'media',
             },
           },

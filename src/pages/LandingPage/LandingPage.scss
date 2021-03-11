@@ -8,13 +8,16 @@
         z-index: -10;
         width: 100%;
         height: inherit;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        pointer-events: none;
     }
 
     .landing-content {
         position: absolute;
-        top: 0;
+        top: 16rem;
         width: 100vw;
-        height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;

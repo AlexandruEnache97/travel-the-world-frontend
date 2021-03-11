@@ -1,10 +1,14 @@
 .landing-header {
     height: 7.5rem;
     background-color: #FF2344;
+    width: 100vw;
 
     .logo {
         margin: 0.4rem 2.5rem;
         width: 10rem;
-        height: 6.7rem;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 }
