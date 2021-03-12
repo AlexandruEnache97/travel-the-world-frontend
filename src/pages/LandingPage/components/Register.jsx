@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CountrySelect from './CountrySelect';
 import './register.scss';
 
 const Register = () => {
@@ -20,6 +21,10 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+  };
+
+  const getCountry = (country) => {
+    console.log(country);
   };
 
   return (
@@ -66,14 +71,7 @@ const Register = () => {
         />
 
         <label htmlFor="country">Country</label>
-        <input
-          type="text"
-          name="country"
-          value={registerData.country}
-          onChange={onChange}
-          required
-          id="country"
-        />
+        <CountrySelect getCountry={getCountry} />
 
         <Link to="/login" className="form-link">Have an account? Click to sign in!</Link>
         <button type="submit">Sign Up</button>
