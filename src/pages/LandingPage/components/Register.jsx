@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { signUpService } from '../../../service/authApi';
 import CountrySelect from './CountrySelect';
 import './register.scss';
 
@@ -21,10 +22,14 @@ const Register = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    signUpService(registerData);
   };
 
   const getCountry = (country) => {
-    console.log(country);
+    setRegisterData({
+      ...registerData,
+      country,
+    });
   };
 
   return (

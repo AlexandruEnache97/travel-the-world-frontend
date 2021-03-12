@@ -12,10 +12,10 @@ describe('SignIn tests', () => {
       </MemoryRouter>,
     );
 
-    const emailInput = screen.getByRole('textbox', {
-      name: 'Email',
+    const usernameInput = screen.getByRole('textbox', {
+      name: 'Username',
     });
-    expect(emailInput).toBeInTheDocument();
+    expect(usernameInput).toBeInTheDocument();
 
     const password = screen.getByLabelText('Password');
     expect(password).toBeInTheDocument();
@@ -33,11 +33,11 @@ describe('SignIn tests', () => {
       </MemoryRouter>,
     );
 
-    const emailInput = screen.getByRole('textbox', {
-      name: 'Email',
+    const usernameInput = screen.getByRole('textbox', {
+      name: 'Username',
     });
-    fireEvent.change(emailInput, { target: { value: 'email' } });
-    expect(emailInput.value).toEqual('email');
+    fireEvent.change(usernameInput, { target: { value: 'Username' } });
+    expect(usernameInput.value).toEqual('Username');
 
     const submitButton = screen.getByRole('button', {
       name: 'Sign In',

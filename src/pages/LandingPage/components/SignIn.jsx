@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { signInService } from '../../../service/authApi';
 import './signIn.scss';
 
 const SignIn = () => {
   const [loginData, setLoginData] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
@@ -15,21 +16,22 @@ const SignIn = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    await signInService(loginData);
   };
 
   return (
     <div className="sign-in-container">
       <form className="form-container" onSubmit={onSubmit}>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="username">Username</label>
         <input
-          type="email"
-          name="email"
-          value={loginData.email}
+          type="username"
+          name="username"
+          value={loginData.username}
           onChange={onChange}
           required
-          id="email"
+          id="username"
         />
         <label htmlFor="password">Password</label>
         <input
