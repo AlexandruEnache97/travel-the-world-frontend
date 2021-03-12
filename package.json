@@ -4,7 +4,8 @@
   "scripts": {
     "start:dev": "webpack serve --config webpack/webpack.dev.js",
     "lint": "eslint --ext .jsx --ext .js src/",
-    "test": "jest src/ --coverage"
+    "test": "jest src/ --coverage",
+    "test:lint": "npm:lint:fix"
   },
   "author": "",
   "license": "ISC",
