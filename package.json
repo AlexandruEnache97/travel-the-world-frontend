@@ -5,8 +5,7 @@
     "start:dev": "webpack serve --config webpack/webpack.dev.js",
     "lint": "eslint --ext .jsx --ext .js src/",
     "lint:fix": "eslint --ext .jsx --ext .js ./src/ --fix",
-    "test": "jest src/ --coverage",
-    "test:lint": "npm:lint:fix"
+    "test": "jest src/ --coverage"
   },
   "author": "",
   "license": "ISC",
@@ -62,7 +61,7 @@
   "description": "",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:lint"
+      "pre-commit": "npm run lint:fix"
     }
   },
   "jest": {
