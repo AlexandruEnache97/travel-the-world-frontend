@@ -59,10 +59,13 @@
   "description": "",
   "jest": {
     "moduleNameMapper": {
-      "\\.(css|scss|jpg|ico|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2|mp4)$": "<rootDir>/fileMock.js"
+      "\\.(css|scss|jpg|ico|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2|mp4|ejs)$": "<rootDir>/fileMock.js"
     },
     "collectCoverageFrom": [
       "src/**"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/src/index.jsx"
     ]
   }
 }
