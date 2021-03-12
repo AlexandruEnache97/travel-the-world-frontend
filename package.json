@@ -59,6 +59,9 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|scss|jpg|ico|jpeg|png|gif|eot|otf|svg|ttf|woff|woff2|mp4)$": "<rootDir>/fileMock.js"
-    }
+    },
+    "collectCoverageFrom": [
+      "src/**"
+    ]
   }
 }

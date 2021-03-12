@@ -1,11 +1,16 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import SignIn from '../components/SignIn';
 
 describe('SignIn tests', () => {
   it('Should render component correctly', () => {
-    render(<SignIn />);
+    render(
+      <MemoryRouter>
+        <SignIn />
+      </MemoryRouter>,
+    );
 
     const emailInput = screen.getByRole('textbox', {
       name: 'Email',
@@ -22,7 +27,11 @@ describe('SignIn tests', () => {
   });
 
   it('Handle form actions', () => {
-    render(<SignIn />);
+    render(
+      <MemoryRouter>
+        <SignIn />
+      </MemoryRouter>,
+    );
 
     const emailInput = screen.getByRole('textbox', {
       name: 'Email',
