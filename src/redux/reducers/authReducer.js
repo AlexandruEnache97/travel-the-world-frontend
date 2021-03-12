@@ -21,9 +21,7 @@ const authReducer = (state = initialState, action) => {
     case SIGN_IN:
       return {
         ...state,
-        accountData: {
-          username: action.payload.username,
-        },
+        accountId: action.payload.accountId,
       };
     case SIGN_UP: {
       return {
