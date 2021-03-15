@@ -20,9 +20,9 @@ const Register = () => {
     });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    signUpService(registerData);
+    await signUpService(registerData);
   };
 
   const getCountry = (country) => {
