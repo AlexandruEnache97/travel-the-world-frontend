@@ -1,4 +1,5 @@
 import * as authTypes from './authTypes';
+import * as loadingTypes from './loadingTypes';
 
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
@@ -12,4 +13,5 @@ export default {
   ERROR,
   REQUEST,
   ...authTypes,
+  ...loadingTypes,
 };
