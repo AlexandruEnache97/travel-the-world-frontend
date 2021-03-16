@@ -1,0 +1,35 @@
+.loading-container {
+    background-color: rgba(0,0,0,0.3);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+
+    .loading-spinner {
+        animation: loading-bar-spinner 400ms linear infinite;
+
+        .loading-icon {
+            width: 4rem;
+            height: 4rem;
+            border: solid 0.4rem transparent;
+            border-top-color: lightgreen;
+            border-left-color: lightgreen;
+            border-radius: 50%;
+        }
+    }
+}
+
+@keyframes loading-bar-spinner {
+    0% { 
+        transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% { 
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
