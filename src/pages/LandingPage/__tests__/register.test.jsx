@@ -2,7 +2,6 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
-import { mockComponent } from 'react-dom/test-utils';
 import Register from '../components/Register';
 
 describe('Register tests', () => {
