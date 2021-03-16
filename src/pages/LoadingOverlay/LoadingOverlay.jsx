@@ -14,7 +14,7 @@ const LoadingOverlay = ({ loading }) => {
   return (
     <div className="loading-container">
       <div className="loading-spinner">
-        <div className="loading-icon" />
+        <div className="loading-icon" data-testid="spinner" />
       </div>
     </div>
   );

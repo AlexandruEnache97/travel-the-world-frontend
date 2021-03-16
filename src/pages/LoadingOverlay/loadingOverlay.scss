@@ -1,5 +1,5 @@
 .loading-container {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.4);
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -15,8 +15,8 @@
             width: 4rem;
             height: 4rem;
             border: solid 0.4rem transparent;
-            border-top-color: lightgreen;
-            border-left-color: lightgreen;
+            border-top-color: #2b0006;
+            border-left-color: #2b0006;
             border-radius: 50%;
         }
     }
