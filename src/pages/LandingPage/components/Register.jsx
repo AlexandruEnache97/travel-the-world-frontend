@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { signUpService } from '../../../service/authApi';
 import CountrySelect from './CountrySelect';
 import './register.scss';
 
-const Register = () => {
+const Register = ({ signUp }) => {
   const [registerData, setRegisterData] = useState({
     username: '',
     email: '',
@@ -22,7 +22,7 @@ const Register = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    await signUpService(registerData);
+    signUp(registerData);
   };
 
   const getCountry = (country) => {
@@ -30,6 +30,10 @@ const Register = () => {
       ...registerData,
       country,
     });
+  };
+
+  Register.propTypes = {
+    signUp: PropTypes.func.isRequired,
   };
 
   return (
@@ -84,4 +88,5 @@ const Register = () => {
     </div>
   );
 };
+
 export default Register;

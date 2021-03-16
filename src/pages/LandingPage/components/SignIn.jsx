@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { signInService } from '../../../service/authApi';
 import './signIn.scss';
 
-const SignIn = () => {
+const SignIn = ({ signIn }) => {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -16,9 +16,13 @@ const SignIn = () => {
     });
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    await signInService(loginData);
+    signIn(loginData);
+  };
+
+  SignIn.propTypes = {
+    signIn: PropTypes.func.isRequired,
   };
 
   return (
