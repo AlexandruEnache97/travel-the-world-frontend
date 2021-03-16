@@ -2,13 +2,15 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
+import { mockComponent } from 'react-dom/test-utils';
 import Register from '../components/Register';
 
 describe('Register tests', () => {
   it('Should render component correctly', () => {
+    const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register />
+        <Register signUp={signUpMock} />
       </MemoryRouter>,
     );
 
@@ -38,9 +40,10 @@ describe('Register tests', () => {
   });
 
   it('Handle form actions', () => {
+    const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register />
+        <Register signUp={signUpMock} />
       </MemoryRouter>,
     );
 
@@ -57,9 +60,10 @@ describe('Register tests', () => {
   });
 
   it('Handle change select', () => {
+    const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register />
+        <Register signUp={signUpMock} />
       </MemoryRouter>,
     );
     const selectCountry = screen.getByRole('combobox');

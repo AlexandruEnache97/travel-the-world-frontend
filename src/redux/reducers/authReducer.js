@@ -1,5 +1,4 @@
 import actionTypes from '../actionTypes';
-import { SIGN_OUT } from '../actionTypes/authTypes';
 
 const {
   createActionType,
@@ -8,6 +7,7 @@ const {
   SIGN_IN,
   SIGN_UP,
   GET_ACCOUNT,
+  SIGN_OUT,
 } = actionTypes;
 
 const initialState = {

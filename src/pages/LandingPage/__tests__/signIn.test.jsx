@@ -6,9 +6,10 @@ import SignIn from '../components/SignIn';
 
 describe('SignIn tests', () => {
   it('Should render component correctly', () => {
+    const signInMock = jest.fn();
     render(
       <MemoryRouter>
-        <SignIn />
+        <SignIn signIn={signInMock} />
       </MemoryRouter>,
     );
 
@@ -27,9 +28,10 @@ describe('SignIn tests', () => {
   });
 
   it('Handle form actions', () => {
+    const signInMock = jest.fn();
     render(
       <MemoryRouter>
-        <SignIn />
+        <SignIn signIn={signInMock} />
       </MemoryRouter>,
     );
 
