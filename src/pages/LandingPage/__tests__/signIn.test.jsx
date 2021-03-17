@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
 import SignIn from '../components/SignIn';
 
@@ -9,7 +10,7 @@ describe('SignIn tests', () => {
     const signInMock = jest.fn();
     render(
       <MemoryRouter>
-        <SignIn signIn={signInMock} />
+        <SignIn signIn={signInMock} auth={{ isAuthenticated: false }} />
       </MemoryRouter>,
     );
 
@@ -31,7 +32,7 @@ describe('SignIn tests', () => {
     const signInMock = jest.fn();
     render(
       <MemoryRouter>
-        <SignIn signIn={signInMock} />
+        <SignIn signIn={signInMock} auth={{ isAuthenticated: false }} />
       </MemoryRouter>,
     );
 
@@ -45,5 +46,20 @@ describe('SignIn tests', () => {
       name: 'Sign In',
     });
     fireEvent.click(submitButton);
+  });
+
+  it('Should redirect user authenticated', () => {
+    const signInMock = jest.fn();
+    const history = createMemoryHistory();
+    render(
+      <Router history={history}>
+        <SignIn
+          signIn={signInMock}
+          history={history}
+          auth={{ isAuthenticated: true }}
+        />
+      </Router>,
+    );
+    expect(history.location.pathname).toEqual('/dashboard');
   });
 });

@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, Router } from 'react-router-dom';
+import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
 import Register from '../components/Register';
 
@@ -9,7 +10,7 @@ describe('Register tests', () => {
     const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register signUp={signUpMock} />
+        <Register signUp={signUpMock} auth={{ isAuthenticated: false }} />
       </MemoryRouter>,
     );
 
@@ -42,7 +43,7 @@ describe('Register tests', () => {
     const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register signUp={signUpMock} />
+        <Register signUp={signUpMock} auth={{ isAuthenticated: false }} />
       </MemoryRouter>,
     );
 
@@ -62,12 +63,27 @@ describe('Register tests', () => {
     const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register signUp={signUpMock} />
+        <Register signUp={signUpMock} auth={{ isAuthenticated: false }} />
       </MemoryRouter>,
     );
     const selectCountry = screen.getByRole('combobox');
     fireEvent.change(selectCountry, { target: { value: 'Algeria' } });
     expect(selectCountry.children[0].selected).toBeFalsy();
     expect(selectCountry.children[2].selected).toBeTruthy();
+  });
+
+  it('Should redirect user authenticated', () => {
+    const signUpMock = jest.fn();
+    const history = createMemoryHistory();
+    render(
+      <Router history={history}>
+        <Register
+          signUp={signUpMock}
+          history={history}
+          auth={{ isAuthenticated: true }}
+        />
+      </Router>,
+    );
+    expect(history.location.pathname).toEqual('/dashboard');
   });
 });
