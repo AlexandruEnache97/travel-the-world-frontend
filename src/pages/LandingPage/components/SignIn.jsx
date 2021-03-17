@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './signIn.scss';
 
-const SignIn = ({ signIn }) => {
+const SignIn = ({ signIn, auth, history }) => {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
   });
+
+  useLayoutEffect(() => {
+    if (auth.isAuthenticated) history.replace('/dashboard');
+  }, [auth]);
 
   const onChange = (e) => {
     setLoginData({

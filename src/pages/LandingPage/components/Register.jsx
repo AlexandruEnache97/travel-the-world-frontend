@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CountrySelect from './CountrySelect';
 import './register.scss';
 
-const Register = ({ signUp }) => {
+const Register = ({ signUp, auth, history }) => {
   const [registerData, setRegisterData] = useState({
     username: '',
     email: '',
@@ -12,6 +13,10 @@ const Register = ({ signUp }) => {
     verifyPassword: '',
     country: '',
   });
+
+  useLayoutEffect(() => {
+    if (auth.isAuthenticated) history.replace('/dashboard');
+  }, [auth]);
 
   const onChange = (e) => {
     setRegisterData({
