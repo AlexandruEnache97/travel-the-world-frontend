@@ -7,23 +7,15 @@ const {
 } = actionTypes;
 
 export const addLoadingState = (actionType) => (dispatch) => {
-  try {
-    dispatch({
-      type: ADD_LOADING_STATE,
-      payload: actionType,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  dispatch({
+    type: ADD_LOADING_STATE,
+    payload: actionType,
+  });
 };
 
 export const removeLoadingState = (actionType) => (dispatch) => {
-  try {
-    dispatch({
-      type: REMOVE_LOADING_STATE,
-      payload: actionType,
-    });
-  } catch (error) {
-    console.log(error);
-  }
+  dispatch({
+    type: REMOVE_LOADING_STATE,
+    payload: actionType,
+  });
 };

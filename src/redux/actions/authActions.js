@@ -12,7 +12,6 @@ const {
   SIGN_UP,
   SIGN_OUT,
   GET_ACCOUNT,
-
 } = actionTypes;
 
 export const getAccount = (accountId) => async (dispatch) => {
