@@ -18,7 +18,7 @@ const Dashboard = ({ auth }) => {
         {' '}
         { accountData.username }
       </h1>
-      <input type="file" onChange={fileChange} />
+      <input type="file" className="input-upload" onChange={fileChange} />
       {fileUpload && <img className="preview-image" src={previewImage} alt="fileUpload" />}
     </div>
   );
