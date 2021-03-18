@@ -18,5 +18,4 @@ const LandingContainer = () => (
     </span>
   </div>
 );
-
 export default LandingContainer;

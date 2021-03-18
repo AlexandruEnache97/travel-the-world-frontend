@@ -8,6 +8,7 @@ const {
   SIGN_UP,
   GET_ACCOUNT,
   SIGN_OUT,
+  VERIFY_AUTH,
 } = actionTypes;
 
 const initialState = {
@@ -24,6 +25,7 @@ const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case createActionType(SIGN_IN, SUCCESS):
     case createActionType(SIGN_UP, SUCCESS):
+    case VERIFY_AUTH:
       return {
         ...state,
         accountId: action.payload.accountId,

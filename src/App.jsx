@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import LandingPage from './pages/LandingPage/LandingPage';
+import LandingPage from './pages/LandingPage/ConnectedLandingPage';
 import store from './redux/store';
 import './scss/main.scss';
 import ConnectedLoadingOverlay from './pages/LoadingOverlay/ConnectedLoadingOverlay';
