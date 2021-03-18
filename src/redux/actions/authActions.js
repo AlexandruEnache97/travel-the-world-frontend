@@ -12,6 +12,7 @@ const {
   SIGN_UP,
   SIGN_OUT,
   GET_ACCOUNT,
+  VERIFY_AUTH,
 } = actionTypes;
 
 export const getAccount = (accountId) => async (dispatch) => {
@@ -29,6 +30,14 @@ export const getAccount = (accountId) => async (dispatch) => {
       type: createActionType(GET_ACCOUNT, ERROR),
     });
   }
+};
+
+export const verifyAuth = (data) => (dispatch) => {
+  dispatch({
+    type: VERIFY_AUTH,
+    payload: data,
+  });
+  dispatch(getAccount(data.accountId));
 };
 
 export const signIn = (userInfo) => async (dispatch) => {

@@ -1,0 +1,13 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    .preview-image {
+        margin-top: 5rem;
+        max-width: 30%;
+    }
+}
