@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './dashboard.scss';
 import { storage } from '../../utils/firebase';
 import { makePost } from '../../service/postsApi';
@@ -9,23 +9,28 @@ const Dashboard = ({ auth }) => {
   const { accountData, accountId } = auth;
   const [fileUpload, setFileUpload] = useState(null);
   const [previewImage, setPreviewImage] = useState(null);
-
   const [postData, setPostData] = useState({
     accountId: '',
     title: 'test',
     text: 'test',
-    country: 'test',
+    location: 'test',
+    category: 'Travel',
     postImage: '',
   });
+
+  useEffect(() => {
+    console.log(postData);
+    makePost(postData);
+  }, [postData.postImage]);
 
   const fileChange = (e) => {
     setFileUpload(e.target.files[0]);
     setPreviewImage(URL.createObjectURL(e.target.files[0]));
   };
 
-  const fileUploadHandler = () => {
+  const fileUploadHandler = async () => {
     const upload = storage.ref(`/images/${fileUpload.name}`).put(fileUpload);
-    upload.on(
+    await upload.on(
       'state_changed',
       (snapshot) => {
         console.log(snapshot);
@@ -44,7 +49,6 @@ const Dashboard = ({ auth }) => {
               accountId,
               postImage: url,
             });
-            makePost(postData);
           });
       },
     );
