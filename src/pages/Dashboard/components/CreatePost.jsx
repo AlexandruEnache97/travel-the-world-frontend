@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -55,7 +56,6 @@ const CreatePost = ({ accountId, username, userIcon }) => {
   const uploadHandler = async (e) => {
     e.preventDefault();
     if (fileUpload !== null) {
-      console.log('Image');
       const upload = storage.ref(`/images/${fileUpload.name}`).put(fileUpload);
       await upload.on(
         'state_changed',
