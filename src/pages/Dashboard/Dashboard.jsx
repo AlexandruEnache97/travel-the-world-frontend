@@ -2,70 +2,36 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import './dashboard.scss';
-import { storage } from '../../utils/firebase';
-import { makePost } from '../../service/postsApi';
+import { getSinglePost } from '../../service/postsApi';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 
 const Dashboard = ({ auth }) => {
   const { accountData, accountId } = auth;
-  const [fileUpload, setFileUpload] = useState(null);
-  const [previewImage, setPreviewImage] = useState(null);
   const [postData, setPostData] = useState({
     accountId: '',
-    title: 'test',
-    text: 'test',
-    location: 'test',
-    category: 'Travel',
+    postId: '',
+    title: '',
+    text: '',
+    location: '',
+    category: '',
     postImage: '',
+    likes: 0,
+    shares: 0,
   });
 
   useEffect(() => {
-    if (postData.postImage !== '') {
-      makePost(postData);
-    }
-  }, [postData.postImage]);
-
-  const fileChange = (e) => {
-    setFileUpload(e.target.files[0]);
-    setPreviewImage(URL.createObjectURL(e.target.files[0]));
-  };
-
-  const fileUploadHandler = async () => {
-    const upload = storage.ref(`/images/${fileUpload.name}`).put(fileUpload);
-    await upload.on(
-      'state_changed',
-      (snapshot) => {
-        console.log(snapshot);
-      },
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        storage
-          .ref('images')
-          .child(fileUpload.name)
-          .getDownloadURL()
-          .then((url) => {
-            setPostData({
-              ...postData,
-              accountId,
-              postImage: url,
-            });
-          });
-      },
-    );
-  };
+    getSinglePost('60570a7dbc55cb0023e249f6')
+      .then((postInfo) => setPostData(postInfo.data));
+  }, []);
 
   return (
     <div className="dashboard-container">
       <CreatePost
+        accountId={accountId}
         username={accountData.username}
         userIcon="https://img.icons8.com/ios-filled/50/ffffff/cat-profile.png"
       />
-      <input type="file" className="input-upload" onChange={fileChange} />
-      {fileUpload && <img className="preview-image" src={previewImage} alt="fileUpload" />}
-      <button type="button" onClick={fileUploadHandler}>Upload</button>
       <Post
         username="CatUser"
         title="Black sea"
@@ -85,6 +51,16 @@ const Dashboard = ({ auth }) => {
         image="https://firebasestorage.googleapis.com/v0/b/travel-the-worlds.appspot.com/o/images%2F24006-black-sea-cruises-constanta-old-casino-700x300.jpg?alt=media&token=cd20b3b3-1a28-4d19-a0a8-9955d53ca242"
         likes={0}
         shares={0}
+      />
+      <Post
+        username={postData.accountId}
+        title={postData.title}
+        text={postData.text}
+        location={postData.location}
+        category={postData.category}
+        likes={postData.likes}
+        image={postData.postImage}
+        shares={postData.shares}
       />
     </div>
   );
