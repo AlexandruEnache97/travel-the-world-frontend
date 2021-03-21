@@ -4,19 +4,17 @@
     justify-content: center;
     align-items: center;
     background-color: rgb(240, 240, 240);
-    width: 45rem;
+    width: 40rem;
     border-radius: 3rem;
     margin: 3rem;
 
     .post-top {
         display: flex;
         align-items: center;
-        width: 45rem;
+        width: 40rem;
         padding-left: 2.5rem;
         height: 6rem;
         background-color: #ff304f;
-        color: white;
-        font-weight: 700;
         border-radius: 3rem 3rem 0rem 0rem;
 
         .post-user-icon {
@@ -24,8 +22,10 @@
         }
 
         p {
+            color: white;
             padding: 0rem 1rem;
             font-size: 1.5rem;
+            font-weight: 700;
         }
     }
 
@@ -65,7 +65,7 @@
         }
 
         .post-image {
-            width: 43rem;
+            width:38rem;
             border-radius: 1rem;
             margin: 2rem 1rem 0rem 1rem;
         }
@@ -90,7 +90,7 @@
             justify-content: space-between;
             background-color: #ff304f;
             height: 5.5rem;
-            width: 45rem;
+            width: 40rem;
             padding: 0rem 5rem;
             border-radius: 0rem 0rem 3rem 3rem;
             
