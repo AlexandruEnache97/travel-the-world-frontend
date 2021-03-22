@@ -2,12 +2,13 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, Fragment } from 'react';
 import './dashboard.scss';
-// import { getSinglePost } from '../../service/postsApi';
+import backgroundGradient from '../../images/BackgroundGradient.svg';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
+import Navbar from './components/Navbar';
 
 const Dashboard = ({
-  auth, getPosts, posts, createPost,
+  auth, getPosts, posts, createPost, signOut,
 }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState('');
@@ -22,6 +23,7 @@ const Dashboard = ({
 
   return (
     <>
+      <Navbar signOut={signOut} />
       {currentUser !== ''
       && (
       <div className="dashboard-container">
@@ -45,6 +47,7 @@ const Dashboard = ({
         ))}
       </div>
       )}
+      <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />
     </>
   );
 };

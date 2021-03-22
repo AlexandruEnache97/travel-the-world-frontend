@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { signOut as signOutAction } from '../../redux/actions/authActions';
 import {
   getPosts as getPostsAction,
   createPost as createPostAction,
@@ -14,6 +15,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   getPosts: getPostsAction,
   createPost: createPostAction,
+  signOut: signOutAction,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
