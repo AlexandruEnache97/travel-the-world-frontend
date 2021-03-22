@@ -65,7 +65,6 @@ export const getPost = (postId) => async (dispatch) => {
       type: createActionType(GET_POST, REQUEST),
     });
     const { data } = await getSinglePost(postId);
-    console.log(data);
     dispatch({
       type: createActionType(GET_POST, SUCCESS),
       payload: { singlePost: data },
