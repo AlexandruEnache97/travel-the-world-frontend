@@ -6,11 +6,11 @@ import { storage } from '../../../utils/firebase';
 import './createPost.scss';
 import { makePost } from '../../../service/postsApi';
 
-const CreatePost = ({ accountId, username, userIcon }) => {
+const CreatePost = ({ username, userIcon }) => {
   const [fileUpload, setFileUpload] = useState(null);
   // const [previewImage, setPreviewImage] = useState(null);
   const [postData, setPostData] = useState({
-    accountId: '',
+    username: '',
     title: '',
     text: '',
     location: '',
@@ -21,7 +21,7 @@ const CreatePost = ({ accountId, username, userIcon }) => {
   useEffect(() => {
     setPostData({
       ...postData,
-      accountId,
+      username,
     });
   }, []);
 
@@ -90,7 +90,6 @@ const CreatePost = ({ accountId, username, userIcon }) => {
   };
 
   CreatePost.propTypes = {
-    accountId: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     userIcon: PropTypes.string.isRequired,
   };
