@@ -13,3 +13,8 @@ export const getSinglePost = async (postId) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/post/${postId}`);
   return data;
 };
+
+export const getAllPosts = async (pageNumber) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/allPosts/${pageNumber}`);
+  return data;
+};
