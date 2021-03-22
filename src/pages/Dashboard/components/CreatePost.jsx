@@ -7,6 +7,7 @@ import './createPost.scss';
 
 const CreatePost = ({ username, userIcon, createPost }) => {
   const [fileUpload, setFileUpload] = useState(null);
+  const [keyFile, setKeyFile] = useState(new Date());
   // const [previewImage, setPreviewImage] = useState(null);
   const [postData, setPostData] = useState({
     username: '',
@@ -36,6 +37,7 @@ const CreatePost = ({ username, userIcon, createPost }) => {
         postImage: '',
       });
       setFileUpload(null);
+      setKeyFile(new Date());
       alert('Post created');
     }
   }, [postData.postImage]);
@@ -55,26 +57,32 @@ const CreatePost = ({ username, userIcon, createPost }) => {
   const uploadHandler = async (e) => {
     e.preventDefault();
     if (fileUpload !== null) {
-      const upload = storage.ref(`/images/${fileUpload.name}`).put(fileUpload);
-      await upload.on(
-        'state_changed',
-        (snapshot) => {
-          console.log(snapshot);
-        },
-        (error) => {
-          console.log(error);
-        },
-        () => {
-          storage
-            .ref('images')
-            .child(fileUpload.name)
-            .getDownloadURL()
-            .then((url) => setPostData({
-              ...postData,
-              postImage: url,
-            }));
-        },
-      );
+      if (fileUpload.size > 1024 * 1024 * 5) {
+        alert('File too big, upload images under 5Mb');
+        setFileUpload(null);
+        setKeyFile(new Date());
+      } else {
+        const upload = storage.ref(`/images/${fileUpload.name}`).put(fileUpload);
+        await upload.on(
+          'state_changed',
+          (snapshot) => {
+            console.log(snapshot);
+          },
+          (error) => {
+            console.log(error);
+          },
+          () => {
+            storage
+              .ref('images')
+              .child(fileUpload.name)
+              .getDownloadURL()
+              .then((url) => setPostData({
+                ...postData,
+                postImage: url,
+              }));
+          },
+        );
+      }
     } else if (postData.title !== '' && postData.text !== '' && postData.category !== '' && postData.location !== '') {
       createPost(postData);
       setPostData({
@@ -151,7 +159,13 @@ const CreatePost = ({ username, userIcon, createPost }) => {
         </div>
         <div className="create-upload">
           <label htmlFor="uploadImage">Upload image (not required)</label>
-          <input type="file" className="input-upload" onChange={fileChange} />
+          <input
+            type="file"
+            className="input-upload"
+            onChange={fileChange}
+            accept="image/png, image/jpeg"
+            key={keyFile}
+          />
         </div>
         <div className="create-bottom">
           <button type="submit">
