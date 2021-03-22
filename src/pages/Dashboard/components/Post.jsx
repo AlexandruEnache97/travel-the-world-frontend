@@ -39,7 +39,7 @@ const Post = ({
           </div>
         </div>
         <p>{text}</p>
-        <img className="post-image" src={image} alt="postImage" />
+        {image !== '' && <img className="post-image" src={image} alt="postImage" />}
       </div>
       <div className="post-bottom">
         <div className="post-bottom-text">
