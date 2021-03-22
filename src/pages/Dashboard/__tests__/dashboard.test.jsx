@@ -5,7 +5,12 @@ import Dashboard from '../Dashboard';
 
 describe('Dashboard component tests', () => {
   it('Should render component correctly', () => {
+    const getPosts = jest.fn();
     const auth = { accountData: { username: 'Alex' } };
-    render(<Dashboard auth={auth} />);
+    render(<Dashboard
+      auth={auth}
+      getPosts={getPosts}
+      posts={{ currentPosts: [] }}
+    />);
   });
 });
