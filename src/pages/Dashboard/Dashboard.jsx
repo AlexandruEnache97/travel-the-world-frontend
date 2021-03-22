@@ -6,24 +6,13 @@ import './dashboard.scss';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 
-const Dashboard = ({ auth, getPosts, posts }) => {
+const Dashboard = ({
+  auth, getPosts, posts, createPost,
+}) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState('');
-  // const [postData, setPostData] = useState({
-  //   username: '',
-  //   postId: '',
-  //   title: '',
-  //   text: '',
-  //   location: '',
-  //   category: '',
-  //   postImage: '',
-  //   likes: 0,
-  //   shares: 0,
-  // });
 
   useEffect(() => {
-    // getSinglePost('60585a417368f500234b628b')
-    //   .then((postInfo) => setPostData(postInfo.data));
     getPosts(1);
   }, []);
 
@@ -37,6 +26,7 @@ const Dashboard = ({ auth, getPosts, posts }) => {
       && (
       <div className="dashboard-container">
         <CreatePost
+          createPost={createPost}
           username={currentUser}
           userIcon="https://img.icons8.com/ios-filled/50/ffffff/cat-profile.png"
         />

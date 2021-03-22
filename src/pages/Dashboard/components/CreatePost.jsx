@@ -4,9 +4,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { storage } from '../../../utils/firebase';
 import './createPost.scss';
-import { makePost } from '../../../service/postsApi';
 
-const CreatePost = ({ username, userIcon }) => {
+const CreatePost = ({ username, userIcon, createPost }) => {
   const [fileUpload, setFileUpload] = useState(null);
   // const [previewImage, setPreviewImage] = useState(null);
   const [postData, setPostData] = useState({
@@ -27,7 +26,7 @@ const CreatePost = ({ username, userIcon }) => {
 
   useEffect(() => {
     if (postData.postImage !== '') {
-      makePost(postData);
+      createPost(postData);
       setPostData({
         ...postData,
         title: '',
@@ -77,7 +76,7 @@ const CreatePost = ({ username, userIcon }) => {
         },
       );
     } else if (postData.title !== '' && postData.text !== '' && postData.category !== '' && postData.location !== '') {
-      makePost(postData);
+      createPost(postData);
       setPostData({
         ...postData,
         title: '',
@@ -92,6 +91,7 @@ const CreatePost = ({ username, userIcon }) => {
   CreatePost.propTypes = {
     username: PropTypes.string.isRequired,
     userIcon: PropTypes.string.isRequired,
+    createPost: PropTypes.func.isRequired,
   };
 
   return (

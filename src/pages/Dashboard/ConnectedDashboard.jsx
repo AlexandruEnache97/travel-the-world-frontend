@@ -1,6 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getPosts as getPostsAction } from '../../redux/actions/postActions';
+import {
+  getPosts as getPostsAction,
+  createPost as createPostAction,
+} from '../../redux/actions/postActions';
 import Dashboard from './Dashboard';
 
 const mapStateToProps = (state) => ({
@@ -10,6 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   getPosts: getPostsAction,
+  createPost: createPostAction,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
