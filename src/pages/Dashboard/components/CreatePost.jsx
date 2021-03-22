@@ -16,6 +16,7 @@ const CreatePost = ({ username, userIcon, createPost }) => {
     location: '',
     category: '',
     postImage: '',
+    createdDate: '',
   });
 
   useEffect(() => {
@@ -27,7 +28,10 @@ const CreatePost = ({ username, userIcon, createPost }) => {
 
   useEffect(() => {
     if (postData.postImage !== '') {
-      createPost(postData);
+      createPost({
+        ...postData,
+        createdDate: Date.now(),
+      });
       setPostData({
         ...postData,
         title: '',
@@ -84,7 +88,10 @@ const CreatePost = ({ username, userIcon, createPost }) => {
         );
       }
     } else if (postData.title !== '' && postData.text !== '' && postData.category !== '' && postData.location !== '') {
-      createPost(postData);
+      createPost({
+        ...postData,
+        createdDate: Date.now(),
+      });
       setPostData({
         ...postData,
         title: '',

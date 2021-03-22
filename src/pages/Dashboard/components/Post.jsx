@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './post.scss';
 
 const Post = ({
-  username, title, text, image, category, location, likes, shares,
+  username, title, text, image, category, location, likes, shares, createdDate,
 }) => {
   Post.propTypes = {
     username: PropTypes.string.isRequired,
@@ -14,12 +14,24 @@ const Post = ({
     category: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
     shares: PropTypes.number.isRequired,
+    createdDate: PropTypes.string.isRequired,
   };
 
   Post.defaultProps = {
     image: '',
   };
 
+  const calculateTimePassed = () => {
+    const secondsPassed = Math.round((Date.now() - Date.parse(createdDate)) / 1000);
+    if (secondsPassed > 60 * 60 * 24) {
+      return `${Math.round(secondsPassed / 60 / 60 / 24)} days ago`;
+    } if (secondsPassed > 60 * 60) {
+      return `${Math.round(secondsPassed / 60 / 60)} hours ago`;
+    } if (secondsPassed > 60) {
+      return `${Math.round(secondsPassed / 60)} minutes ago`;
+    }
+    return 'A minute ago';
+  };
   return (
     <div className="post-container">
       <div className="post-top">
@@ -38,6 +50,7 @@ const Post = ({
             <p>{category}</p>
           </div>
         </div>
+        <p>{calculateTimePassed()}</p>
         <p>{text}</p>
         {image !== '' && <img className="post-image" src={image} alt="postImage" />}
       </div>

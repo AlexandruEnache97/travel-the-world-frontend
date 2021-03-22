@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import './dashboard.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import Post from './components/Post';
@@ -42,6 +42,7 @@ const Dashboard = ({
             image={post.postImage}
             likes={post.likes}
             shares={post.shares}
+            createdDate={post.createdDate}
             key={post.title + Math.random(0, 10000)}
           />
         ))}
