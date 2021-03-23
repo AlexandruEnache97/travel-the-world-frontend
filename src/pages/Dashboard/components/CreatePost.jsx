@@ -110,7 +110,7 @@ const CreatePost = ({ username, userIcon, createPost }) => {
   };
 
   return (
-    <div className="create-container">
+    <div className="create-container" id="topRef">
       <div className="create-top">
         <div className="top-user">
           <img src={userIcon} alt="userIcon" />
