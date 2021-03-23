@@ -26,7 +26,7 @@ const Dashboard = ({
   return (
     <>
       <Navbar signOut={signOut} />
-      {currentUser !== ''
+      {currentUser.username !== ''
       && (
       <div className="dashboard-container">
         <CreatePost
