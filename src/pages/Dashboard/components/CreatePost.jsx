@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 import { storage } from '../../../utils/firebase';
 import './createPost.scss';
 
-const CreatePost = ({ username, userIcon, createPost }) => {
+const CreatePost = ({
+  username, profileImage, createPost,
+}) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [keyFile, setKeyFile] = useState(new Date());
   // const [previewImage, setPreviewImage] = useState(null);
@@ -105,15 +107,15 @@ const CreatePost = ({ username, userIcon, createPost }) => {
 
   CreatePost.propTypes = {
     username: PropTypes.string.isRequired,
-    userIcon: PropTypes.string.isRequired,
     createPost: PropTypes.func.isRequired,
+    profileImage: PropTypes.string.isRequired,
   };
 
   return (
     <div className="create-container" id="topRef">
       <div className="create-top">
         <div className="top-user">
-          <img src={userIcon} alt="userIcon" />
+          {profileImage !== '' && <img src={profileImage} alt="userIcon" /> }
           <p>{username}</p>
         </div>
         <p>Create post</p>

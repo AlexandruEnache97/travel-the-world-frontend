@@ -17,6 +17,7 @@ describe('Authentication reducers tests', () => {
     isAuthenticated: false,
     accountData: {
       username: '',
+      profileImage: '',
       email: '',
       country: '',
     },
@@ -70,6 +71,7 @@ describe('Authentication reducers tests', () => {
       payload: {
         username: 'test',
         email: 'test@gmail.com',
+        profileImage: 'image',
         country: 'Romania',
       },
     })).toEqual({
@@ -77,6 +79,7 @@ describe('Authentication reducers tests', () => {
       accountData: {
         username: 'test',
         email: 'test@gmail.com',
+        profileImage: 'image',
         country: 'Romania',
       },
     });
@@ -87,6 +90,7 @@ describe('Authentication reducers tests', () => {
       ...initialState,
       accountData: {
         username: '',
+        profileImage: '',
         email: '',
         country: '',
       },
@@ -102,6 +106,7 @@ describe('Authentication reducers tests', () => {
       accountId: '',
       accountData: {
         username: '',
+        profileImage: '',
         email: '',
         country: '',
       },

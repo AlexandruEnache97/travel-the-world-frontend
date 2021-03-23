@@ -20,7 +20,7 @@ const Dashboard = ({
   }, []);
 
   useEffect(() => {
-    setCurrentUser(accountData.username);
+    setCurrentUser(accountData);
   }, [auth]);
 
   return (
@@ -31,8 +31,8 @@ const Dashboard = ({
       <div className="dashboard-container">
         <CreatePost
           createPost={createPost}
-          username={currentUser}
-          userIcon="https://img.icons8.com/ios-filled/50/ffffff/cat-profile.png"
+          username={currentUser.username}
+          profileImage={currentUser.profileImage}
         />
         <ListPosts posts={posts.currentPosts} />
       </div>
@@ -51,7 +51,7 @@ const Dashboard = ({
         {showScroll && (
           <img
             className="dashboard-scroll"
-            src="https://img.icons8.com/ios-filled/50/ffffff/up-squared.png"
+            src="https://img.icons8.com/ios-filled/100/ffffff/up-squared.png"
             alt="topButton"
           />
         )}

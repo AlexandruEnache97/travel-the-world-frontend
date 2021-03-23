@@ -16,6 +16,7 @@ const initialState = {
   isAuthenticated: false,
   accountData: {
     username: '',
+    profileImage: '',
     email: '',
     country: '',
   },
@@ -42,6 +43,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         accountData: {
           username: action.payload.username,
+          profileImage: action.payload.profileImage,
           email: action.payload.email,
           country: action.payload.country,
         },
@@ -51,6 +53,7 @@ const authReducer = (state = initialState, action) => {
         ...state,
         accountData: {
           username: '',
+          profileImage: '',
           email: '',
           country: '',
         },
@@ -62,6 +65,7 @@ const authReducer = (state = initialState, action) => {
         accountId: '',
         accountData: {
           username: '',
+          profileImage: '',
           email: '',
           country: '',
         },
