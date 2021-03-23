@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import likeHighlighted from '../../../images/posts/likeHighlighted.svg';
 import './post.scss';
 
 const Post = ({
-  username, title, text, image, category, location, likes, shares, createdDate,
+  postId, username, title, text, image, category, location, likes, shares, createdDate, liked,
 }) => {
   Post.propTypes = {
+    postId: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
@@ -15,10 +17,12 @@ const Post = ({
     likes: PropTypes.number.isRequired,
     shares: PropTypes.number.isRequired,
     createdDate: PropTypes.string.isRequired,
+    liked: PropTypes.bool,
   };
 
   Post.defaultProps = {
     image: '',
+    liked: false,
   };
 
   const calculateTimePassed = () => {
@@ -32,6 +36,12 @@ const Post = ({
     }
     return 'A minute ago';
   };
+
+  const handleLikePost = (e) => {
+    e.preventDefault();
+    console.log(postId);
+  };
+
   return (
     <div className="post-container">
       <div className="post-top">
@@ -68,8 +78,9 @@ const Post = ({
           </p>
         </div>
         <div className="post-bottom-buttons">
-          <button type="button">
-            <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />
+          <button type="button" onClick={handleLikePost}>
+            {liked ? <img src={likeHighlighted} alt="like" />
+              : <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />}
           </button>
           <button type="button">
             <img src="https://img.icons8.com/fluent-systems-regular/48/ffffff/topic.png" alt="commentsIcon" />

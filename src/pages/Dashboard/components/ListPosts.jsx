@@ -6,6 +6,8 @@ const ListPosts = ({ posts }) => (
   <>
     {posts !== [] && posts.map((post) => (
       <Post
+        // eslint-disable-next-line no-underscore-dangle
+        postId={post._id}
         username={post.username}
         title={post.title}
         text={post.text}
@@ -16,6 +18,7 @@ const ListPosts = ({ posts }) => (
         shares={post.shares}
         createdDate={post.createdDate}
         key={post.title + Math.random(0, 10000)}
+        liked={false}
       />
     ))}
   </>
