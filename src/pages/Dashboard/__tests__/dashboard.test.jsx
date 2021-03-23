@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 
+jest.mock('../components/CreatePost.jsx', () => () => <p>Create Post</p>);
+
 describe('Dashboard component tests', () => {
   it('Should render component correctly', () => {
     const getPosts = jest.fn();

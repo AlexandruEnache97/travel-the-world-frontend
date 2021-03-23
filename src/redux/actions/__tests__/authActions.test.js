@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import { NODE_SERVER } from '../../../../config';
 import actionTypes from '../../actionTypes';
 import {
-  getAccount, signIn, signOut, signUp,
+  getAccount, signIn, signOut, signUp, verifyAuth,
 } from '../authActions';
 
 const {
@@ -17,6 +17,7 @@ const {
   SIGN_UP,
   SIGN_OUT,
   GET_ACCOUNT,
+  VERIFY_AUTH,
 } = actionTypes;
 
 const middleware = [thunk];
@@ -37,6 +38,19 @@ describe('Authentication actions tests', () => {
     expect(actions[1]).toEqual({
       type: createActionType(GET_ACCOUNT, SUCCESS),
       payload: { data: { username: 'George' } },
+    });
+  });
+
+  it('Should get auth', async () => {
+    const store = mockStore({});
+    await store.dispatch(verifyAuth('1'));
+    const actions = store.getActions();
+    expect(actions[0]).toEqual({
+      type: VERIFY_AUTH,
+      payload: '1',
+    });
+    expect(actions[1]).toEqual({
+      type: createActionType(GET_ACCOUNT, REQUEST),
     });
   });
 
