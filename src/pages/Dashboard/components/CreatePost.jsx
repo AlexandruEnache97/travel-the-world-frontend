@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
@@ -72,7 +73,7 @@ const CreatePost = ({
         await upload.on(
           'state_changed',
           (snapshot) => {
-            console.log(snapshot);
+            console.log(snapshot._delegate);
           },
           (error) => {
             console.log(error);

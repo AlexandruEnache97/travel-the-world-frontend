@@ -3,8 +3,8 @@ export const NODE_SERVER = {
   baseUrl: 'https://travel-the-world-server.herokuapp.com',
 };
 
-export const ROUTES = {
-  SIGN_IN: '/sign-in',
-  SIGN_UP: '/sign-up',
-  GET_ACCOUNT: '/accounts',
+export const AUTH_ROUTES = {
+  SIGN_IN: 'api/sign-in',
+  SIGN_UP: 'api/sign-up',
+  GET_ACCOUNT: 'api/accounts',
 };
