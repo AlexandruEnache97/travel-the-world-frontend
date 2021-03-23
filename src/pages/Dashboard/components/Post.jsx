@@ -39,6 +39,7 @@ const Post = ({
 
   const handleLikePost = (e) => {
     e.preventDefault();
+    // eslint-disable-next-line no-console
     console.log(postId);
   };
 
