@@ -1,4 +1,6 @@
-import { getAllPosts, getSinglePost, makePost } from '../../service/postsApi';
+import {
+  getAllPosts, getPostsLiked, getSinglePost, makePost,
+} from '../../service/postsApi';
 import actionTypes from '../actionTypes';
 
 const {
@@ -9,6 +11,7 @@ const {
   GET_POST,
   GET_ALL_POSTS,
   CREATE_POST,
+  GET_LIKED_POSTS,
 } = actionTypes;
 
 export const getPosts = (pageNumber) => async (dispatch) => {
@@ -31,6 +34,24 @@ export const getPosts = (pageNumber) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: createActionType(GET_ALL_POSTS, ERROR),
+    });
+  }
+};
+
+export const getLikedPosts = (pageNumber, userId) => async (dispatch) => {
+  try {
+    dispatch({
+      type: createActionType(GET_LIKED_POSTS, REQUEST),
+    });
+    const { data } = await getPostsLiked(pageNumber, userId);
+
+    dispatch({
+      type: createActionType(GET_LIKED_POSTS, SUCCESS),
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: createActionType(GET_LIKED_POSTS, ERROR),
     });
   }
 };

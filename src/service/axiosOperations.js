@@ -29,20 +29,20 @@ export const post = async (url, data) => {
   }
 };
 
-// export const put = async (url, data) => {
-//   try {
-//     const config = {
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//     };
+export const put = async (url, data) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
 
-//     const response = await axios.put(url, data, config);
-//     return response;
-//   } catch (error) {
-//     return Promise.reject(error);
-//   }
-// };
+    const response = await axios.put(url, data, config);
+    return response;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+};
 
 // export const remove = async (url, data) => {
 //   try {

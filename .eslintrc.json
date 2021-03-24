@@ -22,6 +22,9 @@
     ],
     "rules": {
         "linebreak-style": 0,
+        "no-underscore-dangle": 0,
+        "array-callback-return": 0,
+        "consistent-return": 0,
         "jsx-a11y/label-has-associated-control": ["error", {
             "required": {
               "some": ["nesting", "id"]

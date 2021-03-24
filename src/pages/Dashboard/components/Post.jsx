@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import likeHighlighted from '../../../images/posts/likeHighlighted.svg';
 import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
+import { likePost } from '../../../service/postsApi';
 
 const Post = ({
-  postId, username, title, text, image, category, location, likes, shares, createdDate, liked,
+  userId, postId, username, title, text, image,
+  category, location, likes, shares, createdDate, liked,
 }) => {
-  const [likePost, setLikePost] = useState({
+  const [likePostData, setLikePostData] = useState({
     nrOfLikes: 0,
     liked: false,
   });
 
   useEffect(() => {
-    setLikePost({
+    setLikePostData({
       nrOfLikes: likes,
       liked,
     });
@@ -21,12 +22,18 @@ const Post = ({
 
   const handleLikePost = (e) => {
     e.preventDefault();
-    setLikePost({
-      nrOfLikes: likePost.nrOfLikes += 1,
-      liked: true,
-    });
-    // eslint-disable-next-line no-console
-    console.log(postId);
+    if (likePostData.liked) {
+      setLikePostData({
+        nrOfLikes: likePostData.nrOfLikes -= 1,
+        liked: false,
+      });
+    } else {
+      setLikePostData({
+        nrOfLikes: likePostData.nrOfLikes += 1,
+        liked: true,
+      });
+      likePost({ postId, userId });
+    }
   };
 
   return (
@@ -54,7 +61,7 @@ const Post = ({
       <div className="post-bottom">
         <div className="post-bottom-text">
           <p>
-            {likePost.nrOfLikes}
+            {likePostData.nrOfLikes}
             {' '}
             likes
           </p>
@@ -66,7 +73,7 @@ const Post = ({
         </div>
         <div className="post-bottom-buttons">
           <button type="button" onClick={handleLikePost}>
-            {likePost.liked ? <img src={likeHighlighted} alt="like" />
+            {likePostData.liked ? <img src="https://img.icons8.com/ios-filled/100/ffffff/facebook-like.png" alt="like" />
               : <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />}
           </button>
           <button type="button">
@@ -82,6 +89,7 @@ const Post = ({
 };
 
 Post.propTypes = {
+  userId: PropTypes.string.isRequired,
   postId: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

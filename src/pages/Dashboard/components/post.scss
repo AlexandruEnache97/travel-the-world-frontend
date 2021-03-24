@@ -100,9 +100,16 @@
                 padding: 1rem;
                 background-color: #ff304f;
                 font-weight: 700;
+                outline: none;
                 
                 img {
                     width: 3.5rem;
+                }
+
+                &:hover {
+                    img{
+                        transform: scale(1.25);
+                    }
                 }
             }
         }

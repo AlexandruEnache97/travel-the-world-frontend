@@ -9,17 +9,20 @@ import ListPosts from './components/ListPosts';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 
 const Dashboard = ({
-  auth, getPosts, posts, createPost, signOut,
+  auth, getPosts, posts, createPost, signOut, getLikedPosts,
 }) => {
-  const { accountData } = auth;
+  const { accountData, accountId } = auth;
   const [currentUser, setCurrentUser] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    getPosts(1);
+    getPosts(currentPage);
   }, []);
 
   useEffect(() => {
     setCurrentUser(accountData);
+    getLikedPosts(currentPage, accountId);
   }, [auth]);
 
   return (
@@ -33,7 +36,7 @@ const Dashboard = ({
           username={currentUser.username}
           profileImage={currentUser.profileImage}
         />
-        <ListPosts posts={posts.currentPosts} />
+        <ListPosts userId={accountId} posts={posts.currentPosts} likedPosts={posts.likedPosts} />
       </div>
       )}
       <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />

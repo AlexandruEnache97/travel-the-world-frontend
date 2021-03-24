@@ -7,10 +7,12 @@ const {
   GET_POST,
   GET_ALL_POSTS,
   CREATE_POST,
+  GET_LIKED_POSTS,
 } = actionTypes;
 
 const initialState = {
   currentPosts: [],
+  likedPosts: [],
   totalResults: 0,
   singlePost: {},
 };
@@ -28,6 +30,16 @@ const postReducer = (state = initialState, action) => {
         ...state,
         currentPosts: [],
         totalResults: 0,
+      };
+    case createActionType(GET_LIKED_POSTS, SUCCESS):
+      return {
+        ...state,
+        likedPosts: action.payload.likedPosts,
+      };
+    case createActionType(GET_LIKED_POSTS, ERROR):
+      return {
+        ...state,
+        likedPosts: [],
       };
     case createActionType(GET_POST, SUCCESS):
       return {

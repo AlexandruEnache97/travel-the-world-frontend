@@ -1,6 +1,7 @@
 import {
   get,
   post,
+  put,
 } from './axiosOperations';
 import { NODE_SERVER } from '../../config';
 
@@ -16,5 +17,15 @@ export const getSinglePost = async (postId) => {
 
 export const getAllPosts = async (pageNumber) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/allPosts/${pageNumber}`);
+  return data;
+};
+
+export const getPostsLiked = async (pageNumber, userId) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/likedPosts/${pageNumber}/${userId}`);
+  return data;
+};
+
+export const likePost = async (likeData) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/likePost`, likeData);
   return data;
 };
