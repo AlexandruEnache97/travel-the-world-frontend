@@ -1,44 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import likeHighlighted from '../../../images/posts/likeHighlighted.svg';
+import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
 
 const Post = ({
   postId, username, title, text, image, category, location, likes, shares, createdDate, liked,
 }) => {
-  Post.propTypes = {
-    postId: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    image: PropTypes.string,
-    location: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    likes: PropTypes.number.isRequired,
-    shares: PropTypes.number.isRequired,
-    createdDate: PropTypes.string.isRequired,
-    liked: PropTypes.bool,
-  };
-
-  Post.defaultProps = {
-    image: '',
+  const [likePost, setLikePost] = useState({
+    nrOfLikes: 0,
     liked: false,
-  };
+  });
 
-  const calculateTimePassed = () => {
-    const secondsPassed = Math.round((Date.now() - Date.parse(createdDate)) / 1000);
-    if (secondsPassed > 60 * 60 * 24) {
-      return `${Math.round(secondsPassed / 60 / 60 / 24)} days ago`;
-    } if (secondsPassed > 60 * 60) {
-      return `${Math.round(secondsPassed / 60 / 60)} hours ago`;
-    } if (secondsPassed > 60) {
-      return `${Math.round(secondsPassed / 60)} minutes ago`;
-    }
-    return 'A minute ago';
-  };
+  useEffect(() => {
+    setLikePost({
+      nrOfLikes: likes,
+      liked,
+    });
+  }, []);
 
   const handleLikePost = (e) => {
     e.preventDefault();
+    setLikePost({
+      nrOfLikes: likePost.nrOfLikes += 1,
+      liked: true,
+    });
     // eslint-disable-next-line no-console
     console.log(postId);
   };
@@ -61,14 +47,14 @@ const Post = ({
             <p>{category}</p>
           </div>
         </div>
-        <p>{calculateTimePassed()}</p>
+        <p>{calculateTimePassed(createdDate)}</p>
         <p>{text}</p>
         {image !== '' && <img className="post-image" src={image} alt="postImage" />}
       </div>
       <div className="post-bottom">
         <div className="post-bottom-text">
           <p>
-            {likes}
+            {likePost.nrOfLikes}
             {' '}
             likes
           </p>
@@ -80,7 +66,7 @@ const Post = ({
         </div>
         <div className="post-bottom-buttons">
           <button type="button" onClick={handleLikePost}>
-            {liked ? <img src={likeHighlighted} alt="like" />
+            {likePost.liked ? <img src={likeHighlighted} alt="like" />
               : <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />}
           </button>
           <button type="button">
@@ -93,6 +79,25 @@ const Post = ({
       </div>
     </div>
   );
+};
+
+Post.propTypes = {
+  postId: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  location: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
+  shares: PropTypes.number.isRequired,
+  createdDate: PropTypes.string.isRequired,
+  liked: PropTypes.bool,
+};
+
+Post.defaultProps = {
+  image: '',
+  liked: false,
 };
 
 export default Post;
