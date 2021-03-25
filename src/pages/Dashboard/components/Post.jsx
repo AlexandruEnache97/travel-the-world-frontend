@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
-import { likePost } from '../../../service/postsApi';
+import { likePost, unlikePost } from '../../../service/postsApi';
 
 const Post = ({
   postId, username, title, text, image,
@@ -27,6 +27,7 @@ const Post = ({
         nrOfLikes: likePostData.nrOfLikes -= 1,
         liked: false,
       });
+      unlikePost({ postId });
     } else {
       setLikePostData({
         nrOfLikes: likePostData.nrOfLikes += 1,

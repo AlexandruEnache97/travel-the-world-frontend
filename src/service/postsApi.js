@@ -29,3 +29,8 @@ export const likePost = async (likeData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/likePost`, likeData);
   return data;
 };
+
+export const unlikePost = async (likeData) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/unlikePost`, likeData);
+  return data;
+};
