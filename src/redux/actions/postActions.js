@@ -38,12 +38,12 @@ export const getPosts = (pageNumber) => async (dispatch) => {
   }
 };
 
-export const getLikedPosts = (pageNumber, userId) => async (dispatch) => {
+export const getLikedPosts = (pageNumber) => async (dispatch) => {
   try {
     dispatch({
       type: createActionType(GET_LIKED_POSTS, REQUEST),
     });
-    const { data } = await getPostsLiked(pageNumber, userId);
+    const { data } = await getPostsLiked(pageNumber);
 
     dispatch({
       type: createActionType(GET_LIKED_POSTS, SUCCESS),

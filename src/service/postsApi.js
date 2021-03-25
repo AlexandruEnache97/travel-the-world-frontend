@@ -20,8 +20,8 @@ export const getAllPosts = async (pageNumber) => {
   return data;
 };
 
-export const getPostsLiked = async (pageNumber, userId) => {
-  const data = await get(`${NODE_SERVER.baseUrl}/api/likedPosts/${pageNumber}/${userId}`);
+export const getPostsLiked = async (pageNumber) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/likedPosts/${pageNumber}`);
   return data;
 };
 

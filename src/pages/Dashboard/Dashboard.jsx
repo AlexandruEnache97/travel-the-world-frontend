@@ -22,7 +22,7 @@ const Dashboard = ({
 
   useEffect(() => {
     setCurrentUser(accountData);
-    getLikedPosts(currentPage, accountId);
+    getLikedPosts(currentPage);
   }, [auth]);
 
   return (
