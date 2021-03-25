@@ -5,7 +5,7 @@ import './post.scss';
 import { likePost } from '../../../service/postsApi';
 
 const Post = ({
-  userId, postId, username, title, text, image,
+  postId, username, title, text, image,
   category, location, likes, shares, createdDate, liked,
 }) => {
   const [likePostData, setLikePostData] = useState({
@@ -32,7 +32,7 @@ const Post = ({
         nrOfLikes: likePostData.nrOfLikes += 1,
         liked: true,
       });
-      likePost({ postId, userId });
+      likePost({ postId });
     }
   };
 
@@ -89,7 +89,6 @@ const Post = ({
 };
 
 Post.propTypes = {
-  userId: PropTypes.string.isRequired,
   postId: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

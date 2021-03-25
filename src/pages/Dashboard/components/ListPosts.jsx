@@ -2,7 +2,7 @@
 import React from 'react';
 import Post from './Post';
 
-const ListPosts = ({ posts, likedPosts, userId }) => (
+const ListPosts = ({ posts, likedPosts }) => (
   <>
     {posts !== [] && posts.map((post) => {
       const checkLikedPost = () => {
@@ -18,7 +18,6 @@ const ListPosts = ({ posts, likedPosts, userId }) => (
 
       return (
         <Post
-          userId={userId}
           postId={post._id}
           username={post.username}
           title={post.title}

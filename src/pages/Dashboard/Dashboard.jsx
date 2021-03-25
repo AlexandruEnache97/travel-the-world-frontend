@@ -11,7 +11,7 @@ import ScrollButton from '../../components/Buttons/ScrollButton';
 const Dashboard = ({
   auth, getPosts, posts, createPost, signOut, getLikedPosts,
 }) => {
-  const { accountData, accountId } = auth;
+  const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,7 +36,7 @@ const Dashboard = ({
           username={currentUser.username}
           profileImage={currentUser.profileImage}
         />
-        <ListPosts userId={accountId} posts={posts.currentPosts} likedPosts={posts.likedPosts} />
+        <ListPosts posts={posts.currentPosts} likedPosts={posts.likedPosts} />
       </div>
       )}
       <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />
