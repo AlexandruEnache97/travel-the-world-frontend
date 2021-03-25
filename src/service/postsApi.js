@@ -34,3 +34,8 @@ export const unlikePost = async (likeData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/unlikePost`, likeData);
   return data;
 };
+
+export const getUserLikes = async (postId) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/userLikes/${postId}`);
+  return data;
+};

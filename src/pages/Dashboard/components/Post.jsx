@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
 import { likePost, unlikePost } from '../../../service/postsApi';
+import LikesModal from './LikesModal';
 
 const Post = ({
   postId, username, title, text, image,
@@ -12,6 +13,7 @@ const Post = ({
     nrOfLikes: 0,
     liked: false,
   });
+  const [likesModal, setLikesModal] = useState(false);
 
   useEffect(() => {
     setLikePostData({
@@ -19,6 +21,17 @@ const Post = ({
       liked,
     });
   }, []);
+
+  const changeLikesModal = () => {
+    if (likes !== 0) {
+      if (!likesModal) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = 'unset';
+      }
+      setLikesModal(!likesModal);
+    }
+  };
 
   const handleLikePost = (e) => {
     e.preventDefault();
@@ -61,11 +74,11 @@ const Post = ({
       </div>
       <div className="post-bottom">
         <div className="post-bottom-text">
-          <p>
+          <button type="button" onClick={changeLikesModal}>
             {likePostData.nrOfLikes}
             {' '}
             likes
-          </p>
+          </button>
           <p>
             {shares}
             {' '}
@@ -85,6 +98,12 @@ const Post = ({
           </button>
         </div>
       </div>
+      {likesModal && (
+        <>
+          <div className="modal" onClickCapture={changeLikesModal} />
+          <LikesModal postId={postId} closeHandler={changeLikesModal} />
+        </>
+      )}
     </div>
   );
 };

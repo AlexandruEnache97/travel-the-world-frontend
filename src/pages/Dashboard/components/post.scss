@@ -80,10 +80,19 @@
         .post-bottom-text {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            font-size: 1.4rem;
             height: 5.2rem;
-            padding: 0rem 5rem;
+
+            p, button {
+                margin: auto 0;
+                font-size: 1.4rem;
+                padding: 0rem 5rem;
+            }
+
+            button {
+                cursor: pointer;
+                border: none;
+                outline: none;
+            }
         }
 
         .post-bottom-buttons {
@@ -114,4 +123,19 @@
             }
         }
     }
+
+}
+
+
+.modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 100;
 }
