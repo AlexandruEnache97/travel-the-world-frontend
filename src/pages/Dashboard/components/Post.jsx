@@ -23,14 +23,12 @@ const Post = ({
   }, []);
 
   const changeLikesModal = () => {
-    if (likes !== 0) {
-      if (!likesModal) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = 'unset';
-      }
-      setLikesModal(!likesModal);
+    if (!likesModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
     }
+    setLikesModal(!likesModal);
   };
 
   const handleLikePost = (e) => {
@@ -74,7 +72,7 @@ const Post = ({
       </div>
       <div className="post-bottom">
         <div className="post-bottom-text">
-          <button type="button" onClick={changeLikesModal}>
+          <button type="button" onClick={likePostData.nrOfLikes > 0 ? changeLikesModal : () => {}}>
             {likePostData.nrOfLikes}
             {' '}
             likes
