@@ -9,6 +9,7 @@ jest.mock('../components/CreatePost.jsx', () => () => <p>Create Post</p>);
 describe('Dashboard component tests', () => {
   it('Should render component correctly', () => {
     const getPosts = jest.fn();
+    const getLikedPosts = jest.fn();
     const signOut = jest.fn();
     const auth = { accountData: { username: 'Alex' } };
     render(
@@ -16,6 +17,7 @@ describe('Dashboard component tests', () => {
         <Dashboard
           auth={auth}
           getPosts={getPosts}
+          getLikedPosts={getLikedPosts}
           posts={{ currentPosts: [] }}
           signOut={signOut}
         />
