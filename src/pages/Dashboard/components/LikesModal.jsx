@@ -4,7 +4,9 @@ import './likesModal.scss';
 import LikeComponent from './LikeComponent';
 import { getUserLikes } from '../../../service/postsApi';
 
-const LikesModal = ({ postId, closeHandler }) => {
+const LikesModal = ({
+  title, likes, postId, closeHandler,
+}) => {
   const [userLikes, setUserLikes] = useState([]);
   useEffect(async () => {
     const info = await getUserLikes(postId);
@@ -14,7 +16,17 @@ const LikesModal = ({ postId, closeHandler }) => {
   return (
     <div className="likes-modal-container">
       <div className="modal-top">
-        <p>Title</p>
+        <p>
+          {title}
+          {' '}
+          -
+          {' '}
+          {}
+          {' '}
+          {likes}
+          {' '}
+          {likes === 1 ? 'like' : 'likes'}
+        </p>
         <button type="button" onClick={closeHandler}>x</button>
       </div>
       <div className="modal-content">
@@ -40,6 +52,8 @@ const LikesModal = ({ postId, closeHandler }) => {
 };
 
 LikesModal.propTypes = {
+  title: PropTypes.string.isRequired,
+  likes: PropTypes.number.isRequired,
   closeHandler: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,
 };

@@ -75,7 +75,7 @@ const Post = ({
           <button type="button" onClick={likePostData.nrOfLikes > 0 ? changeLikesModal : () => {}}>
             {likePostData.nrOfLikes}
             {' '}
-            likes
+            {likePostData.nrOfLikes === 1 ? 'like' : 'likes'}
           </button>
           <p>
             {shares}
@@ -99,7 +99,12 @@ const Post = ({
       {likesModal && (
         <>
           <div className="modal" onClickCapture={changeLikesModal} />
-          <LikesModal postId={postId} closeHandler={changeLikesModal} />
+          <LikesModal
+            title={title}
+            likes={likePostData.nrOfLikes}
+            postId={postId}
+            closeHandler={changeLikesModal}
+          />
         </>
       )}
     </div>
