@@ -1,0 +1,17 @@
+.comments-modal-container {
+    background-color: #ff304f;
+    border-radius: 0rem 0rem 3rem 3rem;
+    display: flex;
+    justify-content: center;
+    
+    input {
+        border: none;
+        border-radius: 1rem;
+        outline: none;
+        width: 32rem;
+        height: 3.5rem;
+        padding: 0.5rem 2rem;
+        margin: 0.5rem 0rem 1rem 0rem;
+        font-size: 1.55rem;
+    }
+}

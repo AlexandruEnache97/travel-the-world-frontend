@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
 import { likePost, unlikePost } from '../../../service/postsApi';
-import LikesModal from './LikesModal';
+import LikesModal from './likes/LikesModal';
+import CommentsModal from './comments/CommentsModal';
 
 const Post = ({
   postId, username, title, text, image,
@@ -14,6 +15,7 @@ const Post = ({
     liked: false,
   });
   const [likesModal, setLikesModal] = useState(false);
+  const [commentsModal, setCommentsModal] = useState(false);
 
   useEffect(() => {
     setLikePostData({
@@ -29,6 +31,10 @@ const Post = ({
       document.body.style.overflow = 'unset';
     }
     setLikesModal(!likesModal);
+  };
+
+  const changeCommentsModal = () => {
+    setCommentsModal(!commentsModal);
   };
 
   const handleLikePost = (e) => {
@@ -83,17 +89,20 @@ const Post = ({
             shares
           </p>
         </div>
-        <div className="post-bottom-buttons">
-          <button type="button" onClick={handleLikePost}>
-            {likePostData.liked ? <img src="https://img.icons8.com/ios-filled/100/ffffff/facebook-like.png" alt="like" />
-              : <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />}
-          </button>
-          <button type="button">
-            <img src="https://img.icons8.com/fluent-systems-regular/48/ffffff/topic.png" alt="commentsIcon" />
-          </button>
-          <button type="button">
-            <img src="https://img.icons8.com/windows/64/ffffff/share-3.png" alt="shareIcon" />
-          </button>
+        <div className="post-functions">
+          <div className="post-bottom-buttons">
+            <button type="button" onClick={handleLikePost}>
+              {likePostData.liked ? <img src="https://img.icons8.com/ios-filled/100/ffffff/facebook-like.png" alt="like" />
+                : <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />}
+            </button>
+            <button type="button" onClick={changeCommentsModal}>
+              <img src="https://img.icons8.com/fluent-systems-regular/48/ffffff/topic.png" alt="commentsIcon" />
+            </button>
+            <button type="button">
+              <img src="https://img.icons8.com/windows/64/ffffff/share-3.png" alt="shareIcon" />
+            </button>
+          </div>
+          {commentsModal && <CommentsModal postId={postId} />}
         </div>
       </div>
       {likesModal && (

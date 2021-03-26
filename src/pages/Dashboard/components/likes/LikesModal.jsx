@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './likesModal.scss';
 import LikeComponent from './LikeComponent';
-import { getUserLikes } from '../../../service/postsApi';
+import { getUserLikes } from '../../../../service/postsApi';
 
 const LikesModal = ({
   title, likes, postId, closeHandler,
