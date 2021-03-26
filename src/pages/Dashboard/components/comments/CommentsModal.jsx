@@ -57,7 +57,9 @@ const CommentsModal = ({ postId }) => {
           onChange={handleOnChange}
           onKeyDown={handleOnEnter}
         />
-        <button type="button" onClick={handleOnClick}>&#x1F600;</button>
+        <button type="button" onClick={handleOnClick}>
+          <img src="https://img.icons8.com/android/96/666666/happy.png" alt="emoji" />
+        </button>
       </div>
       {visibleEmoji && <Picker onEmojiClick={onEmojiClick} />}
     </div>
