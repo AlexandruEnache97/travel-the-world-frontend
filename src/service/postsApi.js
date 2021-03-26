@@ -39,3 +39,8 @@ export const getUserLikes = async (postId) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/userLikes/${postId}`);
   return data;
 };
+
+export const createComment = async (commentData) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/createComment`, commentData);
+  return data;
+};

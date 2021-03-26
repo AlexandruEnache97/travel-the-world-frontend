@@ -1,18 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './commentsModal.scss';
+import { createComment } from '../../../../service/postsApi';
 
 const CommentsModal = ({ postId }) => {
-  const [commentInput, setCommentInput] = useState('');
+  const [commentData, setCommentData] = useState({
+    text: '',
+    postId: '',
+  });
+
+  useEffect(() => {
+    setCommentData({
+      ...commentData,
+      postId,
+    });
+  }, [postId]);
 
   const handleOnChange = (e) => {
-    setCommentInput(e.target.value);
+    setCommentData({
+      ...commentData,
+      text: e.target.value,
+    });
   };
 
   const handleOnEnter = (e) => {
     if (e.key === 'Enter') {
-      console.log(`${commentInput} ${postId}`);
-      setCommentInput('');
+      createComment(commentData);
+      setCommentData({
+        ...commentData,
+        text: '',
+      });
     }
   };
 
@@ -21,7 +38,7 @@ const CommentsModal = ({ postId }) => {
       <input
         type="text"
         placeholder="Write a comment..."
-        value={commentInput}
+        value={commentData.text}
         onChange={handleOnChange}
         onKeyDown={handleOnEnter}
       />
