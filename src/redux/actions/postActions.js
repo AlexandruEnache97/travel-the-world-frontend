@@ -38,20 +38,19 @@ export const getPosts = (pageNumber) => async (dispatch) => {
   }
 };
 
-export const getLikedPosts = (pageNumber) => async (dispatch) => {
+export const getPost = (postId) => async (dispatch) => {
   try {
     dispatch({
-      type: createActionType(GET_LIKED_POSTS, REQUEST),
+      type: createActionType(GET_POST, REQUEST),
     });
-    const { data } = await getPostsLiked(pageNumber);
-
+    const { data } = await getSinglePost(postId);
     dispatch({
-      type: createActionType(GET_LIKED_POSTS, SUCCESS),
-      payload: data,
+      type: createActionType(GET_POST, SUCCESS),
+      payload: { singlePost: data },
     });
   } catch (error) {
     dispatch({
-      type: createActionType(GET_LIKED_POSTS, ERROR),
+      type: createActionType(GET_POST, ERROR),
     });
   }
 };
@@ -80,19 +79,20 @@ export const createPost = (postData) => async (dispatch) => {
   }
 };
 
-export const getPost = (postId) => async (dispatch) => {
+export const getLikedPosts = (pageNumber) => async (dispatch) => {
   try {
     dispatch({
-      type: createActionType(GET_POST, REQUEST),
+      type: createActionType(GET_LIKED_POSTS, REQUEST),
     });
-    const { data } = await getSinglePost(postId);
+    const { data } = await getPostsLiked(pageNumber);
+
     dispatch({
-      type: createActionType(GET_POST, SUCCESS),
-      payload: { singlePost: data },
+      type: createActionType(GET_LIKED_POSTS, SUCCESS),
+      payload: data,
     });
   } catch (error) {
     dispatch({
-      type: createActionType(GET_POST, ERROR),
+      type: createActionType(GET_LIKED_POSTS, ERROR),
     });
   }
 };

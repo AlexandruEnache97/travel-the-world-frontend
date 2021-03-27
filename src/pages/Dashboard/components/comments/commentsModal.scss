@@ -44,3 +44,22 @@
         right: 4rem;
     }
 }
+
+.comments-list-container {
+    max-height: 40rem;
+    border-radius: 0rem 0rem 2rem 2rem;
+    background-color: #fff;
+    overflow-y: scroll;
+
+    .comments-more {
+        button {
+            margin: 0rem 2rem 1rem 4rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+    }
+}

@@ -44,3 +44,8 @@ export const createComment = async (commentData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/createComment`, commentData);
   return data;
 };
+
+export const getComments = async (postId, pageNumber) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/getComments/${postId}/${pageNumber}`);
+  return data;
+};

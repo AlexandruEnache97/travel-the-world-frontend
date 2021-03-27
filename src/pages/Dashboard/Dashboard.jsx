@@ -28,7 +28,7 @@ const Dashboard = ({
   return (
     <>
       <Navbar signOut={signOut} />
-      {currentUser.username !== ''
+      {currentUser.username !== '' && currentUser.username !== undefined
       && (
       <div className="dashboard-container">
         <CreatePost
@@ -36,7 +36,10 @@ const Dashboard = ({
           username={currentUser.username}
           profileImage={currentUser.profileImage}
         />
-        <ListPosts posts={posts.currentPosts} likedPosts={posts.likedPosts} />
+        <ListPosts
+          posts={posts.currentPosts}
+          likedPosts={posts.likedPosts}
+        />
       </div>
       )}
       <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />

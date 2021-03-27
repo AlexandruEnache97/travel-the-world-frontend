@@ -35,6 +35,7 @@ const Post = ({
 
   const changeCommentsModal = () => {
     setCommentsModal(!commentsModal);
+    console.log('changed');
   };
 
   const handleLikePost = (e) => {
