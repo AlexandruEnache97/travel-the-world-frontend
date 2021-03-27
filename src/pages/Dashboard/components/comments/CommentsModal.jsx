@@ -48,9 +48,16 @@ const CommentsModal = ({ postId }) => {
     setVisibleEmoji(!visibleEmoji);
   };
 
-  const handleOnEnter = (e) => {
+  const handleOnEnter = async (e) => {
     if (e.key === 'Enter') {
       createComment(commentData);
+
+      const comm = await getComments(postId, 1);
+      setComments({
+        results: comm.data.results,
+        totalResults: comm.data.totalResults,
+      });
+
       setCommentData({
         ...commentData,
         text: '',
