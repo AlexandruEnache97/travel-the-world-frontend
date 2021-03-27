@@ -9,7 +9,7 @@ const LikesModal = ({
 }) => {
   const [userLikes, setUserLikes] = useState([]);
   useEffect(async () => {
-    const info = await getUserLikes(postId);
+    const info = await getUserLikes(postId, 1);
     setUserLikes(info.data.userLikes);
   }, []);
 
