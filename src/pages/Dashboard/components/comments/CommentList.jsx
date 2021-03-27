@@ -1,23 +1,19 @@
 /* eslint-disable react/prop-types */
-import React, { useEffect } from 'react';
+import React from 'react';
 import CommentComponent from './CommentComponent';
 
-const CommentList = ({ comments, totalResults, getMoreComments }) => {
-  useEffect(() => {
-    console.log(comments);
-  }, [comments]);
-  return (
-    <div className="comments-list-container">
-      {comments.length > 0 ? comments.map((comment) => (
-        <CommentComponent
-          key={Math.random()}
-          profileImage={comment.userData[0].profileImage}
-          username={comment.userData[0].username}
-          text={comment.text}
-        />
-      )) : <h1>Loading...</h1>}
-      <div className="comments-more">
-        {totalResults > comments.length
+const CommentList = ({ comments, totalResults, getMoreComments }) => (
+  <div className="comments-list-container">
+    {comments.length > 0 ? comments.map((comment) => (
+      <CommentComponent
+        key={Math.random()}
+        profileImage={comment.userData[0].profileImage}
+        username={comment.userData[0].username}
+        text={comment.text}
+      />
+    )) : <h1>Loading...</h1>}
+    <div className="comments-more">
+      {totalResults > comments.length
       && (
       <button type="button" onClick={getMoreComments}>
         Load
@@ -26,9 +22,8 @@ const CommentList = ({ comments, totalResults, getMoreComments }) => {
         {' more comments'}
       </button>
       )}
-      </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default CommentList;

@@ -29,10 +29,6 @@ const CommentsModal = ({ postId }) => {
     });
   }, [postId]);
 
-  useEffect(() => {
-    console.log(comments);
-  }, [comments]);
-
   const handleOnChange = (e) => {
     setCommentData({
       ...commentData,
@@ -64,7 +60,7 @@ const CommentsModal = ({ postId }) => {
 
   const getMoreComments = async () => {
     const moreComments = await getComments(postId, 2);
-    await setComments({
+    setComments({
       ...comments,
       results: [...comments.results, ...moreComments.data.results],
     });
