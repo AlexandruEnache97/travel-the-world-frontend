@@ -15,7 +15,15 @@ const CommentList = ({ comments, totalResults, getMoreComments }) => {
           username={comment.userData[0].username}
           text={comment.text}
         />
-      )) : totalResults === 0 && <h1>Loading...</h1>}
+      )) : totalResults === 0
+      && (
+      <div className="comments-loading">
+        <span>Loading</span>
+        <div className="loading-spinner">
+          <div className="loading-icon" data-testid="spinner" />
+        </div>
+      </div>
+      )}
       <div className="comments-more">
         {totalResults > comments.length && (
         <button type="button" onClick={getMoreComments}>
