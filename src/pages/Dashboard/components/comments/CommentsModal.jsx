@@ -67,6 +67,8 @@ const CommentsModal = ({ postId }) => {
         currentPage: 1,
       });
 
+      if (visibleEmoji) setVisibleEmoji(false);
+
       setCommentData({
         ...commentData,
         text: '',
