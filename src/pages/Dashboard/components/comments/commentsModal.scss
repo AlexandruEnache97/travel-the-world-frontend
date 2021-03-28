@@ -11,21 +11,37 @@
         justify-content: center;
         position: relative;
 
-        input {
+        textarea {
+            resize: none;
             border: none;
             border-radius: 1rem;
             outline: none;
             width: 32rem;
-            height: 3.5rem;
-            padding: 0.5rem 2rem;
+            min-height: 3rem;
+            padding: 0.8rem 4.5rem 0.5rem 2rem;
             margin: 0.5rem 0rem 1rem 0rem;
-            font-size: 1.55rem;
+            font-size: 1.7rem;
+
+            &::-webkit-scrollbar{
+                width: 0.8rem;
+                background-color: #000;
+            }
+        
+            &::-webkit-scrollbar-track {
+                background: #fff;
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                background-color: #ff304f ;
+                border-radius: 6px;
+                border: 3px solid #fff;
+            }
         }
 
         button {
             position: absolute;
-            top: 1rem;
-            right: 4.8rem;
+            top: 1.1rem;
+            right: 5.2rem;
             font-size: 2rem;
             border: none;
             outline: none;
@@ -49,7 +65,24 @@
     max-height: 40rem;
     border-radius: 0rem 0rem 2rem 2rem;
     background-color: #fff;
-    overflow-y: scroll;
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+    
+    &::-webkit-scrollbar{
+        width: 1.2rem;
+        background-color: #000;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #fff;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #ff304f ;
+        border-radius: 6px;
+        border: 3px solid #fff;
+    }
 
     .comments-more {
         button {

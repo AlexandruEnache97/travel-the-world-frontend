@@ -46,6 +46,21 @@
         max-height: 25.5rem;
         overflow-y: scroll;
 
+        &::-webkit-scrollbar{
+            width: 1.2rem;
+            background-color: #000;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: #fff;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #ff304f ;
+            border-radius: 6px;
+            border: 3px solid #fff;
+        }
+
         .more-likes {
             width: 100%;
             background-color: #fff;

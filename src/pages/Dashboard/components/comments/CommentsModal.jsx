@@ -81,7 +81,7 @@ const CommentsModal = ({ postId }) => {
   return (
     <div className="comments-modal-container">
       <div className="comments-create">
-        <input
+        <textarea
           type="text"
           placeholder="Write a comment..."
           value={commentData.text}
