@@ -65,7 +65,8 @@ const CommentsModal = ({ postId }) => {
     }
   };
 
-  const getMoreComments = async () => {
+  const getMoreComments = async (e) => {
+    e.preventDefault();
     const moreComments = await getComments(postId, 2);
     setComments({
       ...comments,

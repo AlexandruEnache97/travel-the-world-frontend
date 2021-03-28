@@ -13,8 +13,7 @@ const CommentList = ({ comments, totalResults, getMoreComments }) => (
       />
     )) : <h1>Loading...</h1>}
     <div className="comments-more">
-      {totalResults > comments.length
-      && (
+      {totalResults > comments.length && (
       <button type="button" onClick={getMoreComments}>
         Load
         {' '}

@@ -45,6 +45,22 @@
         min-height: 5rem;
         max-height: 25.5rem;
         overflow-y: scroll;
+
+        .more-likes {
+            width: 100%;
+            background-color: #fff;
+
+            button {
+                border: none;
+                outline: none;
+                font-size: 1.3rem;
+                font-weight: 600;   
+                padding: 0.5rem 0rem;
+                margin-left: 4.5rem;
+                background-color: transparent;
+                cursor: pointer;
+            }
+        }
     }
 
     .modal-bottom {
@@ -65,7 +81,7 @@
         padding: 3.1rem;
         border-top: 0.5px solid rgb(180, 180, 180);
         border-bottom: 0.5px solid rgb(180, 180, 180);
-        background-color: rgb(240, 240, 240);
+        background-color: #fff;
 
         img {    
             width: 5rem;

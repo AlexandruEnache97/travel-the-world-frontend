@@ -7,11 +7,27 @@ import { getUserLikes } from '../../../../service/postsApi';
 const LikesModal = ({
   title, likes, postId, closeHandler,
 }) => {
-  const [userLikes, setUserLikes] = useState([]);
+  const [userLikes, setUserLikes] = useState({
+    likes: [],
+    currentPage: 1,
+  });
+
   useEffect(async () => {
-    const info = await getUserLikes(postId, 1);
-    setUserLikes(info.data.userLikes);
+    const info = await getUserLikes(postId, userLikes.currentPage);
+    setUserLikes({
+      ...userLikes,
+      likes: info.data.userLikes,
+    });
   }, []);
+
+  const getMoreLikes = async (e) => {
+    e.preventDefault();
+    const info = await getUserLikes(postId, userLikes.currentPage + 1);
+    setUserLikes({
+      likes: [...userLikes.likes, ...info.data.userLikes],
+      currentPage: userLikes.currentPage + 1,
+    });
+  };
 
   return (
     <div className="likes-modal-container">
@@ -30,7 +46,7 @@ const LikesModal = ({
         <button type="button" onClick={closeHandler}>x</button>
       </div>
       <div className="modal-content">
-        {userLikes.length === 0 ? (
+        {userLikes.likes.length === 0 ? (
           <div className="like-container">
             <span>Loading</span>
             <div className="loading-spinner">
@@ -38,13 +54,24 @@ const LikesModal = ({
             </div>
           </div>
         )
-          : userLikes.map((item) => (
+          : userLikes.likes.map((item) => (
             <LikeComponent
               profileImage={item.profileImage}
               username={item.username}
               key={Math.random()}
             />
           ))}
+
+        <div className="more-likes">
+          {likes > userLikes.likes.length && (
+          <button type="button" onClick={getMoreLikes}>
+            Load
+            {' '}
+            {likes - userLikes.likes.length}
+            {' more likes'}
+          </button>
+          )}
+        </div>
       </div>
       <div className="modal-bottom" />
     </div>
