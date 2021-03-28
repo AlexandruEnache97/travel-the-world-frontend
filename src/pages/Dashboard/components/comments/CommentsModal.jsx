@@ -16,19 +16,25 @@ const CommentsModal = ({ postId }) => {
     currentPage: Number(1),
   });
   const [visibleEmoji, setVisibleEmoji] = useState(false);
-  // const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(async () => {
     setCommentData({
       ...commentData,
       postId,
     });
-    const comm = await getComments(postId, comments.currentPage);
-    setComments({
-      ...comments,
-      results: comm.data.results,
-      totalResults: comm.data.totalResults,
-    });
+    try {
+      const comm = await getComments(postId, comments.currentPage);
+      setComments({
+        ...comments,
+        results: comm.data.results,
+        totalResults: comm.data.totalResults,
+      });
+    } catch (error) {
+      setComments({
+        ...comments,
+        totalResults: -1,
+      });
+    }
   }, [postId]);
 
   const handleOnChange = (e) => {
