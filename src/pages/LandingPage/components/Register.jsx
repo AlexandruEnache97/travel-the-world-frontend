@@ -11,7 +11,7 @@ const Register = ({ signUp, auth, history }) => {
     email: '',
     password: '',
     verifyPassword: '',
-    country: '',
+    country: 'Afghanistan',
   });
 
   useLayoutEffect(() => {
