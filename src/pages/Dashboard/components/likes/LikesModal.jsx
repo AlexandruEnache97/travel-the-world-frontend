@@ -63,11 +63,11 @@ const LikesModal = ({
           ))}
 
         <div className="more-likes">
-          {likes > userLikes.likes.length && (
+          {userLikes.likes.length !== 0 && likes > userLikes.likes.length && (
           <button type="button" onClick={getMoreLikes}>
             Load
             {' '}
-            {likes - userLikes.likes.length}
+            {likes - userLikes.likes.length > 10 ? 10 : likes - userLikes.likes.length}
             {' more likes'}
           </button>
           )}
