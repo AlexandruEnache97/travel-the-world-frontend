@@ -13,6 +13,7 @@ const CommentsModal = ({ postId }) => {
   const [comments, setComments] = useState({
     results: [],
     totalResults: 0,
+    currentPage: Number(1),
   });
   const [visibleEmoji, setVisibleEmoji] = useState(false);
   // const [currentPage, setCurrentPage] = useState(1);
@@ -22,8 +23,9 @@ const CommentsModal = ({ postId }) => {
       ...commentData,
       postId,
     });
-    const comm = await getComments(postId, 1);
+    const comm = await getComments(postId, comments.currentPage);
     setComments({
+      ...comments,
       results: comm.data.results,
       totalResults: comm.data.totalResults,
     });
@@ -56,6 +58,7 @@ const CommentsModal = ({ postId }) => {
       setComments({
         results: comm.data.results,
         totalResults: comm.data.totalResults,
+        currentPage: 1,
       });
 
       setCommentData({
@@ -67,10 +70,11 @@ const CommentsModal = ({ postId }) => {
 
   const getMoreComments = async (e) => {
     e.preventDefault();
-    const moreComments = await getComments(postId, 2);
+    const moreComments = await getComments(postId, comments.currentPage + 1);
     setComments({
       ...comments,
       results: [...comments.results, ...moreComments.data.results],
+      currentPage: comments.currentPage + 1,
     });
   };
 

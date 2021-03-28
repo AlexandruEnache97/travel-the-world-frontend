@@ -17,7 +17,7 @@ const CommentList = ({ comments, totalResults, getMoreComments }) => (
       <button type="button" onClick={getMoreComments}>
         Load
         {' '}
-        {totalResults - comments.length}
+        {totalResults - comments.length < 10 ? totalResults - comments.length : 10}
         {' more comments'}
       </button>
       )}

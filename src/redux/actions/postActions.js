@@ -38,7 +38,7 @@ export const getPosts = (pageNumber) => async (dispatch) => {
   }
 };
 
-export const getPost = (postId) => async (dispatch) => {
+export const getOnePost = (postId) => async (dispatch) => {
   try {
     dispatch({
       type: createActionType(GET_POST, REQUEST),
