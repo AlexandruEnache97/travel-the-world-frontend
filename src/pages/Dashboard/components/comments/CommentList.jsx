@@ -7,7 +7,7 @@ const CommentList = ({ comments, totalResults, getMoreComments }) => {
     console.log(totalResults);
   }, [totalResults]);
   return (
-    <div className="comments-list-container">
+    <div className="comments-list-container" id="comment-id">
       {totalResults > 0 ? comments.map((comment) => (
         <CommentComponent
           key={Math.random()}

@@ -78,6 +78,10 @@ const CommentsModal = ({ postId }) => {
 
   const getMoreComments = async (e) => {
     e.preventDefault();
+
+    const div = document.getElementById('comment-id');
+    div.scrollTop = div.scrollHeight - 430;
+
     const moreComments = await getComments(postId, comments.currentPage + 1);
     setComments({
       ...comments,
