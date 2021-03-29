@@ -2,12 +2,14 @@
 import React, { useEffect } from 'react';
 import CommentComponent from './CommentComponent';
 
-const CommentList = ({ comments, totalResults, getMoreComments }) => {
+const CommentList = ({
+  postId, comments, totalResults, getMoreComments,
+}) => {
   useEffect(() => {
     console.log(totalResults);
   }, [totalResults]);
   return (
-    <div className="comments-list-container" id="comment-id">
+    <div className="comments-list-container" id={`comment-id-${postId}`}>
       {totalResults > 0 ? comments.map((comment) => (
         <CommentComponent
           key={Math.random()}

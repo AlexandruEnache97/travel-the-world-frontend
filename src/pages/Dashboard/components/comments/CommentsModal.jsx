@@ -79,7 +79,7 @@ const CommentsModal = ({ postId }) => {
   const getMoreComments = async (e) => {
     e.preventDefault();
 
-    const div = document.getElementById('comment-id');
+    const div = document.getElementById(`comment-id-${postId}`);
     div.scrollTop = div.scrollHeight - 430;
 
     const moreComments = await getComments(postId, comments.currentPage + 1);
@@ -107,6 +107,7 @@ const CommentsModal = ({ postId }) => {
       {comments !== null && comments.results !== undefined
        && (
        <CommentList
+         postId={postId}
          comments={comments.results}
          totalResults={comments.totalResults}
          getMoreComments={getMoreComments}
