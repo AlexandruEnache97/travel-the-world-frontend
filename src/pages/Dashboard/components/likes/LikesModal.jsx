@@ -22,6 +22,10 @@ const LikesModal = ({
 
   const getMoreLikes = async (e) => {
     e.preventDefault();
+
+    const div = document.getElementById('likes-id');
+    div.scrollTop = div.scrollHeight - 285;
+
     const info = await getUserLikes(postId, userLikes.currentPage + 1);
     setUserLikes({
       likes: [...userLikes.likes, ...info.data.userLikes],
@@ -45,7 +49,7 @@ const LikesModal = ({
         </p>
         <button type="button" onClick={closeHandler}>x</button>
       </div>
-      <div className="modal-content">
+      <div className="modal-content" id="likes-id">
         {userLikes.likes.length === 0 ? (
           <div className="like-container">
             <span>Loading</span>
