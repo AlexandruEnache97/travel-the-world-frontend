@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import CommentComponent from './CommentComponent';
 
 const CommentList = ({
-  postId, comments, totalResults, getMoreComments,
+  username, postId, comments, totalResults, getMoreComments,
 }) => {
   useEffect(() => {
     console.log(totalResults);
@@ -16,6 +16,7 @@ const CommentList = ({
           profileImage={comment.userData[0].profileImage}
           username={comment.userData[0].username}
           text={comment.text}
+          access={comment.userData[0].username === username}
         />
       )) : totalResults === 0
       && (

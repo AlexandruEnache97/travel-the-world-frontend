@@ -5,7 +5,7 @@ import Picker from 'emoji-picker-react';
 import { createComment, getComments } from '../../../../service/postsApi';
 import CommentList from './CommentList';
 
-const CommentsModal = ({ postId }) => {
+const CommentsModal = ({ postId, username }) => {
   const [commentData, setCommentData] = useState({
     text: '',
     postId: '',
@@ -107,6 +107,7 @@ const CommentsModal = ({ postId }) => {
       {comments !== null && comments.results !== undefined
        && (
        <CommentList
+         username={username}
          postId={postId}
          comments={comments.results}
          totalResults={comments.totalResults}
