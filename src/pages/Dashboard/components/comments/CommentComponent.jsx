@@ -30,7 +30,7 @@ CommentComponent.propTypes = {
   profileImage: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  access: PropTypes.string.isRequired,
+  access: PropTypes.bool.isRequired,
 };
 
 export default CommentComponent;

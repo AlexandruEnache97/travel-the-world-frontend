@@ -13,10 +13,10 @@ const CommentList = ({
       {totalResults > 0 ? comments.map((comment) => (
         <CommentComponent
           key={Math.random()}
-          profileImage={comment.userData[0].profileImage}
-          username={comment.userData[0].username}
+          profileImage={comment.userData.profileImage}
+          username={comment.userData.username}
           text={comment.text}
-          access={comment.userData[0].username === username}
+          access={comment.userData.username === username}
         />
       )) : totalResults === 0
       && (
