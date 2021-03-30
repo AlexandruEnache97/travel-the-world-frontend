@@ -1,34 +1,38 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import './commentsModal.scss';
-import Picker from 'emoji-picker-react';
-import { createComment, getComments } from '../../../../service/postsApi';
+import { getComments } from '../../../../service/postsApi';
 import CommentList from './CommentList';
+import CreateComment from '../../../../components/Inputs/CreateComment';
 
 const CommentsModal = ({ postId, username }) => {
-  const [commentData, setCommentData] = useState({
-    text: '',
-    postId: '',
-  });
   const [comments, setComments] = useState({
     results: [],
     totalResults: 0,
     currentPage: Number(1),
   });
-  const [visibleEmoji, setVisibleEmoji] = useState(false);
 
-  useEffect(async () => {
-    setCommentData({
-      ...commentData,
-      postId,
-    });
-    try {
-      const comm = await getComments(postId, comments.currentPage);
+  const getCommentsFromBackend = async (page, moreResults) => {
+    const comm = await getComments(postId, page);
+    if (moreResults) {
+      setComments({
+        ...comments,
+        results: [...comments.results, ...comm.data.results],
+        currentPage: comments.currentPage + 1,
+      });
+    } else {
       setComments({
         ...comments,
         results: comm.data.results,
         totalResults: comm.data.totalResults,
+        currentPage: page,
       });
+    }
+  };
+
+  useEffect(async () => {
+    try {
+      getCommentsFromBackend(comments.currentPage, false);
     } catch (error) {
       setComments({
         ...comments,
@@ -37,73 +41,21 @@ const CommentsModal = ({ postId, username }) => {
     }
   }, [postId]);
 
-  const handleOnChange = (e) => {
-    setCommentData({
-      ...commentData,
-      text: e.target.value,
-    });
-  };
-
-  const onEmojiClick = (event, emojiObject) => {
-    setCommentData({
-      ...commentData,
-      text: commentData.text.concat(emojiObject.emoji),
-    });
-  };
-
-  const handleOnClick = (e) => {
-    e.preventDefault();
-    setVisibleEmoji(!visibleEmoji);
-  };
-
-  const handleOnEnter = async (e) => {
-    if (e.key === 'Enter') {
-      createComment(commentData);
-
-      const comm = await getComments(postId, 1);
-      setComments({
-        results: comm.data.results,
-        totalResults: comm.data.totalResults,
-        currentPage: 1,
-      });
-
-      if (visibleEmoji) setVisibleEmoji(false);
-
-      setCommentData({
-        ...commentData,
-        text: '',
-      });
-    }
-  };
-
   const getMoreComments = async (e) => {
     e.preventDefault();
 
     const div = document.getElementById(`comment-id-${postId}`);
     div.scrollTop = div.scrollHeight - 430;
 
-    const moreComments = await getComments(postId, comments.currentPage + 1);
-    setComments({
-      ...comments,
-      results: [...comments.results, ...moreComments.data.results],
-      currentPage: comments.currentPage + 1,
-    });
+    getCommentsFromBackend(comments.currentPage + 1, true);
   };
 
   return (
     <div className="comments-modal-container">
-      <div className="comments-create">
-        <textarea
-          type="text"
-          placeholder="Write a comment..."
-          value={commentData.text}
-          onChange={handleOnChange}
-          onKeyDown={handleOnEnter}
-        />
-        <button type="button" onClick={handleOnClick}>
-          <img src="https://img.icons8.com/android/96/666666/happy.png" alt="emoji" />
-        </button>
-      </div>
+      <CreateComment
+        postId={postId}
+        getCommentsFromBackend={getCommentsFromBackend}
+      />
       {comments !== null && comments.results !== undefined
        && (
        <CommentList
@@ -114,7 +66,6 @@ const CommentsModal = ({ postId, username }) => {
          getMoreComments={getMoreComments}
        />
        )}
-      {visibleEmoji && <Picker onEmojiClick={onEmojiClick} />}
     </div>
   );
 };

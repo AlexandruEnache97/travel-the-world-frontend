@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './commentComponent.scss';
 
 const CommentComponent = ({
-  profileImage, username, text, access,
+  profileImage, username, text, access, deleteComment,
 }) => (
   <div className="comment-container">
     <div className="comment-top">
@@ -19,7 +19,7 @@ const CommentComponent = ({
       {access && (
         <div className="comment-alter">
           <p>Edit</p>
-          <p>Delete</p>
+          <button type="button" onClick={deleteComment}>Delete</button>
         </div>
       )}
     </div>
@@ -31,6 +31,7 @@ CommentComponent.propTypes = {
   username: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   access: PropTypes.bool.isRequired,
+  deleteComment: PropTypes.func.isRequired,
 };
 
 export default CommentComponent;
