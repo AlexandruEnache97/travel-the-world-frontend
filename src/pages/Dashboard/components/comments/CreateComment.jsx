@@ -18,10 +18,12 @@ const CreateComment = ({ postId, getCommentsFromBackend }) => {
   }, [postId]);
 
   const handleOnChange = (e) => {
-    setNewComment({
-      ...newComment,
-      text: e.target.value,
-    });
+    if (e.nativeEvent.inputType !== 'insertLineBreak') {
+      setNewComment({
+        ...newComment,
+        text: e.target.value,
+      });
+    }
   };
 
   const onEmojiClick = (event, emojiObject) => {
