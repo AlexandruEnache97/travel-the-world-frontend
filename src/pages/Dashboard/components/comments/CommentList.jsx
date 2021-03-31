@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import CommentComponent from './CommentComponent';
 
 const CommentList = ({
-  username, postId, comments, totalResults, getMoreComments,
+  username, postId, comments, totalResults, getMoreComments, deleteComment,
 }) => {
   useEffect(() => {
     console.log(totalResults);
@@ -13,10 +13,12 @@ const CommentList = ({
       {totalResults > 0 ? comments.map((comment) => (
         <CommentComponent
           key={Math.random()}
+          commentId={comment._id}
           profileImage={comment.userData.profileImage}
           username={comment.userData.username}
           text={comment.text}
           access={comment.userData.username === username}
+          deleteComment={deleteComment}
         />
       )) : totalResults === 0
       && (

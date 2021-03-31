@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Picker from 'emoji-picker-react';
-import { createComment } from '../../service/postsApi';
+import { createComment } from '../../../../service/postsApi';
 
 const CreateComment = ({ postId, getCommentsFromBackend }) => {
   const [newComment, setNewComment] = useState({

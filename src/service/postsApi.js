@@ -2,6 +2,7 @@ import {
   get,
   post,
   put,
+  remove,
 } from './axiosOperations';
 import { NODE_SERVER } from '../../config';
 
@@ -47,5 +48,10 @@ export const createComment = async (commentData) => {
 
 export const getComments = async (postId, pageNumber) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/getComments/${postId}/${pageNumber}`);
+  return data;
+};
+
+export const removeComment = async (commentId) => {
+  const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteComment`, commentId);
   return data;
 };

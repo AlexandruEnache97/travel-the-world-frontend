@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import './commentsModal.scss';
 import { getComments } from '../../../../service/postsApi';
 import CommentList from './CommentList';
-import CreateComment from '../../../../components/Inputs/CreateComment';
+import CreateComment from './CreateComment';
 
 const CommentsModal = ({ postId, username }) => {
   const [comments, setComments] = useState({
@@ -50,6 +50,10 @@ const CommentsModal = ({ postId, username }) => {
     getCommentsFromBackend(comments.currentPage + 1, true);
   };
 
+  const updateComments = () => {
+    getCommentsFromBackend(1, false);
+  };
+
   return (
     <div className="comments-modal-container">
       <CreateComment
@@ -64,6 +68,7 @@ const CommentsModal = ({ postId, username }) => {
          comments={comments.results}
          totalResults={comments.totalResults}
          getMoreComments={getMoreComments}
+         deleteComment={updateComments}
        />
        )}
     </div>
