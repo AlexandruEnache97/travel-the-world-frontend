@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
 import { removeComment } from '../../../../service/postsApi';
+import Spinner from '../../../../components/Spinner/Spinner';
 
 const CommentComponent = ({
   commentId, profileImage, username, text, access, deleteComment,
 }) => {
+  const [deleteResponse, setDeleteResponse] = useState(false);
   const deleteComm = async () => {
+    setDeleteResponse(true);
     await removeComment({ commentId });
+    setDeleteResponse(false);
     deleteComment();
   };
 
@@ -27,6 +31,7 @@ const CommentComponent = ({
         <div className="comment-alter">
           <p>Edit</p>
           <button type="button" onClick={deleteComm}>Delete</button>
+          {deleteResponse && <Spinner />}
         </div>
         )}
       </div>

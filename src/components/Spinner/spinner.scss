@@ -1,0 +1,24 @@
+.loading-spinner {
+    animation: loading-bar-spinner 400ms linear infinite;
+
+    .loading-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        border: solid 0.4rem transparent;
+        border-top-color: #2b0006;
+        border-left-color: #2b0006;
+        border-radius: 50%;
+    }
+}
+
+@keyframes loading-bar-spinner {
+    0% { 
+        transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% { 
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
