@@ -6,6 +6,7 @@ const CommentList = ({
   username, postId, comments, totalResults, getMoreComments, deleteComment,
 }) => {
   useEffect(() => {
+    console.log(totalResults);
   }, [totalResults]);
   return (
     <div className="comments-list-container" id={`comment-id-${postId}`}>

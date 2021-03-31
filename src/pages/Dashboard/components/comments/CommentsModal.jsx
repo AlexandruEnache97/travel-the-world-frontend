@@ -30,14 +30,14 @@ const CommentsModal = ({ postId, auth }) => {
     }
   };
 
-  useEffect(async () => {
+  useEffect(() => {
     getCommentsFromBackend(comments.currentPage, false)
-      .catch(
+      .catch(() => {
         setComments({
           ...comments,
           totalResults: -1,
-        }),
-      );
+        });
+      });
   }, [postId]);
 
   const getMoreComments = async (e) => {
