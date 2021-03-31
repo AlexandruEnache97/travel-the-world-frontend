@@ -4,7 +4,7 @@ import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
 import { likePost, unlikePost } from '../../../service/postsApi';
 import LikesModal from './likes/LikesModal';
-import CommentsModal from './comments/CommentsModal';
+import CommentsModal from './comments/ConnectedCommentsModal';
 
 const Post = ({
   postId, username, title, text, image,

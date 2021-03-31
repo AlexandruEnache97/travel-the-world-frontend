@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "start:dev": "webpack serve --config webpack/webpack.dev.js",
+    "build:prod": "webpack --config webpack/webpack.prod.js",
     "lint": "eslint --ext .jsx --ext .js src/",
     "lint:fix": "eslint --ext .jsx --ext .js ./src/ --fix",
     "test": "jest src/ --coverage"

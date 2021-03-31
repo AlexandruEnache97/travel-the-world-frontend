@@ -5,7 +5,7 @@ import { getComments } from '../../../../service/postsApi';
 import CommentList from './CommentList';
 import CreateComment from './CreateComment';
 
-const CommentsModal = ({ postId, username }) => {
+const CommentsModal = ({ postId, auth }) => {
   const [comments, setComments] = useState({
     results: [],
     totalResults: 0,
@@ -63,7 +63,7 @@ const CommentsModal = ({ postId, username }) => {
       {comments !== null && comments.results !== undefined
        && (
        <CommentList
-         username={username}
+         username={auth.accountData.username}
          postId={postId}
          comments={comments.results}
          totalResults={comments.totalResults}
