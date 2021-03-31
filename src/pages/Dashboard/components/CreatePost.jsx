@@ -14,6 +14,7 @@ const CreatePost = ({
   // const [previewImage, setPreviewImage] = useState(null);
   const [postData, setPostData] = useState({
     username: '',
+    profileImage: '',
     title: '',
     text: '',
     location: '',
@@ -26,6 +27,7 @@ const CreatePost = ({
     setPostData({
       ...postData,
       username,
+      profileImage,
     });
   }, []);
 
