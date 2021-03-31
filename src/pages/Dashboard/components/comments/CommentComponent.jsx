@@ -47,6 +47,8 @@ const CommentComponent = ({
           setDeleteResponse(false);
           setEditMode(false);
         });
+    } else if (e.key === 'Escape') {
+      setEditMode(false);
     }
   };
 
