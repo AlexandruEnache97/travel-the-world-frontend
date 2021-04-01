@@ -1,61 +1,29 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
-import { removeComment, editComment } from '../../../../service/postsApi';
+import { removeComment } from '../../../../service/postsApi';
 import Spinner from '../../../../components/Spinner/Spinner';
+import EditComment from './EditComment';
 
 const CommentComponent = ({
   commentId, profileImage, username, text, access, deleteComment,
 }) => {
-  const [deleteResponse, setDeleteResponse] = useState(false);
-  const [editData, setEditData] = useState({
-    value: text,
-    text,
-    commentId,
-  });
+  const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
+  const [originalText, setOriginalText] = useState(text);
 
   const editComm = () => {
-    if (!editMode) {
-      setEditData({
-        ...editData,
-        text: editData.value,
-      });
-    }
     setEditMode(!editMode);
   };
 
-  const editOnChange = (e) => {
-    if (e.nativeEvent.inputType !== 'insertLineBreak') {
-      setEditData({
-        ...editData,
-        text: e.target.value,
-      });
-    }
-  };
-
-  const editOnEnter = async (e) => {
-    if (e.key === 'Enter') {
-      setDeleteResponse(true);
-      await editComment(editData)
-        .then(() => {
-          setEditData({
-            ...editData,
-            value: editData.text,
-          });
-
-          setDeleteResponse(false);
-          setEditMode(false);
-        });
-    } else if (e.key === 'Escape') {
-      setEditMode(false);
-    }
+  const getEditedText = (value) => {
+    setOriginalText(value);
   };
 
   const deleteComm = async () => {
-    setDeleteResponse(true);
+    setLoadingAction(true);
     await removeComment({ commentId });
-    setDeleteResponse(false);
+    setLoadingAction(false);
     deleteComment();
   };
 
@@ -68,13 +36,15 @@ const CommentComponent = ({
       <div className="comment-content">
         {editMode
           ? (
-            <textarea
-              type="text"
-              value={editData.text}
-              onChange={editOnChange}
-              onKeyDown={editOnEnter}
+            <EditComment
+              editComm={editComm}
+              text={originalText}
+              commentId={commentId}
+              setEditMode={setEditMode}
+              getEditedText={getEditedText}
+              setLoadingAction={setLoadingAction}
             />
-          ) : <p>{editData.value}</p>}
+          ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
         <p>0 likes</p>
@@ -83,7 +53,7 @@ const CommentComponent = ({
         <div className="comment-alter">
           <button type="button" onClick={editComm}>Edit</button>
           <button type="button" onClick={deleteComm}>Delete</button>
-          {deleteResponse && <Spinner />}
+          {loadingAction && <Spinner />}
         </div>
         )}
       </div>
