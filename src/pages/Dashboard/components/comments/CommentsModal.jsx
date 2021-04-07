@@ -40,15 +40,6 @@ const CommentsModal = ({ postId, auth }) => {
       });
   }, [postId]);
 
-  const getMoreComments = async (e) => {
-    e.preventDefault();
-
-    const div = document.getElementById(`comment-id-${postId}`);
-    div.scrollTop = div.scrollHeight - 430;
-
-    getCommentsFromBackend(comments.currentPage + 1, true);
-  };
-
   const updateComments = () => {
     getCommentsFromBackend(1, false);
   };
@@ -66,8 +57,9 @@ const CommentsModal = ({ postId, auth }) => {
          postId={postId}
          comments={comments.results}
          totalResults={comments.totalResults}
-         getMoreComments={getMoreComments}
+         getCommentsFromBackend={getCommentsFromBackend}
          deleteComment={updateComments}
+         currentPage={comments.currentPage}
        />
        )}
     </div>

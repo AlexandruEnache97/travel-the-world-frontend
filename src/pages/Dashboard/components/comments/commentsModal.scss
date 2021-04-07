@@ -87,7 +87,7 @@
             line-height: 2.5rem;
         }
 
-        .loading-spinner {
+        .loading-spinner-comments {
             animation: loading-bar-spinner 400ms linear infinite;
     
             .loading-icon {
@@ -112,6 +112,7 @@
             }
         }
     }
+
     
     &::-webkit-scrollbar{
         width: 1.2rem;
@@ -129,6 +130,7 @@
     }
 
     .comments-more {
+        display: flex;
         button {
             margin: 0rem 2rem 1rem 4rem;
             font-size: 1.2rem;
@@ -137,6 +139,11 @@
             outline: none;
             background-color: transparent;
             cursor: pointer;
+        }
+
+        
+        .load-more-spinner {
+            height: 1.5rem;
         }
     }
 }

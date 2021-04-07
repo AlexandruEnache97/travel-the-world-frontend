@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
@@ -6,11 +7,13 @@ import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
 
 const CommentComponent = ({
-  commentId, profileImage, username, text, access, deleteComment,
+  commentId, profileImage, username,
+  text, access, deleteComment, nrOfLikes,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [originalText, setOriginalText] = useState(text);
+  const [commentLikes, setCommentLikes] = useState(nrOfLikes);
 
   const editComm = () => {
     setEditMode(!editMode);
@@ -25,6 +28,10 @@ const CommentComponent = ({
     await removeComment({ commentId });
     setLoadingAction(false);
     deleteComment();
+  };
+
+  const handleLiking = () => {
+
   };
 
   return (
@@ -47,7 +54,11 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <p>0 likes</p>
+        <button type="button" onClick={handleLiking}>
+          {commentLikes}
+          {' '}
+          {commentLikes === 1 ? 'like' : 'likes'}
+        </button>
         <p>Reply</p>
         {access && (
         <div className="comment-alter">
@@ -68,6 +79,7 @@ CommentComponent.propTypes = {
   text: PropTypes.string.isRequired,
   access: PropTypes.bool.isRequired,
   deleteComment: PropTypes.func.isRequired,
+  nrOfLikes: PropTypes.number.isRequired,
 };
 
 export default CommentComponent;
