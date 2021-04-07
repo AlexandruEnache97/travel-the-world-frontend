@@ -13,9 +13,10 @@ const CommentList = ({
     setLoadingAction(true);
 
     const div = document.getElementById(`comment-id-${postId}`);
-    div.scrollTop = div.scrollHeight - 430;
+    const value = div.scrollHeight - 430;
 
     await getCommentsFromBackend(currentPage + 1, true);
+    div.scrollTop = value;
     setLoadingAction(false);
   };
 
@@ -42,19 +43,24 @@ const CommentList = ({
       </div>
       )}
       <div className="comments-more">
-        {totalResults > comments.length && (
+        {totalResults > comments.length
+          && (
           <>
-            <button type="button" onClick={getMoreComments}>
-              Load
-              {' '}
-              {totalResults - comments.length < 10 ? totalResults - comments.length : 10}
-              {' more comments'}
-            </button>
-            <div className="load-more-spinner">
-              {loadingAction && <Spinner />}
-            </div>
+            {!loadingAction ? (
+              <button type="button" onClick={getMoreComments}>
+                Load
+                {' '}
+                {totalResults - comments.length < 10 ? totalResults - comments.length : 10}
+                {' more comments'}
+              </button>
+            ) : (
+              <div className="load-more-spinner">
+                <p>Loading </p>
+                <Spinner />
+              </div>
+            )}
           </>
-        )}
+          )}
       </div>
     </div>
   );
