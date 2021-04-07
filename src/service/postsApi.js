@@ -60,3 +60,8 @@ export const editComment = async (commentData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/editComment`, commentData);
   return data;
 };
+
+export const likeComment = async (commentId) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/likeComment`, commentId);
+  return data;
+};

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
-import { removeComment } from '../../../../service/postsApi';
+import { likeComment, removeComment } from '../../../../service/postsApi';
 import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
 
@@ -30,8 +30,9 @@ const CommentComponent = ({
     deleteComment();
   };
 
-  const handleLiking = () => {
-
+  const handleLiking = async (e) => {
+    e.preventDefault();
+    likeComment({ commentId });
   };
 
   return (
