@@ -4,7 +4,8 @@ import CommentComponent from './CommentComponent';
 import Spinner from '../../../../components/Spinner/Spinner';
 
 const CommentList = ({
-  username, postId, comments, totalResults, getCommentsFromBackend, deleteComment, currentPage,
+  username, postId, comments, totalResults,
+  getCommentsFromBackend, deleteComment, currentPage, likedComments,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
 
@@ -22,18 +23,25 @@ const CommentList = ({
 
   return (
     <div className="comments-list-container" id={`comment-id-${postId}`}>
-      {totalResults > 0 ? comments.map((comment) => (
-        <CommentComponent
-          key={Math.random()}
-          commentId={comment._id}
-          profileImage={comment.userData.profileImage}
-          username={comment.userData.username}
-          text={comment.text}
-          access={comment.userData.username === username}
-          deleteComment={deleteComment}
-          nrOfLikes={comment.nrOfLikes === undefined ? 0 : comment.nrOfLikes}
-        />
-      )) : totalResults === 0
+      {totalResults > 0 ? comments.map((comment) => {
+        let liked = false;
+        likedComments.map((item) => {
+          if (comment._id === item) { liked = true; }
+        });
+        return (
+          <CommentComponent
+            key={Math.random()}
+            commentId={comment._id}
+            profileImage={comment.userData.profileImage}
+            username={comment.userData.username}
+            text={comment.text}
+            access={comment.userData.username === username}
+            deleteComment={deleteComment}
+            nrOfLikes={comment.nrOfLikes === undefined ? 0 : comment.nrOfLikes}
+            liked={liked}
+          />
+        );
+      }) : totalResults === 0
       && (
       <div className="comments-loading">
         <span>Loading</span>

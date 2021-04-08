@@ -2,18 +2,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
-import { likeComment, removeComment } from '../../../../service/postsApi';
+import { removeComment } from '../../../../service/postsApi';
+import { likeComment, unlikeComment } from '../../../../service/commentsApi';
 import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
 
 const CommentComponent = ({
   commentId, profileImage, username,
-  text, access, deleteComment, nrOfLikes,
+  text, access, deleteComment, nrOfLikes, liked,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [originalText, setOriginalText] = useState(text);
   const [commentLikes, setCommentLikes] = useState(nrOfLikes);
+  const [likedComment, setLikedComment] = useState(liked);
 
   const editComm = () => {
     setEditMode(!editMode);
@@ -32,7 +34,15 @@ const CommentComponent = ({
 
   const handleLiking = async (e) => {
     e.preventDefault();
-    likeComment({ commentId });
+    if (likedComment) {
+      unlikeComment({ commentId });
+      setLikedComment(false);
+      setCommentLikes(commentLikes - 1);
+    } else {
+      likeComment({ commentId });
+      setLikedComment(true);
+      setCommentLikes(commentLikes + 1);
+    }
   };
 
   return (
@@ -55,7 +65,7 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <button type="button" onClick={handleLiking}>
+        <button type="button" className={likedComment ? 'liked-comment' : ''} onClick={handleLiking}>
           {commentLikes}
           {' '}
           {commentLikes === 1 ? 'like' : 'likes'}
@@ -81,6 +91,7 @@ CommentComponent.propTypes = {
   access: PropTypes.bool.isRequired,
   deleteComment: PropTypes.func.isRequired,
   nrOfLikes: PropTypes.number.isRequired,
+  liked: PropTypes.bool.isRequired,
 };
 
 export default CommentComponent;
