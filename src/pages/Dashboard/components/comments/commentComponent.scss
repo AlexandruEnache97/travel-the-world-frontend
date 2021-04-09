@@ -1,4 +1,7 @@
 .comment-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: rgb(230, 230, 230);
     margin: 1rem 2rem;
     padding: 1rem 1.5rem;
@@ -7,6 +10,7 @@
     .comment-top {
         display: flex;
         align-items: center;
+        width: 100%;
 
         p {
             font-size: 1.4rem;
@@ -24,6 +28,7 @@
 
     .comment-content {
         margin: 1rem 2rem;
+        width: 90%;
 
         p {
             font-size: 1.3rem;
@@ -46,6 +51,7 @@
     .comment-bottom {
         display: flex;
         align-items: center;
+        width: 100%;
 
         .button-like {
             display: flex;

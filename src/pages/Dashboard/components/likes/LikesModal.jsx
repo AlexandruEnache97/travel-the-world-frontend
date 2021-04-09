@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './likesModal.scss';
 import LikeComponent from './LikeComponent';
-import { getUserLikes } from '../../../../service/postsApi';
 
 const LikesModal = ({
-  title, likes, postId, closeHandler,
+  title, likes, postId, closeHandler, getLikes,
 }) => {
   const [userLikes, setUserLikes] = useState({
     likes: [],
@@ -13,7 +12,7 @@ const LikesModal = ({
   });
 
   useEffect(async () => {
-    const info = await getUserLikes(postId, userLikes.currentPage);
+    const info = await getLikes(postId, userLikes.currentPage);
     setUserLikes({
       ...userLikes,
       likes: info.data.userLikes,
@@ -26,7 +25,7 @@ const LikesModal = ({
     const div = document.getElementById('likes-id');
     div.scrollTop = div.scrollHeight - 285;
 
-    const info = await getUserLikes(postId, userLikes.currentPage + 1);
+    const info = await getLikes(postId, userLikes.currentPage + 1);
     setUserLikes({
       likes: [...userLikes.likes, ...info.data.userLikes],
       currentPage: userLikes.currentPage + 1,
@@ -87,6 +86,7 @@ LikesModal.propTypes = {
   likes: PropTypes.number.isRequired,
   closeHandler: PropTypes.func.isRequired,
   postId: PropTypes.string.isRequired,
+  getLikes: PropTypes.func.isRequired,
 };
 
 export default LikesModal;

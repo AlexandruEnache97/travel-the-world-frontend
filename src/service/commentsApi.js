@@ -11,6 +11,11 @@ export const getComments = async (postId, pageNumber) => {
   return data;
 };
 
+export const getCommentLikes = async (postId, pageNumber) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/commentLikes/${postId}/${pageNumber}`);
+  return data;
+};
+
 export const getLikedComments = async (postId, pageNumber) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/likedComments/${postId}/${pageNumber}`);
   return data;

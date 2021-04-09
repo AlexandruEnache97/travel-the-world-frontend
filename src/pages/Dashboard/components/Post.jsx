@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import calculateTimePassed from '../../../utils/postUtils';
 import './post.scss';
-import { likePost, unlikePost } from '../../../service/postsApi';
+import { getUserLikes, likePost, unlikePost } from '../../../service/postsApi';
 import LikesModal from './likes/LikesModal';
 import CommentsModal from './comments/ConnectedCommentsModal';
 
@@ -113,6 +113,7 @@ const Post = ({
             likes={likePostData.nrOfLikes}
             postId={postId}
             closeHandler={changeLikesModal}
+            getLikes={getUserLikes}
           />
         </>
       )}

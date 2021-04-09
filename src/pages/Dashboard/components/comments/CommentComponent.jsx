@@ -2,9 +2,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
-import { removeComment, likeComment, unlikeComment } from '../../../../service/commentsApi';
+import {
+  removeComment, likeComment, unlikeComment, getCommentLikes,
+} from '../../../../service/commentsApi';
 import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
+import LikesModal from '../likes/LikesModal';
 
 const CommentComponent = ({
   commentId, profileImage, username,
@@ -15,6 +18,7 @@ const CommentComponent = ({
   const [originalText, setOriginalText] = useState(text);
   const [commentLikes, setCommentLikes] = useState(nrOfLikes);
   const [likedComment, setLikedComment] = useState(liked);
+  const [likesModal, setLikesModal] = useState(false);
 
   const editComm = () => {
     setEditMode(!editMode);
@@ -44,6 +48,15 @@ const CommentComponent = ({
     }
   };
 
+  const changeLikesModal = () => {
+    if (!likesModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    setLikesModal(!likesModal);
+  };
+
   return (
     <div className="comment-container">
       <div className="comment-top">
@@ -64,11 +77,11 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <p>
+        <button type="button" onClick={commentLikes > 0 ? changeLikesModal : () => {}}>
           {commentLikes}
           {' '}
           {commentLikes === 1 ? 'like' : 'likes'}
-        </p>
+        </button>
         <button type="button" className={likedComment ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
           {likedComment
             ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
@@ -84,6 +97,18 @@ const CommentComponent = ({
         </div>
         )}
       </div>
+      {likesModal && (
+        <>
+          <div className="modal" onClickCapture={changeLikesModal} />
+          <LikesModal
+            title="Comment"
+            likes={commentLikes}
+            postId={commentId}
+            closeHandler={changeLikesModal}
+            getLikes={getCommentLikes}
+          />
+        </>
+      )}
     </div>
   );
 };
