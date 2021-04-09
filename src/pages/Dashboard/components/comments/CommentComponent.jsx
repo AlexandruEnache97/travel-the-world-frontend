@@ -106,9 +106,9 @@ const CommentComponent = ({
         <div className="comment-alter">
           <button type="button" onClick={editComm}>Edit</button>
           <button type="button" onClick={deleteComm}>Delete</button>
-          {loadingAction && <Spinner />}
         </div>
         )}
+        {loadingAction && <Spinner />}
       </div>
       {likesModal && (
         <>
