@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route,
 } from 'react-router-dom';
@@ -14,13 +14,13 @@ import Dashboard from './pages/Dashboard/ConnectedDashboard';
 
 const App = () => (
   <Provider store={store}>
-    <Router>
+    <HashRouter>
       <Switch>
         <ProtectedRoute path="/dashboard" component={Dashboard} />
         <Route path="/" component={LandingPage} />
       </Switch>
       <ConnectedLoadingOverlay />
-    </Router>
+    </HashRouter>
   </Provider>
 );
 
