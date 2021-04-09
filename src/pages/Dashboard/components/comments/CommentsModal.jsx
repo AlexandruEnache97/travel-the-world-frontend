@@ -13,10 +13,6 @@ const CommentsModal = ({ postId, auth }) => {
     likedComments: [],
   });
 
-  useEffect(() => {
-    console.log(comments);
-  }, [comments]);
-
   const getCommentsFromBackend = async (page, moreResults) => {
     const comm = await getComments(postId, page);
     const { data } = await getLikedComments(postId, page);
