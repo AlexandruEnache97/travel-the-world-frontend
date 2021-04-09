@@ -47,6 +47,21 @@
         display: flex;
         align-items: center;
 
+        .button-like {
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-left: 0.3rem;
+                margin-right: 0rem;
+            }
+
+            img {
+                width: 2rem;
+                padding-bottom: 0.3rem;
+            }
+        }
+
         .liked-comment {
             color: blue;
         }

@@ -65,10 +65,16 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <button type="button" className={likedComment ? 'liked-comment' : ''} onClick={handleLiking}>
+        <p>
           {commentLikes}
           {' '}
           {commentLikes === 1 ? 'like' : 'likes'}
+        </p>
+        <button type="button" className={likedComment ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
+          {likedComment
+            ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
+            : <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />}
+          <p>Like</p>
         </button>
         <p>Reply</p>
         {access && (
