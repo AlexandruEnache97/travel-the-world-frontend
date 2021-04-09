@@ -2,7 +2,6 @@ import {
   get,
   post,
   put,
-  remove,
 } from './axiosOperations';
 import { NODE_SERVER } from '../../config';
 
@@ -38,20 +37,5 @@ export const unlikePost = async (likeData) => {
 
 export const getUserLikes = async (postId, pageNumber) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/userLikes/${postId}/${pageNumber}`);
-  return data;
-};
-
-export const createComment = async (commentData) => {
-  const data = await put(`${NODE_SERVER.baseUrl}/api/createComment`, commentData);
-  return data;
-};
-
-export const removeComment = async (commentId) => {
-  const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteComment`, commentId);
-  return data;
-};
-
-export const editComment = async (commentData) => {
-  const data = await put(`${NODE_SERVER.baseUrl}/api/editComment`, commentData);
   return data;
 };

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
-import { editComment } from '../../../../service/postsApi';
+import { editComment } from '../../../../service/commentsApi';
 
 const EditComment = ({
   text, commentId, setEditMode, getEditedText, setLoadingAction,
