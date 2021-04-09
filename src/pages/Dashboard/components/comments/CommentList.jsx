@@ -39,6 +39,7 @@ const CommentList = ({
             deleteComment={deleteComment}
             nrOfLikes={comment.nrOfLikes === undefined ? 0 : comment.nrOfLikes}
             liked={liked}
+            createdDate={comment.createdDate}
           />
         );
       }) : totalResults === 0

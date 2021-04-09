@@ -8,10 +8,11 @@ import {
 import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
 import LikesModal from '../likes/LikesModal';
+import calculateTimePassed from '../../../../utils/postUtils';
 
 const CommentComponent = ({
-  commentId, profileImage, username,
-  text, access, deleteComment, nrOfLikes, liked,
+  commentId, profileImage, username, text, access,
+  deleteComment, nrOfLikes, liked, createdDate,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -62,6 +63,9 @@ const CommentComponent = ({
       <div className="comment-top">
         <img src={profileImage} alt="profilePic" />
         <p>{username}</p>
+      </div>
+      <div className="comment-passed-time">
+        <p>{calculateTimePassed(createdDate)}</p>
       </div>
       <div className="comment-content">
         {editMode
@@ -122,6 +126,7 @@ CommentComponent.propTypes = {
   deleteComment: PropTypes.func.isRequired,
   nrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
+  createdDate: PropTypes.string.isRequired,
 };
 
 export default CommentComponent;
