@@ -5,7 +5,7 @@ import Spinner from '../../../../components/Spinner/Spinner';
 
 const CommentList = ({
   currentUser, postUser, postId, comments, totalResults,
-  getCommentsFromBackend, deleteComment, currentPage, likedComments,
+  getCommentsFromBackend, updateComments, currentPage, likedComments,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
 
@@ -36,7 +36,7 @@ const CommentList = ({
             username={comment.userData.username}
             text={comment.text}
             access={comment.userData.username === currentUser}
-            deleteComment={deleteComment}
+            updateComments={updateComments}
             nrOfLikes={comment.nrOfLikes === undefined ? 0 : comment.nrOfLikes}
             liked={liked}
             createdDate={comment.createdDate}

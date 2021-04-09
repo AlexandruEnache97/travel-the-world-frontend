@@ -73,7 +73,7 @@ const CommentsModal = ({ postId, auth, postUser }) => {
          totalResults={comments.totalResults}
          likedComments={comments.likedComments}
          getCommentsFromBackend={getCommentsFromBackend}
-         deleteComment={updateComments}
+         updateComments={updateComments}
          currentPage={comments.currentPage}
        />
        )}

@@ -14,13 +14,15 @@ import CommentControl from './CommentControl';
 
 const CommentComponent = ({
   commentId, profileImage, username, text, access,
-  deleteComment, nrOfLikes, liked, createdDate, postOwner, postId,
+  updateComments, nrOfLikes, liked, createdDate, postOwner, postId,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [originalText, setOriginalText] = useState(text);
-  const [commentLikes, setCommentLikes] = useState(nrOfLikes);
-  const [likedComment, setLikedComment] = useState(liked);
+  const [commentLikes, setCommentLikes] = useState({
+    nrOfLikes,
+    liked,
+  });
   const [likesModal, setLikesModal] = useState(false);
 
   const editComm = () => {
@@ -35,26 +37,30 @@ const CommentComponent = ({
     setLoadingAction(true);
     await removeComment({ commentId });
     setLoadingAction(false);
-    deleteComment();
+    updateComments();
   };
 
   const deletePostComment = async () => {
     setLoadingAction(true);
     await removePostComment({ commentId, postId });
     setLoadingAction(false);
-    deleteComment();
+    updateComments();
   };
 
   const handleLiking = async (e) => {
     e.preventDefault();
-    if (likedComment) {
+    if (commentLikes.liked) {
       unlikeComment({ commentId });
-      setLikedComment(false);
-      setCommentLikes(commentLikes - 1);
+      setCommentLikes({
+        nrOfLikes: commentLikes.nrOfLikes - 1,
+        liked: false,
+      });
     } else {
       likeComment({ commentId });
-      setLikedComment(true);
-      setCommentLikes(commentLikes + 1);
+      setCommentLikes({
+        nrOfLikes: commentLikes.nrOfLikes + 1,
+        liked: true,
+      });
     }
   };
 
@@ -90,13 +96,13 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <button type="button" onClick={commentLikes > 0 ? changeLikesModal : () => {}}>
-          {commentLikes}
+        <button type="button" onClick={commentLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
+          {commentLikes.nrOfLikes}
           {' '}
-          {commentLikes === 1 ? 'like' : 'likes'}
+          {commentLikes.nrOfLikes === 1 ? 'like' : 'likes'}
         </button>
-        <button type="button" className={likedComment ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
-          {likedComment
+        <button type="button" className={commentLikes.liked ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
+          {commentLikes.liked
             ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
             : <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />}
           <p>Like</p>
@@ -115,7 +121,7 @@ const CommentComponent = ({
           <div className="modal" onClickCapture={changeLikesModal} />
           <LikesModal
             title="Comment"
-            likes={commentLikes}
+            likes={commentLikes.nrOfLikes}
             postId={commentId}
             closeHandler={changeLikesModal}
             getLikes={getCommentLikes}
@@ -135,7 +141,7 @@ CommentComponent.propTypes = {
   commentId: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   access: PropTypes.bool.isRequired,
-  deleteComment: PropTypes.func.isRequired,
+  updateComments: PropTypes.func.isRequired,
   nrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
   createdDate: PropTypes.string.isRequired,
