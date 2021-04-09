@@ -31,15 +31,10 @@ const CommentList = ({
         return (
           <CommentComponent
             key={Math.random()}
-            commentId={comment._id}
-            profileImage={comment.userData.profileImage}
-            username={comment.userData.username}
-            text={comment.text}
+            commentData={comment}
             access={comment.userData.username === currentUser}
             updateComments={updateComments}
-            nrOfLikes={comment.nrOfLikes === undefined ? 0 : comment.nrOfLikes}
             liked={liked}
-            createdDate={comment.createdDate}
             postOwner={currentUser === postUser}
             postId={postId}
           />

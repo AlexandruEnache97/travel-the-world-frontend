@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
@@ -13,14 +14,13 @@ import calculateTimePassed from '../../../../utils/postUtils';
 import CommentControl from './CommentControl';
 
 const CommentComponent = ({
-  commentId, profileImage, username, text, access,
-  updateComments, nrOfLikes, liked, createdDate, postOwner, postId,
+  commentData, access, updateComments, liked, postOwner, postId,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
-  const [originalText, setOriginalText] = useState(text);
+  const [originalText, setOriginalText] = useState(commentData.text);
   const [commentLikes, setCommentLikes] = useState({
-    nrOfLikes,
+    nrOfLikes: commentData.nrOfLikes === undefined ? 0 : commentData.nrOfLikes,
     liked,
   });
   const [likesModal, setLikesModal] = useState(false);
@@ -35,14 +35,14 @@ const CommentComponent = ({
 
   const deleteComm = async () => {
     setLoadingAction(true);
-    await removeComment({ commentId });
+    await removeComment({ commentId: commentData._id });
     setLoadingAction(false);
     updateComments();
   };
 
   const deletePostComment = async () => {
     setLoadingAction(true);
-    await removePostComment({ commentId, postId });
+    await removePostComment({ commentId: commentData._id, postId });
     setLoadingAction(false);
     updateComments();
   };
@@ -50,13 +50,13 @@ const CommentComponent = ({
   const handleLiking = async (e) => {
     e.preventDefault();
     if (commentLikes.liked) {
-      unlikeComment({ commentId });
+      unlikeComment({ commentId: commentData._id });
       setCommentLikes({
         nrOfLikes: commentLikes.nrOfLikes - 1,
         liked: false,
       });
     } else {
-      likeComment({ commentId });
+      likeComment({ commentId: commentData._id });
       setCommentLikes({
         nrOfLikes: commentLikes.nrOfLikes + 1,
         liked: true,
@@ -76,11 +76,11 @@ const CommentComponent = ({
   return (
     <div className="comment-container">
       <div className="comment-top">
-        <img src={profileImage} alt="profilePic" />
-        <p>{username}</p>
+        <img src={commentData.userData.profileImage} alt="profilePic" />
+        <p>{commentData.userData.username}</p>
       </div>
       <div className="comment-passed-time">
-        <p>{calculateTimePassed(createdDate)}</p>
+        <p>{calculateTimePassed(commentData.createdDate)}</p>
       </div>
       <div className="comment-content">
         {editMode
@@ -88,7 +88,7 @@ const CommentComponent = ({
             <EditComment
               editComm={editComm}
               text={originalText}
-              commentId={commentId}
+              commentId={commentData._id}
               setEditMode={setEditMode}
               getEditedText={getEditedText}
               setLoadingAction={setLoadingAction}
@@ -122,7 +122,7 @@ const CommentComponent = ({
           <LikesModal
             title="Comment"
             likes={commentLikes.nrOfLikes}
-            postId={commentId}
+            postId={commentData._id}
             closeHandler={changeLikesModal}
             getLikes={getCommentLikes}
           />
@@ -136,15 +136,9 @@ const CommentComponent = ({
 };
 
 CommentComponent.propTypes = {
-  profileImage: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  commentId: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
   access: PropTypes.bool.isRequired,
   updateComments: PropTypes.func.isRequired,
-  nrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
-  createdDate: PropTypes.string.isRequired,
   postOwner: PropTypes.bool.isRequired,
   postId: PropTypes.string.isRequired,
 };
