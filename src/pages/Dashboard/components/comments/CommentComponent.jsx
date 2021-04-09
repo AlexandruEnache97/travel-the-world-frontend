@@ -3,16 +3,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
 import {
-  removeComment, likeComment, unlikeComment, getCommentLikes,
+  removeComment, removePostComment, likeComment,
+  unlikeComment, getCommentLikes,
 } from '../../../../service/commentsApi';
 import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
 import LikesModal from '../likes/LikesModal';
 import calculateTimePassed from '../../../../utils/postUtils';
+import CommentControl from './CommentControl';
 
 const CommentComponent = ({
   commentId, profileImage, username, text, access,
-  deleteComment, nrOfLikes, liked, createdDate,
+  deleteComment, nrOfLikes, liked, createdDate, postOwner, postId,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -32,6 +34,13 @@ const CommentComponent = ({
   const deleteComm = async () => {
     setLoadingAction(true);
     await removeComment({ commentId });
+    setLoadingAction(false);
+    deleteComment();
+  };
+
+  const deletePostComment = async () => {
+    setLoadingAction(true);
+    await removePostComment({ commentId, postId });
     setLoadingAction(false);
     deleteComment();
   };
@@ -113,6 +122,9 @@ const CommentComponent = ({
           />
         </>
       )}
+      {postOwner && (
+        <CommentControl deletePostComment={deletePostComment} />
+      )}
     </div>
   );
 };
@@ -127,6 +139,8 @@ CommentComponent.propTypes = {
   nrOfLikes: PropTypes.number.isRequired,
   liked: PropTypes.bool.isRequired,
   createdDate: PropTypes.string.isRequired,
+  postOwner: PropTypes.bool.isRequired,
+  postId: PropTypes.string.isRequired,
 };
 
 export default CommentComponent;

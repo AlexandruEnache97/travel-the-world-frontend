@@ -45,3 +45,8 @@ export const removeComment = async (commentId) => {
   const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteComment`, commentId);
   return data;
 };
+
+export const removePostComment = async (commentData) => {
+  const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteCommentPost`, commentData);
+  return data;
+};

@@ -102,7 +102,13 @@ const Post = ({
               <img src="https://img.icons8.com/windows/64/ffffff/share-3.png" alt="shareIcon" />
             </button>
           </div>
-          {commentsModal && <CommentsModal postId={postId} username={username} />}
+          {commentsModal
+          && (
+          <CommentsModal
+            postId={postId}
+            postUser={username}
+          />
+          )}
         </div>
       </div>
       {likesModal && (
