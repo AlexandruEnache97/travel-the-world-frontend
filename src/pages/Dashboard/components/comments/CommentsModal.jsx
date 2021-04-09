@@ -45,7 +45,16 @@ const CommentsModal = ({ postId, auth, postUser }) => {
   }, [postId]);
 
   const updateComments = () => {
-    getCommentsFromBackend(1, false);
+    if (comments.totalResults > 1) {
+      getCommentsFromBackend(1, false);
+    } else {
+      setComments({
+        results: [],
+        totalResults: -1,
+        currentPage: Number(1),
+        likedComments: [],
+      });
+    }
   };
 
   return (
