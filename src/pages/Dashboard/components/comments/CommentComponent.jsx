@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
@@ -25,7 +24,7 @@ const CommentComponent = ({
   });
   const [likesModal, setLikesModal] = useState(false);
 
-  const editComm = () => {
+  const editCommentHandler = () => {
     setEditMode(!editMode);
   };
 
@@ -86,7 +85,6 @@ const CommentComponent = ({
         {editMode
           ? (
             <EditComment
-              editComm={editComm}
               text={originalText}
               commentId={commentData._id}
               setEditMode={setEditMode}
@@ -110,7 +108,7 @@ const CommentComponent = ({
         <p>Reply</p>
         {access && (
         <div className="comment-alter">
-          <button type="button" onClick={editComm}>Edit</button>
+          <button type="button" onClick={editCommentHandler}>Edit</button>
           <button type="button" onClick={deleteComm}>Delete</button>
         </div>
         )}

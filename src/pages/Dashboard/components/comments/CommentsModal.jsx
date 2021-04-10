@@ -47,6 +47,8 @@ const CommentsModal = ({ postId, auth, postUser }) => {
   const updateComments = () => {
     if (comments.totalResults > 1) {
       getCommentsFromBackend(1, false);
+      const div = document.getElementById(`comment-id-${postId}`);
+      div.scrollTop = 0;
     } else {
       setComments({
         results: [],

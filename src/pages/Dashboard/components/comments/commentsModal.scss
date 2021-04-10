@@ -56,9 +56,9 @@
 
     aside.emoji-picker-react {
         position: absolute;
-        // top: -31.7rem;
         top: 4.3rem;
         right: 4rem;
+        z-index: 1;
     }
 }
 
