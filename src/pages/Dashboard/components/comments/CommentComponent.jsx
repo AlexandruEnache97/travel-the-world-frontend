@@ -11,6 +11,7 @@ import EditComment from './EditComment';
 import LikesModal from '../likes/LikesModal';
 import calculateTimePassed from '../../../../utils/postUtils';
 import CommentControl from './CommentControl';
+import RepliesContainer from '../replies/RepliesContainer';
 
 const CommentComponent = ({
   commentData, access, updateComments, liked, postOwner, postId,
@@ -23,6 +24,7 @@ const CommentComponent = ({
     liked,
   });
   const [likesModal, setLikesModal] = useState(false);
+  const [replyModal, setReplyModal] = useState(false);
 
   const editCommentHandler = () => {
     setEditMode(!editMode);
@@ -61,6 +63,10 @@ const CommentComponent = ({
         liked: true,
       });
     }
+  };
+
+  const handleReplyModal = () => {
+    setReplyModal(!replyModal);
   };
 
   const changeLikesModal = () => {
@@ -105,7 +111,7 @@ const CommentComponent = ({
             : <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />}
           <p>Like</p>
         </button>
-        <p>Reply</p>
+        <button type="button" onClick={handleReplyModal}>Reply</button>
         {access && (
         <div className="comment-alter">
           <button type="button" onClick={editCommentHandler}>Edit</button>
@@ -128,6 +134,9 @@ const CommentComponent = ({
       )}
       {postOwner && (
         <CommentControl deletePostComment={deletePostComment} />
+      )}
+      {replyModal && (
+        <RepliesContainer commentId={commentData._id} />
       )}
     </div>
   );
