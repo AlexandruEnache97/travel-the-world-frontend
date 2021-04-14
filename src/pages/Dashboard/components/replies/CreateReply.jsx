@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Picker from 'emoji-picker-react';
-import { createComment } from '../../../../service/commentsApi';
 import './createReply.scss';
+import { createReply } from '../../../../service/repliesApi';
 
-const CreateReply = ({ commentId /* getCommentsFromBackend */ }) => {
+const CreateReply = ({ commentId, getRepliesFromBackend }) => {
   const [newReply, setNewReply] = useState({
     text: '',
     commentId: '',
@@ -41,8 +41,8 @@ const CreateReply = ({ commentId /* getCommentsFromBackend */ }) => {
 
   const handleOnEnter = async (e) => {
     if (e.key === 'Enter') {
-      await createComment(newReply);
-      //   getCommentsFromBackend(1, false);
+      await createReply(newReply);
+      getRepliesFromBackend(1, false);
 
       if (visibleEmoji) setVisibleEmoji(false);
 
@@ -82,7 +82,7 @@ const CreateReply = ({ commentId /* getCommentsFromBackend */ }) => {
 
 CreateReply.propTypes = {
   commentId: PropTypes.string.isRequired,
-//   getCommentsFromBackend: PropTypes.func.isRequired,
+  getRepliesFromBackend: PropTypes.func.isRequired,
 };
 
 export default CreateReply;
