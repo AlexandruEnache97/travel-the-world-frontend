@@ -37,6 +37,7 @@ const CommentList = ({
             liked={liked}
             postOwner={currentUser === postUser}
             postId={postId}
+            currentUser={currentUser}
           />
         );
       }) : totalResults === 0

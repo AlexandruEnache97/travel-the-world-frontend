@@ -5,7 +5,7 @@ import './repliesContainer.scss';
 import { getLikedReplies, getReplies } from '../../../../service/repliesApi';
 import ReplyList from './ReplyList';
 
-const RepliesContainer = ({ commentId }) => {
+const RepliesContainer = ({ commentId, currentUser }) => {
   const [replies, setReplies] = useState({
     results: [],
     totalResults: 0,
@@ -50,7 +50,7 @@ const RepliesContainer = ({ commentId }) => {
       {replies !== null && replies.results !== undefined
        && (
        <ReplyList
-        //  currentUser={auth.accountData.username}
+         currentUser={currentUser}
         //  postUser={postUser}
          commentId={commentId}
          replies={replies.results}
@@ -67,6 +67,7 @@ const RepliesContainer = ({ commentId }) => {
 
 RepliesContainer.propTypes = {
   commentId: PropTypes.string.isRequired,
+  currentUser: PropTypes.string.isRequired,
 };
 
 export default RepliesContainer;

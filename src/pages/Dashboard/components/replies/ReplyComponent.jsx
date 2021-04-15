@@ -3,13 +3,18 @@ import React, { useState } from 'react';
 import calculateTimePassed from '../../../../utils/postUtils';
 import { likeReply, unlikeReply, getReplyLikes } from '../../../../service/repliesApi';
 import LikesModal from '../likes/LikesModal';
+import EditReply from './EditReply';
+import Spinner from '../../../../components/Spinner/Spinner';
 
-const ReplyComponent = ({ replyData, liked }) => {
+const ReplyComponent = ({ replyData, liked, access }) => {
   const [replyLikes, setReplyLikes] = useState({
     nrOfLikes: replyData.nrOfLikes === undefined ? 0 : replyData.nrOfLikes,
     liked,
   });
   const [likesModal, setLikesModal] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [originalText, setOriginalText] = useState(replyData.text);
+  const [loadingAction, setLoadingAction] = useState(false);
 
   const handleLiking = async (e) => {
     e.preventDefault();
@@ -37,6 +42,14 @@ const ReplyComponent = ({ replyData, liked }) => {
     setLikesModal(!likesModal);
   };
 
+  const editReplyHandler = () => {
+    setEditMode(!editMode);
+  };
+
+  const getEditedText = (value) => {
+    setOriginalText(value);
+  };
+
   return (
     <div className="comment-container">
       <div className="comment-top">
@@ -47,7 +60,16 @@ const ReplyComponent = ({ replyData, liked }) => {
         <p>{calculateTimePassed(replyData.createdDate)}</p>
       </div>
       <div className="comment-content">
-        <p>{replyData.text}</p>
+        {editMode
+          ? (
+            <EditReply
+              text={originalText}
+              replyId={replyData._id}
+              setEditMode={setEditMode}
+              getEditedText={getEditedText}
+              setLoadingAction={setLoadingAction}
+            />
+          ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
         <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
@@ -61,14 +83,13 @@ const ReplyComponent = ({ replyData, liked }) => {
             : <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />}
           <p>Like</p>
         </button>
-        {/* <button type="button" onClick={handleReplyModal}>Reply</button>
         {access && (
         <div className="comment-alter">
-          <button type="button" onClick={editCommentHandler}>Edit</button>
-          <button type="button" onClick={deleteComm}>Delete</button>
+          <button type="button" onClick={editReplyHandler}>Edit</button>
+          {/* <button type="button" onClick={deleteReply}>Delete</button> */}
         </div>
         )}
-        {loadingAction && <Spinner />} */}
+        {loadingAction && <Spinner />}
       </div>
       {likesModal && (
         <>

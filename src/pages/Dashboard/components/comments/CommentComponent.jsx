@@ -14,7 +14,7 @@ import CommentControl from './CommentControl';
 import RepliesContainer from '../replies/RepliesContainer';
 
 const CommentComponent = ({
-  commentData, access, updateComments, liked, postOwner, postId,
+  commentData, access, updateComments, liked, postOwner, postId, currentUser,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -136,7 +136,7 @@ const CommentComponent = ({
         <CommentControl deletePostComment={deletePostComment} />
       )}
       {replyModal && (
-        <RepliesContainer commentId={commentData._id} />
+        <RepliesContainer commentId={commentData._id} currentUser={currentUser} />
       )}
     </div>
   );

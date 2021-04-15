@@ -5,7 +5,7 @@ import ReplyComponent from './ReplyComponent';
 
 const ReplyList = ({
   replyId, replies, totalResults, getRepliesFromBackend, currentPage,
-  likedReplies,
+  likedReplies, currentUser,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
 
@@ -33,6 +33,7 @@ const ReplyList = ({
             key={Math.random()}
             replyData={reply}
             liked={liked}
+            access={reply.userData.username === currentUser}
           />
         );
       }) : totalResults === 0

@@ -35,3 +35,8 @@ export const createReply = async (replyData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/createReply`, replyData);
   return data;
 };
+
+export const editReply = async (replyData) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/editReply`, replyData);
+  return data;
+};
