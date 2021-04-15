@@ -56,7 +56,7 @@ const RepliesContainer = ({ commentId }) => {
          replies={replies.results}
          totalResults={replies.totalResults}
          likedReplies={replies.likedReplies}
-         getCommentsFromBackend={getRepliesFromBackend}
+         getRepliesFromBackend={getRepliesFromBackend}
         //  updateComments={updateComments}
          currentPage={replies.currentPage}
        />

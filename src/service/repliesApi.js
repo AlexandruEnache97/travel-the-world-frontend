@@ -16,6 +16,16 @@ export const getLikedReplies = async (commentId, pageNumber) => {
   return data;
 };
 
+export const likeReply = async (replyId) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/likeReply`, replyId);
+  return data;
+};
+
+export const unlikeReply = async (replyId) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/api/unlikeReply`, replyId);
+  return data;
+};
+
 export const createReply = async (replyData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/createReply`, replyData);
   return data;
