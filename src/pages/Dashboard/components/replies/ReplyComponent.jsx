@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import calculateTimePassed from '../../../../utils/postUtils';
-import { likeReply, unlikeReply } from '../../../../service/repliesApi';
+import { likeReply, unlikeReply, getReplyLikes } from '../../../../service/repliesApi';
+import LikesModal from '../likes/LikesModal';
 
 const ReplyComponent = ({ replyData, liked }) => {
   const [replyLikes, setReplyLikes] = useState({
     nrOfLikes: replyData.nrOfLikes === undefined ? 0 : replyData.nrOfLikes,
     liked,
   });
+  const [likesModal, setLikesModal] = useState(false);
 
   const handleLiking = async (e) => {
     e.preventDefault();
@@ -26,6 +28,15 @@ const ReplyComponent = ({ replyData, liked }) => {
     }
   };
 
+  const changeLikesModal = () => {
+    if (!likesModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    setLikesModal(!likesModal);
+  };
+
   return (
     <div className="comment-container">
       <div className="comment-top">
@@ -39,10 +50,7 @@ const ReplyComponent = ({ replyData, liked }) => {
         <p>{replyData.text}</p>
       </div>
       <div className="comment-bottom">
-        <button
-          type="button"
-          // onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}
-        >
+        <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
           {replyLikes.nrOfLikes}
           {' '}
           {replyLikes.nrOfLikes === 1 ? 'like' : 'likes'}
@@ -62,6 +70,18 @@ const ReplyComponent = ({ replyData, liked }) => {
         )}
         {loadingAction && <Spinner />} */}
       </div>
+      {likesModal && (
+        <>
+          <div className="modal" onClickCapture={changeLikesModal} />
+          <LikesModal
+            title="Comment"
+            likes={replyLikes.nrOfLikes}
+            postId={replyData._id}
+            closeHandler={changeLikesModal}
+            getLikes={getReplyLikes}
+          />
+        </>
+      )}
     </div>
   );
 };

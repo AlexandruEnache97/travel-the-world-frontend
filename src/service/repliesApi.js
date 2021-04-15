@@ -11,6 +11,11 @@ export const getReplies = async (commentId, pageNumber) => {
   return data;
 };
 
+export const getReplyLikes = async (replyId, pageNumber) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/replyLikes/${replyId}/${pageNumber}`);
+  return data;
+};
+
 export const getLikedReplies = async (commentId, pageNumber) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/likedReplies/${commentId}/${pageNumber}`);
   return data;
