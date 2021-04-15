@@ -65,10 +65,6 @@ const CommentComponent = ({
     }
   };
 
-  const handleReplyModal = () => {
-    setReplyModal(!replyModal);
-  };
-
   const changeLikesModal = () => {
     if (!likesModal) {
       document.body.style.overflow = 'hidden';
@@ -76,6 +72,10 @@ const CommentComponent = ({
       document.body.style.overflow = 'unset';
     }
     setLikesModal(!likesModal);
+  };
+
+  const handleReplyModal = () => {
+    setReplyModal(!replyModal);
   };
 
   return (

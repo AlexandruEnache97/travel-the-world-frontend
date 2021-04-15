@@ -5,6 +5,7 @@ import ReplyComponent from './ReplyComponent';
 
 const ReplyList = ({
   replyId, replies, totalResults, getRepliesFromBackend, currentPage,
+  likedReplies,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
 
@@ -23,10 +24,10 @@ const ReplyList = ({
   return (
     <div className="reply-list-container" id={`reply-id-${replyId}`}>
       {totalResults > 0 ? replies.map((reply) => {
-        const liked = false;
-        // likedComments.map((item) => {
-        //   if (reply._id === item) { liked = true; }
-        // });
+        let liked = false;
+        likedReplies.map((item) => {
+          if (reply._id === item) { liked = true; }
+        });
         return (
           <ReplyComponent
             key={Math.random()}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CreateReply from './CreateReply';
 import './repliesContainer.scss';
-import { getReplies } from '../../../../service/repliesApi';
+import { getLikedReplies, getReplies } from '../../../../service/repliesApi';
 import ReplyList from './ReplyList';
 
 const RepliesContainer = ({ commentId }) => {
@@ -10,18 +10,18 @@ const RepliesContainer = ({ commentId }) => {
     results: [],
     totalResults: 0,
     currentPage: Number(1),
-    likedComments: [],
+    likedReplies: [],
   });
 
   const getRepliesFromBackend = async (page, moreResults) => {
     const reply = await getReplies(commentId, page);
-    // const { data } = await getLikedReplies(commentId, page);
+    const { data } = await getLikedReplies(commentId, page);
     if (moreResults) {
       setReplies({
         ...replies,
         results: [...replies.results, ...reply.data.results],
         currentPage: replies.currentPage + 1,
-        // likedComments: [...replies.likedComments, ...data.likedComments],
+        likedReplies: [...replies.likedReplies, ...data.likedReplies],
       });
     } else {
       setReplies({
@@ -29,7 +29,7 @@ const RepliesContainer = ({ commentId }) => {
         results: reply.data.results,
         totalResults: reply.data.totalResults,
         currentPage: page,
-        // likedComments: data.likedComments,
+        likedReplies: data.likedReplies,
       });
     }
   };
@@ -55,7 +55,7 @@ const RepliesContainer = ({ commentId }) => {
          commentId={commentId}
          replies={replies.results}
          totalResults={replies.totalResults}
-        //  likedComments={comments.likedComments}
+         likedReplies={replies.likedReplies}
          getCommentsFromBackend={getRepliesFromBackend}
         //  updateComments={updateComments}
          currentPage={replies.currentPage}
