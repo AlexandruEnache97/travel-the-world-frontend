@@ -1,13 +1,44 @@
 .dashboard-container {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
 
-    .preview-image {
-        margin-top: 5rem;
-        max-width: 30%;
-        max-height: 30%;
+    .menu-container {
+        background-color: rgba(255, 153, 153, 0.2);
+        padding: 0rem 5rem;
+        border-radius: 3rem;
+        width: 36rem;
+        height: 60rem;
+        margin-top: 10rem;
+        margin-left: 4rem;
+        padding-top: 1.5rem;
+        position: fixed;
+    }
+
+    .feed-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        // margin: 0rem 50rem;
+    
+        .preview-image {
+            margin-top: 5rem;
+            max-width: 30%;
+            max-height: 30%;
+        }
+    }
+
+    .news-container {
+        background-color: rgba(255, 153, 153, 0.2);
+        width: 36rem;
+        height: 60rem;
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin-top: 10rem;
+        margin-right: 4rem;
+        border-radius: 3rem;
     }
 }
 

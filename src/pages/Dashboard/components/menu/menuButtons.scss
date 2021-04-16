@@ -1,0 +1,31 @@
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25rem;
+    height: 6rem;
+    margin-bottom: 4rem;
+    border: none;
+    border-radius: 2rem;
+    outline: none;
+    transition: all .1s ease-in-out;
+
+    img {
+        width: 4rem;
+        margin-right: 1.5rem;
+        padding: 0.5rem;
+    }
+
+    .profileImage {
+        background-color: #000;
+        border-radius: 1.4rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
