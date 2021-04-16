@@ -3,15 +3,14 @@
     justify-content: flex-start;
     position: relative;
     margin-top: 0.5rem;
-    padding-left: 3rem;
-    padding-right: 0.5rem;
+    padding: 0rem 1.5rem;
 
     textarea {
         resize: none;
         border: none;
         border-radius: 1rem;
         outline: none;
-        width: 27rem;
+        width: 28rem;
         min-height: 3rem;
         padding: 0.8rem 4.5rem 0.5rem 2rem;
         margin: 0.5rem 0rem 1rem 0rem;
@@ -46,5 +45,12 @@
             width: 2.5rem;
             height: 2.5rem;
         }
+    }
+
+    aside.emoji-picker-react {
+        position: absolute;
+        top: 18.5rem;
+        right: 3.9rem;
+        z-index: 1;
     }
 }

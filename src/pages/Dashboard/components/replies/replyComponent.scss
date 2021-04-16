@@ -1,0 +1,122 @@
+.reply {
+    display: flex;
+    position: relative;
+
+    .replyArrow {
+        position: absolute;
+        top:0;
+        left: 0;
+        margin-top: 0.7rem;
+        width: 3.5rem;
+        height: 3.5rem;
+        z-index: 10;
+    }
+
+    .reply-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgb(230, 230, 230);
+        border-radius: 2rem;
+    
+        .reply-top {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 1rem 2rem 0rem 2rem;
+            padding: 1rem 0rem 1rem 4.5rem;
+    
+            p {
+                font-size: 1.4rem;
+                font-weight: 500;
+            }
+    
+            img {    
+                width: 3rem;
+                margin-right: 1rem;
+                padding: 0.3rem;
+                background-color: black;
+                border-radius: 1rem;
+            }
+        }
+
+        .reply-passed-time {
+            width: 50%;
+            font-weight: 300;
+            font-size: 1.2rem;
+            color: rgb(107, 107, 107);
+        }
+
+        .reply-content {
+            margin: 1rem 2rem;
+            width: 100%;
+            padding-left: 4.8rem;
+    
+            p {
+                font-size: 1.3rem;
+                font-weight: 300;
+            }
+    
+            textarea {
+                resize: none;
+                font-size: 1.8rem;
+                font-weight: 300;
+                border: none;
+                outline: none;
+                border-radius: 2rem;
+                width: 21rem;
+                height: 2rem;
+                padding: 0rem 0.5rem;
+            }
+        }
+
+        .reply-bottom {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding-left: 4.5rem;
+            margin-bottom: 2rem;
+            margin-top: 0.5rem;
+    
+            .button-like {
+                display: flex;
+                align-items: center;
+    
+                p {
+                    margin-left: 0.3rem;
+                    margin-right: 0rem;
+                }
+    
+                img {
+                    width: 1.9rem;
+                    padding-bottom: 0.15rem;
+                }
+            }
+    
+            .liked-comment {
+                color: #3498DB;
+            }
+    
+            p {
+                font-size: 1.3rem;
+                font-weight: 500;
+                margin: 0rem 1rem;
+            }
+    
+            button {
+                cursor: pointer;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                font-size: 1.3rem;
+                font-weight: 500;
+                margin: 0rem 1rem;
+            }
+    
+            .reply-alter {
+                display: flex;
+            }
+        }
+    }
+}

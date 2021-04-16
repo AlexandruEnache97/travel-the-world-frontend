@@ -8,6 +8,8 @@ import LikesModal from '../likes/LikesModal';
 import EditReply from './EditReply';
 import Spinner from '../../../../components/Spinner/Spinner';
 import RepliesControl from './RepliesControl';
+import replyArrow from '../../../../images/reply-arrow.png';
+import './replyComponent.scss';
 
 const ReplyComponent = ({
   replyData, liked, access, updateReplies, postOwner,
@@ -63,48 +65,50 @@ const ReplyComponent = ({
   };
 
   return (
-    <div className="comment-container">
-      <div className="comment-top">
-        <img src={replyData.userData.profileImage} alt="profilePic" />
-        <p>{replyData.userData.username}</p>
-      </div>
-      <div className="comment-passed-time">
-        <p>{calculateTimePassed(replyData.createdDate)}</p>
-      </div>
-      <div className="comment-content">
-        {editMode
-          ? (
-            <EditReply
-              text={originalText}
-              replyId={replyData._id}
-              setEditMode={setEditMode}
-              getEditedText={getEditedText}
-              setLoadingAction={setLoadingAction}
-            />
-          ) : <p>{originalText}</p>}
-      </div>
-      <div className="comment-bottom">
-        <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
-          {replyLikes.nrOfLikes}
-          {' '}
-          {replyLikes.nrOfLikes === 1 ? 'like' : 'likes'}
-        </button>
-        <button type="button" className={replyLikes.liked ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
-          {replyLikes.liked
-            ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
-            : <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />}
-          <p>Like</p>
-        </button>
-        {access && (
-        <div className="comment-alter">
-          <button type="button" onClick={editReplyHandler}>Edit</button>
-          <button type="button" onClick={deleteReply}>Delete</button>
+    <div className="reply">
+      <img src={replyArrow} alt="replyArrow" className="replyArrow" />
+      <div className="reply-container">
+        <div className="reply-top">
+          <img src={replyData.userData.profileImage} alt="profilePic" />
+          <p>{replyData.userData.username}</p>
         </div>
-        )}
-        {loadingAction && <Spinner />}
-      </div>
-      {postOwner && <RepliesControl deleteCommentReply={deleteReply} />}
-      {likesModal && (
+        <div className="reply-passed-time">
+          <p>{calculateTimePassed(replyData.createdDate)}</p>
+        </div>
+        <div className="reply-content">
+          {editMode
+            ? (
+              <EditReply
+                text={originalText}
+                replyId={replyData._id}
+                setEditMode={setEditMode}
+                getEditedText={getEditedText}
+                setLoadingAction={setLoadingAction}
+              />
+            ) : <p>{originalText}</p>}
+        </div>
+        <div className="reply-bottom">
+          <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
+            {replyLikes.nrOfLikes}
+            {' '}
+            {replyLikes.nrOfLikes === 1 ? 'like' : 'likes'}
+          </button>
+          <button type="button" className={replyLikes.liked ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
+            {replyLikes.liked
+              ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
+              : <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />}
+            <p>Like</p>
+          </button>
+          {access && (
+          <div className="reply-alter">
+            <button type="button" onClick={editReplyHandler}>Edit</button>
+            <button type="button" onClick={deleteReply}>Delete</button>
+          </div>
+          )}
+          {loadingAction && <Spinner />}
+        </div>
+        {postOwner && <RepliesControl deleteCommentReply={deleteReply} />}
+        {likesModal && (
         <>
           <div className="modal" onClickCapture={changeLikesModal} />
           <LikesModal
@@ -115,7 +119,8 @@ const ReplyComponent = ({
             getLikes={getReplyLikes}
           />
         </>
-      )}
+        )}
+      </div>
     </div>
   );
 };
