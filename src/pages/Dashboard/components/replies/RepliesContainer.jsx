@@ -5,7 +5,7 @@ import './repliesContainer.scss';
 import { getLikedReplies, getReplies } from '../../../../service/repliesApi';
 import ReplyList from './ReplyList';
 
-const RepliesContainer = ({ commentId, currentUser }) => {
+const RepliesContainer = ({ commentId, currentUser, postUser }) => {
   const [replies, setReplies] = useState({
     results: [],
     totalResults: 0,
@@ -44,6 +44,21 @@ const RepliesContainer = ({ commentId, currentUser }) => {
       });
   }, [commentId]);
 
+  const updateReplies = () => {
+    if (replies.totalResults > 1) {
+      getRepliesFromBackend(1, false);
+      const div = document.getElementById(`reply-id-${commentId}`);
+      div.scrollTop = 0;
+    } else {
+      setReplies({
+        results: [],
+        totalResults: -1,
+        currentPage: Number(1),
+        likedReplies: [],
+      });
+    }
+  };
+
   return (
     <div className="replies-container">
       <CreateReply commentId={commentId} getRepliesFromBackend={getRepliesFromBackend} />
@@ -51,13 +66,13 @@ const RepliesContainer = ({ commentId, currentUser }) => {
        && (
        <ReplyList
          currentUser={currentUser}
-        //  postUser={postUser}
+         postUser={postUser}
          commentId={commentId}
          replies={replies.results}
          totalResults={replies.totalResults}
          likedReplies={replies.likedReplies}
          getRepliesFromBackend={getRepliesFromBackend}
-        //  updateComments={updateComments}
+         updateReplies={updateReplies}
          currentPage={replies.currentPage}
        />
        )}
@@ -68,6 +83,7 @@ const RepliesContainer = ({ commentId, currentUser }) => {
 RepliesContainer.propTypes = {
   commentId: PropTypes.string.isRequired,
   currentUser: PropTypes.string.isRequired,
+  postUser: PropTypes.string.isRequired,
 };
 
 export default RepliesContainer;

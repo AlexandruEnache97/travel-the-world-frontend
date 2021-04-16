@@ -14,7 +14,8 @@ import CommentControl from './CommentControl';
 import RepliesContainer from '../replies/RepliesContainer';
 
 const CommentComponent = ({
-  commentData, access, updateComments, liked, postOwner, postId, currentUser,
+  commentData, access, updateComments, liked, postOwner, postId,
+  currentUser, postUser,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
   const [editMode, setEditMode] = useState(false);
@@ -136,7 +137,11 @@ const CommentComponent = ({
         <CommentControl deletePostComment={deletePostComment} />
       )}
       {replyModal && (
-        <RepliesContainer commentId={commentData._id} currentUser={currentUser} />
+        <RepliesContainer
+          commentId={commentData._id}
+          currentUser={currentUser}
+          postUser={postUser}
+        />
       )}
     </div>
   );
@@ -148,6 +153,8 @@ CommentComponent.propTypes = {
   liked: PropTypes.bool.isRequired,
   postOwner: PropTypes.bool.isRequired,
   postId: PropTypes.string.isRequired,
+  postUser: PropTypes.string.isRequired,
+  currentUser: PropTypes.string.isRequired,
 };
 
 export default CommentComponent;

@@ -1,12 +1,16 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import calculateTimePassed from '../../../../utils/postUtils';
-import { likeReply, unlikeReply, getReplyLikes } from '../../../../service/repliesApi';
+import {
+  likeReply, unlikeReply, getReplyLikes, removeReply,
+} from '../../../../service/repliesApi';
 import LikesModal from '../likes/LikesModal';
 import EditReply from './EditReply';
 import Spinner from '../../../../components/Spinner/Spinner';
 
-const ReplyComponent = ({ replyData, liked, access }) => {
+const ReplyComponent = ({
+  replyData, liked, access, updateReplies,
+}) => {
   const [replyLikes, setReplyLikes] = useState({
     nrOfLikes: replyData.nrOfLikes === undefined ? 0 : replyData.nrOfLikes,
     liked,
@@ -50,6 +54,13 @@ const ReplyComponent = ({ replyData, liked, access }) => {
     setOriginalText(value);
   };
 
+  const deleteReply = async () => {
+    setLoadingAction(true);
+    await removeReply({ replyId: replyData._id });
+    setLoadingAction(false);
+    updateReplies();
+  };
+
   return (
     <div className="comment-container">
       <div className="comment-top">
@@ -86,7 +97,7 @@ const ReplyComponent = ({ replyData, liked, access }) => {
         {access && (
         <div className="comment-alter">
           <button type="button" onClick={editReplyHandler}>Edit</button>
-          {/* <button type="button" onClick={deleteReply}>Delete</button> */}
+          <button type="button" onClick={deleteReply}>Delete</button>
         </div>
         )}
         {loadingAction && <Spinner />}

@@ -2,7 +2,7 @@ import {
   get,
   //   post,
   put,
-//   remove,
+  remove,
 } from './axiosOperations';
 import { NODE_SERVER } from '../../config';
 
@@ -38,5 +38,10 @@ export const createReply = async (replyData) => {
 
 export const editReply = async (replyData) => {
   const data = await put(`${NODE_SERVER.baseUrl}/api/editReply`, replyData);
+  return data;
+};
+
+export const removeReply = async (replyId) => {
+  const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteReply`, replyId);
   return data;
 };
