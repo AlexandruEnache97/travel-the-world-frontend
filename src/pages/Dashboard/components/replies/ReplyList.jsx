@@ -41,7 +41,7 @@ const ReplyList = ({
         );
       }) : totalResults === 0
       && (
-      <div className="comments-loading">
+      <div className="replies-loading">
         <span>Loading</span>
         <div className="loading-spinner-comments">
           <div className="loading-icon" data-testid="spinner" />
