@@ -36,6 +36,7 @@ const ReplyList = ({
             access={reply.userData.username === currentUser}
             postUser={postUser}
             updateReplies={updateReplies}
+            postOwner={currentUser === postUser}
           />
         );
       }) : totalResults === 0

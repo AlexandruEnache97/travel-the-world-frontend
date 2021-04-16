@@ -7,9 +7,10 @@ import {
 import LikesModal from '../likes/LikesModal';
 import EditReply from './EditReply';
 import Spinner from '../../../../components/Spinner/Spinner';
+import RepliesControl from './RepliesControl';
 
 const ReplyComponent = ({
-  replyData, liked, access, updateReplies,
+  replyData, liked, access, updateReplies, postOwner,
 }) => {
   const [replyLikes, setReplyLikes] = useState({
     nrOfLikes: replyData.nrOfLikes === undefined ? 0 : replyData.nrOfLikes,
@@ -102,6 +103,7 @@ const ReplyComponent = ({
         )}
         {loadingAction && <Spinner />}
       </div>
+      {postOwner && <RepliesControl deleteCommentReply={deleteReply} />}
       {likesModal && (
         <>
           <div className="modal" onClickCapture={changeLikesModal} />

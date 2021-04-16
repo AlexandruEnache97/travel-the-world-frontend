@@ -45,3 +45,8 @@ export const removeReply = async (replyId) => {
   const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteReply`, replyId);
   return data;
 };
+
+export const removeCommentReply = async (replyData) => {
+  const data = await remove(`${NODE_SERVER.baseUrl}/api/deleteCommentReply`, replyData);
+  return data;
+};
