@@ -14,7 +14,7 @@ import CommentControl from './CommentControl';
 import RepliesContainer from '../replies/RepliesContainer';
 
 const CommentComponent = ({
-  commentData, access, updateComments, liked, postOwner, postId,
+  commentData, updateComments, liked, postId,
   currentUser, postUser,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
@@ -113,7 +113,7 @@ const CommentComponent = ({
           <p>Like</p>
         </button>
         <button type="button" onClick={handleReplyModal}>Reply</button>
-        {access && (
+        {commentData.userData.username === currentUser && (
         <div className="comment-alter">
           <button type="button" onClick={editCommentHandler}>Edit</button>
           <button type="button" onClick={deleteComm}>Delete</button>
@@ -133,7 +133,7 @@ const CommentComponent = ({
           />
         </>
       )}
-      {postOwner && (
+      {currentUser === postUser && (
         <CommentControl deletePostComment={deletePostComment} />
       )}
       {replyModal && (
@@ -148,10 +148,8 @@ const CommentComponent = ({
 };
 
 CommentComponent.propTypes = {
-  access: PropTypes.bool.isRequired,
   updateComments: PropTypes.func.isRequired,
   liked: PropTypes.bool.isRequired,
-  postOwner: PropTypes.bool.isRequired,
   postId: PropTypes.string.isRequired,
   postUser: PropTypes.string.isRequired,
   currentUser: PropTypes.string.isRequired,

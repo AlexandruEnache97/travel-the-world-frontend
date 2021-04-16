@@ -32,10 +32,8 @@ const CommentList = ({
           <CommentComponent
             key={Math.random()}
             commentData={comment}
-            access={comment.userData.username === currentUser}
             updateComments={updateComments}
             liked={liked}
-            postOwner={currentUser === postUser}
             postId={postId}
             currentUser={currentUser}
             postUser={postUser}
