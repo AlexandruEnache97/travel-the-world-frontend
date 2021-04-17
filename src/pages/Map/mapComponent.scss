@@ -1,0 +1,16 @@
+.map-container {
+    height: 100vh;
+}
+
+.map-control {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    height: 20rem;
+    position: fixed;
+    background-color: black;
+    color: white;
+    top: 10rem;
+    right: 10rem;
+    z-index: 10;
+}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import MenuButton from './MenuButton';
@@ -11,7 +12,7 @@ import friendsIcon from '../../../../images/menuButtons/friendsIcon.png';
 const MenuContainer = ({ currentUser }) => (
   <div className="menuContainer">
     <MenuButton image={currentUser.profileImage} text={currentUser.username} isProfile />
-    <MenuButton image={mapIcon} text="Map" />
+    <MenuButton image={mapIcon} text="Map" redirect="/map" />
     <MenuButton image={goalsIcon} text="Your goals" />
     <MenuButton image={friendsIcon} text="Friends" />
     <MenuButton image={groupIcon} text="Groups" />
