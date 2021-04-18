@@ -1,5 +1,3 @@
-// import { locationPin } from '../images/mapIcons/locationPin.png';
-
 const addDraggableMarker = (map, behavior) => {
   const { H } = window;
   const icon = new H.map.Icon('https://img.icons8.com/android/48/000000/marker.png');
