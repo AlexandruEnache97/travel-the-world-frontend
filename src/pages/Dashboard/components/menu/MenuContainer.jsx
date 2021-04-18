@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 import MenuButton from './MenuButton';
 import './menuContainer.scss';
 import mapIcon from '../../../../images/menuButtons/mapIcon.png';
@@ -19,9 +18,5 @@ const MenuContainer = ({ currentUser }) => (
     <MenuButton image={newPostsIcon} text="New posts" />
   </div>
 );
-
-MenuContainer.propTypes = {
-  currentUser: PropTypes.objectOf(PropTypes.string).isRequired,
-};
 
 export default MenuContainer;

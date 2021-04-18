@@ -20,6 +20,10 @@ describe('Authentication reducers tests', () => {
       profileImage: '',
       email: '',
       country: '',
+      userLocation: {
+        lat: '',
+        lng: '',
+      },
     },
   };
   it('Should return initial state', () => {
@@ -73,6 +77,10 @@ describe('Authentication reducers tests', () => {
         email: 'test@gmail.com',
         profileImage: 'image',
         country: 'Romania',
+        userLocation: {
+          lat: '23.12',
+          lng: '34.15',
+        },
       },
     })).toEqual({
       ...initialState,
@@ -81,6 +89,10 @@ describe('Authentication reducers tests', () => {
         email: 'test@gmail.com',
         profileImage: 'image',
         country: 'Romania',
+        userLocation: {
+          lat: '23.12',
+          lng: '34.15',
+        },
       },
     });
 
@@ -93,6 +105,10 @@ describe('Authentication reducers tests', () => {
         profileImage: '',
         email: '',
         country: '',
+        userLocation: {
+          lat: '',
+          lng: '',
+        },
       },
     });
   });
@@ -109,6 +125,10 @@ describe('Authentication reducers tests', () => {
         profileImage: '',
         email: '',
         country: '',
+        userLocation: {
+          lat: '',
+          lng: '',
+        },
       },
     });
   });

@@ -19,6 +19,10 @@ const initialState = {
     profileImage: '',
     email: '',
     country: '',
+    userLocation: {
+      lat: '',
+      lng: '',
+    },
   },
 };
 
@@ -46,6 +50,7 @@ const authReducer = (state = initialState, action) => {
           profileImage: action.payload.profileImage,
           email: action.payload.email,
           country: action.payload.country,
+          userLocation: action.payload.userLocation,
         },
       };
     case createActionType(GET_ACCOUNT, ERROR):
@@ -56,6 +61,10 @@ const authReducer = (state = initialState, action) => {
           profileImage: '',
           email: '',
           country: '',
+          userLocation: {
+            lat: '',
+            lng: '',
+          },
         },
       };
     case SIGN_OUT:
@@ -68,6 +77,10 @@ const authReducer = (state = initialState, action) => {
           profileImage: '',
           email: '',
           country: '',
+          userLocation: {
+            lat: '',
+            lng: '',
+          },
         },
       };
     default:
