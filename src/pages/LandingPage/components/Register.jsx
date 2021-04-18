@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CountrySelect from './CountrySelect';
 import './register.scss';
+import countryCoordinates from '../../../utils/countryCoordinates';
 
 const Register = ({ signUp, auth, history }) => {
   const [registerData, setRegisterData] = useState({
@@ -12,6 +13,10 @@ const Register = ({ signUp, auth, history }) => {
     password: '',
     verifyPassword: '',
     country: 'Afghanistan',
+    userLocation: {
+      lat: 0,
+      lng: 0,
+    },
   });
 
   useLayoutEffect(() => {
@@ -34,6 +39,10 @@ const Register = ({ signUp, auth, history }) => {
     setRegisterData({
       ...registerData,
       country,
+      userLocation: {
+        lat: countryCoordinates[country][0],
+        lng: countryCoordinates[country][1],
+      },
     });
   };
 
