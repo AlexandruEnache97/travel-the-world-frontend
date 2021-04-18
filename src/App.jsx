@@ -12,7 +12,7 @@ import './scss/main.scss';
 import ConnectedLoadingOverlay from './pages/LoadingOverlay/ConnectedLoadingOverlay';
 import ProtectedRoute from './components/ProtectedRoute/ConnectedProtectedRoute';
 import Dashboard from './pages/Dashboard/ConnectedDashboard';
-import MapComponent from './pages/Map/MapComponent';
+import MapComponent from './pages/Map/ConnectedMapComponent';
 
 const App = () => (
   <Provider store={store}>

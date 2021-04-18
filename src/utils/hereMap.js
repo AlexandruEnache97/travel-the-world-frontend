@@ -1,4 +1,4 @@
-const addDraggableMarker = (map, behavior) => {
+const addDraggableMarker = (map, behavior, setCoordinates) => {
   const { H } = window;
   const icon = new H.map.Icon('https://img.icons8.com/android/48/000000/marker.png');
   const marker = new H.map.Marker({ lat: 50, lng: 5 }, {
@@ -31,7 +31,7 @@ const addDraggableMarker = (map, behavior) => {
     const { target } = ev;
     if (target instanceof H.map.Marker) {
       behavior.enable();
-      console.log(target.b);
+      setCoordinates(target.b);
     }
   }, false);
 
