@@ -1,5 +1,23 @@
 .mobile-button {
+    display: none;
     position: fixed;
-    top: 10rem;
-    right: 10rem;
+    top: 9rem;
+    right: 1rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    outline: none;
+    width: 6rem;
+    height: 6rem;
+
+    img {
+        width: inherit;
+        height: inherit;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .mobile-button {
+        display: block;
+    }
 }
