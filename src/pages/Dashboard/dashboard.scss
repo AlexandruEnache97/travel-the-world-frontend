@@ -58,3 +58,16 @@
     user-select: none;
     pointer-events: none;
 }
+
+@media only screen and (max-width: 600px) {
+    .dashboard-container {
+        .news-container {
+            display: none;
+        }
+        
+        .menu-container {
+            margin-left: 0rem;
+            width: 100%;
+        }
+    }
+}

@@ -6,9 +6,21 @@
         width: 100%;
     
         .H_ib_body{
+            max-height: 25rem;
+            overflow-y: scroll;
             img {
                 margin-top: 1rem;
                 width: 20rem;
+            }
+
+            &::-webkit-scrollbar{
+                width: 1rem;
+            }
+    
+            &::-webkit-scrollbar-thumb {
+                background-color: #ff304f ;
+                border-radius: 6px;
+                border: 3px solid #fff;
             }
           }
     }
@@ -26,4 +38,11 @@
     top: 10rem;
     right: 10rem;
     z-index: 10;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .map-control {
+        display: none;
+    }
 }

@@ -9,3 +9,10 @@
     display: flex;
     flex-direction: column;
 }
+
+@media only screen and (max-width: 600px) {
+    .menuContainer {
+        margin-left: 0rem;
+        background-color: rgba(0, 0, 0, 0.95);
+    }
+}
