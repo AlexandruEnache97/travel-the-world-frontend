@@ -5,6 +5,7 @@ import React, {
 } from 'react';
 import './mapComponent.scss';
 import { addDraggableMarker, createMarker } from '../../utils/hereMap';
+import RECOMMENDED_POSTS from '../../utils/recommendedPosts';
 
 const HereMap = ({ userLocation, country }) => {
   const mapRef = useRef(null);
@@ -41,13 +42,15 @@ const HereMap = ({ userLocation, country }) => {
       ui,
     );
 
-    createMarker(
-      hMap,
-      { lat: 44.86543549519188, lng: 15.581931850936966 },
-      'https://img.icons8.com/android/48/006400/marker.png',
-      '<p><b>Plitvice Lakes, Croatia</b></p><img src="https://www.busytourist.com/wp-content/uploads/2019/06/Plitvice-Lakes-Croatia.jpg.webp" /><p>The Plitvice Lakes can be found on Croatia’s Adriatic Sea coast, just lingering on the border between Zadar and the nation’s capital, Zagreb.</p>',
-      ui,
-    );
+    RECOMMENDED_POSTS.map((post) => {
+      createMarker(
+        hMap,
+        post.coordinates,
+        'https://img.icons8.com/android/48/006400/marker.png',
+        `<p><b>${post.location}</b></p><img src=${post.image} /><p>${post.text}</p>`,
+        ui,
+      );
+    });
 
     addDraggableMarker(hMap, behavior, setCoordinates);
 
