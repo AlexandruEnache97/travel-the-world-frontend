@@ -22,7 +22,7 @@ const Post = ({
       nrOfLikes: likes,
       liked,
     });
-  }, []);
+  }, [likes]);
 
   const changeLikesModal = () => {
     if (!likesModal) {
