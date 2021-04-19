@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const { INPUT_PATH, OUTPUT_PATH } = require('./constants.js');
 
@@ -23,6 +24,7 @@ const config = {
       filename: `${OUTPUT_PATH}/index.html`,
     }),
     new ESLintPlugin(),
+    new Dotenv(),
   ],
   module: {
     rules: [

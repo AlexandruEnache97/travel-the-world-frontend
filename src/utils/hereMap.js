@@ -1,4 +1,4 @@
-const addDraggableMarker = (map, behavior, setCoordinates) => {
+export const addDraggableMarker = (map, behavior, setCoordinates) => {
   const { H } = window;
   const icon = new H.map.Icon('https://img.icons8.com/android/48/000000/marker.png');
   const marker = new H.map.Marker({ lat: 50, lng: 5 }, {
@@ -48,4 +48,23 @@ const addDraggableMarker = (map, behavior, setCoordinates) => {
   }, false);
 };
 
-export default addDraggableMarker;
+export const createMarker = (map, location, icon, content, ui) => {
+  const { H } = window;
+  const iconMarker = new H.map.Icon(icon);
+  const marker = new H.map.Marker(
+    location, {
+      icon: iconMarker,
+    },
+  );
+  map.addObject(marker);
+
+  if (content !== undefined) {
+    marker.addEventListener('tap', (ev) => {
+      const bubble = new H.ui.InfoBubble(ev.target.getGeometry(), {
+        content,
+      });
+      ui.addBubble(bubble);
+    });
+  }
+  return marker;
+};

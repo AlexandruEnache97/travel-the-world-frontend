@@ -4,9 +4,9 @@ import React, {
   useLayoutEffect, useRef, useState, useEffect,
 } from 'react';
 import './mapComponent.scss';
-import addDraggableMarker from '../../utils/hereMap';
+import { addDraggableMarker, createMarker } from '../../utils/hereMap';
 
-const HereMap = ({ userLocation }) => {
+const HereMap = ({ userLocation, country }) => {
   const mapRef = useRef(null);
   const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
 
@@ -15,26 +15,39 @@ const HereMap = ({ userLocation }) => {
     if (!mapRef.current) return;
     const { H } = window;
     const platform = new H.service.Platform({
-      apikey: 'pFgYJtHrqTkrDk2tguYJQ4Vc2ApdTsbX6edK6WJPkgY',
+      apikey: process.env.HERE_MAP_API_KEY,
     });
     const defaultLayers = platform.createDefaultLayers();
     const hMap = new H.Map(mapRef.current, defaultLayers.vector.normal.map, {
       center: userLocation,
-      zoom: 4,
+      zoom: 5,
       pixelRatio: window.devicePixelRatio || 1,
     });
 
-    const iconUserLocation = new H.map.Icon('https://img.icons8.com/android/48/DC143C/marker.png');
-    const markerUserLocation = new H.map.Marker(
-      userLocation, {
-        icon: iconUserLocation,
-      },
-    );
-    hMap.addObject(markerUserLocation);
-
     const behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(hMap));
-
     const ui = H.ui.UI.createDefault(hMap, defaultLayers);
+
+    createMarker(
+      hMap,
+      { lat: 0, lng: 0 },
+      'https://img.icons8.com/android/48/FFFFFF/marker.png',
+    );
+
+    createMarker(
+      hMap,
+      userLocation,
+      'https://img.icons8.com/android/48/DC143C/marker.png',
+      `<div><p><b>User Location</b></p><p>${country}</p></div>`,
+      ui,
+    );
+
+    createMarker(
+      hMap,
+      { lat: 44.86543549519188, lng: 15.581931850936966 },
+      'https://img.icons8.com/android/48/006400/marker.png',
+      '<p><b>Plitvice Lakes, Croatia</b></p><img src="https://www.busytourist.com/wp-content/uploads/2019/06/Plitvice-Lakes-Croatia.jpg.webp" /><p>The Plitvice Lakes can be found on Croatia’s Adriatic Sea coast, just lingering on the border between Zadar and the nation’s capital, Zagreb.</p>',
+      ui,
+    );
 
     addDraggableMarker(hMap, behavior, setCoordinates);
 
