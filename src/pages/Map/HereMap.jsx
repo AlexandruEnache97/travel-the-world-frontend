@@ -59,7 +59,7 @@ const HereMap = ({ userLocation, country }) => {
   }, [mapRef]);
 
   return (
-    <>
+    <div className="map">
       <div ref={mapRef} className="map-container" />
       <div className="map-control">
         {coordinates !== null && (
@@ -77,7 +77,7 @@ const HereMap = ({ userLocation, country }) => {
         </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
