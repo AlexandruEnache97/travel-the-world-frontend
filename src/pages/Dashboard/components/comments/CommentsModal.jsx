@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './commentsModal.scss';
 import { getComments, getLikedComments } from '../../../../service/commentsApi';
 import CommentList from './CommentList';
@@ -81,6 +81,22 @@ const CommentsModal = ({ postId, auth, postUser }) => {
        )}
     </div>
   );
+};
+
+CommentsModal.propTypes = {
+  postId: PropTypes.string.isRequired,
+  auth: PropTypes.shape({
+    accountData: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      profileImage: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
+    }).isRequired,
+    accountId: PropTypes.string.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+  }).isRequired,
+  postUser: PropTypes.string.isRequired,
 };
 
 export default CommentsModal;
