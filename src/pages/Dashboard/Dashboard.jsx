@@ -48,6 +48,7 @@ const Dashboard = ({
         </div>
         <div className="news-container">
           {/* <MenuContainer /> */}
+          <div className="news-content" />
         </div>
       </div>
       )}

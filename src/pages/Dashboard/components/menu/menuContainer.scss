@@ -1,3 +1,11 @@
 .menuContainer {
+    background-color: rgba(255, 153, 153, 0.2);
+    padding: 2rem 5rem 0rem 5rem;
+    border-radius: 3rem;
+    width: 36rem;
+    margin-top: 8rem;
+    margin-left: 4rem;
     position: fixed;
+    display: flex;
+    flex-direction: column;
 }
