@@ -3,21 +3,21 @@
     position: fixed;
     top: 9rem;
     right: 1rem;
-    background-color: transparent;
+    background-color: #fff;
     border: none;
-    border-radius: 50%;
+    border-radius: 2rem;
     outline: none;
     width: 6rem;
     height: 6rem;
 
     img {
-        width: inherit;
-        height: inherit;
+        width: 6.5rem;
+        height: 6.5rem;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .mobile-button {
-        display: block;
+        display: flex;
     }
 }

@@ -18,9 +18,13 @@ const Dashboard = ({
   // eslint-disable-next-line no-unused-vars
   const [currentPage, setCurrentPage] = useState(1);
   const [mobileModal, setMobileModal] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     getPosts(currentPage);
+    window.addEventListener('resize', () => {
+      setWindowWidth(window.innerWidth);
+    });
   }, []);
 
   useEffect(() => {
@@ -39,7 +43,8 @@ const Dashboard = ({
       && (
       <div className="dashboard-container">
         <div className="menu-container">
-          {mobileModal && <MenuContainer currentUser={currentUser} />}
+          {windowWidth > 601 ? <MenuContainer currentUser={currentUser} />
+            : mobileModal && <MenuContainer currentUser={currentUser} />}
         </div>
         <div className="feed-container">
           <CreatePost
