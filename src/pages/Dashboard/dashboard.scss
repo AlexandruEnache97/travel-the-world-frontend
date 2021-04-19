@@ -30,18 +30,18 @@
 
     .news-container {
         position: fixed;
-        right: 0;
-        height: 80vh;
         display: flex;
         align-items: center;
         justify-content: center;
+        right: 0;
+        height: 80vh;
 
         .news-content {
             background-color: rgba(255, 153, 153, 0.2);
             width: 36rem;
-            height: 62rem;
-            margin-top: 10rem;
+            height: 59rem;
             margin-right: 4rem;
+            margin-top: 8rem;
             border-radius: 3rem;
         }
     }
