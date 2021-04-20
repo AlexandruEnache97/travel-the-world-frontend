@@ -5,6 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 
 jest.mock('../components/CreatePost.jsx', () => () => <p>Create Post</p>);
+jest.mock('../components/menu/MenuButton.jsx', () => () => <p>Menu Button</p>);
 
 describe('Dashboard component tests', () => {
   it('Should render component correctly', () => {
