@@ -136,3 +136,13 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .comment-container {
+        .comment-bottom {
+            button {
+                margin: 0rem 0.7rem;
+            }
+        }
+    }
+}

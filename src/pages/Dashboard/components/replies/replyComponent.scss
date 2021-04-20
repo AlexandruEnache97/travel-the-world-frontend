@@ -122,3 +122,15 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .reply {
+        .reply-container {
+            .reply-bottom {
+                button {
+                    margin: 0rem 0.5rem;
+                }
+            }
+        }
+    }
+}
