@@ -205,7 +205,6 @@ const CreatePost = ({
             onChange={inputChange}
             required
           />
-
           <PostMapLocation
             countryCoordinates={postData.coordinates}
             getPostCoordinates={getPostCoordinates}

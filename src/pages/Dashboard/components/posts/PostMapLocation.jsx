@@ -5,10 +5,12 @@ import MapComponent from './MapComponent';
 
 const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
   const [mapModal, setMapModal] = useState(false);
+  const [markedOnMap, setMarkedOnMap] = useState(false);
 
   const getCoordinates = (coordinates) => {
     setMapModal(!mapModal);
     getPostCoordinates(coordinates);
+    setMarkedOnMap(true);
   };
 
   return (
@@ -16,6 +18,13 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
       <button type="button" onClick={() => { setMapModal(!mapModal); }}>
         Set location on map
       </button>
+      <img
+        src={markedOnMap
+          ? 'https://img.icons8.com/ios-glyphs/60/01c61c/checked-2.png'
+          : 'https://img.icons8.com/ios-glyphs/60/000000/checked-2.png'}
+        alt="markLocation"
+        className="marked-icon"
+      />
       {mapModal && (
         <>
           <div className="post-map-modal" onClickCapture={() => { setMapModal(!mapModal); }} />
