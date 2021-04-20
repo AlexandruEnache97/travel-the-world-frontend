@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './postMapLocation.scss';
+import MapComponent from './MapComponent';
 
-const PostMapLocation = () => {
+const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
   const [mapModal, setMapModal] = useState(false);
+
+  const getCoordinates = (coordinates) => {
+    setMapModal(!mapModal);
+    getPostCoordinates(coordinates);
+  };
+
   return (
     <div className="post-map-control">
       <button type="button" onClick={() => { setMapModal(!mapModal); }}>
@@ -15,19 +23,20 @@ const PostMapLocation = () => {
             <h1 className="post-map-title">
               Set the marker on the map
             </h1>
-            <div className="post-map-buttons">
-              <button type="button" onClick={() => { setMapModal(!mapModal); }}>
-                Done
-              </button>
-              <button type="button" onClick={() => { setMapModal(!mapModal); }}>
-                Cancel
-              </button>
-            </div>
+            <MapComponent
+              countryCoordinates={countryCoordinates}
+              getCoordinates={getCoordinates}
+            />
           </div>
         </>
       )}
     </div>
   );
+};
+
+PostMapLocation.propTypes = {
+  countryCoordinates: PropTypes.objectOf(PropTypes.number).isRequired,
+  getPostCoordinates: PropTypes.func.isRequired,
 };
 
 export default PostMapLocation;

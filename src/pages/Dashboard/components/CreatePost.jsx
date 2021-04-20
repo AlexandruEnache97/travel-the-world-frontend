@@ -23,8 +23,8 @@ const CreatePost = ({
     country: '',
     location: '',
     coordinates: {
-      lat: 0,
-      lng: 0,
+      lat: 33.93,
+      lng: 67.71,
     },
     category: '',
     postImage: '',
@@ -88,6 +88,16 @@ const CreatePost = ({
     });
   };
 
+  const getPostCoordinates = (coordinates) => {
+    setPostData({
+      ...postData,
+      coordinates: {
+        lat: coordinates.lat,
+        lng: coordinates.lng,
+      },
+    });
+  };
+
   const uploadHandler = async (e) => {
     e.preventDefault();
     if (fileUpload !== null) {
@@ -129,8 +139,8 @@ const CreatePost = ({
         country: '',
         location: '',
         coordinates: {
-          lat: 0,
-          lng: 0,
+          lat: 33.93,
+          lng: 67.71,
         },
         category: '',
       });
@@ -196,7 +206,10 @@ const CreatePost = ({
             required
           />
 
-          <PostMapLocation />
+          <PostMapLocation
+            countryCoordinates={postData.coordinates}
+            getPostCoordinates={getPostCoordinates}
+          />
         </div>
         <div className="create-upload">
           <label htmlFor="uploadImage">Upload image (not required)</label>

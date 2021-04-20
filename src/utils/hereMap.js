@@ -1,7 +1,7 @@
-export const addDraggableMarker = (map, behavior, setCoordinates) => {
+export const addDraggableMarker = (map, behavior, location, setCoordinates) => {
   const { H } = window;
   const icon = new H.map.Icon('https://img.icons8.com/android/48/000000/marker.png');
-  const marker = new H.map.Marker({ lat: 50, lng: 5 }, {
+  const marker = new H.map.Marker(location, {
     // mark the object as volatile for the smooth dragging
     volatility: true,
     icon,
