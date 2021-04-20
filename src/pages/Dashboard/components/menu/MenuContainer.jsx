@@ -30,13 +30,15 @@ const MenuContainer = ({ currentUser }) => {
     <>
       {(windowWidth > 601 || (windowWidth < 601 && mobileModal))
         && (
-          <div className="menuContainer">
-            <MenuButton image={currentUser.profileImage} text={currentUser.username} redirect="/profile" isProfile />
-            <MenuButton image={mapIcon} text="Map" redirect="/map" />
-            <MenuButton image={goalsIcon} text="Your goals" />
-            <MenuButton image={friendsIcon} text="Friends" />
-            <MenuButton image={groupIcon} text="Groups" />
-            <MenuButton image={newPostsIcon} text="New posts" />
+          <div className="menu-container">
+            <div className="menu">
+              <MenuButton image={currentUser.profileImage} text={currentUser.username} redirect="/profile" isProfile />
+              <MenuButton image={mapIcon} text="Map" redirect="/map" />
+              <MenuButton image={goalsIcon} text="Your goals" />
+              <MenuButton image={friendsIcon} text="Friends" />
+              <MenuButton image={groupIcon} text="Groups" />
+              <MenuButton image={newPostsIcon} text="New posts" />
+            </div>
           </div>
         )}
       <MobileButton getMobileMenu={getMobileMenu} />

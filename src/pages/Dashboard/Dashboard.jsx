@@ -29,9 +29,7 @@ const Dashboard = ({
       {currentUser.username !== '' && currentUser.username !== undefined
       && (
       <div className="dashboard-container">
-        <div className="menu-container">
-          <MenuContainer currentUser={currentUser} />
-        </div>
+        <MenuContainer currentUser={currentUser} />
         <div className="feed-container">
           <CreatePost
             createPost={createPost}

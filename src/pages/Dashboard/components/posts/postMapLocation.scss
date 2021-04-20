@@ -64,3 +64,12 @@
         z-index: 14;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .post-map-control {
+        .post-map-container {
+            left: 5%;
+            width: 90%;
+        }
+    }
+}
