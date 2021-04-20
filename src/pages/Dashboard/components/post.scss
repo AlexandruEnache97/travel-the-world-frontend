@@ -147,3 +147,29 @@
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 100;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .post-container {
+        width: 33rem;
+
+        .post-top, .post-content {
+            width: 33rem;
+        }
+
+        .post-content {
+            .post-image {
+                width: 31rem;
+            }
+        }
+
+        .post-bottom {
+            .post-functions {
+                .post-bottom-buttons {
+                    width: 33rem;
+                    padding: 0rem 3.5rem;
+                }
+            }
+        }
+    }
+}

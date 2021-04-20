@@ -109,3 +109,19 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .create-container {
+        width: 31rem;
+        
+        .create-content {
+            input, textarea {
+                width: 26rem;
+            }
+        }
+
+        .country-select {
+            width: 26rem;
+        }
+    }
+}

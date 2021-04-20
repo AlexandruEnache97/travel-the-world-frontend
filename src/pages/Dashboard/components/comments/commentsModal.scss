@@ -158,3 +158,18 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .comments-modal-container {
+        .comments-create {
+            textarea {
+                width: 27rem;
+            }
+        }
+
+        aside.emoji-picker-react {
+            top: 5em;
+            right: 3.1rem;
+        }
+    }
+}

@@ -49,4 +49,19 @@
         }
     
     }
+
+    aside.emoji-picker-react {
+        position: absolute;
+        top: 5.6rem;
+        right: 2.5rem;
+        z-index: 20;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .replies-container {
+        aside.emoji-picker-react {
+            right: -1.7rem;
+        }
+    }
 }
