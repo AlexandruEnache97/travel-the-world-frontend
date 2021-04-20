@@ -1,0 +1,66 @@
+.post-map-control {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 2rem;
+
+    button {
+        background-color: #fff;
+        border: none;
+        border-radius: 2rem;
+        outline: none;
+        font-size: 1.3rem;
+        padding: 0.8rem 1rem;
+        width: 17rem;
+    }
+
+    .post-map-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        position: fixed;
+        top: 12%;
+        left: 20%;
+        width: 60%;
+        height: 76%;
+        background-color: #fff;
+        z-index: 15;
+        border-radius: 3rem;
+
+        .post-map-title {
+            text-align: center;
+            padding: 2rem 0rem;
+            color: #fff;
+            width: 100%;
+            background-color: #ff304f;
+            border-radius: 3rem 3rem 0rem 0rem;
+        }
+
+        .post-map-buttons {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0rem;
+            width: 100%;
+            background-color: #ff304f;
+            border-radius: 0rem 0rem 3rem 3rem;
+
+            button {
+                margin: 0rem 1.8rem;
+            }
+        }
+    }
+
+    .post-map-modal {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.25);
+        z-index: 14;
+    }
+}

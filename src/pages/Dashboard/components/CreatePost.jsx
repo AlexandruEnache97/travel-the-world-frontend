@@ -7,6 +7,7 @@ import { storage } from '../../../utils/firebase';
 import './createPost.scss';
 import CountrySelect from '../../LandingPage/components/CountrySelect';
 import countryCoordinates from '../../../utils/countryCoordinates';
+import PostMapLocation from './posts/PostMapLocation';
 
 const CreatePost = ({
   username, profileImage, createPost,
@@ -194,6 +195,8 @@ const CreatePost = ({
             onChange={inputChange}
             required
           />
+
+          <PostMapLocation />
         </div>
         <div className="create-upload">
           <label htmlFor="uploadImage">Upload image (not required)</label>

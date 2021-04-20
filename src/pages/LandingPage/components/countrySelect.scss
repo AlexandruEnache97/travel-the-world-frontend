@@ -7,4 +7,20 @@
     outline: none;
     margin-bottom: 2rem;
     height: 2.4rem;
+
+    select>option:hover
+    {
+        color: #1B517E;
+        cursor: pointer;
+    }
+
+    &::-webkit-scrollbar{
+        width: 1.2rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #ff304f ;
+        border-radius: 6px;
+        border: 3px solid #fff;
+    }
 }
