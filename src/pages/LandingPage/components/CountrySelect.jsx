@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './countrySelect.scss';
 
 const CountrySelect = ({ getCountry }) => {
   const onChange = (e) => {

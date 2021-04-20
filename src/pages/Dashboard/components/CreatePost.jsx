@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { storage } from '../../../utils/firebase';
 import './createPost.scss';
+import CountrySelect from '../../LandingPage/components/CountrySelect';
+import countryCoordinates from '../../../utils/countryCoordinates';
 
 const CreatePost = ({
   username, profileImage, createPost,
@@ -17,7 +19,12 @@ const CreatePost = ({
     profileImage: '',
     title: '',
     text: '',
+    country: '',
     location: '',
+    coordinates: {
+      lat: 0,
+      lng: 0,
+    },
     category: '',
     postImage: '',
     createdDate: '',
@@ -41,9 +48,15 @@ const CreatePost = ({
         ...postData,
         title: '',
         text: '',
+        country: '',
         location: '',
+        coordinates: {
+          lat: 0,
+          lng: 0,
+        },
         category: '',
         postImage: '',
+        createdDate: '',
       });
       setFileUpload(null);
       setKeyFile(new Date());
@@ -60,6 +73,17 @@ const CreatePost = ({
     setPostData({
       ...postData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const getCountry = (country) => {
+    setPostData({
+      ...postData,
+      country,
+      coordinates: {
+        lat: countryCoordinates[country][0],
+        lng: countryCoordinates[country][1],
+      },
     });
   };
 
@@ -101,17 +125,16 @@ const CreatePost = ({
         ...postData,
         title: '',
         text: '',
+        country: '',
         location: '',
+        coordinates: {
+          lat: 0,
+          lng: 0,
+        },
         category: '',
       });
       alert('Post created without image');
     }
-  };
-
-  CreatePost.propTypes = {
-    username: PropTypes.string.isRequired,
-    createPost: PropTypes.func.isRequired,
-    profileImage: PropTypes.string.isRequired,
   };
 
   return (
@@ -125,7 +148,7 @@ const CreatePost = ({
       </div>
       <form onSubmit={uploadHandler}>
         <div className="create-content">
-          <label htmlFor="titlePost">Post title</label>
+          <label htmlFor="titlePost">Title</label>
           <input
             name="title"
             type="text"
@@ -136,7 +159,7 @@ const CreatePost = ({
             required
           />
 
-          <label htmlFor="textPost">Post description</label>
+          <label htmlFor="textPost">Description</label>
           <textarea
             name="text"
             id="textPost"
@@ -147,7 +170,7 @@ const CreatePost = ({
             required
           />
 
-          <label htmlFor="categoryPost">Post category</label>
+          <label htmlFor="categoryPost">Category</label>
           <input
             name="category"
             type="text"
@@ -158,7 +181,10 @@ const CreatePost = ({
             required
           />
 
-          <label htmlFor="locationPost">Post location</label>
+          <label htmlFor="countryPost">Country</label>
+          <CountrySelect getCountry={getCountry} />
+
+          <label htmlFor="locationPost">Location</label>
           <input
             name="location"
             type="text"
@@ -188,6 +214,12 @@ const CreatePost = ({
       </form>
     </div>
   );
+};
+
+CreatePost.propTypes = {
+  username: PropTypes.string.isRequired,
+  createPost: PropTypes.func.isRequired,
+  profileImage: PropTypes.string.isRequired,
 };
 
 export default CreatePost;
