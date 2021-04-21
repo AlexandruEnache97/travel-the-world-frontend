@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import calculateTimePassed from '../../../utils/postUtils';
+import calculateTimePassed from '../../../../utils/postUtils';
 import './post.scss';
-import { getUserLikes, likePost, unlikePost } from '../../../service/postsApi';
-import LikesModal from './likes/LikesModal';
-import CommentsModal from './comments/ConnectedCommentsModal';
+import { getUserLikes, likePost, unlikePost } from '../../../../service/postsApi';
+import LikesModal from '../likes/LikesModal';
+import CommentsModal from '../comments/ConnectedCommentsModal';
 
 const Post = ({
   postId, username, title, text, image,

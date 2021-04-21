@@ -3,11 +3,11 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { storage } from '../../../utils/firebase';
+import { storage } from '../../../../utils/firebase';
 import './createPost.scss';
-import CountrySelect from '../../LandingPage/components/CountrySelect';
-import countryCoordinates from '../../../utils/countryCoordinates';
-import PostMapLocation from './posts/PostMapLocation';
+import CountrySelect from '../../../LandingPage/components/CountrySelect';
+import countryCoordinates from '../../../../utils/countryCoordinates';
+import PostMapLocation from './PostMapLocation';
 
 const CreatePost = ({
   username, profileImage, createPost,

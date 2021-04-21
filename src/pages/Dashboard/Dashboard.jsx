@@ -3,9 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import './dashboard.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
-import CreatePost from './components/CreatePost';
+import CreatePost from './components/posts/CreatePost';
 import Navbar from './components/Navbar';
-import ListPosts from './components/ListPosts';
+import ListPosts from './components/posts/ListPosts';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import MenuContainer from './components/menu/MenuContainer';
 

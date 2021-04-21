@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from '../Dashboard/components/Navbar';
 import './profilePage.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
-import ListPosts from '../Dashboard/components/ListPosts';
+import ListPosts from '../Dashboard/components/posts/ListPosts';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 
 const ProfilePage = ({ /* auth, */ signOut }) => {

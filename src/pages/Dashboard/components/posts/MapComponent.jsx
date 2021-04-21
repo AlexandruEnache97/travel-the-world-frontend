@@ -28,6 +28,7 @@ const MapComponent = ({ countryCoordinates, getCoordinates }) => {
     H.ui.UI.createDefault(hMap, defaultLayers);
 
     addDraggableMarker(hMap, behavior, coordinates, setCoordinates);
+
     return () => {
       hMap.dispose();
     };
