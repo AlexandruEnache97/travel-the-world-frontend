@@ -58,15 +58,23 @@
             .location-text, .category-text{
                 display: flex;
                 align-items: center;
-                margin-left: 2rem;
                 
                 img {
                     padding-left: 1.5rem;
                     width: 3.5rem;
                 }
+
+                p {
+                    padding: 1rem 0rem;
+                }
+            }
+
+            .category-text {
+                margin-right: 2rem;
             }
 
             button {
+                margin-left: 2rem;
                 font-size: 1.2rem;
                 border: none;
                 outline: none;

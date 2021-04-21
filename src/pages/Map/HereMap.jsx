@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, {
-  useLayoutEffect, useRef, useState, useEffect,
+  useLayoutEffect, useRef,
 } from 'react';
 import './mapComponent.scss';
-import { addDraggableMarker, createMarker } from '../../utils/hereMap';
+import { createMarker } from '../../utils/hereMap';
 import RECOMMENDED_POSTS from '../../utils/recommendedPosts';
 
 const HereMap = ({ userLocation, country }) => {
   const mapRef = useRef(null);
-  const [coordinates, setCoordinates] = useState({ lat: 0, lng: 0 });
 
   useLayoutEffect(() => {
     // `mapRef.current` will be `undefined` when this hook first runs; edge case that
@@ -34,13 +33,15 @@ const HereMap = ({ userLocation, country }) => {
       'https://img.icons8.com/android/48/FFFFFF/marker.png',
     );
 
-    createMarker(
-      hMap,
-      userLocation,
-      'https://img.icons8.com/android/48/DC143C/marker.png',
-      `<div><p><b>User Location</b></p><p>${country}</p></div>`,
-      ui,
-    );
+    if (userLocation !== undefined) {
+      createMarker(
+        hMap,
+        userLocation,
+        'https://img.icons8.com/android/48/DC143C/marker.png',
+        `<div><p><b>User Location</b></p><p>${country}</p></div>`,
+        ui,
+      );
+    }
 
     RECOMMENDED_POSTS.map((post) => {
       createMarker(
@@ -52,8 +53,6 @@ const HereMap = ({ userLocation, country }) => {
       );
     });
 
-    addDraggableMarker(hMap, behavior, setCoordinates);
-
     // This will act as a cleanup to run once this hook runs again.
     // This includes when the component un-mounts
     return () => {
@@ -64,22 +63,6 @@ const HereMap = ({ userLocation, country }) => {
   return (
     <div className="map">
       <div ref={mapRef} className="map-container" />
-      <div className="map-control">
-        {coordinates !== null && (
-        <>
-          <p>
-            Lat:
-            {' '}
-            {coordinates.lat}
-          </p>
-          <p>
-            Lng:
-            {' '}
-            {coordinates.lng}
-          </p>
-        </>
-        )}
-      </div>
     </div>
   );
 };
