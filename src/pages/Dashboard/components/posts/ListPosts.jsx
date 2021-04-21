@@ -23,6 +23,7 @@ const ListPosts = ({ posts, likedPosts }) => (
           title={post.title}
           text={post.text}
           location={post.location}
+          country={post.country}
           category={post.category}
           image={post.postImage}
           likes={post.likes}

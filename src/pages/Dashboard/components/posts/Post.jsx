@@ -8,7 +8,7 @@ import CommentsModal from '../comments/ConnectedCommentsModal';
 
 const Post = ({
   postId, username, title, text, image,
-  category, location, likes, shares, createdDate, liked,
+  category, country, location, likes, shares, createdDate, liked,
 }) => {
   const [likePostData, setLikePostData] = useState({
     nrOfLikes: 0,
@@ -63,10 +63,15 @@ const Post = ({
       <div className="post-content">
         <h1>{title}</h1>
         <div className="post-location">
-          <div className="location-text">
+          <button type="button" className="location-text">
             <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" alt="locationIcon" />
-            <p>{location}</p>
-          </div>
+            <p>
+              {location}
+              ,
+              {' '}
+              {country}
+            </p>
+          </button>
           <div className="category-text">
             <img src="https://img.icons8.com/ios-glyphs/30/000000/category.png" alt="categoryIcon" />
             <p>{category}</p>
@@ -134,6 +139,7 @@ Post.propTypes = {
   text: PropTypes.string.isRequired,
   image: PropTypes.string,
   location: PropTypes.string.isRequired,
+  country: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   shares: PropTypes.number.isRequired,
