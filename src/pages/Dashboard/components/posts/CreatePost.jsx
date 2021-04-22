@@ -7,7 +7,7 @@ import { storage } from '../../../../utils/firebase';
 import './createPost.scss';
 import CountrySelect from '../../../LandingPage/components/CountrySelect';
 import countryCoordinates from '../../../../utils/countryCoordinates';
-import PostMapLocation from './PostMapLocation';
+import PostMapLocation from './setPost/PostMapLocation';
 
 const CreatePost = ({
   username, profileImage, createPost,

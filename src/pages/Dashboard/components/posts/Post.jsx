@@ -5,10 +5,12 @@ import './post.scss';
 import { getUserLikes, likePost, unlikePost } from '../../../../service/postsApi';
 import LikesModal from '../likes/LikesModal';
 import CommentsModal from '../comments/ConnectedCommentsModal';
+import MapModal from './MapModal';
 
 const Post = ({
   postId, username, title, text, image,
-  category, country, location, likes, shares, createdDate, liked,
+  category, country, location, likes, shares,
+  createdDate, liked, coordinates,
 }) => {
   const [likePostData, setLikePostData] = useState({
     nrOfLikes: 0,
@@ -16,6 +18,7 @@ const Post = ({
   });
   const [likesModal, setLikesModal] = useState(false);
   const [commentsModal, setCommentsModal] = useState(false);
+  const [mapModal, setMapModal] = useState(false);
 
   useEffect(() => {
     setLikePostData({
@@ -63,7 +66,7 @@ const Post = ({
       <div className="post-content">
         <h1>{title}</h1>
         <div className="post-location">
-          <button type="button" className="location-text">
+          <button type="button" className="location-text" onClick={() => { setMapModal(true); }}>
             <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" alt="locationIcon" />
             <p>
               {location}
@@ -128,6 +131,15 @@ const Post = ({
           />
         </>
       )}
+      {mapModal && (
+        <MapModal
+          setMapModal={setMapModal}
+          postLocation={`${location} ${country}`}
+          postImage={image}
+          postText={text}
+          postCoordinates={coordinates}
+        />
+      )}
     </div>
   );
 };
@@ -139,6 +151,7 @@ Post.propTypes = {
   text: PropTypes.string.isRequired,
   image: PropTypes.string,
   location: PropTypes.string.isRequired,
+  coordinates: PropTypes.objectOf(PropTypes.number).isRequired,
   country: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,

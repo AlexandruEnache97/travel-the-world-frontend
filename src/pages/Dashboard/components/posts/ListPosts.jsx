@@ -25,6 +25,7 @@ const ListPosts = ({ posts, likedPosts }) => (
           location={post.location}
           country={post.country}
           category={post.category}
+          coordinates={post.coordinates}
           image={post.postImage}
           likes={post.likes}
           shares={post.shares}

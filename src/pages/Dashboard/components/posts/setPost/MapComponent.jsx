@@ -1,6 +1,6 @@
 import React, { useState, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-import { addDraggableMarker } from '../../../../utils/hereMap';
+import { addDraggableMarker } from '../../../../../utils/hereMap';
 
 const MapComponent = ({ countryCoordinates, getCoordinates }) => {
   const mapRef = useRef(null);
