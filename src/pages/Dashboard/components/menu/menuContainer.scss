@@ -26,9 +26,14 @@
         width: 100%;
 
         .menu {
-            margin-top: 6.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: calc(100vh - 8rem);
+            margin-top: 5.3rem;
             margin-left: 0rem;
             background-color: #FF2344;
+            border-radius: 0rem 0rem 3rem 3rem;
         }
     }
 
