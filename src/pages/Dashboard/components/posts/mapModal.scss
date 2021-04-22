@@ -67,7 +67,17 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .map-control {
-        display: none;
+    .post-map-container {
+        top: 16%;
+        left: 5%;
+        width: 90%;
+
+        .H_ib_body{
+            max-height: 22rem;
+            img {
+                margin-top: 1rem;
+                width: 16rem;
+            }
+        }
     }
 }
