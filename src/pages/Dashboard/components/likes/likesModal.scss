@@ -145,3 +145,12 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .likes-modal-container {
+        width: 35rem;
+        .modal-top, .modal-content, .modal-bottom {
+            width: 35rem;
+        }
+    }
+}
