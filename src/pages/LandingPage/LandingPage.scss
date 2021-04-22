@@ -105,8 +105,11 @@
 
 @media only screen and (max-width: 600px) {
     .content {
+        width: 35rem;
+
         .button {
             font-size: 1.5rem;
+            padding: 0.3rem 2rem;
         }
 
         &-text {
@@ -130,17 +133,17 @@
         }
 
         &-signIn {
-            left: 4rem;
+            left: 6rem;
         }
 
         &-signUp {
-            left: 19rem;
+            left: 17.5rem;
         }
     
         &-title {    
             top: 8rem;
-            left: 3rem;
-            font-size: 2rem;
+            left: 5rem;
+            font-size: 1.6rem;
         }
 
         &-background {

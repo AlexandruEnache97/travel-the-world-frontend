@@ -45,3 +45,33 @@
         font-weight: 700;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .country-select {
+        width: 22rem;
+    }
+
+    .register-container {
+        width: 35rem;
+
+        .form-container {    
+            top: -1.5rem;
+            left: 3rem;
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 4rem;
+        }
+
+        label {
+            margin-bottom: 1rem;
+        }
+
+        .form-link {
+            margin-top: 2rem;
+        }
+
+        button {
+            margin-top: 2rem;
+        }
+    }
+}

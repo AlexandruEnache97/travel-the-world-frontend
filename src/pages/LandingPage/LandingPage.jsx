@@ -7,7 +7,7 @@ import LandingContainer from './LandingContainer';
 import { getFromLocalStorage } from '../../utils/localStorage';
 import { setToken } from '../../utils/authUtils';
 
-const LandingPage = ({ verifyAuth, history }) => {
+const LandingPage = ({ verifyAuth, history, location }) => {
   useLayoutEffect(() => {
     const token = getFromLocalStorage('token');
     const accountId = getFromLocalStorage('accountId');
@@ -18,12 +18,11 @@ const LandingPage = ({ verifyAuth, history }) => {
       history.push('/dashboard');
     }
   }, []);
-
   return (
     <div className="landing-container">
       <Header />
       <div className="landing-content">
-        <LandingContainer />
+        <LandingContainer locationPath={location.pathname} />
       </div>
       <img className="landing-background" src={backgroundGradient} alt="backgroundGradient" />
     </div>

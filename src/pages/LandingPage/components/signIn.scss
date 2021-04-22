@@ -42,3 +42,14 @@
         }
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .sign-in-container {
+        width: 35rem;
+
+        .form-container {    
+            top: 8.5rem;
+            left: 3.5rem;
+        }
+    }
+}
