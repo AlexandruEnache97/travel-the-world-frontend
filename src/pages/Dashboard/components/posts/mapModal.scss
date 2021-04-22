@@ -45,7 +45,7 @@
         background-color: #ff304f;
         border-radius: 0rem 0rem 3rem 3rem;
     }
-    
+
     .H_ib_body{
         max-height: 25rem;
         overflow-y: scroll;
@@ -64,4 +64,10 @@
             border: 3px solid #fff;
         }
       }
+}
+
+@media only screen and (max-width: 600px) {
+    .map-control {
+        display: none;
+    }
 }
