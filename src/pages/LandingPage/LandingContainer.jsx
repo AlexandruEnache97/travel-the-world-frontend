@@ -15,7 +15,6 @@ const LandingContainer = ({ locationPath }) => {
   };
 
   useEffect(() => {
-    console.log(locationPath);
     resizeWindow();
     window.addEventListener('resize', resizeWindow);
     return () => {
