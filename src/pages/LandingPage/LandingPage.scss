@@ -102,3 +102,56 @@
         z-index: 100;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .content {
+        .button {
+            font-size: 1.5rem;
+        }
+
+        &-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            width: 14rem;
+            top: 15.8rem;
+            right: 19rem;
+        }
+
+        &-description {
+            color: white;    
+            top: 30rem;
+            left: 3rem;
+        }
+
+        &-logo {
+            top: 15.3rem;
+            right: 3.5rem;
+            width: 4rem;
+        }
+
+        &-signIn {
+            left: 4rem;
+        }
+
+        &-signUp {
+            left: 19rem;
+        }
+    
+        &-title {    
+            top: 8rem;
+            left: 3rem;
+            font-size: 2rem;
+        }
+
+        &-background {
+            height: 31rem;
+            width: 35rem;
+        }
+    }
+
+    .landing-container {
+        .landing-content {
+            top: 18%;
+        }
+    }
+}
