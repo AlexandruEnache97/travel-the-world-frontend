@@ -9,7 +9,7 @@ const MobileButton = ({ getMobileMenu }) => {
     if (!opened) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'initial';
     }
     getMobileMenu(!opened);
     setOpened(!opened);

@@ -24,7 +24,10 @@ const MenuContainer = ({ currentUser }) => {
   useEffect(() => {
     resizeWindow();
     window.addEventListener('resize', resizeWindow);
-    return () => window.removeEventListener('resize', resizeWindow);
+    return () => {
+      window.removeEventListener('resize', resizeWindow);
+      document.body.style.overflow = 'initial';
+    };
   }, []);
   return (
     <>
