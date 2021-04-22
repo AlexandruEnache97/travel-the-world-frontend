@@ -11,9 +11,12 @@ const MobileButton = ({ getMobileMenu }) => {
   };
 
   return (
-    <button type="button" className="mobile-button" onClick={handleChangeModal}>
-      {opened ? <img src="https://img.icons8.com/small/96/000000/circled-right.png" alt="close-button" />
-        : <img src="https://img.icons8.com/small/96/000000/circled-left.png" alt="open-button" />}
+    <button
+      type="button"
+      className={opened ? 'mobile-button menu-open' : 'mobile-button'}
+      onClick={handleChangeModal}
+    >
+      Menu
     </button>
   );
 };

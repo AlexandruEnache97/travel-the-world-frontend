@@ -22,9 +22,13 @@
 
 @media only screen and (max-width: 600px) {
     .menu-container {
+        margin-left: 0rem;
+        width: 100%;
+
         .menu {
+            margin-top: 6.5rem;
             margin-left: 0rem;
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: #FF2344;
         }
     }
 
