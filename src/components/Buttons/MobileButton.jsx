@@ -6,6 +6,11 @@ const MobileButton = ({ getMobileMenu }) => {
   const [opened, setOpened] = useState(false);
 
   const handleChangeModal = () => {
+    if (!opened) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
     getMobileMenu(!opened);
     setOpened(!opened);
   };
