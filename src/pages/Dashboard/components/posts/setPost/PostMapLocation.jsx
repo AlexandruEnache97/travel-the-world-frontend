@@ -30,7 +30,7 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
           <div className="post-map-modal" onClickCapture={() => { setMapModal(!mapModal); }} />
           <div className="post-map-container">
             <h1 className="post-map-title">
-              Set the marker on the map
+              Set location on map
             </h1>
             <button className="post-map-close" type="button" onClick={() => { setMapModal(false); }}>x</button>
             <MapComponent
