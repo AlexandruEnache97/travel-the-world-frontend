@@ -8,7 +8,7 @@ import CommentsModal from '../comments/ConnectedCommentsModal';
 import MapModal from './MapModal';
 
 const Post = ({
-  postId, username, title, text, image,
+  postId, username, profileImage, title, text, image,
   category, country, location, likes, shares,
   createdDate, liked, coordinates,
 }) => {
@@ -60,7 +60,7 @@ const Post = ({
   return (
     <div className="post-container">
       <div className="post-top">
-        <img className="post-user-icon" src="https://img.icons8.com/ios-filled/50/ffffff/cat-profile.png" alt="userIcon" />
+        <img className="post-user-icon" src={profileImage} alt="userIcon" />
         <p>{username}</p>
       </div>
       <div className="post-content">
@@ -147,6 +147,7 @@ const Post = ({
 Post.propTypes = {
   postId: PropTypes.string.isRequired,
   username: PropTypes.string.isRequired,
+  profileImage: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   image: PropTypes.string,

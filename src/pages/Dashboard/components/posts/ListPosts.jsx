@@ -20,6 +20,7 @@ const ListPosts = ({ posts, likedPosts }) => (
         <Post
           postId={post._id}
           username={post.username}
+          profileImage={post.profileImage}
           title={post.title}
           text={post.text}
           location={post.location}
