@@ -13,6 +13,7 @@ const MapModal = ({
       <h1 className="post-map-title">
         Post location on map
       </h1>
+      <button className="post-map-close" type="button" onClick={() => { setMapModal(false); }}>x</button>
       <MapPost
         postLocation={postLocation}
         postImage={postImage}
