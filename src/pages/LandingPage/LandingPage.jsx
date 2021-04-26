@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useLayoutEffect } from 'react';
+import PropTypes from 'prop-types';
 import Header from './components/Header';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import './LandingPage.scss';
@@ -27,6 +27,17 @@ const LandingPage = ({ verifyAuth, history, location }) => {
       <img className="landing-background" src={backgroundGradient} alt="backgroundGradient" />
     </div>
   );
+};
+
+LandingPage.propTypes = {
+  verifyAuth: PropTypes.func.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired,
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default LandingPage;

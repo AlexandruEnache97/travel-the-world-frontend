@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -44,10 +43,6 @@ const Register = ({ signUp, auth, history }) => {
         lng: countryCoordinates[country][1],
       },
     });
-  };
-
-  Register.propTypes = {
-    signUp: PropTypes.func.isRequired,
   };
 
   return (
@@ -101,6 +96,24 @@ const Register = ({ signUp, auth, history }) => {
       </form>
     </div>
   );
+};
+
+Register.propTypes = {
+  signUp: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    accountData: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      profileImage: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
+    }).isRequired,
+    accountId: PropTypes.string.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default Register;

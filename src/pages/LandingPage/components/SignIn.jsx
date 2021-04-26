@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useLayoutEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -24,10 +23,6 @@ const SignIn = ({ signIn, auth, history }) => {
   const onSubmit = (e) => {
     e.preventDefault();
     signIn(loginData);
-  };
-
-  SignIn.propTypes = {
-    signIn: PropTypes.func.isRequired,
   };
 
   return (
@@ -56,6 +51,24 @@ const SignIn = ({ signIn, auth, history }) => {
       </form>
     </div>
   );
+};
+
+SignIn.propTypes = {
+  signIn: PropTypes.func.isRequired,
+  auth: PropTypes.shape({
+    accountData: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      profileImage: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
+    }).isRequired,
+    accountId: PropTypes.string.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+  }).isRequired,
+  history: PropTypes.shape({
+    replace: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default SignIn;

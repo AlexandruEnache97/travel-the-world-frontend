@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 import mountains from '../../images/Flat-Mountains.svg';
 import logo from '../../images/logo_planet.png';
@@ -42,4 +42,9 @@ const LandingContainer = ({ locationPath }) => {
     </div>
   );
 };
+
+LandingContainer.propTypes = {
+  locationPath: PropTypes.string.isRequired,
+};
+
 export default LandingContainer;
