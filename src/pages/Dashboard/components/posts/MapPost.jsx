@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import { createMarker } from '../../../../utils/hereMap';
 
 const MapPost = ({
@@ -44,6 +44,13 @@ const MapPost = ({
       <div className="post-map-bottom" />
     </>
   );
+};
+
+MapPost.propTypes = {
+  postLocation: PropTypes.string.isRequired,
+  postImage: PropTypes.string.isRequired,
+  postText: PropTypes.string.isRequired,
+  postCoordinates: PropTypes.objectOf(PropTypes.number).isRequired,
 };
 
 export default MapPost;

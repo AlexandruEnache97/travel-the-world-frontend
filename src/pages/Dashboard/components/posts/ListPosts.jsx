@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Post from './Post';
 
 const ListPosts = ({ posts, likedPosts }) => (
@@ -38,5 +38,24 @@ const ListPosts = ({ posts, likedPosts }) => (
     })}
   </>
 );
+
+ListPosts.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    __v: PropTypes.number.isRequired,
+    username: PropTypes.string.isRequired,
+    profileImage: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    postImage: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    createdDate: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    shares: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+    coordinates: PropTypes.objectOf(PropTypes.number).isRequired,
+  })).isRequired,
+  likedPosts: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
 export default ListPosts;

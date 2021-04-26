@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import MenuButton from './MenuButton';
 import './menuContainer.scss';
 import mapIcon from '../../../../images/menuButtons/mapIcon.png';
@@ -47,6 +47,16 @@ const MenuContainer = ({ currentUser }) => {
       <MobileButton getMobileMenu={getMobileMenu} />
     </>
   );
+};
+
+MenuContainer.propTypes = {
+  currentUser: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    profileImage: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
+  }).isRequired,
 };
 
 export default MenuContainer;

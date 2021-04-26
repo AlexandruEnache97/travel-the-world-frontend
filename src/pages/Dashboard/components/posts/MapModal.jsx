@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import './mapModal.scss';
 import MapPost from './MapPost';
 
@@ -23,5 +23,13 @@ const MapModal = ({
     </div>
   </>
 );
+
+MapModal.propTypes = {
+  setMapModal: PropTypes.func.isRequired,
+  postLocation: PropTypes.string.isRequired,
+  postImage: PropTypes.string.isRequired,
+  postText: PropTypes.string.isRequired,
+  postCoordinates: PropTypes.objectOf(PropTypes.number).isRequired,
+};
 
 export default MapModal;
