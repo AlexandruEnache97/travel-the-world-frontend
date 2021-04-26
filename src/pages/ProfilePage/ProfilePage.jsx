@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Navbar from '../Dashboard/components/Navbar';
 import './profilePage.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
@@ -30,6 +30,10 @@ const ProfilePage = ({ /* auth, */ signOut }) => {
       <img className="profile-background" src={backgroundGradient} alt="profileGradient" />
     </div>
   );
+};
+
+ProfilePage.propTypes = {
+  signOut: PropTypes.func.isRequired,
 };
 
 export default ProfilePage;

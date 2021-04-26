@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, {
-  useLayoutEffect, useRef,
-} from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 import './mapComponent.scss';
 import { createMarker } from '../../utils/hereMap';
 import RECOMMENDED_POSTS from '../../utils/recommendedPosts';
@@ -65,6 +63,11 @@ const HereMap = ({ userLocation, country }) => {
       <div ref={mapRef} className="map-container" />
     </div>
   );
+};
+
+HereMap.propTypes = {
+  userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
+  country: PropTypes.string.isRequired,
 };
 
 export default HereMap;

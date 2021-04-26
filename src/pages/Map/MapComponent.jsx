@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import HereMap from './HereMap';
 import Navbar from '../Dashboard/components/Navbar';
 
@@ -15,5 +15,20 @@ const MapComponent = ({ auth, signOut }) => (
      )}
   </div>
 );
+
+MapComponent.propTypes = {
+  auth: PropTypes.shape({
+    accountData: PropTypes.shape({
+      username: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      profileImage: PropTypes.string.isRequired,
+      country: PropTypes.string.isRequired,
+      userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
+    }).isRequired,
+    accountId: PropTypes.string.isRequired,
+    isAuthenticated: PropTypes.bool.isRequired,
+  }).isRequired,
+  signOut: PropTypes.func.isRequired,
+};
 
 export default MapComponent;
