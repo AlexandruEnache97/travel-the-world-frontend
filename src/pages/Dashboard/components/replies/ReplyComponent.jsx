@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import calculateTimePassed from '../../../../utils/postUtils';
 import {
   likeReply, unlikeReply, getReplyLikes, removeReply,
@@ -123,6 +123,21 @@ const ReplyComponent = ({
       </div>
     </div>
   );
+};
+
+ReplyComponent.propTypes = {
+  replyData: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    createdDate: PropTypes.string.isRequired,
+    nrOfLikes: PropTypes.number.isRequired,
+    commentId: PropTypes.string.isRequired,
+    userData: PropTypes.objectOf(PropTypes.string).isRequired,
+  }).isRequired,
+  liked: PropTypes.bool.isRequired,
+  access: PropTypes.bool.isRequired,
+  updateReplies: PropTypes.func.isRequired,
+  postOwner: PropTypes.bool.isRequired,
 };
 
 export default ReplyComponent;

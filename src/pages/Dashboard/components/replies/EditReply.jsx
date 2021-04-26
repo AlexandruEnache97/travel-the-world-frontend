@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { editReply } from '../../../../service/repliesApi';
 
-const EditComment = ({
+const EditReply = ({
   text, replyId, setEditMode, getEditedText, setLoadingAction,
 }) => {
   const [editData, setEditData] = useState({
@@ -44,4 +45,12 @@ const EditComment = ({
   );
 };
 
-export default EditComment;
+EditReply.propTypes = {
+  text: PropTypes.string.isRequired,
+  replyId: PropTypes.string.isRequired,
+  setEditMode: PropTypes.func.isRequired,
+  getEditedText: PropTypes.func.isRequired,
+  setLoadingAction: PropTypes.func.isRequired,
+};
+
+export default EditReply;

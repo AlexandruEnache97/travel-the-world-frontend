@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Spinner from '../../../../components/Spinner/Spinner';
 import ReplyComponent from './ReplyComponent';
 
 const ReplyList = ({
-  replyId, replies, totalResults, getRepliesFromBackend, currentPage,
+  commentId, replies, totalResults, getRepliesFromBackend, currentPage,
   likedReplies, currentUser, postUser, updateReplies,
 }) => {
   const [loadingAction, setLoadingAction] = useState(false);
@@ -13,7 +13,7 @@ const ReplyList = ({
     e.preventDefault();
     setLoadingAction(true);
 
-    const div = document.getElementById(`reply-id-${replyId}`);
+    const div = document.getElementById(`reply-id-${commentId}`);
     const value = div.scrollHeight - 430;
 
     await getRepliesFromBackend(currentPage + 1, true);
@@ -22,7 +22,7 @@ const ReplyList = ({
   };
 
   return (
-    <div className="reply-list-container" id={`reply-id-${replyId}`}>
+    <div className="reply-list-container" id={`reply-id-${commentId}`}>
       {totalResults > 0 ? replies.map((reply) => {
         let liked = false;
         likedReplies.map((item) => {
@@ -70,6 +70,25 @@ const ReplyList = ({
       </div>
     </div>
   );
+};
+
+ReplyList.propTypes = {
+  commentId: PropTypes.string.isRequired,
+  replies: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    createdDate: PropTypes.string.isRequired,
+    nrOfLikes: PropTypes.number.isRequired,
+    commentId: PropTypes.string.isRequired,
+    userData: PropTypes.objectOf(PropTypes.string).isRequired,
+  })).isRequired,
+  totalResults: PropTypes.number.isRequired,
+  getRepliesFromBackend: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  likedReplies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentUser: PropTypes.string.isRequired,
+  postUser: PropTypes.string.isRequired,
+  updateReplies: PropTypes.func.isRequired,
 };
 
 export default ReplyList;
