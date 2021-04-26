@@ -8,7 +8,7 @@ describe('LandingPage tests', () => {
   it('Should render component correctly', () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <LandingPage location={{ pathname: '/' }} />
       </MemoryRouter>,
     );
 

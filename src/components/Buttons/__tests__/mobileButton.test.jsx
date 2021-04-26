@@ -11,7 +11,7 @@ describe('Mobile button component tests', () => {
     render(<MobileButton getMobileMenu={getMobileMenu} />);
 
     const button = screen.getByRole('button', {
-      name: 'open-button',
+      name: 'Menu',
     });
     expect(button).toBeInTheDocument();
   });
@@ -21,7 +21,7 @@ describe('Mobile button component tests', () => {
     render(<MobileButton getMobileMenu={getMobileMenu} />);
 
     const button = screen.getByRole('button', {
-      name: 'open-button',
+      name: 'Menu',
     });
     fireEvent.click(button);
   });

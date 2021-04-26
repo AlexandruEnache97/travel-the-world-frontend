@@ -20,8 +20,8 @@ const initialState = {
     email: '',
     country: '',
     userLocation: {
-      lat: '',
-      lng: '',
+      lat: 0,
+      lng: 0,
     },
   },
 };
