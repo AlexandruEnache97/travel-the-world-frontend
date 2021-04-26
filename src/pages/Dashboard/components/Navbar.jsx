@@ -10,10 +10,6 @@ const Navbar = ({ signOut }) => {
     signOut();
   };
 
-  Navbar.propTypes = {
-    signOut: PropTypes.func.isRequired,
-  };
-
   return (
     <div className="navbar-container">
       <div className="navbar-logo">
@@ -31,6 +27,10 @@ const Navbar = ({ signOut }) => {
       </div>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  signOut: PropTypes.func.isRequired,
 };
 
 export default Navbar;

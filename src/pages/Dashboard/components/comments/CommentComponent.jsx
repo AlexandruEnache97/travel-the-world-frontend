@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './commentComponent.scss';
@@ -148,6 +147,14 @@ const CommentComponent = ({
 };
 
 CommentComponent.propTypes = {
+  commentData: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    userData: PropTypes.objectOf(PropTypes.string).isRequired,
+    text: PropTypes.string.isRequired,
+    postId: PropTypes.string.isRequired,
+    createdDate: PropTypes.string.isRequired,
+    nrOfLikes: PropTypes.number,
+  }).isRequired,
   updateComments: PropTypes.func.isRequired,
   liked: PropTypes.bool.isRequired,
   postId: PropTypes.string.isRequired,

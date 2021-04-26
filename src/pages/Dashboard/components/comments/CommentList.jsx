@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import CommentComponent from './CommentComponent';
 import Spinner from '../../../../components/Spinner/Spinner';
 
@@ -70,6 +70,27 @@ const CommentList = ({
       </div>
     </div>
   );
+};
+
+CommentList.propTypes = {
+  comments: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      userData: PropTypes.objectOf(PropTypes.string).isRequired,
+      text: PropTypes.string.isRequired,
+      postId: PropTypes.string.isRequired,
+      createdDate: PropTypes.string.isRequired,
+      nrOfLikes: PropTypes.number,
+    }).isRequired,
+  ).isRequired,
+  currentUser: PropTypes.string.isRequired,
+  postUser: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired,
+  totalResults: PropTypes.number.isRequired,
+  getCommentsFromBackend: PropTypes.func.isRequired,
+  updateComments: PropTypes.func.isRequired,
+  currentPage: PropTypes.number.isRequired,
+  likedComments: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default CommentList;
