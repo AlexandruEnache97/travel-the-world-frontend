@@ -8,6 +8,7 @@ import CreatePost from '../Dashboard/components/posts/CreatePost';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 import MenuContainer from '../Dashboard/components/menu/MenuContainer';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
+import ScrollButton from '../../components/Buttons/ScrollButton';
 
 const ProfilePage = ({ auth, createPost, signOut }) => {
   const { accountData } = auth;
@@ -30,23 +31,34 @@ const ProfilePage = ({ auth, createPost, signOut }) => {
   }, [auth]);
 
   return (
-    <div className="profile-page">
+    <>
       <Navbar signOut={signOut} />
-      <MenuContainer currentUser={currentUser} />
-      <div className="profile-container">
-        <CreatePost
-          createPost={createPost}
-          username={currentUser.username}
-          profileImage={currentUser.profileImage}
-        />
-        <ListPosts
-          posts={userPosts}
-          likedPosts={likedUserPosts}
-        />
-      </div>
+      {currentUser.username !== '' && currentUser.username !== undefined
+        && (
+          <div className="profile-page">
+            <MenuContainer currentUser={currentUser} />
+            <div className="profile-container">
+              <h1 className="title" id="profileRef">Profile Page</h1>
+              <CreatePost
+                createPost={createPost}
+                username={currentUser.username}
+                profileImage={currentUser.profileImage}
+              />
+              <ListPosts
+                posts={userPosts}
+                likedPosts={likedUserPosts}
+              />
+            </div>
+            <div className="details-container">
+              {/* <MenuContainer /> */}
+              <div className="news-content" />
+            </div>
+          </div>
+        )}
       <img className="profile-background" src={backgroundGradient} alt="profileGradient" />
+      <ScrollButton refId="profileRef" />
       <LoadingOverlay loading={{ loadingState: [loading] }} />
-    </div>
+    </>
   );
 };
 

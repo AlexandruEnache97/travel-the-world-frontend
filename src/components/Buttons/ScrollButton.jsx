@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Link as LinkScroll } from 'react-scroll';
 import './scrollButton.scss';
 
-const ScrollButton = () => {
+const ScrollButton = ({ refId }) => {
   const [showScroll, setShowScroll] = useState(false);
 
   return (
     <div>
       <LinkScroll
-        to="topRef"
+        to={refId}
         spy
         smooth
         duration={800}
@@ -26,6 +27,10 @@ const ScrollButton = () => {
       </LinkScroll>
     </div>
   );
+};
+
+ScrollButton.propTypes = {
+  refId: PropTypes.string.isRequired,
 };
 
 export default ScrollButton;

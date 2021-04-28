@@ -26,28 +26,28 @@ const Dashboard = ({
     <>
       <Navbar signOut={signOut} />
       {currentUser.username !== '' && currentUser.username !== undefined
-      && (
-      <div className="dashboard-container">
-        <MenuContainer currentUser={currentUser} />
-        <div className="feed-container">
-          <CreatePost
-            createPost={createPost}
-            username={currentUser.username}
-            profileImage={currentUser.profileImage}
-          />
-          <ListPosts
-            posts={posts.currentPosts}
-            likedPosts={posts.likedPosts}
-          />
-        </div>
-        <div className="news-container">
-          {/* <MenuContainer /> */}
-          <div className="news-content" />
-        </div>
-      </div>
-      )}
+        && (
+          <div className="dashboard-container">
+            <MenuContainer currentUser={currentUser} />
+            <div className="feed-container">
+              <CreatePost
+                createPost={createPost}
+                username={currentUser.username}
+                profileImage={currentUser.profileImage}
+              />
+              <ListPosts
+                posts={posts.currentPosts}
+                likedPosts={posts.likedPosts}
+              />
+            </div>
+            <div className="news-container">
+              {/* <MenuContainer /> */}
+              <div className="news-content" />
+            </div>
+          </div>
+        )}
       <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />
-      <ScrollButton />
+      <ScrollButton refId="topRef" />
     </>
   );
 };

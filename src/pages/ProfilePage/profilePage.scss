@@ -1,10 +1,22 @@
 .profile-page {
+    display: flex;
+    overflow: hidden;
+    margin-top: 7rem;
+    height:fit-content;
+
     .profile-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 7rem;
+        width: 100%;
+
+        .title {
+            background-color: #fff;
+            margin-top: 3rem;
+            padding: 1.5rem 18rem;
+            border-radius: 2rem;
+        }
     }
 
     .profile-background {
@@ -17,5 +29,43 @@
         -webkit-user-select: none;
         user-select: none;
         pointer-events: none;
+    }
+
+    .details-container {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 0;
+        height: 80vh;
+
+        .news-content {
+            background-color: rgba(255, 153, 153, 0.2);
+            width: 36rem;
+            height: 59rem;
+            margin-right: 4rem;
+            margin-top: 8rem;
+            border-radius: 3rem;
+        }
+    }
+}
+
+.profile-background {
+    position: fixed;
+    top: 0;
+    z-index: -10;
+    width: 100%;
+    height: 100vh;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+@media only screen and (max-width: 600px) {
+    .details-container {
+        .news-container {
+            display: none;
+        }
     }
 }
