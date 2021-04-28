@@ -63,8 +63,14 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .details-container {
-        .news-container {
+    .profile-page {
+        .profile-container {
+            .title {
+                padding: 1.5rem 25%;
+            }
+        }
+
+        .details-container {
             display: none;
         }
     }
