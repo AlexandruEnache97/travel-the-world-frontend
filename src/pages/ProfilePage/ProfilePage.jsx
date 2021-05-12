@@ -9,6 +9,7 @@ import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 // import MenuContainer from '../Dashboard/components/menu/MenuContainer';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
+import ProfileInfo from './components/ProfileInfo';
 // import UserDetails from './UserDetails';
 
 const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
@@ -37,20 +38,9 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
       {currentUser.username !== '' && currentUser.username !== undefined
         && (
           <div className="profile-page">
-            <div className="profile-user">
-              <div className="user-image">
-                <img src={currentUser.profileImage} alt="" />
-              </div>
-              <p className="user-name">{currentUser.username}</p>
-              <p className="user-country">
-                Country:
-                {'  '}
-                {currentUser.country}
-              </p>
-              <button className="user-edit" type="button">Edit profile</button>
-            </div>
+            <ProfileInfo currentUser={currentUser} />
             <div className="profile-container">
-              <div className="profile-menu" id="profileRef">
+              <div className="profile-menu">
                 <button className="active-button" type="button">Your posts</button>
                 <button type="button">Posts saved</button>
                 <button type="button">Create new post</button>
