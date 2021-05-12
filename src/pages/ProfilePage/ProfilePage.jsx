@@ -4,14 +4,14 @@ import Navbar from '../Dashboard/components/Navbar';
 import './profilePage.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import ListPosts from '../Dashboard/components/posts/ListPosts';
-import CreatePost from '../Dashboard/components/posts/CreatePost';
+// import CreatePost from '../Dashboard/components/posts/CreatePost';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 // import MenuContainer from '../Dashboard/components/menu/MenuContainer';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 // import UserDetails from './UserDetails';
 
-const ProfilePage = ({ auth, createPost, signOut }) => {
+const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
@@ -42,24 +42,34 @@ const ProfilePage = ({ auth, createPost, signOut }) => {
                 <img src={currentUser.profileImage} alt="" />
               </div>
               <p className="user-name">{currentUser.username}</p>
+              <p className="user-country">
+                Country:
+                {'  '}
+                {currentUser.country}
+              </p>
               <button className="user-edit" type="button">Edit profile</button>
             </div>
             <div className="profile-container">
-              <h1 className="title" id="profileRef">Profile Page</h1>
-              <CreatePost
+              <div className="profile-menu" id="profileRef">
+                <button className="active-button" type="button">Your posts</button>
+                <button type="button">Posts saved</button>
+                <button type="button">Create new post</button>
+              </div>
+              {/* <CreatePost
                 createPost={createPost}
                 username={currentUser.username}
                 profileImage={currentUser.profileImage}
-              />
+              /> */}
               <ListPosts
                 posts={userPosts}
                 likedPosts={likedUserPosts}
               />
+              <ScrollButton refId="profileRef" />
             </div>
+
           </div>
         )}
       <img className="profile-background" src={backgroundGradient} alt="profileGradient" />
-      <ScrollButton refId="profileRef" />
       <LoadingOverlay loading={{ loadingState: [loading] }} />
     </>
   );
@@ -77,7 +87,7 @@ ProfilePage.propTypes = {
     accountId: PropTypes.string.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
   }).isRequired,
-  createPost: PropTypes.func.isRequired,
+  // createPost: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
 };
 
