@@ -10,6 +10,7 @@ import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import ProfileInfo from './components/ProfileInfo';
+import ProfileMenu from './components/ProfileMenu';
 // import UserDetails from './UserDetails';
 
 const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
@@ -40,11 +41,7 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
           <div className="profile-page">
             <ProfileInfo currentUser={currentUser} />
             <div className="profile-container">
-              <div className="profile-menu">
-                <button className="active-button" type="button">Your posts</button>
-                <button type="button">Posts saved</button>
-                <button type="button">Create new post</button>
-              </div>
+              <ProfileMenu />
               {/* <CreatePost
                 createPost={createPost}
                 username={currentUser.username}

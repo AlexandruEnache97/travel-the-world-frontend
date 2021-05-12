@@ -3,5 +3,14 @@
     position: fixed;
     bottom: 2rem;
     right: 10rem;
+    background-color: black;
+    border-radius: 1.5rem;
     width: 6.5rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .dashboard-scroll {
+        right: 3rem;
+    }
 }
