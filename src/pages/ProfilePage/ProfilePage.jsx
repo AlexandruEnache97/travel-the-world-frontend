@@ -6,9 +6,10 @@ import backgroundGradient from '../../images/BackgroundGradient.svg';
 import ListPosts from '../Dashboard/components/posts/ListPosts';
 import CreatePost from '../Dashboard/components/posts/CreatePost';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
-import MenuContainer from '../Dashboard/components/menu/MenuContainer';
+// import MenuContainer from '../Dashboard/components/menu/MenuContainer';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
+// import UserDetails from './UserDetails';
 
 const ProfilePage = ({ auth, createPost, signOut }) => {
   const { accountData } = auth;
@@ -36,7 +37,13 @@ const ProfilePage = ({ auth, createPost, signOut }) => {
       {currentUser.username !== '' && currentUser.username !== undefined
         && (
           <div className="profile-page">
-            <MenuContainer currentUser={currentUser} />
+            <div className="profile-user">
+              <div className="user-image">
+                <img src={currentUser.profileImage} alt="" />
+              </div>
+              <p className="user-name">{currentUser.username}</p>
+              <button className="user-edit" type="button">Edit profile</button>
+            </div>
             <div className="profile-container">
               <h1 className="title" id="profileRef">Profile Page</h1>
               <CreatePost
@@ -48,10 +55,6 @@ const ProfilePage = ({ auth, createPost, signOut }) => {
                 posts={userPosts}
                 likedPosts={likedUserPosts}
               />
-            </div>
-            <div className="details-container">
-              {/* <MenuContainer /> */}
-              <div className="news-content" />
             </div>
           </div>
         )}
