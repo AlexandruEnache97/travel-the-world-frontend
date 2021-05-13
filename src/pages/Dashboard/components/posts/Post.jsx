@@ -10,7 +10,7 @@ import MapModal from './MapModal';
 const Post = ({
   postId, username, profileImage, title, text, image,
   category, country, location, likes, shares,
-  createdDate, liked, coordinates,
+  createdDate, liked, coordinates, postRef,
 }) => {
   const [likePostData, setLikePostData] = useState({
     nrOfLikes: 0,
@@ -58,7 +58,7 @@ const Post = ({
   };
 
   return (
-    <div className="post-container">
+    <div className="post-container" ref={postRef}>
       <div className="post-top">
         <img className="post-user-icon" src={profileImage} alt="userIcon" />
         <p>{username}</p>
@@ -86,7 +86,7 @@ const Post = ({
       </div>
       <div className="post-bottom">
         <div className="post-bottom-text">
-          <button type="button" onClick={likePostData.nrOfLikes > 0 ? changeLikesModal : () => {}}>
+          <button type="button" onClick={likePostData.nrOfLikes > 0 ? changeLikesModal : () => { }}>
             {likePostData.nrOfLikes}
             {' '}
             {likePostData.nrOfLikes === 1 ? 'like' : 'likes'}
@@ -111,12 +111,12 @@ const Post = ({
             </button>
           </div>
           {commentsModal
-          && (
-          <CommentsModal
-            postId={postId}
-            postUser={username}
-          />
-          )}
+            && (
+              <CommentsModal
+                postId={postId}
+                postUser={username}
+              />
+            )}
         </div>
       </div>
       {likesModal && (
@@ -159,11 +159,13 @@ Post.propTypes = {
   shares: PropTypes.number.isRequired,
   createdDate: PropTypes.string.isRequired,
   liked: PropTypes.bool,
+  postRef: PropTypes.func,
 };
 
 Post.defaultProps = {
   image: '',
   liked: false,
+  postRef: () => { },
 };
 
 export default Post;

@@ -22,7 +22,7 @@ const postReducer = (state = initialState, action) => {
     case createActionType(GET_ALL_POSTS, SUCCESS):
       return {
         ...state,
-        currentPosts: action.payload.posts,
+        currentPosts: [...state.currentPosts, ...action.payload.posts],
         totalResults: action.payload.totalResults,
       };
     case createActionType(GET_ALL_POSTS, ERROR):

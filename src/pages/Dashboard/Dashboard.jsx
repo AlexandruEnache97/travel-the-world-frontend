@@ -18,9 +18,18 @@ const Dashboard = ({
 
   useEffect(() => {
     getPosts(currentPage);
-    setCurrentUser(accountData);
     getLikedPosts(currentPage);
+  }, []);
+
+  useEffect(() => {
+    setCurrentUser(accountData);
   }, [auth]);
+
+  const getMorePosts = () => {
+    getPosts(currentPage + 1);
+    getLikedPosts(currentPage + 1);
+    setCurrentPage(currentPage + 1);
+  };
 
   return (
     <>
@@ -38,6 +47,8 @@ const Dashboard = ({
               <ListPosts
                 posts={posts.currentPosts}
                 likedPosts={posts.likedPosts}
+                hasMore={posts.totalResults > currentPage * 10}
+                getMorePosts={getMorePosts}
               />
             </div>
             <div className="news-container">
