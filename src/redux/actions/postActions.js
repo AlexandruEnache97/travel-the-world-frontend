@@ -28,7 +28,7 @@ export const getPosts = (pageNumber) => async (dispatch) => {
     } else {
       dispatch({
         type: createActionType(GET_ALL_POSTS, SUCCESS),
-        payload: data,
+        payload: { data, pageNumber },
       });
     }
   } catch (error) {

@@ -15,6 +15,7 @@ const initialState = {
   likedPosts: [],
   totalResults: 0,
   singlePost: {},
+  pageNumber: 0,
 };
 
 const postReducer = (state = initialState, action) => {
@@ -22,8 +23,11 @@ const postReducer = (state = initialState, action) => {
     case createActionType(GET_ALL_POSTS, SUCCESS):
       return {
         ...state,
-        currentPosts: [...state.currentPosts, ...action.payload.posts],
-        totalResults: action.payload.totalResults,
+        pageNumber: action.payload.pageNumber,
+        currentPosts: action.payload.pageNumber === 1
+          ? action.payload.data.posts
+          : [...state.currentPosts, ...action.payload.data.posts],
+        totalResults: action.payload.data.totalResults,
       };
     case createActionType(GET_ALL_POSTS, ERROR):
       return {
