@@ -17,14 +17,17 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
+  const [totalResults, setTotalResults] = useState(0);
   const [likedUserPosts, setLikedUserPosts] = useState([]);
   const [loading, setLoading] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(async () => {
     setLoading('loading');
-    const { data } = await getUserPosts(1);
-    const likedPosts = await getUserLikedPosts(1);
+    const { data } = await getUserPosts(currentPage);
+    const likedPosts = await getUserLikedPosts(currentPage);
     setUserPosts(data.posts);
+    setTotalResults(data.totalResults);
     setLikedUserPosts(likedPosts.data.likedPosts);
     setLoading(null);
   }, []);
@@ -32,6 +35,18 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
   useEffect(() => {
     setCurrentUser(accountData);
   }, [auth]);
+
+  const getMorePosts = async () => {
+    console.log('more posts');
+    setLoading('loading');
+    const { data } = await getUserPosts(currentPage + 1);
+    const likedPosts = await getUserLikedPosts(currentPage + 1);
+    setCurrentPage(currentPage + 1);
+    setUserPosts([...userPosts, ...data.posts]);
+    setTotalResults(data.totalResults);
+    setLikedUserPosts([...likedUserPosts, ...likedPosts.data.likedPosts]);
+    setLoading(null);
+  };
 
   return (
     <>
@@ -50,6 +65,8 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
               <ListPosts
                 posts={userPosts}
                 likedPosts={likedUserPosts}
+                hasMore={totalResults > currentPage * 10}
+                getMorePosts={getMorePosts}
               />
               <ScrollButton refId="profileRef" />
             </div>

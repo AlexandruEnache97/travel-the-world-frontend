@@ -13,7 +13,6 @@ const Dashboard = ({
 }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState('');
-  // eslint-disable-next-line no-unused-vars
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
