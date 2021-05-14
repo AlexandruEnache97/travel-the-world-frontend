@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './dashboard.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
-import CreatePost from './components/posts/CreatePost';
+// import CreatePost from './components/posts/CreatePost';
 import Navbar from './components/Navbar';
 import ListPosts from './components/posts/ListPosts';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import MenuContainer from './components/menu/MenuContainer';
+import PostsMenu from './components/posts/PostsMenu';
 
 const Dashboard = ({
-  auth, getPosts, posts, createPost, signOut, getLikedPosts,
+  auth, getPosts, posts, /* createPost, */ signOut, getLikedPosts,
 }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState('');
@@ -38,21 +39,18 @@ const Dashboard = ({
           <div className="dashboard-container">
             <MenuContainer currentUser={currentUser} />
             <div className="feed-container">
-              <CreatePost
+              <PostsMenu />
+              {/* <CreatePost
                 createPost={createPost}
                 username={currentUser.username}
                 profileImage={currentUser.profileImage}
-              />
+              /> */}
               <ListPosts
                 posts={posts.currentPosts}
                 likedPosts={posts.likedPosts}
                 hasMore={posts.totalResults > currentPage * 10}
                 getMorePosts={getMorePosts}
               />
-            </div>
-            <div className="news-container">
-              {/* <MenuContainer /> */}
-              <div className="news-content" />
             </div>
           </div>
         )}
@@ -95,7 +93,7 @@ Dashboard.propTypes = {
     singlePost: PropTypes.objectOf(PropTypes.string).isRequired,
     totalResults: PropTypes.number.isRequired,
   }).isRequired,
-  createPost: PropTypes.func.isRequired,
+  // createPost: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
   getLikedPosts: PropTypes.func.isRequired,
 };

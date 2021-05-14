@@ -149,7 +149,7 @@ const CreatePost = ({
   };
 
   return (
-    <div className="create-container" id="topRef">
+    <div className="create-container">
       <div className="create-top">
         <div className="top-user">
           {profileImage !== '' && <img src={profileImage} alt="userIcon" />}

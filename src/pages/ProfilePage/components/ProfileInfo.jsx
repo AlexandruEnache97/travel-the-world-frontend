@@ -4,17 +4,19 @@ import './profileInfo.scss';
 
 const ProfileInfo = ({ currentUser }) => (
 
-  <div className="profile-user" id="profileRef">
-    <div className="user-image">
-      <img src={currentUser.profileImage} alt="" />
+  <div className="profile-user">
+    <div className="profile">
+      <div className="user-image">
+        <img src={currentUser.profileImage} alt="" />
+      </div>
+      <p className="user-name">{currentUser.username}</p>
+      <p className="user-country">
+        Country:
+        {'  '}
+        {currentUser.country}
+      </p>
+      <button className="user-edit" type="button">Edit profile</button>
     </div>
-    <p className="user-name">{currentUser.username}</p>
-    <p className="user-country">
-      Country:
-      {'  '}
-      {currentUser.country}
-    </p>
-    <button className="user-edit" type="button">Edit profile</button>
   </div>
 );
 

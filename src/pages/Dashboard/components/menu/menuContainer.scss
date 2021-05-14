@@ -1,27 +1,28 @@
 .menu-container {
-    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80vh;
     width: 36rem;
-    margin-left: 4rem;
+    margin-left: 10rem;
 
     .menu {
+        position: fixed;
         background-color: rgba(255, 153, 153, 0.2);
         padding: 2rem 5rem 0rem 5rem;
         border-radius: 3rem;
         width: 36rem;
-        margin-top: 8rem;
+        margin-top: 7rem;
         margin-left: 4rem;
-        position: fixed;
         display: flex;
         flex-direction: column;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5);
     }
 }
 
 @media only screen and (max-width: 600px) {
     .menu-container {
+        position: fixed;
         margin-left: 0rem;
         width: 100%;
 

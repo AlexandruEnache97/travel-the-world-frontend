@@ -17,24 +17,6 @@
             max-height: 30%;
         }
     }
-
-    .news-container {
-        position: fixed;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        right: 0;
-        height: 80vh;
-
-        .news-content {
-            background-color: rgba(255, 153, 153, 0.2);
-            width: 36rem;
-            height: 59rem;
-            margin-right: 4rem;
-            margin-top: 8rem;
-            border-radius: 3rem;
-        }
-    }
 }
 
 .dashboard-background {
@@ -47,12 +29,4 @@
     -webkit-user-select: none;
     user-select: none;
     pointer-events: none;
-}
-
-@media only screen and (max-width: 600px) {
-    .dashboard-container {
-        .news-container {
-            display: none;
-        }
-    }
 }
