@@ -19,7 +19,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ConfigureIT',
+      title: 'Travel The World',
       template: `${INPUT_PATH}/index.ejs`,
       filename: `${OUTPUT_PATH}/index.html`,
       favicon: `${OUTPUT_PATH}/media/favicon.png`,
