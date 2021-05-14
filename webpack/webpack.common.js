@@ -22,6 +22,7 @@ const config = {
       title: 'ConfigureIT',
       template: `${INPUT_PATH}/index.ejs`,
       filename: `${OUTPUT_PATH}/index.html`,
+      favicon: `${OUTPUT_PATH}/media/favicon.png`,
     }),
     new ESLintPlugin(),
     new Dotenv(),

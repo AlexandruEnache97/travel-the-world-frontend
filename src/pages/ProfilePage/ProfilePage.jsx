@@ -37,7 +37,6 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
   }, [auth]);
 
   const getMorePosts = async () => {
-    console.log('more posts');
     setLoading('loading');
     const { data } = await getUserPosts(currentPage + 1);
     const likedPosts = await getUserLikedPosts(currentPage + 1);
