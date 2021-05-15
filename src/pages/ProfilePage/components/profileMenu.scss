@@ -2,19 +2,25 @@
     display: flex;
     width: 80%;
     margin: 3rem 0rem 2rem 0rem;
-    padding: 1.5rem 5rem 1rem 5rem;
+    padding: 1.2rem 5rem 0.7rem 5rem;
     background-color: rgba(255, 153, 153, 0.2);
     border-radius: 2rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 
     button {
-        background-color: transparent;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.2);
         border: none;
         outline: none;
         font-size: 1.6rem;
         color: white;
-        padding: 0rem 1rem 0.3rem 1rem;
+        padding: 0.7rem 1rem 0.7rem 1rem;
         margin: 0rem 2rem;
+        border-radius: 0.5rem;
+
+        &:hover {
+            transform: scale(1.05);
+        }
     }
 
     .active-button {
