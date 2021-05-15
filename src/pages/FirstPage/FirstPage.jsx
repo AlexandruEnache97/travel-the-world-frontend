@@ -1,19 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import backgroundParallax from '../../images/firstPage/backgroundParallax.png';
 import backgroundClouds from '../../images/firstPage/backgroundClouds.jpg';
 import Navbar from '../Dashboard/components/Navbar';
 import './firstPage.scss';
 
 const FirstPage = () => {
-  useEffect(() => {
-    const globeBackground = document.getElementById('globeBackground');
-    const cloudsBackground = document.getElementById('cloudsBackground');
-    const wrapper = document.getElementById('main-page');
+  const [offsetY, setOffsetY] = useState(0);
+  const [wrapper] = useState(document.getElementById('main-page'));
 
-    wrapper.addEventListener('scroll', () => {
-      globeBackground.style.transform = `rotate(${-wrapper.scrollTop / 4}deg) translateY(${-wrapper.scrollTop / 8}px)`;
-      cloudsBackground.style.transform = `translateX(${-wrapper.scrollTop / 2.5}px)`;
-    });
+  const onScroll = () => {
+    setOffsetY(wrapper.scrollTop);
+  };
+
+  useEffect(() => {
+    wrapper.addEventListener('scroll', onScroll);
+
+    return () => {
+      wrapper.removeEventListener('scroll', onScroll);
+    };
   }, []);
 
   return (
@@ -25,8 +29,20 @@ const FirstPage = () => {
       <div id="desc" className="first-page-description">
         {/* <p>Travel the world</p> */}
       </div>
-      <img id="globeBackground" className="first-page-background" src={backgroundParallax} alt="" />
-      <img id="cloudsBackground" className="clouds-background" src={backgroundClouds} alt="" />
+      <img
+        id="globeBackground"
+        style={{ transform: `rotate(${-offsetY / 4}deg) translateY(${-offsetY / 8}px)` }}
+        className="first-page-background"
+        src={backgroundParallax}
+        alt=""
+      />
+      <img
+        id="cloudsBackground"
+        style={{ transform: `translateX(${-offsetY / 2.5}px)` }}
+        className="clouds-background"
+        src={backgroundClouds}
+        alt=""
+      />
     </div>
   );
 };
