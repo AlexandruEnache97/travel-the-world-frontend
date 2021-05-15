@@ -44,7 +44,7 @@ const ReplyComponent = ({
     if (!likesModal) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'scroll';
     }
     setLikesModal(!likesModal);
   };
@@ -88,7 +88,7 @@ const ReplyComponent = ({
             ) : <p>{originalText}</p>}
         </div>
         <div className="reply-bottom">
-          <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
+          <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
             {replyLikes.nrOfLikes}
             {' '}
             {replyLikes.nrOfLikes === 1 ? 'like' : 'likes'}
@@ -100,25 +100,25 @@ const ReplyComponent = ({
             <p>Like</p>
           </button>
           {access && (
-          <div className="reply-alter">
-            <button type="button" onClick={editReplyHandler}>Edit</button>
-            <button type="button" onClick={deleteReply}>Delete</button>
-          </div>
+            <div className="reply-alter">
+              <button type="button" onClick={editReplyHandler}>Edit</button>
+              <button type="button" onClick={deleteReply}>Delete</button>
+            </div>
           )}
           {loadingAction && <Spinner />}
         </div>
         {postOwner && <RepliesControl deleteCommentReply={deleteReply} />}
         {likesModal && (
-        <>
-          <div className="modal" onClickCapture={changeLikesModal} />
-          <LikesModal
-            title="Comment"
-            likes={replyLikes.nrOfLikes}
-            postId={replyData._id}
-            closeHandler={changeLikesModal}
-            getLikes={getReplyLikes}
-          />
-        </>
+          <>
+            <div className="modal" onClickCapture={changeLikesModal} />
+            <LikesModal
+              title="Comment"
+              likes={replyLikes.nrOfLikes}
+              postId={replyData._id}
+              closeHandler={changeLikesModal}
+              getLikes={getReplyLikes}
+            />
+          </>
         )}
       </div>
     </div>

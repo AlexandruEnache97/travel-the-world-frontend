@@ -26,7 +26,7 @@ const MenuContainer = ({ currentUser }) => {
     window.addEventListener('resize', resizeWindow);
     return () => {
       window.removeEventListener('resize', resizeWindow);
-      document.body.style.overflow = 'initial';
+      document.body.style.overflow = 'scroll';
     };
   }, []);
   return (
@@ -37,7 +37,7 @@ const MenuContainer = ({ currentUser }) => {
             <div className="menu">
               <MenuButton image={currentUser.profileImage} text={currentUser.username} redirect="/profile" isProfile />
               <MenuButton image={mapIcon} text="Map" redirect="/map" />
-              <MenuButton image={goalsIcon} text="Your goals" />
+              <MenuButton image={goalsIcon} text="Your goals" redirect="/test" />
               <MenuButton image={friendsIcon} text="Friends" />
               <MenuButton image={groupIcon} text="Groups" />
               <MenuButton image={newPostsIcon} text="New posts" />

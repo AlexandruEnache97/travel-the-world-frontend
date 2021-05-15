@@ -69,7 +69,7 @@ const CommentComponent = ({
     if (!likesModal) {
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = 'scroll';
     }
     setLikesModal(!likesModal);
   };
@@ -100,7 +100,7 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <button type="button" onClick={commentLikes.nrOfLikes > 0 ? changeLikesModal : () => {}}>
+        <button type="button" onClick={commentLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
           {commentLikes.nrOfLikes}
           {' '}
           {commentLikes.nrOfLikes === 1 ? 'like' : 'likes'}
@@ -113,10 +113,10 @@ const CommentComponent = ({
         </button>
         <button type="button" onClick={handleReplyModal}>Reply</button>
         {commentData.userData.username === currentUser && (
-        <div className="comment-alter">
-          <button type="button" onClick={editCommentHandler}>Edit</button>
-          <button type="button" onClick={deleteComm}>Delete</button>
-        </div>
+          <div className="comment-alter">
+            <button type="button" onClick={editCommentHandler}>Edit</button>
+            <button type="button" onClick={deleteComm}>Delete</button>
+          </div>
         )}
         {loadingAction && <Spinner />}
       </div>

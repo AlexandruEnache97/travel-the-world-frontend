@@ -1,0 +1,47 @@
+.page-container {
+    overflow-x: hidden;
+
+    .first-page-background {
+        position: fixed;
+        top: 32rem;
+        left: 5rem;
+        width: 100vw;
+        height: 102vw;
+        z-index: -10;
+        transition: transform .5s ease-out;
+    }
+
+    .clouds-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 120vw;
+        height: 100vh;
+        z-index: -11;
+        opacity: 0.8;
+        transition: transform .5s ease-out;
+    }
+    
+    .first-page-intro, .first-page-description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .page-container {
+        .first-page-background {
+            top: 37rem;
+            left: -29rem;
+            width: 100rem;
+            height: 105rem;
+        }
+
+        .clouds-background {
+            width: 300vw;
+        }
+    }
+}

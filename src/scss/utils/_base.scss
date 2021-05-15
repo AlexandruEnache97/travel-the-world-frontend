@@ -4,7 +4,21 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 html, button {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
+}
+
+#main-page {
+    position: absolute;
+    top: 0.5px;
+    left: 0;
+    right: 0;
+    bottom: 0.5px;
+    overflow-x: hidden; /* or any other value */
+    overflow-y: scroll; /* or any other value */
 }
