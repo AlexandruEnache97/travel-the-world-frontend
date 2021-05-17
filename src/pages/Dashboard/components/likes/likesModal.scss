@@ -1,9 +1,11 @@
 .likes-modal-container {
     position: fixed;
-    top: 5%;
     width: 45rem;
     margin: auto;
     z-index: 101;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     .modal-top {
         display: flex;
