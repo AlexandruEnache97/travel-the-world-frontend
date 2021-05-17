@@ -1,30 +1,25 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './profileInfo.scss';
 import EditProfile from './EditProfile';
 
-const ProfileInfo = ({ currentUser }) => {
-  const profileImage = useRef();
+const ProfileInfo = ({ currentUser, updateInfo }) => {
   const [editProfileModal, setEditProfileModal] = useState(false);
-
-  useEffect(() => {
-    console.log(`${profileImage.current.naturalWidth} ${profileImage.current.naturalHeight}`);
-  }, []);
 
   const handleEditProfile = () => {
     setEditProfileModal(!editProfileModal);
+  };
+
+  const updateProfile = () => {
+    console.log('Updated profile');
+    updateInfo();
   };
 
   return (
     <div className="profile-user" id="profileRef">
       <div className="profile">
         <div className="user-image">
-          <img
-            ref={profileImage}
-            src={currentUser.profileImage}
-            alt=""
-          />
-
+          <img src={currentUser.profileImage} alt="" />
         </div>
         <p className="user-name">{currentUser.username}</p>
         <p className="user-country">
@@ -44,7 +39,10 @@ const ProfileInfo = ({ currentUser }) => {
       {editProfileModal && (
         <>
           <div className="modal" onClickCapture={handleEditProfile} />
-          <EditProfile closeModal={handleEditProfile} />
+          <EditProfile
+            closeModal={handleEditProfile}
+            updateProfile={updateProfile}
+          />
         </>
       )}
     </div>
@@ -59,5 +57,6 @@ ProfileInfo.propTypes = {
     country: PropTypes.string.isRequired,
     userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
   }).isRequired,
+  updateInfo: PropTypes.func.isRequired,
 };
 export default ProfileInfo;

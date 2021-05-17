@@ -1,6 +1,7 @@
 import {
   get,
   post,
+  put,
 } from './axiosOperations';
 import { NODE_SERVER, AUTH_ROUTES } from '../../config';
 
@@ -16,5 +17,10 @@ export const signUpService = async (userData) => {
 
 export const getAccountService = async (accountId) => {
   const data = await get(`${NODE_SERVER.baseUrl}/${AUTH_ROUTES.GET_ACCOUNT}/${accountId}`);
+  return data;
+};
+
+export const changeProfileImage = async (imageUrl) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/${AUTH_ROUTES.CHANGE_PROFILE_IMAGE}`, imageUrl);
   return data;
 };

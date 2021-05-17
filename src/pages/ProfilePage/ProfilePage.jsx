@@ -10,7 +10,9 @@ import ScrollButton from '../../components/Buttons/ScrollButton';
 import ProfileInfo from './components/ProfileInfo';
 import ProfileMenu from './components/ProfileMenu';
 
-const ProfilePage = ({ auth, createPost, signOut }) => {
+const ProfilePage = ({
+  auth, createPost, signOut, getAccount,
+}) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
   const [profilePosts, setProfilePosts] = useState({
@@ -37,6 +39,11 @@ const ProfilePage = ({ auth, createPost, signOut }) => {
     setCurrentUser(accountData);
   }, [auth]);
 
+  const updateInfo = async () => {
+    await getAccount(auth.accountId);
+    setCurrentUser(accountData);
+  };
+
   const getMorePosts = async () => {
     setLoading('loading');
     const { data } = await getUserPosts(currentPage + 1);
@@ -56,14 +63,12 @@ const ProfilePage = ({ auth, createPost, signOut }) => {
       {currentUser.username !== '' && currentUser.username !== undefined
         && (
           <div className="profile-page">
-            <ProfileInfo currentUser={currentUser} />
+            <ProfileInfo
+              currentUser={currentUser}
+              updateInfo={updateInfo}
+            />
             <div className="profile-container">
               <ProfileMenu createPost={createPost} currentUser={currentUser} />
-              {/* <CreatePost
-                createPost={createPost}
-                username={currentUser.username}
-                profileImage={currentUser.profileImage}
-              /> */}
               <ListPosts
                 posts={profilePosts.userPosts}
                 likedPosts={profilePosts.likedUserPosts}
@@ -95,6 +100,7 @@ ProfilePage.propTypes = {
   }).isRequired,
   createPost: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
+  getAccount: PropTypes.func.isRequired,
 };
 
 export default ProfilePage;

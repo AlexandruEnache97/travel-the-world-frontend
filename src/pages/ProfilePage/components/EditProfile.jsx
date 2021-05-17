@@ -3,19 +3,22 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { storage } from '../../../utils/firebase';
 import './editProfile.scss';
+import { changeProfileImage } from '../../../service/authApi';
 
-const EditProfile = ({ closeModal }) => {
+const EditProfile = ({ closeModal, updateProfile }) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [keyFile, setKeyFile] = useState(new Date());
 
-  useEffect(() => {
+  useEffect(async () => {
     if (imageUrl !== '') {
-      // createPost({
-      //   profileImage: imageUrl,
-      // });
+      await changeProfileImage({
+        profileImage: imageUrl,
+      });
       setImageUrl('');
-      alert('Image updated successfully');
+      closeModal();
+      updateProfile();
+      // alert('Image updated successfully');
     }
   }, [imageUrl]);
 
@@ -78,6 +81,7 @@ const EditProfile = ({ closeModal }) => {
 
 EditProfile.propTypes = {
   closeModal: PropTypes.func.isRequired,
+  updateProfile: PropTypes.func.isRequired,
 };
 
 export default EditProfile;
