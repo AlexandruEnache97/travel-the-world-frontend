@@ -60,8 +60,13 @@ const Post = ({
   return (
     <div className="post-container" ref={postRef}>
       <div className="post-top">
-        <img className="post-user-icon" src={profileImage} alt="userIcon" />
-        <p>{username}</p>
+        <div className="post-user">
+          <img className="post-user-icon" src={profileImage} alt="userIcon" />
+          <p>{username}</p>
+        </div>
+        <button className="bookmark-button" type="button">
+          <img src="https://img.icons8.com/fluent-systems-regular/96/ffffff/bookmark-ribbon--v1.png" alt="save-bookmark" />
+        </button>
       </div>
       <div className="post-content">
         <h1>{title}</h1>

@@ -10,22 +10,39 @@
 
     .post-top {
         display: flex;
+        justify-content: space-between;
         align-items: center;
         width: 40rem;
-        padding-left: 2.5rem;
+        padding: 0rem 2.5rem;
         height: 6rem;
         background-color: #ff304f;
         border-radius: 3rem 3rem 0rem 0rem;
+        
+        .post-user {
+            display: flex;
+            align-items: center;
 
-        .post-user-icon {
-            width: 4rem;
+            .post-user-icon {
+                width: 4rem;
+            }
+    
+            p {
+                color: white;
+                padding: 0rem 1rem;
+                font-size: 1.5rem;
+                font-weight: 700;
+            }
         }
 
-        p {
-            color: white;
-            padding: 0rem 1rem;
-            font-size: 1.5rem;
-            font-weight: 700;
+        .bookmark-button {
+            width: 4rem;
+            background-color: transparent;
+            border: none;
+            outline: none;
+
+            img {
+                width: 4rem;
+            }
         }
     }
 
