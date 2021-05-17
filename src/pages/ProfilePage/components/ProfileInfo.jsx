@@ -16,6 +16,7 @@ const ProfileInfo = ({ currentUser }) => (
         {currentUser.country}
       </p>
       <button className="user-edit" type="button">Edit profile</button>
+      <button className="user-edit" type="button">Map</button>
     </div>
   </div>
 );
