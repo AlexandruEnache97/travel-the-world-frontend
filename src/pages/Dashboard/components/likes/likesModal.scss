@@ -101,10 +101,11 @@
 
         img {    
             width: 5rem;
+            height: 5rem;
             margin-right: 1.5rem;
-            padding: 1rem;
-            background-color: black;
             border-radius: 1rem;
+            object-fit: cover;
+            object-position: center right;
         }
 
         p {
