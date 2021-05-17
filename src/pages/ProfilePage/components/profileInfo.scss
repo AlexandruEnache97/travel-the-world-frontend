@@ -24,9 +24,22 @@
             height: 13rem;
             background-color: #000;
             border-radius: 50%;
-    
+            overflow: hidden;
+
             img {
-                width: 10rem;
+                max-width: inherit;
+                width: inherit;
+                height: auto;
+            }
+    
+            .vertical-image {    
+                width: fit-content;
+                height: inherit;
+            }
+
+            .horizontal-image {    
+                width: fit-content;
+                height: inherit;
             }
         }
     
