@@ -43,6 +43,10 @@
             img {
                 width: 4rem;
             }
+
+            &:hover {
+                transform: scale(1.1);
+            }
         }
     }
 

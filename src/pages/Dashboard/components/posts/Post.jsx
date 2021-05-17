@@ -19,6 +19,7 @@ const Post = ({
   const [likesModal, setLikesModal] = useState(false);
   const [commentsModal, setCommentsModal] = useState(false);
   const [mapModal, setMapModal] = useState(false);
+  const [postSaved, setPostSaved] = useState(false);
 
   useEffect(() => {
     setLikePostData({
@@ -57,6 +58,10 @@ const Post = ({
     }
   };
 
+  const handleSavePost = () => {
+    setPostSaved(!postSaved);
+  };
+
   return (
     <div className="post-container" ref={postRef}>
       <div className="post-top">
@@ -64,8 +69,12 @@ const Post = ({
           <img className="post-user-icon" src={profileImage} alt="userIcon" />
           <p>{username}</p>
         </div>
-        <button className="bookmark-button" type="button">
-          <img src="https://img.icons8.com/fluent-systems-regular/96/ffffff/bookmark-ribbon--v1.png" alt="save-bookmark" />
+        <button className="bookmark-button" type="button" onClick={handleSavePost}>
+          {postSaved ? (
+            <img src="https://img.icons8.com/fluent-systems-filled/96/ffffff/bookmark-ribbon.png" alt="save-bookmark" />
+          ) : (
+            <img src="https://img.icons8.com/fluent-systems-regular/96/ffffff/bookmark-ribbon--v1.png" alt="save-bookmark" />
+          )}
         </button>
       </div>
       <div className="post-content">
