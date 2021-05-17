@@ -159,52 +159,62 @@ const CreatePost = ({
       </div>
       <form onSubmit={uploadHandler}>
         <div className="create-content">
-          <label htmlFor="titlePost">Title</label>
-          <input
-            name="title"
-            type="text"
-            id="titlePost"
-            placeholder="Your post title"
-            value={postData.title}
-            onChange={inputChange}
-            required
-          />
+          <div className="create-element">
+            <label htmlFor="titlePost">Title</label>
+            <input
+              name="title"
+              type="text"
+              id="titlePost"
+              placeholder="Your post title"
+              value={postData.title}
+              onChange={inputChange}
+              required
+            />
+          </div>
 
-          <label htmlFor="textPost">Description</label>
-          <textarea
-            name="text"
-            id="textPost"
-            placeholder="Your post content"
-            resize="none"
-            value={postData.text}
-            onChange={inputChange}
-            required
-          />
+          <div className="create-element">
+            <label htmlFor="textPost">Description</label>
+            <textarea
+              name="text"
+              id="textPost"
+              placeholder="Your post content"
+              resize="none"
+              value={postData.text}
+              onChange={inputChange}
+              required
+            />
+          </div>
 
-          <label htmlFor="categoryPost">Category</label>
-          <input
-            name="category"
-            type="text"
-            id="categoryPost"
-            placeholder="Your post category"
-            value={postData.category}
-            onChange={inputChange}
-            required
-          />
+          <div className="create-element">
+            <label htmlFor="categoryPost">Category</label>
+            <input
+              name="category"
+              type="text"
+              id="categoryPost"
+              placeholder="Your post category"
+              value={postData.category}
+              onChange={inputChange}
+              required
+            />
+          </div>
 
-          <label htmlFor="countryPost">Country</label>
-          <CountrySelect getCountry={getCountry} />
+          <div className="create-element">
+            <label htmlFor="countryPost">Country</label>
+            <CountrySelect getCountry={getCountry} />
+          </div>
 
-          <label htmlFor="locationPost">Location</label>
-          <input
-            name="location"
-            type="text"
-            id="locationPost"
-            placeholder="Your post location"
-            value={postData.location}
-            onChange={inputChange}
-            required
-          />
+          <div className="create-element">
+            <label htmlFor="locationPost">Location</label>
+            <input
+              name="location"
+              type="text"
+              id="locationPost"
+              placeholder="Your post location"
+              value={postData.location}
+              onChange={inputChange}
+              required
+            />
+          </div>
           <PostMapLocation
             countryCoordinates={postData.coordinates}
             getPostCoordinates={getPostCoordinates}

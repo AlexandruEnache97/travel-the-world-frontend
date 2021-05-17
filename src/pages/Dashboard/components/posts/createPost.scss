@@ -1,6 +1,6 @@
 .create-container {
     background-color: rgb(240, 240, 240);
-    width: 35rem;
+    width: 43rem;
     border-radius: 3rem;
     margin-top: 3rem;
     
@@ -42,6 +42,12 @@
         flex-direction: column;
         justify-content: center;
         padding: 1rem 2.5rem 0rem 2.5rem;
+
+        .create-element {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
 
         input {

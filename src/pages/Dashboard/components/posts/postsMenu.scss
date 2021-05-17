@@ -26,6 +26,13 @@
     .active-button {
         border-bottom: 3px solid rgb(255, 255, 255);
     }
+
+    .create-post-modal {
+        position: fixed;
+        top: 10%;
+        width: 43rem;
+        z-index: 101;
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -38,6 +45,10 @@
             font-size: 1.2rem;    
             padding: 0.4rem 0.6rem 0.4rem 0.6rem;
             margin: 0rem 1.2rem;
+        }
+
+        .create-post-modal {
+            width: 31rem;
         }
     }
 }

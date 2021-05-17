@@ -4,21 +4,20 @@ import Navbar from '../Dashboard/components/Navbar';
 import './profilePage.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import ListPosts from '../Dashboard/components/posts/ListPosts';
-// import CreatePost from '../Dashboard/components/posts/CreatePost';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
-// import MenuContainer from '../Dashboard/components/menu/MenuContainer';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import ProfileInfo from './components/ProfileInfo';
 import ProfileMenu from './components/ProfileMenu';
-// import UserDetails from './UserDetails';
 
-const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
+const ProfilePage = ({ auth, createPost, signOut }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
-  const [userPosts, setUserPosts] = useState([]);
-  const [totalResults, setTotalResults] = useState(0);
-  const [likedUserPosts, setLikedUserPosts] = useState([]);
+  const [profilePosts, setProfilePosts] = useState({
+    userPosts: [],
+    totalResults: 0,
+    likedUserPosts: [],
+  });
   const [loading, setLoading] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -26,9 +25,11 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
     setLoading('loading');
     const { data } = await getUserPosts(currentPage);
     const likedPosts = await getUserLikedPosts(currentPage);
-    setUserPosts(data.posts);
-    setTotalResults(data.totalResults);
-    setLikedUserPosts(likedPosts.data.likedPosts);
+    setProfilePosts({
+      userPosts: data.posts,
+      totalResults: data.totalResults,
+      likedUserPosts: likedPosts.data.likedPosts,
+    });
     setLoading(null);
   }, []);
 
@@ -41,9 +42,11 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
     const { data } = await getUserPosts(currentPage + 1);
     const likedPosts = await getUserLikedPosts(currentPage + 1);
     setCurrentPage(currentPage + 1);
-    setUserPosts([...userPosts, ...data.posts]);
-    setTotalResults(data.totalResults);
-    setLikedUserPosts([...likedUserPosts, ...likedPosts.data.likedPosts]);
+    setProfilePosts({
+      userPosts: [...profilePosts.userPosts, ...data.posts],
+      totalResults: data.totalResults,
+      likedUserPosts: [...profilePosts.likedUserPosts, ...likedPosts.data.likedPosts],
+    });
     setLoading(null);
   };
 
@@ -55,16 +58,16 @@ const ProfilePage = ({ auth, /* createPost, */ signOut }) => {
           <div className="profile-page">
             <ProfileInfo currentUser={currentUser} />
             <div className="profile-container">
-              <ProfileMenu />
+              <ProfileMenu createPost={createPost} currentUser={currentUser} />
               {/* <CreatePost
                 createPost={createPost}
                 username={currentUser.username}
                 profileImage={currentUser.profileImage}
               /> */}
               <ListPosts
-                posts={userPosts}
-                likedPosts={likedUserPosts}
-                hasMore={totalResults > currentPage * 10}
+                posts={profilePosts.userPosts}
+                likedPosts={profilePosts.likedUserPosts}
+                hasMore={profilePosts.totalResults > currentPage * 10}
                 getMorePosts={getMorePosts}
               />
               <ScrollButton refId="profileRef" />
@@ -90,7 +93,7 @@ ProfilePage.propTypes = {
     accountId: PropTypes.string.isRequired,
     isAuthenticated: PropTypes.bool.isRequired,
   }).isRequired,
-  // createPost: PropTypes.func.isRequired,
+  createPost: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
 };
 

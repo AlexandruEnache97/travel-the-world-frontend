@@ -15,7 +15,7 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
 
   return (
     <div className="post-map-control">
-      <button type="button" onClick={() => { setMapModal(!mapModal); }}>
+      <button type="button" className="location-button" onClick={() => { setMapModal(!mapModal); }}>
         Set location on map
       </button>
       <img

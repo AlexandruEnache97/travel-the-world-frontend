@@ -42,6 +42,7 @@
         }
     
         .user-edit {
+            cursor: pointer;
             font-size: 1.5rem;
             margin-top: 2.5rem;
             width: 18rem;
@@ -51,6 +52,10 @@
             border-radius: 2rem;
             color: black;
             background-color: #fff;
+
+            &:hover {
+                transform: scale(1.05);
+            }
         }
     }
 }
