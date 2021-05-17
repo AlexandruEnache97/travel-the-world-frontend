@@ -27,19 +27,11 @@
             overflow: hidden;
 
             img {
-                max-width: inherit;
-                width: inherit;
-                height: auto;
-            }
-    
-            .vertical-image {    
-                width: fit-content;
-                height: inherit;
-            }
-
-            .horizontal-image {    
-                width: fit-content;
-                height: inherit;
+                width: 13rem;
+                height: 13rem;
+                border-radius: 50%; 
+                object-fit: cover;
+                object-position: center right;
             }
         }
     
