@@ -29,9 +29,11 @@
 
     .create-post-modal {
         position: fixed;
-        top: 10%;
         width: 43rem;
         z-index: 101;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -48,7 +50,7 @@
         }
 
         .create-post-modal {
-            width: 31rem;
+            width: 34rem;
         }
     }
 }
