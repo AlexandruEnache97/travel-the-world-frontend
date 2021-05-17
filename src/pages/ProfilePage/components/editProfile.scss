@@ -85,3 +85,13 @@
     }
 
 }
+
+@media only screen and (max-width: 600px) {
+    .edit-profile-container {
+        width: 34rem;
+        
+        .edit-top, .edit-content, .edit-bottom {
+            width: 34rem;
+        }
+    }
+}
