@@ -13,14 +13,17 @@
 
     img {
         width: 3.5rem;
+        height: 3.5rem;
         margin-right: 1.5rem;
         padding: 0.5rem;
     }
 
     .profileImage {
         background-color: #000;
-        border-radius: 1.4rem;
+        border-radius: 50%;
         padding: 0;
+        object-fit: cover;
+        object-position: center right;
     }
 
     p {
