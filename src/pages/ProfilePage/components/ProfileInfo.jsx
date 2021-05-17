@@ -1,13 +1,19 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './profileInfo.scss';
+import EditProfile from './EditProfile';
 
 const ProfileInfo = ({ currentUser }) => {
   const profileImage = useRef();
+  const [editProfileModal, setEditProfileModal] = useState(false);
 
   useEffect(() => {
     console.log(`${profileImage.current.naturalWidth} ${profileImage.current.naturalHeight}`);
   }, []);
+
+  const handleEditProfile = () => {
+    setEditProfileModal(!editProfileModal);
+  };
 
   return (
     <div className="profile-user" id="profileRef">
@@ -26,9 +32,21 @@ const ProfileInfo = ({ currentUser }) => {
           {'  '}
           {currentUser.country}
         </p>
-        <button className="user-edit" type="button">Edit profile</button>
+        <button
+          className="user-edit"
+          type="button"
+          onClick={handleEditProfile}
+        >
+          Edit profile
+        </button>
         <button className="user-edit" type="button">Map</button>
       </div>
+      {editProfileModal && (
+        <>
+          <div className="modal" onClickCapture={handleEditProfile} />
+          <EditProfile closeModal={handleEditProfile} />
+        </>
+      )}
     </div>
   );
 };
