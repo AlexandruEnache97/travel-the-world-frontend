@@ -1,11 +1,11 @@
 /* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { storage } from '../../../utils/firebase';
-import './editProfile.scss';
-import { changeProfileImage } from '../../../service/authApi';
+import { changeProfileImage } from '../../../../service/authApi';
+import { storage } from '../../../../utils/firebase';
+import './changeImage.scss';
 
-const EditProfile = ({ closeModal, updateProfile }) => {
+const ChangeImage = ({ closeModal, updateProfile }) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [keyFile, setKeyFile] = useState(new Date());
@@ -56,32 +56,23 @@ const EditProfile = ({ closeModal, updateProfile }) => {
   };
 
   return (
-    <div className="edit-profile-container">
-      <div className="edit-top">
-        <p>Edit profile</p>
-        <button type="button" onClick={closeModal}>x</button>
-      </div>
-      <div className="edit-content">
-        <div className="edit-profile-image">
-          <label htmlFor="uploadImage">Change profile image</label>
-          <input
-            type="file"
-            className="input-upload"
-            onChange={fileChange}
-            accept="image/png, image/jpeg"
-            key={keyFile}
-          />
-          <button type="button" onClick={handleChangeImage}>Done</button>
-        </div>
-      </div>
-      <div className="edit-bottom" />
+    <div className="edit-profile-image">
+      <label htmlFor="uploadImage">Change profile image</label>
+      <input
+        type="file"
+        className="input-upload"
+        onChange={fileChange}
+        accept="image/png, image/jpeg"
+        key={keyFile}
+      />
+      <button type="button" onClick={handleChangeImage}>Done</button>
     </div>
   );
 };
 
-EditProfile.propTypes = {
+ChangeImage.propTypes = {
   closeModal: PropTypes.func.isRequired,
   updateProfile: PropTypes.func.isRequired,
 };
 
-export default EditProfile;
+export default ChangeImage;

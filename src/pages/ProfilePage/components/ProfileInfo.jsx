@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './profileInfo.scss';
-import EditProfile from './EditProfile';
+import EditProfile from './EditProfile/EditProfile';
 
 const ProfileInfo = ({ currentUser, updateInfo }) => {
   const [editProfileModal, setEditProfileModal] = useState(false);
@@ -42,6 +42,7 @@ const ProfileInfo = ({ currentUser, updateInfo }) => {
           <EditProfile
             closeModal={handleEditProfile}
             updateProfile={updateProfile}
+            currentUser={currentUser}
           />
         </>
       )}

@@ -1,6 +1,7 @@
 .edit-profile-container {
     position: fixed;
     width: 45rem;
+    height: 70%;
     margin: auto;
     z-index: 101;
     left: 50%;
@@ -43,34 +44,22 @@
         flex-direction: column;
         background-color: #fff;
         width: 45rem;
-        height: 25.5rem;
+        height: inherit;
+        overflow-y: scroll;
 
-        .edit-profile-image {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem 0rem;
-            border-bottom: 1px solid gray;
-
-            label {
-                font-size: 1.8rem;
-                font-weight: 700;
-            }
-
-            input {
-                margin: 2rem 0rem;
-                width: 18rem;
-            }
-
-            button {
-                font-size: 1.5rem;
-                padding: 0.7rem 2.5rem;
-                border: none;
-                outline: none;
-                border-radius: 1rem;
-                background-color: rgb(230, 230, 230);
-            }
+        &::-webkit-scrollbar{
+            width: 0.8rem;
+            background-color: #000;
+        }
+    
+        &::-webkit-scrollbar-track {
+            background: #fff;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background-color: #ff304f ;
+            border-radius: 6px;
+            border: 3px solid #fff;
         }
     }
 

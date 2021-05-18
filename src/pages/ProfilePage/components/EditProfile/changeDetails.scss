@@ -1,0 +1,28 @@
+.edit-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 0rem;
+    border-bottom: 1px solid gray;
+
+    .edit-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .edit-element {
+        margin: 0.5rem 0rem;
+    }
+
+    button {
+        font-size: 1.5rem;
+        padding: 0.7rem 2.5rem;
+        border: none;
+        outline: none;
+        border-radius: 1rem;
+        background-color: rgb(230, 230, 230);
+        margin-top: 1rem;
+    }
+}
