@@ -26,7 +26,7 @@ const mock = new MockAdapter(axios, { onNoMatch: 'throwException' });
 describe('Post actions tests', () => {
   it('Should get posts', async () => {
     mock.onGet(`${NODE_SERVER.baseUrl}/api/allPosts/1`).reply(200, {
-      data: { post: 'Atlantic' },
+      post: 'Atlantic',
     });
     const store = mockStore({});
     await store.dispatch(getPosts('1'));
@@ -38,6 +38,7 @@ describe('Post actions tests', () => {
       type: createActionType(GET_ALL_POSTS, SUCCESS),
       payload: {
         data: { post: 'Atlantic' },
+        pageNumber: '1',
       },
     });
   });

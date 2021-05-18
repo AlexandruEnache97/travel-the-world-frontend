@@ -47,7 +47,7 @@ const ChangePassword = () => {
           />
         </div>
         <div className="edit-element">
-          <label htmlFor="verifyNewPassword">Verify new password</label>
+          <label htmlFor="verifyNewPassword">Verify password</label>
           <input
             name="verifyNewPassword"
             type="password"

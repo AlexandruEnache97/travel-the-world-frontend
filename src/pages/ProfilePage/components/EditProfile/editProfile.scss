@@ -41,8 +41,8 @@
 
     .edit-content {
         display: flex;
-        flex-direction: column;
-        background-color: #fff;
+        flex-direction: column;    
+        background-color: rgb(240, 240, 240);
         width: 45rem;
         height: inherit;
         overflow-y: scroll;
@@ -55,6 +55,19 @@
             border-radius: 1rem;
             background-color: rgb(230, 230, 230);
             margin-top: 1rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            border-radius: 2rem;
+            width: 25rem;
+            height: 2.45rem;
+            padding: 0rem 2rem;
         }
 
         &::-webkit-scrollbar{
@@ -91,6 +104,12 @@
         
         .edit-top, .edit-content, .edit-bottom {
             width: 34rem;
+        }
+
+        .edit-content {
+            input {
+                width: 20rem;
+            }
         }
     }
 }

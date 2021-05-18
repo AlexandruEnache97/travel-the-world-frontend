@@ -16,6 +16,7 @@ describe('Post reducers tests', () => {
     likedPosts: [],
     totalResults: 0,
     singlePost: {},
+    pageNumber: 0,
   };
   it('Should return initial state', () => {
     expect(postReducer(initialState, {})).toEqual(initialState);
@@ -29,13 +30,17 @@ describe('Post reducers tests', () => {
     expect(postReducer(initialState, {
       type: createActionType(GET_ALL_POSTS, SUCCESS),
       payload: {
-        posts: ['Atlantic', 'Pacific'],
-        totalResults: 2,
+        data: {
+          posts: ['Atlantic', 'Pacific'],
+          totalResults: 2,
+        },
+        pageNumber: 1,
       },
     })).toEqual({
       ...initialState,
       currentPosts: ['Atlantic', 'Pacific'],
       totalResults: 2,
+      pageNumber: 1,
     });
 
     expect(postReducer(initialState, {
