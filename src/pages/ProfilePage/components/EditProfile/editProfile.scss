@@ -1,7 +1,7 @@
 .edit-profile-container {
     position: fixed;
     width: 45rem;
-    height: 70%;
+    height: 75%;
     margin: auto;
     z-index: 101;
     left: 50%;
@@ -46,6 +46,16 @@
         width: 45rem;
         height: inherit;
         overflow-y: scroll;
+
+        button {
+            font-size: 1.5rem;
+            padding: 0.7rem 2.5rem;
+            border: none;
+            outline: none;
+            border-radius: 1rem;
+            background-color: rgb(230, 230, 230);
+            margin-top: 1rem;
+        }
 
         &::-webkit-scrollbar{
             width: 0.8rem;

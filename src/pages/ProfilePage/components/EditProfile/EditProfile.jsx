@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './editProfile.scss';
 import ChangeImage from './ChangeImage';
 import ChangeDetails from './ChangeDetails';
+import ChangePassword from './ChangePassword';
 
 const EditProfile = ({ closeModal, updateProfile, currentUser }) => (
   <div className="edit-profile-container">
@@ -14,6 +15,7 @@ const EditProfile = ({ closeModal, updateProfile, currentUser }) => (
     <div className="edit-content">
       <ChangeDetails currentUser={currentUser} />
       <ChangeImage closeModal={closeModal} updateProfile={updateProfile} />
+      <ChangePassword />
     </div>
     <div className="edit-bottom" />
   </div>

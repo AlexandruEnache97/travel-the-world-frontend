@@ -16,47 +16,55 @@ const ChangeDetails = ({ currentUser }) => {
     });
   };
 
-  const handleChangeDetails = () => {
+  const handleChangeDetails = (e) => {
+    e.preventDefault();
+    setProfileDetails({
+      username: currentUser.username,
+      email: currentUser.email,
+      verifyPassword: '',
+    });
     console.log(profileDetails);
   };
 
   return (
     <div className="edit-details">
       <p className="edit-title">Edit account details</p>
-      <div className="edit-element">
-        <label htmlFor="username">Username</label>
-        <input
-          name="username"
-          type="text"
-          id="username"
-          value={profileDetails.username}
-          onChange={inputChange}
-          required
-        />
-      </div>
-      <div className="edit-element">
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
-          type="text"
-          id="email"
-          value={profileDetails.email}
-          onChange={inputChange}
-          required
-        />
-      </div>
-      <div className="edit-element">
-        <label htmlFor="verifyPassword">Verify password</label>
-        <input
-          name="verifyPassword"
-          type="password"
-          id="verifyPassword"
-          value={profileDetails.verifyPassword}
-          onChange={inputChange}
-          required
-        />
-      </div>
-      <button type="button" onClick={handleChangeDetails}>Done</button>
+      <form onSubmit={handleChangeDetails}>
+        <div className="edit-element">
+          <label htmlFor="username">Username</label>
+          <input
+            name="username"
+            type="text"
+            id="username"
+            value={profileDetails.username}
+            onChange={inputChange}
+            required
+          />
+        </div>
+        <div className="edit-element">
+          <label htmlFor="email">Email</label>
+          <input
+            name="email"
+            type="text"
+            id="email"
+            value={profileDetails.email}
+            onChange={inputChange}
+            required
+          />
+        </div>
+        <div className="edit-element">
+          <label htmlFor="verifyPassword">Verify password</label>
+          <input
+            name="verifyPassword"
+            type="password"
+            id="verifyPassword"
+            value={profileDetails.verifyPassword}
+            onChange={inputChange}
+            required
+          />
+        </div>
+        <button type="submit">Done</button>
+      </form>
     </div>
   );
 };

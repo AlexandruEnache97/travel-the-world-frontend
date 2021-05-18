@@ -11,7 +11,6 @@ const ProfileInfo = ({ currentUser, updateInfo }) => {
   };
 
   const updateProfile = () => {
-    console.log('Updated profile');
     updateInfo();
   };
 
