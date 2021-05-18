@@ -8,4 +8,5 @@ export const AUTH_ROUTES = {
   SIGN_UP: 'api/sign-up',
   GET_ACCOUNT: 'api/accounts',
   CHANGE_PROFILE_IMAGE: 'api/changeProfileImage',
+  CHANGE_PROFILE_DETAILS: 'api/changeProfileDetails',
 };

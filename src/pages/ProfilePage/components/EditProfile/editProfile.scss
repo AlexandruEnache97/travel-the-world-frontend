@@ -46,6 +46,12 @@
         width: 45rem;
         height: inherit;
         overflow-y: scroll;
+        
+        .edit-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
 
         button {
             font-size: 1.5rem;

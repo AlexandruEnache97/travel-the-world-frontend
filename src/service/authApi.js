@@ -24,3 +24,8 @@ export const changeProfileImage = async (imageUrl) => {
   const data = await put(`${NODE_SERVER.baseUrl}/${AUTH_ROUTES.CHANGE_PROFILE_IMAGE}`, imageUrl);
   return data;
 };
+
+export const changeProfileDetails = async (userData) => {
+  const data = await put(`${NODE_SERVER.baseUrl}/${AUTH_ROUTES.CHANGE_PROFILE_DETAILS}`, userData);
+  return data;
+};

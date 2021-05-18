@@ -22,7 +22,7 @@ const ChangePassword = () => {
 
   return (
     <div className="edit-password">
-      <p className="title">Change password</p>
+      <p className="edit-title">Change password</p>
       <form onSubmit={changePasswordHandle}>
         <div className="edit-element">
           <label htmlFor="oldPassword">Old password</label>

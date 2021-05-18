@@ -1,12 +1,14 @@
+/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './changeDetails.scss';
+import { changeProfileDetails } from '../../../../service/authApi';
 
-const ChangeDetails = ({ currentUser }) => {
+const ChangeDetails = ({ currentUser, closeModal, updateProfile }) => {
   const [profileDetails, setProfileDetails] = useState({
     username: currentUser.username,
     email: currentUser.email,
-    verifyPassword: '',
+    password: '',
   });
 
   const inputChange = (e) => {
@@ -16,14 +18,12 @@ const ChangeDetails = ({ currentUser }) => {
     });
   };
 
-  const handleChangeDetails = (e) => {
+  const handleChangeDetails = async (e) => {
     e.preventDefault();
-    setProfileDetails({
-      username: currentUser.username,
-      email: currentUser.email,
-      verifyPassword: '',
-    });
-    console.log(profileDetails);
+    await changeProfileDetails(profileDetails)
+      .catch(() => alert('Password incorrect'));
+    closeModal();
+    updateProfile();
   };
 
   return (
@@ -53,12 +53,12 @@ const ChangeDetails = ({ currentUser }) => {
           />
         </div>
         <div className="edit-element">
-          <label htmlFor="verifyPassword">Verify password</label>
+          <label htmlFor="password">Verify password</label>
           <input
-            name="verifyPassword"
+            name="password"
             type="password"
-            id="verifyPassword"
-            value={profileDetails.verifyPassword}
+            id="password"
+            value={profileDetails.password}
             onChange={inputChange}
             required
           />
@@ -77,6 +77,8 @@ ChangeDetails.propTypes = {
     country: PropTypes.string.isRequired,
     userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
   }).isRequired,
+  closeModal: PropTypes.func.isRequired,
+  updateProfile: PropTypes.func.isRequired,
 };
 
 export default ChangeDetails;

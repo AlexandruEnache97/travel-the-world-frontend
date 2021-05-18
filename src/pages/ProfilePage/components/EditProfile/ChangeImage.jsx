@@ -57,7 +57,7 @@ const ChangeImage = ({ closeModal, updateProfile }) => {
 
   return (
     <div className="edit-profile-image">
-      <label htmlFor="uploadImage">Change profile image</label>
+      <p className="edit-title">Change profile image</p>
       <input
         type="file"
         className="input-upload"

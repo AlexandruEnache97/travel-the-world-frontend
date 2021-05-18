@@ -13,7 +13,11 @@ const EditProfile = ({ closeModal, updateProfile, currentUser }) => (
       <button type="button" onClick={closeModal}>x</button>
     </div>
     <div className="edit-content">
-      <ChangeDetails currentUser={currentUser} />
+      <ChangeDetails
+        closeModal={closeModal}
+        updateProfile={updateProfile}
+        currentUser={currentUser}
+      />
       <ChangeImage closeModal={closeModal} updateProfile={updateProfile} />
       <ChangePassword />
     </div>
