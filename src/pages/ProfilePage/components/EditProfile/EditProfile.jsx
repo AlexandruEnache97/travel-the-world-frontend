@@ -18,8 +18,14 @@ const EditProfile = ({ closeModal, updateProfile, currentUser }) => (
         updateProfile={updateProfile}
         currentUser={currentUser}
       />
-      <ChangeImage closeModal={closeModal} updateProfile={updateProfile} />
-      <ChangePassword />
+      <ChangeImage
+        closeModal={closeModal}
+        updateProfile={updateProfile}
+      />
+      <ChangePassword
+        closeModal={closeModal}
+        updateProfile={updateProfile}
+      />
     </div>
     <div className="edit-bottom" />
   </div>

@@ -9,4 +9,5 @@ export const AUTH_ROUTES = {
   GET_ACCOUNT: 'api/accounts',
   CHANGE_PROFILE_IMAGE: 'api/changeProfileImage',
   CHANGE_PROFILE_DETAILS: 'api/changeProfileDetails',
+  CHANGE_PASSWORD: 'api/changePassword',
 };
