@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Post from './Post';
 
 const ListPosts = ({
-  posts, likedPosts, hasMore, getMorePosts,
+  posts, likedPosts, hasMore, getMorePosts, createAlert,
 }) => {
   const observer = useRef();
   const lastPostRef = useCallback((post) => {
@@ -49,6 +49,7 @@ const ListPosts = ({
               createdDate={post.createdDate}
               key={post.title + Math.random(0, 10000)}
               liked={checkLikedPost()}
+              createAlert={createAlert}
             />
           );
         }
@@ -69,6 +70,7 @@ const ListPosts = ({
             createdDate={post.createdDate}
             key={post.title + Math.random(0, 10000)}
             liked={checkLikedPost()}
+            createAlert={createAlert}
           />
         );
       })}
@@ -95,6 +97,7 @@ ListPosts.propTypes = {
   likedPosts: PropTypes.arrayOf(PropTypes.string).isRequired,
   hasMore: PropTypes.bool.isRequired,
   getMorePosts: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default ListPosts;

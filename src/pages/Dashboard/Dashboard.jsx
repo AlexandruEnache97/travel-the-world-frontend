@@ -7,9 +7,11 @@ import ListPosts from './components/posts/ListPosts';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import MenuContainer from './components/menu/MenuContainer';
 import PostsMenu from './components/posts/PostsMenu';
+import Alert from '../../components/Alerts/ConnectedAlert';
 
 const Dashboard = ({
-  auth, getPosts, posts, createPost, signOut, getLikedPosts,
+  auth, getPosts, posts, createPost,
+  signOut, getLikedPosts, createAlert,
 }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState('');
@@ -44,12 +46,14 @@ const Dashboard = ({
                 likedPosts={posts.likedPosts}
                 hasMore={posts.totalResults > currentPage * 10}
                 getMorePosts={getMorePosts}
+                createAlert={createAlert}
               />
             </div>
           </div>
         )}
       <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />
       <ScrollButton refId="topRef" />
+      <Alert />
     </>
   );
 };
@@ -90,6 +94,7 @@ Dashboard.propTypes = {
   createPost: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
   getLikedPosts: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default Dashboard;

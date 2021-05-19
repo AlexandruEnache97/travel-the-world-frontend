@@ -6,6 +6,7 @@ import {
   createPost as createPostAction,
   getLikedPosts as getLikedPostsAction,
 } from '../../redux/actions/postActions';
+import { createAlert as createAlertAction } from '../../redux/actions/alertActions';
 import Dashboard from './Dashboard';
 
 const mapStateToProps = (state) => ({
@@ -18,6 +19,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   createPost: createPostAction,
   signOut: signOutAction,
   getLikedPosts: getLikedPostsAction,
+  createAlert: createAlertAction,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

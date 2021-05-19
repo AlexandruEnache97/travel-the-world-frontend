@@ -1,0 +1,35 @@
+.alert-container {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+    height: 4rem;
+    top: 12%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    background-color: #000;
+    z-index: 120;
+    padding: 0rem 2rem;
+    border-radius: 1.3rem;
+
+    p {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #fff;
+        margin-right: 2rem;
+    }
+
+    button {
+        color: #000;
+        padding: 0rem 0.6rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        background-color: #fff;
+        border: none;
+        border-radius: 1.1rem;
+        outline: none;
+        width: 2.4rem;
+        height: 2.4rem;
+    }
+}

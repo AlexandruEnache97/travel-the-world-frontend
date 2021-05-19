@@ -10,7 +10,7 @@ import MapModal from './MapModal';
 const Post = ({
   postId, username, profileImage, title, text, image,
   category, country, location, likes, shares,
-  createdDate, liked, coordinates, postRef,
+  createdDate, liked, coordinates, postRef, createAlert,
 }) => {
   const [likePostData, setLikePostData] = useState({
     nrOfLikes: 0,
@@ -49,12 +49,14 @@ const Post = ({
         liked: false,
       });
       unlikePost({ postId });
+      createAlert('Post unlike', 3);
     } else {
       setLikePostData({
         nrOfLikes: likePostData.nrOfLikes += 1,
         liked: true,
       });
       likePost({ postId });
+      createAlert('Post liked', 3);
     }
   };
 
@@ -174,6 +176,7 @@ Post.propTypes = {
   createdDate: PropTypes.string.isRequired,
   liked: PropTypes.bool,
   postRef: PropTypes.func,
+  createAlert: PropTypes.func.isRequired,
 };
 
 Post.defaultProps = {

@@ -1,6 +1,7 @@
 import * as authTypes from './authTypes';
 import * as loadingTypes from './loadingTypes';
 import * as postTypes from './postTypes';
+import * as alertTypes from './alertTypes';
 
 const SUCCESS = 'SUCCESS';
 const ERROR = 'ERROR';
@@ -16,4 +17,5 @@ export default {
   ...authTypes,
   ...loadingTypes,
   ...postTypes,
+  ...alertTypes,
 };
