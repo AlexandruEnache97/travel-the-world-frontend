@@ -18,10 +18,13 @@ const alertReducer = (state = initialState, action) => {
         message: action.payload,
       };
     case REMOVE_ALERT:
-      return {
-        active: false,
-        message: '',
-      };
+      if (state.message === action.payload) {
+        return {
+          active: false,
+          message: '',
+        };
+      }
+      break;
     default:
       return state;
   }

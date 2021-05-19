@@ -13,10 +13,12 @@ export const createAlert = (message, timeout) => (dispatch) => {
   setTimeout(() => {
     dispatch({
       type: REMOVE_ALERT,
+      payload: message,
     });
   }, timeout * 1000);
 };
 
-export const removeAlert = () => ({
+export const removeAlert = (message) => ({
   type: REMOVE_ALERT,
+  payload: message,
 });
