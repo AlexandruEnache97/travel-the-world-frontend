@@ -69,7 +69,11 @@ const ProfilePage = ({
               updateInfo={updateInfo}
             />
             <div className="profile-container">
-              <ProfileMenu createPost={createPost} currentUser={currentUser} />
+              <ProfileMenu
+                createPost={createPost}
+                currentUser={currentUser}
+                createAlert={createAlert}
+              />
               <ListPosts
                 posts={profilePosts.userPosts}
                 likedPosts={profilePosts.likedUserPosts}

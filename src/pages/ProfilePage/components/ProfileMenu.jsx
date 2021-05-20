@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './profileMenu.scss';
 import CreatePost from '../../Dashboard/components/posts/CreatePost';
 
-const ProfileMenu = ({ createPost, currentUser }) => {
+const ProfileMenu = ({ createPost, currentUser, createAlert }) => {
   const [activeButton, setActiveButton] = useState('PROFILE_POSTS');
   const [createPostModal, setCreatePostModal] = useState(false);
 
@@ -48,6 +48,7 @@ const ProfileMenu = ({ createPost, currentUser }) => {
               createPost={createPost}
               username={currentUser.username}
               profileImage={currentUser.profileImage}
+              createAlert={createAlert}
             />
           </div>
         </>
@@ -65,6 +66,7 @@ ProfileMenu.propTypes = {
     userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
   }).isRequired,
   createPost: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default ProfileMenu;

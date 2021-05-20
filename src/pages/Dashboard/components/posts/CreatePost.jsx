@@ -10,7 +10,7 @@ import countryCoordinates from '../../../../utils/countryCoordinates';
 import PostMapLocation from './setPost/PostMapLocation';
 
 const CreatePost = ({
-  username, profileImage, createPost,
+  username, profileImage, createPost, createAlert, closeModal,
 }) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [keyFile, setKeyFile] = useState(new Date());
@@ -61,7 +61,8 @@ const CreatePost = ({
       });
       setFileUpload(null);
       setKeyFile(new Date());
-      alert('Post created');
+      closeModal();
+      createAlert('Post created!', 3);
     }
   }, [postData.postImage]);
 
@@ -144,7 +145,8 @@ const CreatePost = ({
         },
         category: '',
       });
-      alert('Post created without image');
+      closeModal();
+      createAlert('Post created without image!', 3);
     }
   };
 
@@ -245,6 +247,8 @@ CreatePost.propTypes = {
   username: PropTypes.string.isRequired,
   createPost: PropTypes.func.isRequired,
   profileImage: PropTypes.string.isRequired,
+  createAlert: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default CreatePost;

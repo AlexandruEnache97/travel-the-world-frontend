@@ -40,7 +40,11 @@ const Dashboard = ({
           <div className="dashboard-container">
             <MenuContainer currentUser={currentUser} />
             <div className="feed-container">
-              <PostsMenu currentUser={currentUser} createPost={createPost} />
+              <PostsMenu
+                currentUser={currentUser}
+                createPost={createPost}
+                createAlert={createAlert}
+              />
               <ListPosts
                 posts={posts.currentPosts}
                 likedPosts={posts.likedPosts}

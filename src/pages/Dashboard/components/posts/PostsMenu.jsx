@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CreatePost from './CreatePost';
 import './postsMenu.scss';
 
-const PostsMenu = ({ createPost, currentUser }) => {
+const PostsMenu = ({ createPost, currentUser, createAlert }) => {
   const [createPostModal, setCreatePostModal] = useState(false);
 
   const changeCreatePost = () => {
@@ -23,6 +23,8 @@ const PostsMenu = ({ createPost, currentUser }) => {
               createPost={createPost}
               username={currentUser.username}
               profileImage={currentUser.profileImage}
+              createAlert={createAlert}
+              closeModal={setCreatePostModal}
             />
           </div>
         </>
@@ -40,6 +42,7 @@ PostsMenu.propTypes = {
     userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
   }).isRequired,
   createPost: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default PostsMenu;
