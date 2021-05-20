@@ -24,6 +24,11 @@
 
             .post-user-icon {
                 width: 4rem;
+                height: 4rem;
+                // margin-right: 1rem;
+                border-radius: 1.2rem;
+                object-fit: cover;
+                object-position: center right;
             }
     
             p {

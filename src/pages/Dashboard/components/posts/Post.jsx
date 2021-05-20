@@ -8,7 +8,7 @@ import CommentsModal from '../comments/ConnectedCommentsModal';
 import MapModal from './MapModal';
 
 const Post = ({
-  postId, username, profileImage, title, text, image,
+  postId, userData, title, text, image,
   category, country, location, likes, shares,
   createdDate, liked, coordinates, postRef, createAlert,
 }) => {
@@ -68,8 +68,8 @@ const Post = ({
     <div className="post-container" ref={postRef}>
       <div className="post-top">
         <div className="post-user">
-          <img className="post-user-icon" src={profileImage} alt="userIcon" />
-          <p>{username}</p>
+          <img className="post-user-icon" src={userData.profileImage} alt="userIcon" />
+          <p>{userData.username}</p>
         </div>
         <button className="bookmark-button" type="button" onClick={handleSavePost}>
           {postSaved ? (
@@ -130,7 +130,7 @@ const Post = ({
             && (
               <CommentsModal
                 postId={postId}
-                postUser={username}
+                postUser={userData.username}
               />
             )}
         </div>
@@ -162,8 +162,7 @@ const Post = ({
 
 Post.propTypes = {
   postId: PropTypes.string.isRequired,
-  username: PropTypes.string.isRequired,
-  profileImage: PropTypes.string.isRequired,
+  userData: PropTypes.objectOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   image: PropTypes.string,

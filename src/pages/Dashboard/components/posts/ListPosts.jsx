@@ -35,8 +35,7 @@ const ListPosts = ({
             <Post
               postRef={lastPostRef}
               postId={post._id}
-              username={post.username}
-              profileImage={post.profileImage}
+              userData={post.userData}
               title={post.title}
               text={post.text}
               location={post.location}
@@ -56,8 +55,7 @@ const ListPosts = ({
         return (
           <Post
             postId={post._id}
-            username={post.username}
-            profileImage={post.profileImage}
+            userData={post.userData}
             title={post.title}
             text={post.text}
             location={post.location}
@@ -81,9 +79,7 @@ const ListPosts = ({
 ListPosts.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
-    __v: PropTypes.number.isRequired,
-    username: PropTypes.string.isRequired,
-    profileImage: PropTypes.string.isRequired,
+    userData: PropTypes.objectOf(PropTypes.string).isRequired,
     title: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     postImage: PropTypes.string.isRequired,
