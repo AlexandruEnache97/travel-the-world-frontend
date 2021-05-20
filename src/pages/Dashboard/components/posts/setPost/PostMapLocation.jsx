@@ -27,9 +27,9 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
       />
       {mapModal && (
         <>
-          <div className="post-map-modal" onClickCapture={() => { setMapModal(!mapModal); }} />
-          <div className="post-map-container">
-            <h1 className="post-map-title">
+          <div className="map-modal" onClickCapture={() => { setMapModal(!mapModal); }} />
+          <div className="set-map-container">
+            <h1 className="set-map-title">
               Set location on map
             </h1>
             <button className="post-map-close" type="button" onClick={() => { setMapModal(false); }}>x</button>
