@@ -24,7 +24,7 @@ const alertReducer = (state = initialState, action) => {
           message: '',
         };
       }
-      break;
+      return state;
     default:
       return state;
   }

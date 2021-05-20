@@ -9,9 +9,10 @@ import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import ProfileInfo from './components/ProfileInfo';
 import ProfileMenu from './components/ProfileMenu';
+import Alert from '../../components/Alerts/ConnectedAlert';
 
 const ProfilePage = ({
-  auth, createPost, signOut, getAccount,
+  auth, createPost, signOut, getAccount, createAlert,
 }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
@@ -74,6 +75,7 @@ const ProfilePage = ({
                 likedPosts={profilePosts.likedUserPosts}
                 hasMore={profilePosts.totalResults > currentPage * 10}
                 getMorePosts={getMorePosts}
+                createAlert={createAlert}
               />
               <ScrollButton refId="profileRef" />
             </div>
@@ -82,6 +84,7 @@ const ProfilePage = ({
         )}
       <img className="profile-background" src={backgroundGradient} alt="profileGradient" />
       <LoadingOverlay loading={{ loadingState: [loading] }} />
+      <Alert />
     </>
   );
 };
@@ -101,6 +104,7 @@ ProfilePage.propTypes = {
   createPost: PropTypes.func.isRequired,
   signOut: PropTypes.func.isRequired,
   getAccount: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default ProfilePage;
