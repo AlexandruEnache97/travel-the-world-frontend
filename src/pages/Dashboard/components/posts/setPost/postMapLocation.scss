@@ -86,8 +86,18 @@
         align-items: center;
         width: 100vw;
         height: 100vh;
-        top: 0.6rem;
+        top: 0;
         background-color: rgba(0, 0, 0, 0.25);
         z-index: 14;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .post-map-control {
+        .set-map-container {
+            width: 110%;
+            height: 95%;
+            top: 5%;
+        }
     }
 }
