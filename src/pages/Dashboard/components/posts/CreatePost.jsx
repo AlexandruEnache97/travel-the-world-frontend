@@ -157,7 +157,7 @@ const CreatePost = ({
           {profileImage !== '' && <img src={profileImage} alt="userIcon" />}
           <p>{username}</p>
         </div>
-        <p>Create post</p>
+        <button className="close-button" type="button" onClick={() => closeModal()}>x</button>
       </div>
       <form onSubmit={uploadHandler}>
         <div className="create-content">
