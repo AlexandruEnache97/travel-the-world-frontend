@@ -88,7 +88,7 @@ export const getLikedPosts = (pageNumber) => async (dispatch) => {
 
     dispatch({
       type: createActionType(GET_LIKED_POSTS, SUCCESS),
-      payload: data,
+      payload: { data, pageNumber },
     });
   } catch (error) {
     dispatch({

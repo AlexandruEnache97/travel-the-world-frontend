@@ -38,7 +38,9 @@ const postReducer = (state = initialState, action) => {
     case createActionType(GET_LIKED_POSTS, SUCCESS):
       return {
         ...state,
-        likedPosts: action.payload.likedPosts,
+        likedPosts: action.payload.pageNumber === 1
+          ? action.payload.data.likedPosts
+          : [...state.likedPosts, ...action.payload.data.likedPosts],
       };
     case createActionType(GET_LIKED_POSTS, ERROR):
       return {
