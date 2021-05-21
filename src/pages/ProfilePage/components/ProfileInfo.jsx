@@ -15,7 +15,7 @@ const ProfileInfo = ({ currentUser, updateInfo }) => {
   };
 
   return (
-    <div className="profile-user" id="profileRef">
+    <div className="profile-user">
       <div className="profile">
         <div className="user-image">
           <img src={currentUser.profileImage} alt="" />

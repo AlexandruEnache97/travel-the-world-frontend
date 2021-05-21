@@ -24,8 +24,9 @@ const ProfileMenu = ({ createPost, currentUser, createAlert }) => {
   };
 
   return (
-    <div className="profile-menu">
+    <div className="profile-menu" id="profileRef">
       <button
+        id="profileRef"
         className={activeButton === 'PROFILE_POSTS' ? 'active-button' : ''}
         type="button"
         onClick={onClickProfilePosts}

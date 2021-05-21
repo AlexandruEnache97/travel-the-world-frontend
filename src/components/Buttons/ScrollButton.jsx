@@ -7,9 +7,10 @@ const ScrollButton = ({ refId }) => {
   const [showScroll, setShowScroll] = useState(false);
 
   return (
-    <div>
+    <div className="scroll-button">
       <LinkScroll
         to={refId}
+        containerId="main-page"
         spy
         smooth
         duration={800}
