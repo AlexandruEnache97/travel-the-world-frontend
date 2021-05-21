@@ -7,12 +7,16 @@ const MapComponent = ({ auth, signOut }) => (
   <div className="mapComponent">
     <Navbar signOut={signOut} />
     {auth !== undefined
-     && (
-     <HereMap
-       userLocation={auth.accountData.userLocation}
-       country={auth.accountData.country}
-     />
-     )}
+      && (
+        <HereMap
+          userData={{
+            username: auth.accountData.username,
+            profileImage: auth.accountData.profileImage,
+          }}
+          userLocation={auth.accountData.userLocation}
+          country={auth.accountData.country}
+        />
+      )}
   </div>
 );
 

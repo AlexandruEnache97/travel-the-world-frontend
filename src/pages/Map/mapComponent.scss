@@ -8,9 +8,23 @@
         .H_ib_body{
             max-height: 25rem;
             overflow-y: scroll;
-            img {
+
+            .user-marker {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .post-image {
                 margin-top: 1rem;
                 width: 20rem;
+            }
+
+            .profile-image {
+                width: 6rem;
+                height: 6rem;
             }
 
             &::-webkit-scrollbar{

@@ -26,7 +26,8 @@ const ProfilePage = ({
 
   useEffect(async () => {
     setLoading('loading');
-    const { data } = await getUserPosts(currentPage);
+    const { data } = await getUserPosts(currentPage)
+      .catch(setLoading(null));
     const likedPosts = await getUserLikedPosts(currentPage);
     setProfilePosts({
       userPosts: data.posts,

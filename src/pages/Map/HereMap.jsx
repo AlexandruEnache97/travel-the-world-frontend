@@ -5,7 +5,7 @@ import './mapComponent.scss';
 import { createMarker } from '../../utils/hereMap';
 import RECOMMENDED_POSTS from '../../utils/recommendedPosts';
 
-const HereMap = ({ userLocation, country }) => {
+const HereMap = ({ userData, userLocation, country }) => {
   const mapRef = useRef(null);
 
   useLayoutEffect(() => {
@@ -36,7 +36,13 @@ const HereMap = ({ userLocation, country }) => {
         hMap,
         userLocation,
         'https://img.icons8.com/android/48/DC143C/marker.png',
-        `<div><p><b>User Location</b></p><p>${country}</p></div>`,
+        `<div class="user-marker">
+          <div>
+            <img class="profile-image" src=${userData.profileImage} />
+            <p><b>${userData.username}</b></p>
+          </div>
+          <p>${country}</p>
+        </div>`,
         ui,
       );
     }
@@ -46,7 +52,8 @@ const HereMap = ({ userLocation, country }) => {
         hMap,
         post.coordinates,
         'https://img.icons8.com/android/48/006400/marker.png',
-        `<p><b>${post.location}</b></p><img src=${post.image} /><p>${post.text}</p>`,
+        `<p><b>${post.location}</b></p>
+        <img class="post-image" src=${post.image} /><p>${post.text}</p>`,
         ui,
       );
     });
@@ -66,6 +73,10 @@ const HereMap = ({ userLocation, country }) => {
 };
 
 HereMap.propTypes = {
+  userData: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    profileImage: PropTypes.string.isRequired,
+  }).isRequired,
   userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
   country: PropTypes.string.isRequired,
 };

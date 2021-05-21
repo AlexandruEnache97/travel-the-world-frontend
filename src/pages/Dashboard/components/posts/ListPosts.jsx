@@ -8,6 +8,12 @@ const ListPosts = ({
   posts, likedPosts, hasMore, getMorePosts, createAlert,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [nrOfPosts, setNrOfPosts] = useState(-1);
+
+  useEffect(() => {
+    console.log(posts.length);
+    setNrOfPosts(posts.length);
+  }, [posts]);
 
   useEffect(async () => {
     if (loading) {
@@ -32,7 +38,11 @@ const ListPosts = ({
 
   return (
     <>
-      {posts !== [] && posts.map((post, index) => {
+      {nrOfPosts === 0 ? (
+        <div className="profile-no-posts">
+          <p>There are no posts. Create one</p>
+        </div>
+      ) : posts.map((post, index) => {
         const checkLikedPost = () => {
           let postLiked = false;
           likedPosts.map((likedPost) => {
