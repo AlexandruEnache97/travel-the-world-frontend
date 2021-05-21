@@ -48,6 +48,7 @@ const Dashboard = ({
               <ListPosts
                 posts={posts.currentPosts}
                 likedPosts={posts.likedPosts}
+                currentPage={currentPage}
                 hasMore={posts.totalResults > currentPage * 10}
                 getMorePosts={getMorePosts}
                 createAlert={createAlert}

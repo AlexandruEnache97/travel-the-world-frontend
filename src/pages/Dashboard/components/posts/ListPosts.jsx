@@ -1,16 +1,30 @@
-import React, { useRef, useCallback } from 'react';
+import React, {
+  useRef, useCallback, useState, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import Post from './Post';
 
 const ListPosts = ({
   posts, likedPosts, hasMore, getMorePosts, createAlert,
 }) => {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(async () => {
+    if (loading) {
+      await getMorePosts();
+      setTimeout(() => {
+        setLoading(false);
+      }, 1000);
+    }
+  }, [loading]);
+
   const observer = useRef();
   const lastPostRef = useCallback((post) => {
     if (observer.current) observer.current.disconnect();
     observer.current = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && hasMore) {
-        getMorePosts();
+      if (entries[0].isIntersecting && hasMore && !loading) {
+        observer.current.unobserve(post);
+        setLoading(true);
       }
     });
     if (post) observer.current.observe(post);
