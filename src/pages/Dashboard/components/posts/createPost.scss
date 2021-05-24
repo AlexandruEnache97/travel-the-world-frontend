@@ -54,12 +54,16 @@
         margin: 1.5rem 0rem;
     }
 
+    form {
+        background-color: #f0f0f0;
+        border-radius: 0rem 0rem 3.1rem 3.1rem;
+    }
+
     .create-content {
         display: flex;
         flex-direction: column;
         justify-content: center;
         padding: 1rem 2.5rem 0rem 2.5rem;
-        background-color: rgb(240, 240, 240);
 
         .create-element {
             display: flex;
@@ -95,7 +99,6 @@
         flex-direction: column;
         justify-content: center;
         padding: 1rem 2.5rem 2rem 2.5rem;
-        background-color: rgb(240, 240, 240);
 
         .input-upload {
             width: 20rem;
