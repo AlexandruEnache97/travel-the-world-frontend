@@ -8,9 +8,7 @@ import CommentsModal from '../comments/ConnectedCommentsModal';
 import MapModal from './MapModal';
 
 const Post = ({
-  postId, userData, title, text, image,
-  category, country, location, likes, shares,
-  createdDate, liked, coordinates, postRef, createAlert,
+  post, liked, postRef, createAlert,
 }) => {
   const [likePostData, setLikePostData] = useState({
     nrOfLikes: 0,
@@ -20,6 +18,12 @@ const Post = ({
   const [commentsModal, setCommentsModal] = useState(false);
   const [mapModal, setMapModal] = useState(false);
   const [postSaved, setPostSaved] = useState(false);
+
+  const {
+    userData, title, text, postImage,
+    location, country, category, coordinates,
+    likes, shares, createdDate,
+  } = post;
 
   useEffect(() => {
     setLikePostData({
@@ -48,14 +52,14 @@ const Post = ({
         nrOfLikes: likePostData.nrOfLikes -= 1,
         liked: false,
       });
-      unlikePost({ postId });
+      unlikePost({ postId: post._id });
       createAlert('Post unlike', 3);
     } else {
       setLikePostData({
         nrOfLikes: likePostData.nrOfLikes += 1,
         liked: true,
       });
-      likePost({ postId });
+      likePost({ postId: post._id });
       createAlert('Post liked', 3);
     }
   };
@@ -98,7 +102,7 @@ const Post = ({
         </div>
         <p>{calculateTimePassed(createdDate)}</p>
         <p>{text}</p>
-        {image !== '' && <img className="post-image" src={image} alt="postImage" />}
+        {postImage !== '' && <img className="post-image" src={postImage} alt="postImage" />}
       </div>
       <div className="post-bottom">
         <div className="post-bottom-text">
@@ -129,7 +133,7 @@ const Post = ({
           {commentsModal
             && (
               <CommentsModal
-                postId={postId}
+                postId={post._id}
                 postUser={userData.username}
               />
             )}
@@ -141,7 +145,7 @@ const Post = ({
           <LikesModal
             title={title}
             likes={likePostData.nrOfLikes}
-            postId={postId}
+            postId={post._id}
             closeHandler={changeLikesModal}
             getLikes={getUserLikes}
           />
@@ -151,7 +155,7 @@ const Post = ({
         <MapModal
           setMapModal={setMapModal}
           postLocation={`${location} ${country}`}
-          postImage={image}
+          postImage={postImage}
           postText={text}
           postCoordinates={coordinates}
         />
@@ -161,25 +165,26 @@ const Post = ({
 };
 
 Post.propTypes = {
-  postId: PropTypes.string.isRequired,
-  userData: PropTypes.objectOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  image: PropTypes.string,
-  location: PropTypes.string.isRequired,
-  coordinates: PropTypes.objectOf(PropTypes.number).isRequired,
-  country: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  likes: PropTypes.number.isRequired,
-  shares: PropTypes.number.isRequired,
-  createdDate: PropTypes.string.isRequired,
+  post: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    userData: PropTypes.objectOf(PropTypes.string).isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    postImage: PropTypes.string,
+    location: PropTypes.string.isRequired,
+    createdDate: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
+    shares: PropTypes.number.isRequired,
+    likes: PropTypes.number.isRequired,
+    coordinates: PropTypes.objectOf(PropTypes.number).isRequired,
+  }).isRequired,
   liked: PropTypes.bool,
   postRef: PropTypes.func,
   createAlert: PropTypes.func.isRequired,
 };
 
 Post.defaultProps = {
-  image: '',
   liked: false,
   postRef: () => { },
 };

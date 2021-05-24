@@ -1,5 +1,4 @@
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-did-update-set-state */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Post from './Post';
@@ -67,19 +66,8 @@ export class ListPost extends Component {
           if (this.props.posts.length === index + 1) {
             return (
               <Post
+                post={post}
                 postRef={this.handleCallback}
-                postId={post._id}
-                userData={post.userData}
-                title={post.title}
-                text={post.text}
-                location={post.location}
-                country={post.country}
-                category={post.category}
-                coordinates={post.coordinates}
-                image={post.postImage}
-                likes={post.likes}
-                shares={post.shares}
-                createdDate={post.createdDate}
                 key={post.title + Math.random(0, 10000)}
                 liked={checkLikedPost()}
                 createAlert={this.props.createAlert}
@@ -88,18 +76,7 @@ export class ListPost extends Component {
           }
           return (
             <Post
-              postId={post._id}
-              userData={post.userData}
-              title={post.title}
-              text={post.text}
-              location={post.location}
-              country={post.country}
-              category={post.category}
-              coordinates={post.coordinates}
-              image={post.postImage}
-              likes={post.likes}
-              shares={post.shares}
-              createdDate={post.createdDate}
+              post={post}
               key={post.title + Math.random(0, 10000)}
               liked={checkLikedPost()}
               createAlert={this.props.createAlert}
@@ -121,6 +98,7 @@ ListPost.propTypes = {
     location: PropTypes.string.isRequired,
     createdDate: PropTypes.string.isRequired,
     country: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
     shares: PropTypes.number.isRequired,
     likes: PropTypes.number.isRequired,
     coordinates: PropTypes.objectOf(PropTypes.number).isRequired,
