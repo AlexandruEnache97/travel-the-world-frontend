@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Navbar from '../Dashboard/components/Navbar';
 import './profilePage.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
-import ListPosts from '../Dashboard/components/posts/ListPosts';
+import ListPosts from '../Dashboard/components/posts/ListPost';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
 import ScrollButton from '../../components/Buttons/ScrollButton';
@@ -26,8 +26,7 @@ const ProfilePage = ({
 
   useEffect(async () => {
     setLoading('loading');
-    const { data } = await getUserPosts(currentPage)
-      .catch(setLoading(null));
+    const { data } = await getUserPosts(currentPage);
     const likedPosts = await getUserLikedPosts(currentPage);
     setProfilePosts({
       userPosts: data.posts,

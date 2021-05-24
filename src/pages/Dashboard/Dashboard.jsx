@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import './dashboard.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import Navbar from './components/Navbar';
-import ListPosts from './components/posts/ListPosts';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import MenuContainer from './components/menu/MenuContainer';
 import PostsMenu from './components/posts/PostsMenu';
 import Alert from '../../components/Alerts/ConnectedAlert';
+import ListPosts from './components/posts/ListPost';
 
 const Dashboard = ({
   auth, getPosts, posts, createPost,
