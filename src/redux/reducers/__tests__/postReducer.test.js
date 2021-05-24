@@ -56,7 +56,9 @@ describe('Post reducers tests', () => {
     expect(postReducer(initialState, {
       type: createActionType(GET_LIKED_POSTS, SUCCESS),
       payload: {
-        likedPosts: ['Atlantic', 'Pacific'],
+        data: {
+          likedPosts: ['Atlantic', 'Pacific'],
+        },
       },
     })).toEqual({
       ...initialState,

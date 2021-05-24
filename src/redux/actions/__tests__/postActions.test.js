@@ -163,7 +163,8 @@ describe('Post actions tests', () => {
     expect(actions[1]).toEqual({
       type: createActionType(GET_LIKED_POSTS, SUCCESS),
       payload: {
-        post: 'Atlantic',
+        data: { post: 'Atlantic' },
+        pageNumber: 1,
       },
     });
   });
