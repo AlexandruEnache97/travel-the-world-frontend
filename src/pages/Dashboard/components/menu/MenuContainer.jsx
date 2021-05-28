@@ -8,17 +8,18 @@ import groupIcon from '../../../../images/menuButtons/groupIcon.png';
 import newPostsIcon from '../../../../images/menuButtons/newPostsIcon.png';
 import goalsIcon from '../../../../images/menuButtons/goalsIcon.png';
 import friendsIcon from '../../../../images/menuButtons/friendsIcon.png';
+import isMobileWindow from '../../../../utils/isMobileWindow';
 
 const MenuContainer = ({ currentUser }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  const [mobileModal, setMobileModal] = useState(false);
+  const [mobileModalActive, setMobileModalActive] = useState(false);
 
   const resizeWindow = () => {
     setWindowWidth(window.innerWidth);
   };
 
   const mobileMenuHandler = (isActive) => {
-    setMobileModal(isActive);
+    setMobileModalActive(isActive);
   };
 
   useEffect(() => {
@@ -29,9 +30,10 @@ const MenuContainer = ({ currentUser }) => {
       document.body.style.overflow = 'scroll';
     };
   }, []);
+
   return (
     <>
-      {(windowWidth > 601 || (windowWidth < 601 && mobileModal))
+      {(!isMobileWindow(windowWidth) || (isMobileWindow(windowWidth) && mobileModalActive))
         && (
           <div className="menu-container">
             <div className="menu">

@@ -6,7 +6,7 @@ import './postsMenu.scss';
 const PostsMenu = ({ createPost, currentUser, createAlert }) => {
   const [createPostModal, setCreatePostModal] = useState(false);
 
-  const changeCreatePost = () => {
+  const createPostHandler = () => {
     setCreatePostModal(!createPostModal);
   };
 
@@ -14,10 +14,10 @@ const PostsMenu = ({ createPost, currentUser, createAlert }) => {
     <div className="posts-menu" id="topRef">
       <button className="active-button" type="button">News feed</button>
       <button type="button">Recommended locations</button>
-      <button type="button" onClick={changeCreatePost}>Create new post</button>
+      <button type="button" onClick={createPostHandler}>Create new post</button>
       {createPostModal && (
         <>
-          <div className="modal" onClickCapture={changeCreatePost} />
+          <div className="modal" onClickCapture={createPostHandler} />
           <div className="create-post-modal">
             <CreatePost
               createPost={createPost}
