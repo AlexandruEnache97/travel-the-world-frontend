@@ -35,7 +35,7 @@ const Dashboard = ({
   return (
     <>
       <Navbar signOut={signOut} />
-      {currentUser.username !== '' && currentUser.username !== undefined
+      {currentUser !== '' && currentUser.username !== undefined
         && (
           <div className="dashboard-container">
             <MenuContainer currentUser={currentUser} />
