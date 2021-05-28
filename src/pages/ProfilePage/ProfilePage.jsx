@@ -26,14 +26,20 @@ const ProfilePage = ({
 
   useEffect(async () => {
     setLoading('loading');
-    const { data } = await getUserPosts(currentPage);
-    const likedPosts = await getUserLikedPosts(currentPage);
-    setProfilePosts({
-      userPosts: data.posts,
-      totalResults: data.totalResults,
-      likedUserPosts: likedPosts.data.likedPosts,
-    });
-    setLoading(null);
+    await getUserPosts(currentPage)
+      .then(async (res) => {
+        const { data } = res;
+        const likedPosts = await getUserLikedPosts(currentPage);
+        setProfilePosts({
+          userPosts: data.posts,
+          totalResults: data.totalResults,
+          likedUserPosts: likedPosts.data.likedPosts,
+        });
+        setLoading(null);
+      })
+      .catch(() => {
+        setLoading(null);
+      });
   }, []);
 
   useEffect(() => {
