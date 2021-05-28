@@ -3,7 +3,10 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import ProtectedRoute from '../ProtectedRoute';
+import { authLogged, authLoggedOut } from '../../../utils/unitTesting';
 import LandingPage from '../../../pages/LandingPage/LandingPage';
+
+jest.mock('../../../pages/LandingPage/LandingPage', () => () => <p>LandingPage</p>);
 
 describe('ProtectedRoute component tests', () => {
   it('Should render component when authenticated', () => {
@@ -11,7 +14,7 @@ describe('ProtectedRoute component tests', () => {
       <MemoryRouter>
         <ProtectedRoute
           component={LandingPage}
-          auth={{ isAuthenticated: true }}
+          auth={authLogged}
         />
       </MemoryRouter>,
     );
@@ -19,7 +22,10 @@ describe('ProtectedRoute component tests', () => {
   it('Should redirect when authenticated', () => {
     render(
       <MemoryRouter>
-        <ProtectedRoute auth={{ isAuthenticated: false }} />
+        <ProtectedRoute
+          component={LandingPage}
+          auth={authLoggedOut}
+        />
       </MemoryRouter>,
     );
   });

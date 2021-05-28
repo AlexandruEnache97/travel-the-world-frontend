@@ -4,13 +4,18 @@ import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
 import SignIn from '../components/SignIn';
+import { authLogged, authLoggedOut } from '../../../utils/unitTesting';
 
 describe('SignIn tests', () => {
   it('Should render component correctly', () => {
     const signInMock = jest.fn();
     render(
       <MemoryRouter>
-        <SignIn signIn={signInMock} auth={{ isAuthenticated: false }} />
+        <SignIn
+          signIn={signInMock}
+          auth={authLoggedOut}
+          history={{ replace: () => { }, push: () => { } }}
+        />
       </MemoryRouter>,
     );
 
@@ -32,7 +37,11 @@ describe('SignIn tests', () => {
     const signInMock = jest.fn();
     render(
       <MemoryRouter>
-        <SignIn signIn={signInMock} auth={{ isAuthenticated: false }} />
+        <SignIn
+          signIn={signInMock}
+          auth={authLoggedOut}
+          history={{ replace: () => { }, push: () => { } }}
+        />
       </MemoryRouter>,
     );
 
@@ -56,7 +65,7 @@ describe('SignIn tests', () => {
         <SignIn
           signIn={signInMock}
           history={history}
-          auth={{ isAuthenticated: true }}
+          auth={authLogged}
         />
       </Router>,
     );
