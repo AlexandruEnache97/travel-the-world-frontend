@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Post from './Post';
+import Post from './postComponent/Post';
 
 export class ListPost extends Component {
   constructor(props) {

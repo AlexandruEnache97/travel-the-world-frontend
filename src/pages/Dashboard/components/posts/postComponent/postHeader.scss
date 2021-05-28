@@ -1,0 +1,51 @@
+.post-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40rem;
+    padding: 0rem 2.5rem;
+    height: 6rem;
+    background-color: #ff304f;
+    border-radius: 3rem 3rem 0rem 0rem;
+    
+    .post-user {
+        display: flex;
+        align-items: center;
+
+        .post-user-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1.2rem;
+            object-fit: cover;
+            object-position: center right;
+        }
+
+        p {
+            color: white;
+            padding: 0rem 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+
+    .bookmark-button {
+        width: 4rem;
+        background-color: transparent;
+        border: none;
+        outline: none;
+
+        img {
+            width: 4rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .post-top {
+        width: 33rem;
+    }
+}
