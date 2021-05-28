@@ -11,7 +11,7 @@ export class ListPost extends Component {
       nrOfPosts: -1,
     };
     this.observer = React.createRef();
-    this.handleCallback = this.handleCallback.bind(this);
+    this.lastPostHandle = this.lastPostHandle.bind(this);
   }
 
   async componentDidUpdate(prevProps, prevState) {
@@ -30,7 +30,7 @@ export class ListPost extends Component {
     }
   }
 
-  handleCallback(post) {
+  lastPostHandle(post) {
     const { hasMore } = this.props;
     const { loading } = this.state;
 
@@ -49,7 +49,12 @@ export class ListPost extends Component {
       <div>
         {this.state.nrOfPosts === 0 ? (
           <div className="profile-no-posts">
-            <p>There are no posts. Create one</p>
+            <div className="top" />
+            <div className="content">
+              <p>There are no posts. </p>
+              <p>Create one!</p>
+            </div>
+            <div className="bottom" />
           </div>
         ) : this.props.posts.map((post, index) => {
           const checkLikedPost = () => {
@@ -67,7 +72,7 @@ export class ListPost extends Component {
             return (
               <Post
                 post={post}
-                postRef={this.handleCallback}
+                postRef={this.lastPostHandle}
                 key={post.title + Math.random(0, 10000)}
                 liked={checkLikedPost()}
                 createAlert={this.props.createAlert}

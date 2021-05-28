@@ -38,6 +38,11 @@ const ProfilePage = ({
         setLoading(null);
       })
       .catch(() => {
+        setProfilePosts({
+          userPosts: [],
+          totalResults: 0,
+          likedUserPosts: [],
+        });
         setLoading(null);
       });
   }, []);

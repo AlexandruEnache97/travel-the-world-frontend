@@ -6,7 +6,7 @@ const MapComponent = ({ countryCoordinates, getCoordinates }) => {
   const mapRef = useRef(null);
   const [coordinates, setCoordinates] = useState(countryCoordinates);
 
-  const getCoordinatesMap = () => {
+  const getCoordinatesOnMap = () => {
     getCoordinates(coordinates);
   };
 
@@ -38,7 +38,7 @@ const MapComponent = ({ countryCoordinates, getCoordinates }) => {
     <>
       <div ref={mapRef} className="post-map" />
       <div className="post-map-buttons">
-        <button type="button" onClick={getCoordinatesMap}>
+        <button type="button" onClick={getCoordinatesOnMap}>
           Done
         </button>
       </div>
