@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './editProfile.scss';
-import ChangeImage from './ChangeImage';
+import ChangeImage from './ConnectedChangeImage';
 import ChangeDetails from './ChangeDetails';
 import ChangePassword from './ChangePassword';
 

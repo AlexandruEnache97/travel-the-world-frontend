@@ -5,7 +5,7 @@ import { changeProfileImage } from '../../../../service/authApi';
 import { storage } from '../../../../utils/firebase';
 import './changeImage.scss';
 
-const ChangeImage = ({ closeModal, updateProfile }) => {
+const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
   const [keyFile, setKeyFile] = useState(new Date());
@@ -18,7 +18,7 @@ const ChangeImage = ({ closeModal, updateProfile }) => {
       setImageUrl('');
       closeModal();
       updateProfile();
-      // alert('Image updated successfully');
+      createAlert('Image updated successfully');
     }
   }, [imageUrl]);
 
@@ -41,7 +41,7 @@ const ChangeImage = ({ closeModal, updateProfile }) => {
             console.log(snapshot._delegate);
           },
           (error) => {
-            console.log(error);
+            createAlert(error);
           },
           () => {
             storage
@@ -73,6 +73,7 @@ const ChangeImage = ({ closeModal, updateProfile }) => {
 ChangeImage.propTypes = {
   closeModal: PropTypes.func.isRequired,
   updateProfile: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default ChangeImage;
