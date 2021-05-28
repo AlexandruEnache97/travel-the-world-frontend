@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
+import { authLogged, authLoggedOut } from '../../../utils/unitTesting';
 import Register from '../components/Register';
 
 describe('Register tests', () => {
@@ -10,7 +11,11 @@ describe('Register tests', () => {
     const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register signUp={signUpMock} auth={{ isAuthenticated: false }} />
+        <Register
+          signUp={signUpMock}
+          auth={authLoggedOut}
+          history={{ replace: () => { }, push: () => { } }}
+        />
       </MemoryRouter>,
     );
 
@@ -43,7 +48,11 @@ describe('Register tests', () => {
     const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register signUp={signUpMock} auth={{ isAuthenticated: false }} />
+        <Register
+          signUp={signUpMock}
+          auth={authLoggedOut}
+          history={{ replace: () => { }, push: () => { } }}
+        />
       </MemoryRouter>,
     );
 
@@ -63,7 +72,11 @@ describe('Register tests', () => {
     const signUpMock = jest.fn();
     render(
       <MemoryRouter>
-        <Register signUp={signUpMock} auth={{ isAuthenticated: false }} />
+        <Register
+          signUp={signUpMock}
+          auth={authLoggedOut}
+          history={{ replace: () => { }, push: () => { } }}
+        />
       </MemoryRouter>,
     );
     const selectCountry = screen.getByRole('combobox');
@@ -80,7 +93,7 @@ describe('Register tests', () => {
         <Register
           signUp={signUpMock}
           history={history}
-          auth={{ isAuthenticated: true }}
+          auth={authLogged}
         />
       </Router>,
     );
