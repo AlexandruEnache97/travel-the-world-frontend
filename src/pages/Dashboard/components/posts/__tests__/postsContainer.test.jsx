@@ -1,26 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-// import { MemoryRouter } from 'react-router-dom';
+import { currentUser, posts } from '../../../../../utils/unitTesting';
 import PostsContainer from '../PostsContainer';
-
-const currentUser = {
-  username: 'Alex',
-  email: 'alex@gmail.com',
-  profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
-  country: 'Romania',
-  userLocation: {
-    lat: 36,
-    lng: 32,
-  },
-};
-
-const posts = {
-  currentPosts: [],
-  likedPosts: [],
-  totalResults: 0,
-  singlePost: {},
-};
 
 describe('PostsContainer component tests', () => {
   const getPosts = jest.fn();
