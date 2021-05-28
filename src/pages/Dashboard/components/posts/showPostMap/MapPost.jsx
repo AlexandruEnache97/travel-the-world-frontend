@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { createMarker } from '../../../../utils/hereMap';
+import { createMarker } from '../../../../../utils/hereMap';
 
 const MapPost = ({
   postLocation, postImage, postText, postCoordinates,

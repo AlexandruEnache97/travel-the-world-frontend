@@ -5,7 +5,7 @@ import './post.scss';
 import { getUserLikes, likePost, unlikePost } from '../../../../service/postsApi';
 import LikesModal from '../likes/LikesModal';
 import CommentsModal from '../comments/ConnectedCommentsModal';
-import MapModal from './MapModal';
+import MapModal from './showPostMap/MapModal';
 
 const Post = ({
   post, liked, postRef, createAlert,
