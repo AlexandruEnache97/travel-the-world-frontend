@@ -34,7 +34,7 @@ const Register = ({ signUp, auth, history }) => {
     signUp(registerData);
   };
 
-  const getCountry = (country) => {
+  const onChangeCountry = (country) => {
     setRegisterData({
       ...registerData,
       country,
@@ -89,7 +89,7 @@ const Register = ({ signUp, auth, history }) => {
         />
 
         <label htmlFor="country">Country</label>
-        <CountrySelect getCountry={getCountry} />
+        <CountrySelect onChangeCountry={onChangeCountry} />
 
         <Link to="/login" className="form-link">Have an account? Click to sign in!</Link>
         <button type="submit">Sign Up</button>

@@ -7,6 +7,10 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
   const [mapModal, setMapModal] = useState(false);
   const [markedOnMap, setMarkedOnMap] = useState(false);
 
+  const postMapHandler = () => {
+    setMapModal(!mapModal);
+  };
+
   const getCoordinates = (coordinates) => {
     setMapModal(!mapModal);
     getPostCoordinates(coordinates);
@@ -15,7 +19,7 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
 
   return (
     <div className="post-map-control">
-      <button type="button" className="location-button" onClick={() => { setMapModal(!mapModal); }}>
+      <button type="button" className="location-button" onClick={postMapHandler}>
         Set location on map
       </button>
       <img
@@ -27,12 +31,12 @@ const PostMapLocation = ({ countryCoordinates, getPostCoordinates }) => {
       />
       {mapModal && (
         <>
-          <div className="map-modal" onClickCapture={() => { setMapModal(!mapModal); }} />
+          <div className="map-modal" onClickCapture={postMapHandler} />
           <div className="set-map-container">
             <h1 className="set-map-title">
               Set location on map
             </h1>
-            <button className="post-map-close" type="button" onClick={() => { setMapModal(false); }}>x</button>
+            <button className="post-map-close" type="button" onClick={postMapHandler}>x</button>
             <MapComponent
               countryCoordinates={countryCoordinates}
               getCoordinates={getCoordinates}
