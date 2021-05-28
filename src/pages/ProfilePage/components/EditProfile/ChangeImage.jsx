@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { changeProfileImage } from '../../../../service/authApi';
@@ -18,7 +17,7 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
       setImageUrl('');
       closeModal();
       updateProfile();
-      createAlert('Image updated successfully');
+      createAlert('Image updated successfully', 3);
     }
   }, [imageUrl]);
 
@@ -30,7 +29,7 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
     e.preventDefault();
     if (fileUpload !== null) {
       if (fileUpload.size > 1024 * 1024 * 5) {
-        alert('File too big, upload images under 5Mb');
+        createAlert('File too big, upload images under 5Mb', 3);
         setFileUpload(null);
         setKeyFile(new Date());
       } else {
