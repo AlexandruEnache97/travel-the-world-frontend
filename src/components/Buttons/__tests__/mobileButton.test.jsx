@@ -7,8 +7,8 @@ import MobileButton from '../MobileButton';
 
 describe('Mobile button component tests', () => {
   it('Should render correctly', () => {
-    const getMobileMenu = jest.fn();
-    render(<MobileButton getMobileMenu={getMobileMenu} />);
+    const mobileMenuHandler = jest.fn();
+    render(<MobileButton mobileMenuHandler={mobileMenuHandler} />);
 
     const button = screen.getByRole('button', {
       name: 'Menu',
@@ -17,12 +17,13 @@ describe('Mobile button component tests', () => {
   });
 
   it('Should handle button click', () => {
-    const getMobileMenu = jest.fn();
-    render(<MobileButton getMobileMenu={getMobileMenu} />);
+    const mobileMenuHandler = jest.fn();
+    render(<MobileButton mobileMenuHandler={mobileMenuHandler} />);
 
     const button = screen.getByRole('button', {
       name: 'Menu',
     });
+
     fireEvent.click(button);
     expect(button).toHaveClass('mobile-button menu-open');
     fireEvent.click(button);

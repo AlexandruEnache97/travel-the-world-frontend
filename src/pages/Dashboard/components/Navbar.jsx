@@ -5,7 +5,7 @@ import logo from '../../../images/LogoHeader.png';
 import './navbar.scss';
 
 const Navbar = ({ signOut }) => {
-  const handleSignOut = (e) => {
+  const signOutHandler = (e) => {
     e.preventDefault();
     signOut();
   };
@@ -20,7 +20,7 @@ const Navbar = ({ signOut }) => {
       <div className="navbar-sign-out">
         <button
           type="button"
-          onClick={handleSignOut}
+          onClick={signOutHandler}
         >
           Sign Out
         </button>
