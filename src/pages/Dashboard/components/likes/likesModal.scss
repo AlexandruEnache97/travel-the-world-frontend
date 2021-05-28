@@ -76,6 +76,21 @@
                 background-color: transparent;
                 cursor: pointer;
             }
+
+            .load-more-spinner {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 1.5rem;    
+                padding: 1.3rem 0rem 1.5rem 0rem;
+                
+                p {
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    padding-right: 1rem;
+                }
+            }
         }
     }
 

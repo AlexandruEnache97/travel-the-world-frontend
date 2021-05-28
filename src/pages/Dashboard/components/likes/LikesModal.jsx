@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './likesModal.scss';
 import LikeComponent from './LikeComponent';
+import Spinner from '../../../../components/Spinner/Spinner';
 
 const LikesModal = ({
   title, likes, postId, closeHandler, getLikes,
@@ -10,6 +11,7 @@ const LikesModal = ({
     likes: [],
     currentPage: 1,
   });
+  const [loadingLikes, setLoadingLikes] = useState(false);
 
   useEffect(async () => {
     const info = await getLikes(postId, userLikes.currentPage);
@@ -21,15 +23,16 @@ const LikesModal = ({
 
   const getMoreLikes = async (e) => {
     e.preventDefault();
-
+    setLoadingLikes(true);
     const div = document.getElementById('likes-id');
-    div.scrollTop = div.scrollHeight - 285;
-
+    const value = div.scrollHeight - 285;
     const info = await getLikes(postId, userLikes.currentPage + 1);
     setUserLikes({
       likes: [...userLikes.likes, ...info.data.userLikes],
       currentPage: userLikes.currentPage + 1,
     });
+    div.scrollTop = value;
+    setLoadingLikes(false);
   };
 
   return (
@@ -39,8 +42,6 @@ const LikesModal = ({
           {title}
           {' '}
           -
-          {' '}
-          {}
           {' '}
           {likes}
           {' '}
@@ -52,9 +53,7 @@ const LikesModal = ({
         {userLikes.likes.length === 0 ? (
           <div className="like-container">
             <span>Loading</span>
-            <div className="loading-spinner">
-              <div className="loading-icon" data-testid="spinner" />
-            </div>
+            <Spinner />
           </div>
         )
           : userLikes.likes.map((item) => (
@@ -67,12 +66,21 @@ const LikesModal = ({
 
         <div className="more-likes">
           {userLikes.likes.length !== 0 && likes > userLikes.likes.length && (
-          <button type="button" onClick={getMoreLikes}>
-            Load
-            {' '}
-            {likes - userLikes.likes.length > 10 ? 10 : likes - userLikes.likes.length}
-            {' more likes'}
-          </button>
+            <>
+              {!loadingLikes ? (
+                <button type="button" onClick={getMoreLikes}>
+                  Load
+                  {' '}
+                  {likes - userLikes.likes.length > 10 ? 10 : likes - userLikes.likes.length}
+                  {' more likes'}
+                </button>
+              ) : (
+                <div className="load-more-spinner">
+                  <p>Loading </p>
+                  <Spinner />
+                </div>
+              )}
+            </>
           )}
         </div>
       </div>
