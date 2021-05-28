@@ -4,8 +4,8 @@ import {
   getPosts as getPostsAction,
   createPost as createPostAction,
   getLikedPosts as getLikedPostsAction,
-} from '../../../redux/actions/postActions';
-import { createAlert as createAlertAction } from '../../../redux/actions/alertActions';
+} from '../../../../redux/actions/postActions';
+import { createAlert as createAlertAction } from '../../../../redux/actions/alertActions';
 import PostsContainer from './PostsContainer';
 
 const mapStateToProps = (state) => ({

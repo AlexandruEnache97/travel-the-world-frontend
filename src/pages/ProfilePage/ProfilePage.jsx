@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../Dashboard/components/Navbar';
+import Navbar from '../Dashboard/components/navbar/Navbar';
 import './profilePage.scss';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import ListPosts from '../Dashboard/components/posts/ListPost';

@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
-import Navbar from '../components/Navbar';
+import Navbar from '../Navbar';
 
 describe('Navbar component tests', () => {
   it('Should render component correctly', () => {

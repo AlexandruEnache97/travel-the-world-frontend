@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import MenuButton from './MenuButton';
+import MobileButton from '../../../../components/Buttons/MobileButton';
 import './menuContainer.scss';
 import mapIcon from '../../../../images/menuButtons/mapIcon.png';
 import groupIcon from '../../../../images/menuButtons/groupIcon.png';
 import newPostsIcon from '../../../../images/menuButtons/newPostsIcon.png';
 import goalsIcon from '../../../../images/menuButtons/goalsIcon.png';
 import friendsIcon from '../../../../images/menuButtons/friendsIcon.png';
-import MobileButton from '../../../../components/Buttons/MobileButton';
 
 const MenuContainer = ({ currentUser }) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);

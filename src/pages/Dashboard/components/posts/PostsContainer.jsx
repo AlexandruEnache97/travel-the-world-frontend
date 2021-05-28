@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import PostsMenu from './posts/PostsMenu';
-import ListPosts from './posts/ListPost';
+import PostsMenu from './PostsMenu';
+import ListPosts from './ListPost';
 import './postsContainer.scss';
 
 const PostsContainer = ({

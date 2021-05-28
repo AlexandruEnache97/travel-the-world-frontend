@@ -7,7 +7,7 @@ import Dashboard from '../Dashboard';
 jest.mock('../components/menu/MenuButton.jsx', () => () => <p>Menu Button</p>);
 jest.mock('../../../components/Buttons/ScrollButton', () => () => <p>Scroll</p>);
 jest.mock('../../../components/Alerts/ConnectedAlert.jsx', () => () => <p>Alert</p>);
-jest.mock('../components/ConnectedPostsContainer.jsx', () => () => <p>Posts Container</p>);
+jest.mock('../components/posts/ConnectedPostsContainer.jsx', () => () => <p>Posts Container</p>);
 
 describe('Dashboard component tests', () => {
   it('Should render component correctly', () => {

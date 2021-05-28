@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import backgroundParallax from '../../images/firstPage/backgroundParallax.png';
 import backgroundClouds from '../../images/firstPage/backgroundClouds.jpg';
-import Navbar from '../Dashboard/components/Navbar';
+import Navbar from '../Dashboard/components/navbar/Navbar';
 import './firstPage.scss';
 
 const FirstPage = () => {
