@@ -17,7 +17,7 @@ const MenuContainer = ({ currentUser }) => {
     setWindowWidth(window.innerWidth);
   };
 
-  const getMobileMenu = (isActive) => {
+  const mobileMenuHandler = (isActive) => {
     setMobileModal(isActive);
   };
 
@@ -44,7 +44,7 @@ const MenuContainer = ({ currentUser }) => {
             </div>
           </div>
         )}
-      <MobileButton getMobileMenu={getMobileMenu} />
+      <MobileButton mobileMenuHandler={mobileMenuHandler} />
     </>
   );
 };

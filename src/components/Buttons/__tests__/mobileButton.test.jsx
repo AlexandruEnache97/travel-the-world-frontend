@@ -24,5 +24,8 @@ describe('Mobile button component tests', () => {
       name: 'Menu',
     });
     fireEvent.click(button);
+    expect(button).toHaveClass('mobile-button menu-open');
+    fireEvent.click(button);
+    expect(button).toHaveClass('mobile-button');
   });
 });

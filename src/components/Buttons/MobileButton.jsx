@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './mobileButton.scss';
 
-const MobileButton = ({ getMobileMenu }) => {
-  const [opened, setOpened] = useState(false);
+const MobileButton = ({ mobileMenuHandler }) => {
+  const [visible, setVisible] = useState(false);
 
   const handleChangeModal = () => {
-    if (!opened) {
+    if (!visible) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'scroll';
     }
-    getMobileMenu(!opened);
-    setOpened(!opened);
+    mobileMenuHandler(!visible);
+    setVisible(!visible);
   };
 
   return (
     <button
       type="button"
-      className={opened ? 'mobile-button menu-open' : 'mobile-button'}
+      className={visible ? 'mobile-button menu-open' : 'mobile-button'}
       onClick={handleChangeModal}
     >
       Menu
@@ -27,7 +27,7 @@ const MobileButton = ({ getMobileMenu }) => {
 };
 
 MobileButton.propTypes = {
-  getMobileMenu: PropTypes.func.isRequired,
+  mobileMenuHandler: PropTypes.func.isRequired,
 };
 
 export default MobileButton;
