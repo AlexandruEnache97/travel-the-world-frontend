@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './countrySelect.scss';
 
-const CountrySelect = ({ getCountry }) => {
+const CountrySelect = ({ onChangeCountry }) => {
   const onChange = (e) => {
-    getCountry(e.target.value);
+    onChangeCountry(e.target.value);
   };
 
   CountrySelect.propTypes = {
-    getCountry: PropTypes.func.isRequired,
+    onChangeCountry: PropTypes.func.isRequired,
   };
 
   return (

@@ -29,6 +29,29 @@ const CreatePost = ({
     createdDate: '',
   });
 
+  const createPostUpload = () => {
+    createPost({
+      ...postData,
+      createdDate: Date.now(),
+    });
+    setPostData({
+      ...postData,
+      title: '',
+      text: '',
+      country: '',
+      location: '',
+      coordinates: {
+        lat: 0,
+        lng: 0,
+      },
+      category: '',
+      postImage: '',
+      createdDate: '',
+    });
+    closeModal();
+    createAlert('Post created!', 3);
+  };
+
   useEffect(() => {
     setPostData({
       ...postData,
@@ -39,32 +62,13 @@ const CreatePost = ({
 
   useEffect(() => {
     if (postData.postImage !== '') {
-      createPost({
-        ...postData,
-        createdDate: Date.now(),
-      });
-      setPostData({
-        ...postData,
-        title: '',
-        text: '',
-        country: '',
-        location: '',
-        coordinates: {
-          lat: 0,
-          lng: 0,
-        },
-        category: '',
-        postImage: '',
-        createdDate: '',
-      });
+      createPostUpload();
       setFileUpload(null);
       setKeyFile(new Date());
-      closeModal();
-      createAlert('Post created!', 3);
     }
   }, [postData.postImage]);
 
-  const fileChange = (e) => {
+  const onFileChange = (e) => {
     setFileUpload(e.target.files[0]);
     // setPreviewImage(URL.createObjectURL(e.target.files[0]));
   };
@@ -76,7 +80,7 @@ const CreatePost = ({
     });
   };
 
-  const getCountry = (country) => {
+  const onChangeCountry = (country) => {
     setPostData({
       ...postData,
       country,
@@ -127,24 +131,7 @@ const CreatePost = ({
         );
       }
     } else if (postData.title !== '' && postData.text !== '' && postData.category !== '' && postData.location !== '') {
-      createPost({
-        ...postData,
-        createdDate: Date.now(),
-      });
-      setPostData({
-        ...postData,
-        title: '',
-        text: '',
-        country: '',
-        location: '',
-        coordinates: {
-          lat: 33.93,
-          lng: 67.71,
-        },
-        category: '',
-      });
-      closeModal();
-      createAlert('Post created without image!', 3);
+      createPostUpload();
     }
   };
 
@@ -200,7 +187,7 @@ const CreatePost = ({
 
           <div className="create-element">
             <label htmlFor="countryPost">Country</label>
-            <CountrySelect getCountry={getCountry} />
+            <CountrySelect onChangeCountry={onChangeCountry} />
           </div>
 
           <div className="create-element">
@@ -225,7 +212,7 @@ const CreatePost = ({
           <input
             type="file"
             className="input-upload"
-            onChange={fileChange}
+            onChange={onFileChange}
             accept="image/png, image/jpeg"
             key={keyFile}
           />
