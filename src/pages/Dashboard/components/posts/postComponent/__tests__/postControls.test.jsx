@@ -1,13 +1,23 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen, waitFor,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+import { NODE_SERVER } from '../../../../../../../config';
 import PostControls from '../PostControls';
 
 jest.mock('../../../comments/ConnectedCommentsModal.jsx', () => () => <p>Comments</p>);
+const mock = new MockAdapter(axios, { onNoMatch: 'throwException' });
 
 describe('PostControls component tests', () => {
   const createAlert = jest.fn();
-  it('Should render component correctly', () => {
+  it('Should render component correctly', async () => {
+    await waitFor(() => {
+      mock.onPut(`${NODE_SERVER.baseUrl}/api/likePost`).reply(200);
+      mock.onPut(`${NODE_SERVER.baseUrl}/api/unlikePost`).reply(200);
+    });
     render(
       <PostControls
         id="1"
