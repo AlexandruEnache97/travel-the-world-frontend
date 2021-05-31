@@ -19,6 +19,7 @@ const LikesModal = ({
       ...userLikes,
       likes: info.data.userLikes,
     });
+    console.log(userLikes);
   }, []);
 
   const getMoreLikes = async (e) => {

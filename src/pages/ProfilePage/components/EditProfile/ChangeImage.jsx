@@ -25,7 +25,7 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
     setFileUpload(e.target.files[0]);
   };
 
-  const handleChangeImage = async (e) => {
+  const handleChangeImage = (e) => {
     e.preventDefault();
     if (fileUpload !== null) {
       if (fileUpload.size > 1024 * 1024 * 5) {
@@ -34,7 +34,7 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
         setKeyFile(new Date());
       } else {
         const upload = storage.ref(`/profiles/${fileUpload.name}`).put(fileUpload);
-        await upload.on(
+        upload.on(
           'state_changed',
           (snapshot) => {
             console.log(snapshot._delegate);
