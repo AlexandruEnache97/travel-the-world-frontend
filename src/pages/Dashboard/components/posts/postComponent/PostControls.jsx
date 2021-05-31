@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getUserLikes, likePost, unlikePost } from '../../../../../service/postsApi';
 import LikesModal from '../../likes/LikesModal';
 import CommentsModal from '../../comments/ConnectedCommentsModal';
+import './postControls.scss';
 
 const PostControls = ({
   id, likes, shares, liked, createAlert, username, title,

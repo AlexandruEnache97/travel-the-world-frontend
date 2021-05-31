@@ -10,12 +10,16 @@ const PostContent = ({
 }) => {
   const [mapModal, setMapModal] = useState(false);
 
+  const mapModalHandler = () => {
+    setMapModal(true);
+  };
+
   return (
     <>
       <div className="post-content">
         <h1>{title}</h1>
         <div className="post-location">
-          <button type="button" className="location-text" onClick={() => { setMapModal(true); }}>
+          <button type="button" className="location-text" onClick={mapModalHandler}>
             <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" alt="locationIcon" />
             <p>
               {location}

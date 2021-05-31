@@ -34,7 +34,6 @@ const EditComment = ({
   };
 
   return (
-
     <textarea
       type="text"
       value={editData.text}

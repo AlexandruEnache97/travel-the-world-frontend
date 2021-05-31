@@ -17,9 +17,9 @@ const PostHeader = ({ userData }) => {
       </div>
       <button className="bookmark-button" type="button" onClick={handleSavePost}>
         {postSaved ? (
-          <img src="https://img.icons8.com/fluent-systems-filled/96/ffffff/bookmark-ribbon.png" alt="save-bookmark" />
+          <img src="https://img.icons8.com/fluent-systems-filled/96/ffffff/bookmark-ribbon.png" alt="saved-bookmark" />
         ) : (
-          <img src="https://img.icons8.com/fluent-systems-regular/96/ffffff/bookmark-ribbon--v1.png" alt="save-bookmark" />
+          <img src="https://img.icons8.com/fluent-systems-regular/96/ffffff/bookmark-ribbon--v1.png" alt="bookmark" />
         )}
       </button>
     </div>

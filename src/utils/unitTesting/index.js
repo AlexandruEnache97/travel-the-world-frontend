@@ -44,5 +44,25 @@ export const authLoggedOut = {
   },
   accountId: '',
   isAuthenticated: false,
+};
 
+export const singlePost = {
+  _id: '1',
+  userData: {
+    username: 'alex',
+    profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
+  },
+  title: 'Post',
+  text: 'Post text',
+  postImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
+  location: 'Website',
+  createdDate: '01302020',
+  country: 'Romania',
+  category: 'Website',
+  shares: 0,
+  likes: 0,
+  coordinates: {
+    lat: 0,
+    lng: 0,
+  },
 };
