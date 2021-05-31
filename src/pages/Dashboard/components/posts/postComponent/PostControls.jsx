@@ -71,7 +71,7 @@ const PostControls = ({
       <div className="post-functions">
         <div className="post-bottom-buttons">
           <button type="button" onClick={handleLikePost}>
-            {likePostData.liked ? <img src="https://img.icons8.com/ios-filled/100/ffffff/facebook-like.png" alt="like" />
+            {likePostData.liked ? <img src="https://img.icons8.com/ios-filled/100/ffffff/facebook-like.png" alt="likeIcon" />
               : <img src="https://img.icons8.com/ios/50/ffffff/facebook-like--v1.png" alt="likeIcon" />}
           </button>
           <button type="button" onClick={changeCommentsModal}>
