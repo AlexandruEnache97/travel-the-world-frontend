@@ -7,7 +7,7 @@ import {
 } from '../../../../service/commentsApi';
 import Spinner from '../../../../components/Spinner/Spinner';
 import EditComment from './EditComment';
-import LikesModal from '../likes/LikesModal';
+import LikesModalComponent from '../likes/LikesModal';
 import calculateTimePassed from '../../../../utils/postUtils';
 import CommentControl from './CommentControl';
 import RepliesContainer from '../replies/RepliesContainer';
@@ -123,7 +123,7 @@ const CommentComponent = ({
       {likesModal && (
         <>
           <div className="modal" onClickCapture={changeLikesModal} />
-          <LikesModal
+          <LikesModalComponent
             title="Comment"
             likes={commentLikes.nrOfLikes}
             postId={commentData._id}

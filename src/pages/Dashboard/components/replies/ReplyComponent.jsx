@@ -4,7 +4,7 @@ import calculateTimePassed from '../../../../utils/postUtils';
 import {
   likeReply, unlikeReply, getReplyLikes, removeReply,
 } from '../../../../service/repliesApi';
-import LikesModal from '../likes/LikesModal';
+import LikesModalComponent from '../likes/LikesModal';
 import EditReply from './EditReply';
 import Spinner from '../../../../components/Spinner/Spinner';
 import RepliesControl from './RepliesControl';
@@ -111,7 +111,7 @@ const ReplyComponent = ({
         {likesModal && (
           <>
             <div className="modal" onClickCapture={changeLikesModal} />
-            <LikesModal
+            <LikesModalComponent
               title="Comment"
               likes={replyLikes.nrOfLikes}
               postId={replyData._id}

@@ -1,75 +1,93 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable class-methods-use-this */
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './likesModal.scss';
-import LikeComponent from './LikeComponent';
 import Spinner from '../../../../components/Spinner/Spinner';
+import LikeComponent from './LikeComponent';
 
-const LikesModal = ({
-  title, likes, postId, closeHandler, getLikes,
-}) => {
-  const [userLikes, setUserLikes] = useState({
-    likes: [],
-    currentPage: 1,
-  });
-  const [loadingLikes, setLoadingLikes] = useState(false);
+export class LikesModal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userLikes: {
+        likes: [],
+        currentPage: 1,
+      },
+      loadingLikes: false,
+    };
+    this.getMoreLikes = this.getMoreLikes.bind(this);
+  }
 
-  useEffect(async () => {
-    const info = await getLikes(postId, userLikes.currentPage);
-    setUserLikes({
-      ...userLikes,
-      likes: info.data.userLikes,
-    });
-    console.log(userLikes);
-  }, []);
+  async componentDidMount() {
+    const { postId, getLikes } = this.props;
+    const { userLikes } = this.state;
 
-  const getMoreLikes = async (e) => {
+    await getLikes(postId, userLikes.currentPage)
+      .then((res) => this.setState({
+        userLikes: {
+          ...userLikes,
+          likes: res.data.userLikes,
+        },
+      }));
+  }
+
+  async getMoreLikes(e) {
+    const { postId, getLikes } = this.props;
+    const { userLikes } = this.state;
+
     e.preventDefault();
-    setLoadingLikes(true);
+    this.setState({ loadingLikes: true });
     const div = document.getElementById('likes-id');
     const value = div.scrollHeight - 285;
     const info = await getLikes(postId, userLikes.currentPage + 1);
-    setUserLikes({
-      likes: [...userLikes.likes, ...info.data.userLikes],
-      currentPage: userLikes.currentPage + 1,
+    this.setState({
+      userLikes: {
+        likes: [...userLikes.likes, ...info.data.userLikes],
+        currentPage: userLikes.currentPage + 1,
+      },
     });
     div.scrollTop = value;
-    setLoadingLikes(false);
-  };
+    this.setState({ loadingLikes: false });
+  }
 
-  return (
-    <div className="likes-modal-container">
-      <div className="modal-top">
-        <p>
-          {title}
-          {' '}
-          -
-          {' '}
-          {likes}
-          {' '}
-          {likes === 1 ? 'like' : 'likes'}
-        </p>
-        <button type="button" onClick={closeHandler}>x</button>
-      </div>
-      <div className="modal-content" id="likes-id">
-        {userLikes.likes.length === 0 ? (
-          <div className="like-container">
-            <span>Loading</span>
-            <Spinner />
-          </div>
-        )
-          : userLikes.likes.map((item) => (
-            <LikeComponent
-              profileImage={item.profileImage}
-              username={item.username}
-              key={Math.random()}
-            />
-          ))}
+  render() {
+    const { title, likes, closeHandler } = this.props;
+    const { userLikes, loadingLikes } = this.state;
 
-        <div className="more-likes">
-          {userLikes.likes.length !== 0 && likes > userLikes.likes.length && (
+    return (
+      <div className="likes-modal-container">
+        <div className="modal-top">
+          <p>
+            {title}
+            {' '}
+            -
+            {' '}
+            {likes}
+            {' '}
+            {likes === 1 ? 'like' : 'likes'}
+          </p>
+          <button type="button" onClick={closeHandler}>x</button>
+        </div>
+        <div className="modal-content" id="likes-id">
+          {userLikes.likes.length === 0 ? (
+            <div className="like-container">
+              <span>Loading</span>
+              <Spinner />
+            </div>
+          )
+            : userLikes.likes.map((item) => (
+              <LikeComponent
+                profileImage={item.profileImage}
+                username={item.username}
+                key={Math.random()}
+              />
+            ))}
+
+          <div className="more-likes">
+            {userLikes.likes.length !== 0 && likes > userLikes.likes.length && (
             <>
               {!loadingLikes ? (
-                <button type="button" onClick={getMoreLikes}>
+                <button type="button" onClick={this.getMoreLikes}>
                   Load
                   {' '}
                   {likes - userLikes.likes.length > 10 ? 10 : likes - userLikes.likes.length}
@@ -82,13 +100,14 @@ const LikesModal = ({
                 </div>
               )}
             </>
-          )}
+            )}
+          </div>
         </div>
+        <div className="modal-bottom" />
       </div>
-      <div className="modal-bottom" />
-    </div>
-  );
-};
+    );
+  }
+}
 
 LikesModal.propTypes = {
   title: PropTypes.string.isRequired,

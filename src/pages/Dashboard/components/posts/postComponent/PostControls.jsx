@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getUserLikes, likePost, unlikePost } from '../../../../../service/postsApi';
-import LikesModal from '../../likes/LikesModal';
+import LikesModalComponent from '../../likes/LikesModal';
 import CommentsModal from '../../comments/ConnectedCommentsModal';
 import './postControls.scss';
 
@@ -93,7 +93,7 @@ const PostControls = ({
       {likesModal && (
         <>
           <div className="modal" onClickCapture={changeLikesModal} />
-          <LikesModal
+          <LikesModalComponent
             title={title}
             likes={likePostData.nrOfLikes}
             postId={id}
