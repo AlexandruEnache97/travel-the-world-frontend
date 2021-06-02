@@ -16,19 +16,29 @@ export class LikesModal extends Component {
       loadingLikes: false,
     };
     this.getMoreLikes = this.getMoreLikes.bind(this);
+    this._isMounted = false;
   }
 
   async componentDidMount() {
+    this._isMounted = true;
     const { postId, getLikes } = this.props;
     const { userLikes } = this.state;
 
     await getLikes(postId, userLikes.currentPage)
-      .then((res) => this.setState({
-        userLikes: {
-          ...userLikes,
-          likes: res.data.userLikes,
-        },
-      }));
+      .then((res) => {
+        if (this._isMounted) {
+          this.setState({
+            userLikes: {
+              ...userLikes,
+              likes: res.data.userLikes,
+            },
+          });
+        }
+      });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   async getMoreLikes(e) {
@@ -40,14 +50,16 @@ export class LikesModal extends Component {
     const div = document.getElementById('likes-id');
     const value = div.scrollHeight - 285;
     const info = await getLikes(postId, userLikes.currentPage + 1);
-    this.setState({
-      userLikes: {
-        likes: [...userLikes.likes, ...info.data.userLikes],
-        currentPage: userLikes.currentPage + 1,
-      },
-    });
-    div.scrollTop = value;
-    this.setState({ loadingLikes: false });
+    if (this._isMounted) {
+      this.setState({
+        userLikes: {
+          likes: [...userLikes.likes, ...info.data.userLikes],
+          currentPage: userLikes.currentPage + 1,
+        },
+      });
+      div.scrollTop = value;
+      this.setState({ loadingLikes: false });
+    }
   }
 
   render() {
@@ -85,21 +97,21 @@ export class LikesModal extends Component {
 
           <div className="more-likes">
             {userLikes.likes.length !== 0 && likes > userLikes.likes.length && (
-            <>
-              {!loadingLikes ? (
-                <button type="button" onClick={this.getMoreLikes}>
-                  Load
-                  {' '}
-                  {likes - userLikes.likes.length > 10 ? 10 : likes - userLikes.likes.length}
-                  {' more likes'}
-                </button>
-              ) : (
-                <div className="load-more-spinner">
-                  <p>Loading </p>
-                  <Spinner />
-                </div>
-              )}
-            </>
+              <>
+                {!loadingLikes ? (
+                  <button type="button" onClick={this.getMoreLikes}>
+                    Load
+                    {' '}
+                    {likes - userLikes.likes.length > 10 ? 10 : likes - userLikes.likes.length}
+                    {' more likes'}
+                  </button>
+                ) : (
+                  <div className="load-more-spinner">
+                    <p>Loading </p>
+                    <Spinner />
+                  </div>
+                )}
+              </>
             )}
           </div>
         </div>

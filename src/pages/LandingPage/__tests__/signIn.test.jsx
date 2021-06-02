@@ -6,6 +6,8 @@ import '@testing-library/jest-dom';
 import SignIn from '../components/SignIn';
 import { authLogged, authLoggedOut } from '../../../utils/unitTesting';
 
+jest.mock('../../Dashboard/Dashboard.jsx', () => () => <p>Dashboard</p>);
+
 describe('SignIn tests', () => {
   it('Should render component correctly', () => {
     const signInMock = jest.fn();

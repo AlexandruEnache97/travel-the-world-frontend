@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 import { currentUser, posts } from '../../../../../utils/unitTesting';
 import PostsContainer from '../PostsContainer';
 
+jest.mock('../ListPost.jsx', () => () => <p>Post list</p>);
+
 describe('PostsContainer component tests', () => {
   const getPosts = jest.fn();
   const getLikedPosts = jest.fn();
