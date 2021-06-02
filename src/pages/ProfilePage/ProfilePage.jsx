@@ -10,6 +10,7 @@ import ScrollButton from '../../components/Buttons/ScrollButton';
 import ProfileInfo from './components/ProfileInfo';
 import ProfileMenu from './components/ProfileMenu';
 import Alert from '../../components/Alerts/ConnectedAlert';
+import { currentSavedPosts } from '../../service/savePostsApi';
 
 const ProfilePage = ({
   auth, createPost, signOut, getAccount, createAlert,
@@ -23,6 +24,22 @@ const ProfilePage = ({
   });
   const [loading, setLoading] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentSaved, setCurrentSaved] = useState({
+    postsId: [],
+    page: 0,
+  });
+
+  const loadSavedPosts = async (posts) => {
+    const postsSaved = [];
+    posts.slice((currentPage - 1) * 10, currentPage * 10 + 10).map((post) => {
+      postsSaved.push(post._id);
+    });
+    const response = await currentSavedPosts({ currentPosts: postsSaved });
+    setCurrentSaved({
+      postsId: response.data.savedPosts,
+      page: currentSaved.page + 1,
+    });
+  };
 
   useEffect(async () => {
     setLoading('loading');
@@ -35,6 +52,7 @@ const ProfilePage = ({
           totalResults: data.totalResults,
           likedUserPosts: likedPosts.data.likedPosts,
         });
+        loadSavedPosts(data.posts);
         setLoading(null);
       })
       .catch(() => {
@@ -66,6 +84,7 @@ const ProfilePage = ({
       totalResults: data.totalResults,
       likedUserPosts: [...profilePosts.likedUserPosts, ...likedPosts.data.likedPosts],
     });
+    loadSavedPosts(data.posts);
     setLoading(null);
   };
 
@@ -91,6 +110,7 @@ const ProfilePage = ({
                 hasMore={profilePosts.totalResults > currentPage * 10}
                 getMorePosts={getMorePosts}
                 createAlert={createAlert}
+                savedPosts={currentSaved.postsId}
               />
               <ScrollButton refId="profileRef" />
             </div>
