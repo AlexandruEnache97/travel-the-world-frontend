@@ -51,6 +51,7 @@ describe('Comments modal tests', () => {
       render(<CommentsModal postId="607930931a05f60023c1ef40" auth={auth} postUser="test2" />);
     });
   });
+
   it('Should catch empty result from backend', async () => {
     await waitFor(() => {
       mock.onGet(`${NODE_SERVER.baseUrl}/api/getComments/1/1`).reply(404);
