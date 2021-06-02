@@ -68,6 +68,17 @@ export class ListPost extends Component {
             return postLiked;
           };
 
+          const checkSavedPost = () => {
+            let checkSaved = false;
+            this.props.savedPosts.map((savedPost) => {
+              if (savedPost === post._id) {
+                checkSaved = true;
+                return checkSaved;
+              }
+            });
+            return checkSaved;
+          };
+
           if (this.props.posts.length === index + 1) {
             return (
               <Post
@@ -75,6 +86,7 @@ export class ListPost extends Component {
                 postRef={this.lastPostHandle}
                 key={post.title + Math.random(0, 10000)}
                 liked={checkLikedPost()}
+                saved={checkSavedPost()}
                 createAlert={this.props.createAlert}
               />
             );
@@ -84,6 +96,7 @@ export class ListPost extends Component {
               post={post}
               key={post.title + Math.random(0, 10000)}
               liked={checkLikedPost()}
+              saved={checkSavedPost()}
               createAlert={this.props.createAlert}
             />
           );
@@ -109,6 +122,7 @@ ListPost.propTypes = {
     coordinates: PropTypes.objectOf(PropTypes.number).isRequired,
   })).isRequired,
   likedPosts: PropTypes.arrayOf(PropTypes.string).isRequired,
+  savedPosts: PropTypes.arrayOf(PropTypes.string).isRequired,
   hasMore: PropTypes.bool.isRequired,
   getMorePosts: PropTypes.func.isRequired,
   createAlert: PropTypes.func.isRequired,

@@ -4,17 +4,37 @@ import PropTypes from 'prop-types';
 import PostsMenu from './PostsMenu';
 import ListPosts from './ListPost';
 import './postsContainer.scss';
+import { currentSavedPosts } from '../../../../service/savePostsApi';
 
 const PostsContainer = ({
   currentUser, posts, getPosts,
   createPost, getLikedPosts, createAlert,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentSaved, setCurrentSaved] = useState({
+    postsId: [],
+    page: 0,
+  });
 
   useEffect(() => {
     getPosts(currentPage);
     getLikedPosts(currentPage);
   }, []);
+
+  useEffect(async () => {
+    const postsSaved = [];
+    posts.currentPosts.slice((currentPage - 1) * 10, currentPage * 10 + 10).map((post) => {
+      postsSaved.push(post._id);
+    });
+    if ((currentSaved.page !== currentPage)
+      && postsSaved.length !== 0) {
+      const { data } = await currentSavedPosts({ currentPosts: postsSaved });
+      setCurrentSaved({
+        postsId: data.savedPosts,
+        page: currentSaved.page + 1,
+      });
+    }
+  }, [posts]);
 
   const getMorePosts = () => {
     getPosts(currentPage + 1);
@@ -36,6 +56,7 @@ const PostsContainer = ({
         hasMore={posts.totalResults > currentPage * 10}
         getMorePosts={getMorePosts}
         createAlert={createAlert}
+        savedPosts={currentSaved.postsId}
       />
     </div>
   );

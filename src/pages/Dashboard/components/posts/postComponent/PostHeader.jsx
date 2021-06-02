@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './postHeader.scss';
+import { deleteSavedPost, savePost } from '../../../../../service/savePostsApi';
 
-const PostHeader = ({ userData }) => {
-  const [postSaved, setPostSaved] = useState(false);
+const PostHeader = ({ postId, userData, saved }) => {
+  const [postSaved, setPostSaved] = useState(saved);
 
   const handleSavePost = () => {
     setPostSaved(!postSaved);
+    if (!postSaved) {
+      savePost(postId);
+    } else {
+      deleteSavedPost(postId);
+    }
   };
 
   return (
@@ -27,7 +33,13 @@ const PostHeader = ({ userData }) => {
 };
 
 PostHeader.propTypes = {
+  postId: PropTypes.string.isRequired,
   userData: PropTypes.objectOf(PropTypes.string).isRequired,
+  saved: PropTypes.bool,
+};
+
+PostHeader.defaultProps = {
+  saved: false,
 };
 
 export default PostHeader;
