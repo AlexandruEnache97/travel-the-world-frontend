@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 import './postHeader.scss';
 import { deleteSavedPost, savePost } from '../../../../../service/savePostsApi';
 
-const PostHeader = ({ postId, userData, saved }) => {
+const PostHeader = ({
+  postId, userData, saved, createAlert,
+}) => {
   const [postSaved, setPostSaved] = useState(saved);
 
   const handleSavePost = () => {
     setPostSaved(!postSaved);
     if (!postSaved) {
       savePost(postId);
+      createAlert('Post saved', 3);
     } else {
       deleteSavedPost(postId);
+      createAlert('Post unsaved', 3);
     }
   };
 
@@ -36,6 +40,7 @@ PostHeader.propTypes = {
   postId: PropTypes.string.isRequired,
   userData: PropTypes.objectOf(PropTypes.string).isRequired,
   saved: PropTypes.bool,
+  createAlert: PropTypes.func.isRequired,
 };
 
 PostHeader.defaultProps = {
