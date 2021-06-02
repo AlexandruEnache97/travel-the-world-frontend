@@ -5,6 +5,8 @@ import {
 import '@testing-library/jest-dom';
 import CommentList from '../CommentList';
 
+jest.mock('../../likes/LikesModal.jsx', () => () => <p>Likes modal</p>);
+
 describe('Comment list component tests', () => {
   const getCommentsFromBackend = jest.fn();
   const updateComments = jest.fn();
