@@ -1,6 +1,5 @@
 import {
   get,
-  //   post,
   put,
   remove,
 } from './axiosOperations';

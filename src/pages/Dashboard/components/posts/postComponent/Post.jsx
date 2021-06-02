@@ -6,7 +6,7 @@ import PostContent from './PostContent';
 import PostControls from './PostControls';
 
 const Post = ({
-  post, liked, postRef, createAlert,
+  post, liked, postRef, createAlert, saved,
 }) => {
   const {
     userData, title, text, postImage,
@@ -16,7 +16,11 @@ const Post = ({
 
   return (
     <div className="post-container" ref={postRef}>
-      <PostHeader userData={userData} />
+      <PostHeader
+        postId={post._id}
+        userData={userData}
+        saved={saved}
+      />
       <PostContent
         title={title}
         location={location}
@@ -58,10 +62,12 @@ Post.propTypes = {
   liked: PropTypes.bool,
   postRef: PropTypes.func,
   createAlert: PropTypes.func.isRequired,
+  saved: PropTypes.bool,
 };
 
 Post.defaultProps = {
   liked: false,
+  saved: false,
   postRef: () => { },
 };
 
