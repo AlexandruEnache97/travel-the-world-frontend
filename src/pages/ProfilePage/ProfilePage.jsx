@@ -36,7 +36,7 @@ const ProfilePage = ({
     });
     const response = await currentSavedPosts({ currentPosts: postsSaved });
     setCurrentSaved({
-      postsId: response.data.savedPosts,
+      postsId: [...currentSaved.postsId, ...response.data.savedPosts],
       page: currentSaved.page + 1,
     });
   };
