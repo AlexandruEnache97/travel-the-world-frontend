@@ -30,7 +30,7 @@ const PostsContainer = ({
       && postsSaved.length !== 0) {
       const { data } = await currentSavedPosts({ currentPosts: postsSaved });
       setCurrentSaved({
-        postsId: data.savedPosts,
+        postsId: [...currentSaved.postsId, ...data.savedPosts],
         page: currentSaved.page + 1,
       });
     }

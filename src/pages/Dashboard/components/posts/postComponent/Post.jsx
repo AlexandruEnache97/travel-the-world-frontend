@@ -20,6 +20,7 @@ const Post = ({
         postId={post._id}
         userData={userData}
         saved={saved}
+        createAlert={createAlert}
       />
       <PostContent
         title={title}
