@@ -6,6 +6,7 @@ import './LandingPage.scss';
 import LandingContainer from './LandingContainer';
 import { getFromLocalStorage } from '../../utils/localStorage';
 import { setToken } from '../../utils/authUtils';
+import Alert from '../../components/Alerts/ConnectedAlert';
 
 const LandingPage = ({ verifyAuth, history, location }) => {
   useLayoutEffect(() => {
@@ -25,6 +26,7 @@ const LandingPage = ({ verifyAuth, history, location }) => {
         <LandingContainer locationPath={location.pathname} />
       </div>
       <img className="landing-background" src={backgroundGradient} alt="backgroundGradient" />
+      <Alert />
     </div>
   );
 };

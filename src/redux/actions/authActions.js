@@ -2,6 +2,7 @@ import { getAccountService, signInService, signUpService } from '../../service/a
 import { setToken } from '../../utils/authUtils';
 import { clearLocalStorage, saveToLocalStorage } from '../../utils/localStorage';
 import actionTypes from '../actionTypes';
+import { createAlert } from './alertActions';
 
 const {
   createActionType,
@@ -58,6 +59,7 @@ export const signIn = (userInfo) => async (dispatch) => {
     dispatch({
       type: createActionType(SIGN_IN, ERROR),
     });
+    dispatch(createAlert('Username or password incorrect', 3));
   }
 };
 
