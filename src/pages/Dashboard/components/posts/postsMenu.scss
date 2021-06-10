@@ -1,6 +1,6 @@
 .posts-menu {
     display: flex;
-    width: 70%;
+    width: 60%;
     margin: 3rem 0rem 2rem 0rem;
     padding: 1.2rem 5rem 0.7rem 5rem;
     background-color: rgba(255, 153, 153, 0.2);
@@ -12,6 +12,7 @@
         background-color: rgba(255, 255, 255, 0.2);
         border: none;
         outline: none;
+        height: 4.4rem;
         font-size: 1.6rem;
         color: white;
         padding: 0.7rem 1rem 0.7rem 1rem;
@@ -29,6 +30,7 @@
 
     .create-post-button {
         background-color: #ff304f;
+        margin-left: auto;
     }
 
     .create-post-modal {
