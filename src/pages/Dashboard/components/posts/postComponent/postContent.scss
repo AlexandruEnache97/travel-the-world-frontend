@@ -1,7 +1,7 @@
 .post-content {
     display: flex;
     flex-direction: column;
-    width: 40rem;
+    width: inherit;
 
     h1 {
         margin-top: 1rem;
@@ -58,9 +58,9 @@
     }
 
     .post-image {
-        width:38rem;
+        width: auto;
         border-radius: 1rem;
-        margin: 2rem 1rem 0rem 1rem;
+        margin: 0rem 1rem;
     }
 }
 
