@@ -57,13 +57,9 @@ describe('LikesModal component tests', () => {
         />,
       );
     });
+
     const title = screen.getByText('post - 23 likes');
     expect(title).toBeInTheDocument();
-    const moreLikesButton = screen.getByRole('button', {
-      name: 'Load 10 more likes',
-    });
-    expect(moreLikesButton).toBeInTheDocument();
-    fireEvent.click(moreLikesButton);
   });
 
   it('Should load more likes over 10', async () => {
@@ -86,12 +82,18 @@ describe('LikesModal component tests', () => {
       render(
         <LikesModalComponent
           title="post"
-          likes={11}
+          likes={21}
           postId="1"
           closeHandler={closeHandler}
           getLikes={getUserLikes}
         />,
       );
     });
+
+    const moreLikesButton = screen.getByRole('button', {
+      name: 'Load 10 more likes',
+    });
+    expect(moreLikesButton).toBeInTheDocument();
+    fireEvent.click(moreLikesButton);
   });
 });
