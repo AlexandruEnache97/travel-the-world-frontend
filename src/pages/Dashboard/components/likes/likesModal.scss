@@ -1,3 +1,5 @@
+@import '../../../../scss/colors.scss';
+
 .likes-modal-container {
     position: fixed;
     width: 45rem;
@@ -14,7 +16,7 @@
         width: 45rem;
         padding: 0rem 2.5rem;
         height: 5rem;
-        background-color: #ff304f;
+        background-color: $redBase;
         border-radius: 3rem 3rem 0rem 0rem;
 
         p {
@@ -64,7 +66,7 @@
 
         .more-likes {
             width: 100%;
-            background-color: #fff;
+            background-color: $lightGray;
 
             button {
                 border: none;
@@ -97,7 +99,7 @@
     .modal-bottom {
         display: flex;
         justify-content: space-between;
-        background-color: #ff304f;
+        background-color: $redBase;
         height: 4rem;
         width: 45rem;
         padding: 0rem 5rem;
@@ -112,7 +114,7 @@
         padding: 3.1rem;
         border-top: 0.5px solid rgb(180, 180, 180);
         border-bottom: 0.5px solid rgb(180, 180, 180);
-        background-color: #fff;
+        background-color: $lightGray;
 
         img {    
             width: 5rem;

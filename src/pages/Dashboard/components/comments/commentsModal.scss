@@ -1,5 +1,7 @@
+@import '../../../../scss/colors.scss';
+
 .comments-modal-container {
-    background-color: #ff304f;
+    background-color: $redBase;
     border-radius: 0rem 0rem 3rem 3rem;
     display: flex;
     flex-direction: column;
@@ -60,6 +62,16 @@
         right: 4rem;
         z-index: 1;
     }
+
+    .emoji-modal {
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        position: absolute;
+        display: flex;    
+        z-index: 10;
+    }
 }
 
 .comments-list-container {
@@ -78,7 +90,7 @@
         border-radius: 0rem 0rem 2rem 2rem;
         position: absolute;
         top: 0;
-        background-color: rgba(255, 81, 81, 0.733);
+        background-color: rgba(224, 0, 34, 0.733);
 
         span {
             padding-right: 2rem;

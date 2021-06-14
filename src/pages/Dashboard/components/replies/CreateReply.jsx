@@ -68,13 +68,16 @@ const CreateReply = ({ commentId, getRepliesFromBackend }) => {
         </button>
       </div>
       {visibleEmoji && (
-        <Picker
-          onEmojiClick={onEmojiClick}
-          disableSearchBar
-          groupVisibility={{
-            flags: false,
-          }}
-        />
+        <>
+          <div className="emoji-modal" onClickCapture={handleOnClick} />
+          <Picker
+            onEmojiClick={onEmojiClick}
+            disableSearchBar
+            groupVisibility={{
+              flags: false,
+            }}
+          />
+        </>
       )}
     </>
   );

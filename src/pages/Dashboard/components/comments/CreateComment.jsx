@@ -67,13 +67,16 @@ const CreateComment = ({ postId, getCommentsFromBackend }) => {
         </button>
       </div>
       {visibleEmoji && (
-        <Picker
-          onEmojiClick={onEmojiClick}
-          disableSearchBar
-          groupVisibility={{
-            flags: false,
-          }}
-        />
+        <>
+          <div className="emoji-modal" onClickCapture={handleOnClick} />
+          <Picker
+            onEmojiClick={onEmojiClick}
+            disableSearchBar
+            groupVisibility={{
+              flags: false,
+            }}
+          />
+        </>
       )}
     </>
   );
