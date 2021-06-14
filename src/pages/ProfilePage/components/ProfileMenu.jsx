@@ -40,7 +40,7 @@ const ProfileMenu = ({ createPost, currentUser, createAlert }) => {
       >
         Posts saved
       </button>
-      <button type="button" onClick={changeCreatePost}>Create new post</button>
+      <button className="create-post-button" type="button" onClick={changeCreatePost}>Create new post</button>
       {createPostModal && (
         <>
           <div className="modal" onClickCapture={changeCreatePost} />
