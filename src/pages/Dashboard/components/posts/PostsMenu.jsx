@@ -13,7 +13,6 @@ const PostsMenu = ({ createPost, currentUser, createAlert }) => {
   return (
     <div className="posts-menu" id="topRef">
       <button className="active-button" type="button">News feed</button>
-      <button type="button">Recommended locations</button>
       <button className="create-post-button" type="button" onClick={createPostHandler}>Create new post</button>
       {createPostModal && (
         <>

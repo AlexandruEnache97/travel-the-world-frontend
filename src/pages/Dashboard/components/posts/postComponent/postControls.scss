@@ -1,3 +1,5 @@
+@import '../../../../../scss/colors.scss';
+
 .post-bottom {
     display: flex;
     flex-direction: column;
@@ -25,13 +27,13 @@
     .post-functions {
         display: flex;
         flex-direction: column;
-        background-color: #ff304f;
+        background-color: $redBase;
         border-radius: 0rem 0rem 2rem 2rem;
 
         .post-bottom-buttons {
             display: flex;
             justify-content: space-between;
-            background-color: #ff304f;
+            background-color: $redBase;
             height: 5.5rem;
             width: inherit;
             padding: 0rem 5rem;
@@ -40,7 +42,7 @@
             button {
                 border: none;
                 padding: 1rem;
-                background-color: #ff304f;
+                background-color: $redBase;
                 font-weight: 700;
                 outline: none;
                 

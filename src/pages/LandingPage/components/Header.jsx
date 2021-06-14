@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../images/LogoHeader.png';
+import logoHeader from '../../../images/LogoHeaderWhite.png';
 import './Header.scss';
 
 const Header = () => (
   <div className="landing-header">
     <Link to="/">
-      <img className="logo" src={logo} alt="logoHeader" />
+      <img className="logo" src={logoHeader} alt="logoHeader" />
     </Link>
   </div>
 );

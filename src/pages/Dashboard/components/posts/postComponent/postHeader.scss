@@ -1,3 +1,5 @@
+@import '../../../../../scss/colors.scss';
+
 .post-top {
     display: flex;
     justify-content: space-between;
@@ -5,7 +7,7 @@
     width: inherit;
     padding: 0rem 2.5rem;
     height: 5.5rem;
-    background-color: #ff304f;
+    background-color: $redBase;
     border-radius: 3rem 3rem 0rem 0rem;
     
     .post-user {

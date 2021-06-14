@@ -1,8 +1,11 @@
+@import '../../scss/colors.scss';
+
 .dashboard-container {
     display: flex;
     overflow: hidden;
     margin-top: 7rem;
     height:fit-content;
+    background-color: $darkGray;
 }
 
 .dashboard-background {

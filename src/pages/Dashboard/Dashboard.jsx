@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './dashboard.scss';
-import backgroundGradient from '../../images/BackgroundGradient.svg';
 import Navbar from './components/navbar/Navbar';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import MenuContainer from './components/menu/MenuContainer';
@@ -26,7 +25,6 @@ const Dashboard = ({ auth, signOut }) => {
             <PostsContainer currentUser={currentUser} />
           </div>
         )}
-      <img className="dashboard-background" src={backgroundGradient} alt="backgroundGradient" />
       <ScrollButton refId="topRef" />
       <Alert />
     </>
