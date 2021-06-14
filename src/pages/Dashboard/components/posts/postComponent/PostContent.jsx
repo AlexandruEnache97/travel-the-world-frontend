@@ -17,7 +17,7 @@ const PostContent = ({
   return (
     <>
       <div className="post-content">
-        <h1>{title}</h1>
+        <h1 className="post-title">{title}</h1>
         <div className="post-location">
           <button type="button" className="location-text" onClick={mapModalHandler}>
             <img src="https://img.icons8.com/material/24/000000/worldwide-location--v1.png" alt="locationIcon" />
@@ -33,8 +33,8 @@ const PostContent = ({
             <p>{category}</p>
           </div>
         </div>
-        <p>{calculateTimePassed(createdDate)}</p>
-        <p>{text}</p>
+        <p className="post-time-passed">{calculateTimePassed(createdDate)}</p>
+        <p className="post-text">{text}</p>
         {postImage !== '' && <img className="post-image" src={postImage} alt="postImage" />}
       </div>
 

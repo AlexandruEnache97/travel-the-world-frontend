@@ -14,15 +14,16 @@
         font-size: 1.2rem;
     }
 
-    h1, p {
-        padding: 1rem 1.5rem;
+    h1, p {    
+        padding: 0.9rem 1.5rem;
+        text-align: justify;
     }
 
     .post-location {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 1rem;
+        margin-bottom: 1rem;    
 
         .location-text, .category-text{
             display: flex;
@@ -35,6 +36,7 @@
 
             p {
                 padding: 1rem 0rem;
+                text-align: center;
             }
         }
 
@@ -50,6 +52,7 @@
             border-radius: 0.6rem;
             background-color: #fff;
             cursor: pointer;
+            box-shadow: 0 0 8px 2px #d6d6d6;
 
             &:hover { 
                 transform: scale(1.05);
@@ -57,19 +60,32 @@
         }
     }
 
+    .post-time-passed {
+        color: #4f4f4f;
+        font-size: 1.3rem;
+        margin-left: 2rem;
+    }
+
+    .post-text {
+        font-size: 1.3rem;
+        color: #616161;
+    }
+
     .post-image {
         width: auto;
         border-radius: 1rem;
-        margin: 0rem 1rem;
+        margin: 0rem 1.5rem;
     }
 }
 
 @media only screen and (max-width: 600px) {
     .post-content {
         width: 33rem;
-        
-        .post-image {
-            width: 31rem;
+
+        .post-location {
+            button {
+                max-width: 19rem;
+            }
         }
     }
 }
