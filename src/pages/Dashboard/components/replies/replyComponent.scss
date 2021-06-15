@@ -95,6 +95,19 @@
                     padding-bottom: 0.15rem;
                 }
             }
+
+            .display-likes {
+                display: flex;
+                align-items: center;
+                margin-left: auto;
+                color: #666666;
+
+                img {
+                    width: 1.9rem;
+                    padding-bottom: 0.3rem;
+                    margin-left: 0.6rem;
+                }
+            }
     
             .liked-comment {
                 color: #3498DB;

@@ -88,11 +88,6 @@ const ReplyComponent = ({
             ) : <p>{originalText}</p>}
         </div>
         <div className="reply-bottom">
-          <button type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
-            {replyLikes.nrOfLikes}
-            {' '}
-            {replyLikes.nrOfLikes === 1 ? 'like' : 'likes'}
-          </button>
           <button type="button" className={replyLikes.liked ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
             {replyLikes.liked
               ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
@@ -106,13 +101,18 @@ const ReplyComponent = ({
             </div>
           )}
           {loadingAction && <Spinner />}
+          <button className="display-likes" type="button" onClick={replyLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
+            {replyLikes.nrOfLikes}
+            {' '}
+            <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like--v1.png" alt="likeIcon" />
+          </button>
         </div>
         {postOwner && <RepliesControl deleteCommentReply={deleteReply} />}
         {likesModal && (
           <>
             <div className="modal" onClickCapture={changeLikesModal} />
             <LikesModalComponent
-              title="Comment"
+              title="Reply"
               likes={replyLikes.nrOfLikes}
               postId={replyData._id}
               closeHandler={changeLikesModal}

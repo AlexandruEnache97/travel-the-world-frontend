@@ -117,7 +117,7 @@ const CommentComponent = ({
         <button className="display-likes" type="button" onClick={commentLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
           {commentLikes.nrOfLikes}
           {' '}
-          <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
+          <img src="https://img.icons8.com/ios-filled/50/666666/facebook-like.png" alt="like" />
         </button>
       </div>
       {likesModal && (
