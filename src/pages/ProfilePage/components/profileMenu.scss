@@ -2,20 +2,19 @@
 
 .profile-menu {
     display: flex;
-    width: 65%;
-    margin: 3rem 0rem 2rem 0rem;
+    width: 100%;
     padding: 1.2rem 5rem 0.7rem 5rem;
-    background-color: rgba(255, 153, 153, 0.2);
+    background-color: $redBase;
     border-radius: 2rem;
     border-bottom: 2px solid rgba(255, 255, 255, 0.5);
 
     button {
         cursor: pointer;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: #fff;
         border: none;
         outline: none;
         font-size: 1.6rem;
-        color: white;
+        color: black;
         padding: 1rem;
         margin: 0rem 2rem;
         border-radius: 1rem;
@@ -30,8 +29,9 @@
     }
 
     .create-post-button {
-        background-color: $redBase;
+        background-color: $darkBase;
         margin-left: auto;
+        color: #fff;
     }
 
     .create-post-modal {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Navbar from '../Dashboard/components/navbar/Navbar';
 import './profilePage.scss';
-import backgroundGradient from '../../images/BackgroundGradient.svg';
 import ListPosts from '../Dashboard/components/posts/ListPost';
 import { getUserPosts, getUserLikedPosts } from '../../service/postsApi';
 import LoadingOverlay from '../LoadingOverlay/LoadingOverlay';
@@ -117,7 +116,6 @@ const ProfilePage = ({
 
           </div>
         )}
-      <img className="profile-background" src={backgroundGradient} alt="profileGradient" />
       <LoadingOverlay loading={{ loadingState: [loading] }} />
       <Alert />
     </>

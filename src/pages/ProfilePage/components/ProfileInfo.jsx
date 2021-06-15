@@ -33,6 +33,7 @@ const ProfileInfo = ({ currentUser, updateInfo }) => {
         >
           Edit profile
         </button>
+        <button className="user-edit" type="button">Posts saved </button>
         <button className="user-edit" type="button">Map</button>
       </div>
       {editProfileModal && (
