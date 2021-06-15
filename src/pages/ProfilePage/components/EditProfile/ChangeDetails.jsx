@@ -21,7 +21,7 @@ const ChangeDetails = ({ currentUser, closeModal, updateProfile }) => {
   const handleChangeDetails = async (e) => {
     e.preventDefault();
     await changeProfileDetails(profileDetails)
-      .catch(() => alert('Password incorrect'));
+      .catch(() => console.log('Password incorrect'));
     closeModal();
     updateProfile();
   };
