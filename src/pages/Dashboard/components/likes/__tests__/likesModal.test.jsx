@@ -32,21 +32,6 @@ describe('LikesModal component tests', () => {
           profileImage: '1',
         }],
       });
-      mock.onGet(`${NODE_SERVER.baseUrl}/api/userLikes/1/2`).reply(200, {
-        userLikes: [{
-          username: 'CatUser',
-          profileImage: '1',
-        }, {
-          username: 'CatUser',
-          profileImage: '1',
-        }, {
-          username: 'CatUser',
-          profileImage: '1',
-        }, {
-          username: 'CatUser',
-          profileImage: '1',
-        }],
-      });
       render(
         <LikesModalComponent
           title="post"
@@ -79,6 +64,22 @@ describe('LikesModal component tests', () => {
           profileImage: '1',
         }],
       });
+      mock.onGet(`${NODE_SERVER.baseUrl}/api/userLikes/1/2`).reply(200, {
+        userLikes: [{
+          username: 'CatUser',
+          profileImage: '1',
+        }, {
+          username: 'CatUser',
+          profileImage: '1',
+        }, {
+          username: 'CatUser',
+          profileImage: '1',
+        }, {
+          username: 'CatUser',
+          profileImage: '1',
+        }],
+      });
+
       render(
         <LikesModalComponent
           title="post"
