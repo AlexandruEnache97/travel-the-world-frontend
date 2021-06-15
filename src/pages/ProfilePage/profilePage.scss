@@ -3,7 +3,7 @@
 .profile-page {
     display: flex;
     margin-top: 7rem;
-    height: fit-content;
+    min-height: -webkit-fill-available;
     overflow: hidden;
     background-color: $darkGray;
 
