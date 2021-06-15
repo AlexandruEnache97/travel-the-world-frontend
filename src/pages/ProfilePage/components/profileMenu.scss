@@ -1,3 +1,5 @@
+@import '../../../scss/colors.scss';
+
 .profile-menu {
     display: flex;
     width: 65%;
@@ -28,7 +30,7 @@
     }
 
     .create-post-button {
-        background-color: #ff304f;
+        background-color: $redBase;
         margin-left: auto;
     }
 

@@ -1,3 +1,5 @@
+@import '../../../../../scss/colors.scss';
+
 .post-map-control {
     display: flex;
     justify-content: center;
@@ -24,7 +26,7 @@
         padding: 2rem 0rem;
         color: #fff;
         width: 100%;
-        background-color: #ff304f;
+        background-color: $redBase;
         border-radius: 3rem 3rem 0rem 0rem;
     }
 
@@ -54,7 +56,7 @@
         justify-content: center;
         padding: 1rem 0rem;
         width: 100%;
-        background-color: #ff304f;
+        background-color: $redBase;
         border-radius: 0rem 0rem 3rem 3rem;
 
         button {

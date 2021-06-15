@@ -1,3 +1,5 @@
+@import '../../../../../scss/colors.scss';
+
 .post-map-modal {
     position: fixed;
     display: flex;
@@ -31,7 +33,7 @@
         padding: 2rem 0rem;
         color: #fff;
         width: 100%;
-        background-color: #ff304f;
+        background-color: $redBase;
         border-radius: 3rem 3rem 0rem 0rem;
     }
 
@@ -59,7 +61,7 @@
     .post-map-bottom {
         width: 100%;
         height: 4.4rem;
-        background-color: #ff304f;
+        background-color: $redBase;
         border-radius: 0rem 0rem 3rem 3rem;
     }
 
