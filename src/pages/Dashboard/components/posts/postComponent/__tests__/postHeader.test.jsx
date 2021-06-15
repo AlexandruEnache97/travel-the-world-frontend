@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import PostHeader from '../PostHeader';
 
 describe('PostHeader component tests', () => {
+  const createAlert = jest.fn();
   it('Should render component correctly', () => {
     render(
       <PostHeader
@@ -11,6 +12,9 @@ describe('PostHeader component tests', () => {
           username: 'Alex',
           profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
         }}
+        postId="1"
+        saved
+        createAlert={createAlert}
       />,
     );
   });
@@ -22,6 +26,9 @@ describe('PostHeader component tests', () => {
           username: 'Alex',
           profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
         }}
+        postId="1"
+        saved={false}
+        createAlert={createAlert}
       />,
     );
     const bookmarkImage = screen.getByRole('img', {

@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import LandingPage from '../LandingPage';
 
+jest.mock('../../../components/Alerts/ConnectedAlert.jsx', () => () => <p>Alert</p>);
+
 describe('LandingPage tests', () => {
   const verifyAuth = jest.fn();
   it('Should render component correctly', () => {
