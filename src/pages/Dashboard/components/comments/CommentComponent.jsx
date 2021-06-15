@@ -100,11 +100,6 @@ const CommentComponent = ({
           ) : <p>{originalText}</p>}
       </div>
       <div className="comment-bottom">
-        <button type="button" onClick={commentLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
-          {commentLikes.nrOfLikes}
-          {' '}
-          {commentLikes.nrOfLikes === 1 ? 'like' : 'likes'}
-        </button>
         <button type="button" className={commentLikes.liked ? 'liked-comment button-like' : 'button-like'} onClick={handleLiking}>
           {commentLikes.liked
             ? <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
@@ -118,6 +113,11 @@ const CommentComponent = ({
             <button type="button" onClick={deleteComm}>Delete</button>
           </div>
         )}
+        <button className="display-likes" type="button" onClick={commentLikes.nrOfLikes > 0 ? changeLikesModal : () => { }}>
+          {commentLikes.nrOfLikes}
+          {' '}
+          <img src="https://img.icons8.com/ios-filled/50/3498DB/facebook-like.png" alt="like" />
+        </button>
         {loadingAction && <Spinner />}
       </div>
       {likesModal && (
