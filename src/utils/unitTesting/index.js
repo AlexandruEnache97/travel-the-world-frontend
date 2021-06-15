@@ -66,3 +66,10 @@ export const singlePost = {
     lng: 0,
   },
 };
+
+export const postsList = {
+  currentPosts: [singlePost, singlePost],
+  likedPosts: [],
+  totalResults: 0,
+  singlePost: {},
+};

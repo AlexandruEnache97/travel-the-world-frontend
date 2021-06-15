@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { currentUser, posts } from '../../../../../utils/unitTesting';
+import { currentUser, postsList } from '../../../../../utils/unitTesting';
 import PostsContainer from '../PostsContainer';
 
 jest.mock('../ListPost.jsx', () => () => <p>Post list</p>);
@@ -16,7 +16,7 @@ describe('PostsContainer component tests', () => {
     render(
       <PostsContainer
         currentUser={currentUser}
-        posts={posts}
+        posts={postsList}
         getPosts={getPosts}
         getLikedPosts={getLikedPosts}
         createPost={createPost}
