@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HereMap from './HereMap';
-import Navbar from '../Dashboard/components/navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 
 const MapComponent = ({ auth, signOut }) => (
   <div className="mapComponent">

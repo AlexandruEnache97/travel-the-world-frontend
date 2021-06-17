@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../Dashboard/components/navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar';
 import './profilePage.scss';
 import ScrollButton from '../../components/Buttons/ScrollButton';
 import ProfileInfo from './components/ProfileInfo';
