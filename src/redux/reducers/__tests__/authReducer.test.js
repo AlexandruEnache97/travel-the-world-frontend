@@ -106,8 +106,8 @@ describe('Authentication reducers tests', () => {
         email: '',
         country: '',
         userLocation: {
-          lat: '',
-          lng: '',
+          lat: 0,
+          lng: 0,
         },
       },
     });
