@@ -19,6 +19,7 @@ const EditProfile = ({
         closeModal={closeModal}
         updateProfile={updateProfile}
         currentUser={currentUser}
+        createAlert={createAlert}
       />
       <ChangeImage
         closeModal={closeModal}

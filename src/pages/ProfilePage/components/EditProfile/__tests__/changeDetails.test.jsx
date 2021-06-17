@@ -14,11 +14,13 @@ const mock = new MockAdapter(axios, { onNoMatch: 'throwException' });
 describe('ChangeDetails component tests', () => {
   const closeModal = jest.fn();
   const updateProfile = jest.fn();
+  const createAlert = jest.fn();
   it('Should render component correctly', () => {
     render(<ChangeDetails
       closeModal={closeModal}
       updateProfile={updateProfile}
       currentUser={currentUser}
+      createAlert={createAlert}
     />);
     const title = screen.getByText('Edit account details');
     expect(title).toBeInTheDocument();
@@ -39,6 +41,7 @@ describe('ChangeDetails component tests', () => {
       closeModal={closeModal}
       updateProfile={updateProfile}
       currentUser={currentUser}
+      createAlert={createAlert}
     />);
 
     const usernameInput = screen.getByRole('textbox', {
@@ -75,6 +78,7 @@ describe('ChangeDetails component tests', () => {
       closeModal={closeModal}
       updateProfile={updateProfile}
       currentUser={currentUser}
+      createAlert={createAlert}
     />);
 
     const usernameInput = screen.getByRole('textbox', {

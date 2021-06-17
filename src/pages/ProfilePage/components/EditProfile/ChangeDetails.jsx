@@ -1,10 +1,11 @@
-/* eslint-disable no-alert */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './changeDetails.scss';
 import { changeProfileDetails } from '../../../../service/authApi';
 
-const ChangeDetails = ({ currentUser, closeModal, updateProfile }) => {
+const ChangeDetails = ({
+  currentUser, closeModal, updateProfile, createAlert,
+}) => {
   const [profileDetails, setProfileDetails] = useState({
     username: currentUser.username,
     email: currentUser.email,
@@ -21,7 +22,7 @@ const ChangeDetails = ({ currentUser, closeModal, updateProfile }) => {
   const handleChangeDetails = async (e) => {
     e.preventDefault();
     await changeProfileDetails(profileDetails)
-      .catch(() => console.log('Password incorrect'));
+      .catch(() => createAlert('Password incorrect', 3));
     closeModal();
     updateProfile();
   };
@@ -79,6 +80,7 @@ ChangeDetails.propTypes = {
   }).isRequired,
   closeModal: PropTypes.func.isRequired,
   updateProfile: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default ChangeDetails;

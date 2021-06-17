@@ -56,9 +56,10 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
 
   return (
     <div className="edit-profile-image">
-      <p className="edit-title">Change profile image</p>
+      <label htmlFor="imageUpload" className="edit-title">Change profile image</label>
       <input
         type="file"
+        id="imageUpload"
         className="input-upload"
         onChange={fileChange}
         accept="image/png, image/jpeg"
