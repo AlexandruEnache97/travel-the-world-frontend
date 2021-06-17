@@ -18,3 +18,8 @@ export const currentSavedPosts = async (currentPosts) => {
   const data = await post(`${NODE_SERVER.baseUrl}/api/currentSavedPosts`, currentPosts);
   return data;
 };
+
+export const userSavedPosts = async (pageNumber) => {
+  const data = await post(`${NODE_SERVER.baseUrl}/api/savedPosts/${pageNumber}`);
+  return data;
+};
