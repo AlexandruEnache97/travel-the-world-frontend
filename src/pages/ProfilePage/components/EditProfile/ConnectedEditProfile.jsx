@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createAlert as createAlertAction } from '../../../../redux/actions/alertActions';
-import ChangeImage from './ChangeImage';
+import EditProfile from './EditProfile';
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   createAlert: createAlertAction,
 }, dispatch);
 
-export default connect(null, mapDispatchToProps)(ChangeImage);
+export default connect(null, mapDispatchToProps)(EditProfile);

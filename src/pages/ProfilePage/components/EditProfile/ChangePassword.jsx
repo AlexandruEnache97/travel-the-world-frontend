@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './changePassword.scss';
 import { changePassword } from '../../../../service/authApi';
 
-const ChangePassword = ({ updateProfile, closeModal }) => {
+const ChangePassword = ({ updateProfile, closeModal, createAlert }) => {
   const [changedPassword, setChangedPassword] = useState({
     oldPassword: '',
     newPassword: '',
@@ -14,9 +14,9 @@ const ChangePassword = ({ updateProfile, closeModal }) => {
   const changePasswordHandle = async (e) => {
     e.preventDefault();
     if (changedPassword.newPassword !== changedPassword.verifyNewPassword) {
-      alert('New passwords does not match');
+      createAlert('New passwords does not match', 3);
     } else if (changedPassword.oldPassword === changedPassword.newPassword) {
-      alert('New password must be different from the old one');
+      createAlert('New password must be different from the old one', 3);
     } else {
       await changePassword({
         oldPassword: changedPassword.oldPassword,
@@ -25,9 +25,9 @@ const ChangePassword = ({ updateProfile, closeModal }) => {
         .then(() => {
           updateProfile();
           closeModal();
-          alert('Password changed');
+          createAlert('Password changed', 3);
         })
-        .catch(() => alert('Old password incorrect'));
+        .catch(() => createAlert('Old password incorrect', 3));
     }
   };
 
@@ -84,6 +84,7 @@ const ChangePassword = ({ updateProfile, closeModal }) => {
 ChangePassword.propTypes = {
   closeModal: PropTypes.func.isRequired,
   updateProfile: PropTypes.func.isRequired,
+  createAlert: PropTypes.func.isRequired,
 };
 
 export default ChangePassword;

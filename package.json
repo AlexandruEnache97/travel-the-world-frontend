@@ -84,7 +84,8 @@
       "src/**"
     ],
     "modulePathIgnorePatterns": [
-      "<rootDir>/src/index.jsx"
+      "<rootDir>/src/index.jsx",
+      ".connect.js"
     ]
   }
 }
