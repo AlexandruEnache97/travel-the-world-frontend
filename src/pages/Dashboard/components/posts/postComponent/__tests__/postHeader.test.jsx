@@ -44,5 +44,6 @@ describe('PostHeader component tests', () => {
       name: 'saved-bookmark',
     });
     expect(savedBookmarkImage).toBeInTheDocument();
+    fireEvent.click(savedBookmarkImage);
   });
 });
