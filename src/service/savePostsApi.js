@@ -1,4 +1,5 @@
 import {
+  get,
   post,
   put,
 } from './axiosOperations';
@@ -20,6 +21,6 @@ export const currentSavedPosts = async (currentPosts) => {
 };
 
 export const userSavedPosts = async (pageNumber) => {
-  const data = await post(`${NODE_SERVER.baseUrl}/api/savedPosts/${pageNumber}`);
+  const data = await get(`${NODE_SERVER.baseUrl}/api/savedPosts/${pageNumber}`);
   return data;
 };

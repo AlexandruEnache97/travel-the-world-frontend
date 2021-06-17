@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './profileInfo.scss';
 import EditProfile from './EditProfile/ConnectedEditProfile';
 
-const ProfileInfo = ({ currentUser, updateInfo }) => {
+const ProfileInfo = ({ currentUser, updateInfo, showSavedPosts }) => {
   const [editProfileModal, setEditProfileModal] = useState(false);
 
   const handleEditProfile = () => {
@@ -12,6 +12,10 @@ const ProfileInfo = ({ currentUser, updateInfo }) => {
 
   const updateProfile = () => {
     updateInfo();
+  };
+
+  const savedPostsHandler = () => {
+    showSavedPosts();
   };
 
   return (
@@ -33,7 +37,13 @@ const ProfileInfo = ({ currentUser, updateInfo }) => {
         >
           Edit profile
         </button>
-        <button className="user-edit" type="button">Posts saved </button>
+        <button
+          className="user-edit"
+          type="button"
+          onClick={savedPostsHandler}
+        >
+          Posts saved
+        </button>
         <button className="user-edit" type="button">Map</button>
       </div>
       {editProfileModal && (
@@ -59,5 +69,6 @@ ProfileInfo.propTypes = {
     userLocation: PropTypes.objectOf(PropTypes.number).isRequired,
   }).isRequired,
   updateInfo: PropTypes.func.isRequired,
+  showSavedPosts: PropTypes.func.isRequired,
 };
 export default ProfileInfo;

@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import './profileMenu.scss';
 import CreatePost from '../../Dashboard/components/posts/CreatePost';
 
-const ProfileMenu = ({ createPost, currentUser, createAlert }) => {
+const ProfileMenu = ({
+  title, createPost, currentUser, createAlert,
+}) => {
   const [createPostModal, setCreatePostModal] = useState(false);
 
   const changeCreatePost = () => {
@@ -17,7 +19,7 @@ const ProfileMenu = ({ createPost, currentUser, createAlert }) => {
         className="active-button"
         type="button"
       >
-        Your posts
+        {title}
       </button>
       <button className="create-post-button" type="button" onClick={changeCreatePost}>Create new post</button>
       {
@@ -49,6 +51,7 @@ ProfileMenu.propTypes = {
   }).isRequired,
   createPost: PropTypes.func.isRequired,
   createAlert: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ProfileMenu;

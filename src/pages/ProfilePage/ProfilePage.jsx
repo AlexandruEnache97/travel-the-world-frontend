@@ -7,12 +7,14 @@ import ProfileInfo from './components/ProfileInfo';
 import ProfileMenu from './components/ProfileMenu';
 import Alert from '../../components/Alerts/ConnectedAlert';
 import ProfileUserPosts from './components/ProfileUserPosts';
+import ProfileSavedPosts from './components/ProfileSavedPosts';
 
 const ProfilePage = ({
   auth, createPost, signOut, getAccount, createAlert,
 }) => {
   const { accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
+  const [currentList, setCurrentList] = useState('Your posts');
 
   useEffect(() => {
     setCurrentUser(accountData);
@@ -21,6 +23,10 @@ const ProfilePage = ({
   const updateInfo = async () => {
     await getAccount(auth.accountId);
     setCurrentUser(accountData);
+  };
+
+  const showSavedPosts = () => {
+    setCurrentList('Saved posts');
   };
 
   return (
@@ -32,14 +38,18 @@ const ProfilePage = ({
             <ProfileInfo
               currentUser={currentUser}
               updateInfo={updateInfo}
+              showSavedPosts={showSavedPosts}
             />
             <div className="profile-container">
               <ProfileMenu
+                title={currentList}
                 createPost={createPost}
                 currentUser={currentUser}
                 createAlert={createAlert}
               />
-              <ProfileUserPosts createAlert={createAlert} />
+              {currentList === 'Your posts' ? (
+                <ProfileUserPosts createAlert={createAlert} />
+              ) : <ProfileSavedPosts createAlert={createAlert} />}
               <ScrollButton refId="profileRef" />
             </div>
           </div>
