@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { userSavedPosts } from '../../../service/savePostsApi';
+import { likedSavedPosts, userSavedPosts } from '../../../service/savePostsApi';
 import ListPosts from '../../Dashboard/components/posts/ListPost';
 import LoadingOverlay from '../../LoadingOverlay/LoadingOverlay';
 
@@ -18,19 +18,16 @@ const ProfileSavedPosts = ({ createAlert }) => {
     page: 0,
   });
 
-  useEffect(() => {
-    console.log(savedPosts);
-  }, [savedPosts]);
-
   useEffect(async () => {
     setLoading('loading');
     await userSavedPosts(currentPage)
       .then(async (res) => {
         const { data } = res;
+        const likedPosts = await likedSavedPosts(currentPage);
         setSavedPosts({
           posts: data.savedPosts,
           totalResults: data.totalResults,
-          likedUserPosts: [],
+          likedUserPosts: likedPosts.data.likedSavedPosts,
         });
         setCurrentSaved({
           postsId: [...currentSaved.postsId, ...data.savedPosts.map((post) => (post._id))],
@@ -52,7 +49,7 @@ const ProfileSavedPosts = ({ createAlert }) => {
     <div>
       <ListPosts
         posts={savedPosts.posts}
-        likedPosts={[]}
+        likedPosts={savedPosts.likedUserPosts}
         hasMore={savedPosts.totalResults > currentPage * 10}
         getMorePosts={() => { }}
         createAlert={createAlert}

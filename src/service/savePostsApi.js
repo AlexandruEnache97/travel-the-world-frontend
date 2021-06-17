@@ -24,3 +24,8 @@ export const userSavedPosts = async (pageNumber) => {
   const data = await get(`${NODE_SERVER.baseUrl}/api/savedPosts/${pageNumber}`);
   return data;
 };
+
+export const likedSavedPosts = async (pageNumber) => {
+  const data = await get(`${NODE_SERVER.baseUrl}/api/likedSavedPosts/${pageNumber}`);
+  return data;
+};
