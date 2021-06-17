@@ -1,3 +1,5 @@
+@import '../colors.scss';
+
 * {
     margin: 0;
     padding: 0;
@@ -30,13 +32,13 @@ html, button {
         }
 
         &::-webkit-scrollbar-track {
-            background: #fff;
+            background: $lightGray;
             border-top: 0.5px solid #b4b4b4;
             border-bottom: 0.5px solid #b4b4b4;
         }
 
         &::-webkit-scrollbar-thumb {
-            background-color: #ff304f ;
+            background-color: $darkBase ;
             border-radius: 6px;
             border: 1px solid #fff;
         }

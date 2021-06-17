@@ -1,7 +1,7 @@
 @import '../../scss/colors.scss';
 
 .navbar-container {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100vw;
     display: flex;
