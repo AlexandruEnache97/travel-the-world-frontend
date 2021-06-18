@@ -17,9 +17,9 @@ const ParallaxObjects = ({ activeObject, passiveObject, offsetTop }) => {
   }, []);
 
   return (
-    <div className="parallax-object">
-      {offsetY > offsetTop && (
-        <>
+    <>
+      {offsetY > offsetTop && offsetY < offsetTop + 4200 && (
+        <div className="parallax-object">
           <img
             src={passiveObject}
             alt="clouds"
@@ -36,9 +36,9 @@ const ParallaxObjects = ({ activeObject, passiveObject, offsetTop }) => {
               transform: `translateY(${(offsetY - offsetTop) * 0.6}px)`,
             }}
           />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

@@ -64,6 +64,13 @@ const ParallaxContent = () => (
           offsetTop={2100 + 4200 * 2}
         />
       </div>
+      <div>
+        <ParallaxObjects
+          activeObject={Airplane}
+          passiveObject={Suitcases}
+          offsetTop={2100 + 4200 * 3}
+        />
+      </div>
     </div>
   </>
 );
