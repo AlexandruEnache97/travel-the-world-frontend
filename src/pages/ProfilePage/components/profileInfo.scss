@@ -62,6 +62,9 @@
             border-radius: 2rem;
             color: black;
             background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             &:hover {
                 transform: scale(1.05);

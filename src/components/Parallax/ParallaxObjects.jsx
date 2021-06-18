@@ -18,7 +18,7 @@ const ParallaxObjects = ({ activeObject, passiveObject, offsetTop }) => {
 
   return (
     <>
-      {offsetY > offsetTop && offsetY < offsetTop + 4200 && (
+      {offsetY > offsetTop && offsetY < offsetTop + 5400 && (
         <div className="parallax-object">
           <img
             src={passiveObject}

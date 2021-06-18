@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './profileInfo.scss';
+import { Link as LinkScroll } from 'react-scroll';
 import EditProfile from './EditProfile/ConnectedEditProfile';
 
 const ProfileInfo = ({ currentUser, updateInfo, showSavedPosts }) => {
@@ -37,13 +38,19 @@ const ProfileInfo = ({ currentUser, updateInfo, showSavedPosts }) => {
         >
           Edit profile
         </button>
-        <button
+        <LinkScroll
+          to="profileRef"
+          containerId="main-page"
+          spy
+          smooth
+          duration={500}
+          offset={-100}
           className="user-edit"
           type="button"
           onClick={savedPostsHandler}
         >
           Posts saved
-        </button>
+        </LinkScroll>
         <button className="user-edit" type="button">Map</button>
       </div>
       {editProfileModal && (
