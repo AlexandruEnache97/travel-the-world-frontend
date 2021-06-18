@@ -5,9 +5,10 @@
     flex-direction: column;
     align-items: center;
     width: 45%;
-    margin: 3rem auto 2rem auto;
+    margin: 3rem 0 2rem 0;
     background-color: $lightGray;
     border-radius: 5rem;
+    order: 2;
 
     .preview-image {
         margin-top: 5rem;

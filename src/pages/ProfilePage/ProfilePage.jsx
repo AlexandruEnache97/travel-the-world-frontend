@@ -36,7 +36,6 @@ const ProfilePage = ({
       {currentUser.username !== '' && currentUser.username !== undefined
         && (
           <div className="profile-page">
-            <ParallaxContent />
             <ProfileInfo
               currentUser={currentUser}
               updateInfo={updateInfo}
@@ -54,6 +53,7 @@ const ProfilePage = ({
               ) : <ProfileSavedPosts createAlert={createAlert} />}
               <ScrollButton refId="profileRef" />
             </div>
+            <ParallaxContent />
           </div>
         )}
       <Alert />
