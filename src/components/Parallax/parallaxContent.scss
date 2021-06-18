@@ -1,11 +1,11 @@
 .parallax-container {
     position: absolute;
     top: 0;
-    left: 10%;
+    left: 12%;
     width: 30%;
     height: 2000px;
     z-index: 14;
-    transition: all 1s ease;
+    transition-delay: 3s;
 
     div {
         height: 4200px;
@@ -15,7 +15,7 @@
 .parallax-container-right{
     position: absolute;
     top: 0;
-    right: 0;
+    right: -2%;
     width: 30%;
     height: 2000px;
     z-index: 14;
