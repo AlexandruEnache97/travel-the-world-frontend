@@ -6,6 +6,8 @@ import Airplane from '../../images/parallaxObjectives/airplane.png';
 import Suitcases from '../../images/parallaxObjectives/suitcases.png';
 import Passport from '../../images/parallaxObjectives/passport.png';
 import Globe from '../../images/parallaxObjectives/globe.png';
+import Sun from '../../images/parallaxObjectives/sun.png';
+import Beach from '../../images/parallaxObjectives/beach.png';
 
 import './parallaxContent.scss';
 
@@ -35,8 +37,8 @@ const ParallaxContent = () => (
       </div>
       <div>
         <ParallaxObjects
-          activeObject={Baloon}
-          passiveObject={Clouds}
+          activeObject={Sun}
+          passiveObject={Beach}
           offsetTop={4200 * 3}
         />
       </div>
@@ -45,8 +47,8 @@ const ParallaxContent = () => (
       <div className="empty-div" />
       <div>
         <ParallaxObjects
-          activeObject={Passport}
-          passiveObject={Globe}
+          activeObject={Sun}
+          passiveObject={Beach}
           offsetTop={2100}
         />
       </div>
@@ -66,8 +68,8 @@ const ParallaxContent = () => (
       </div>
       <div>
         <ParallaxObjects
-          activeObject={Airplane}
-          passiveObject={Suitcases}
+          activeObject={Passport}
+          passiveObject={Globe}
           offsetTop={2100 + 4200 * 3}
         />
       </div>
