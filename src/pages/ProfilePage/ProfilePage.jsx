@@ -8,6 +8,7 @@ import ProfileMenu from './components/ProfileMenu';
 import Alert from '../../components/Alerts/ConnectedAlert';
 import ProfileUserPosts from './components/ProfileUserPosts';
 import ProfileSavedPosts from './components/ProfileSavedPosts';
+import ParallaxContent from '../../components/Parallax/ParallaxContent';
 
 const ProfilePage = ({
   auth, createPost, signOut, getAccount, createAlert,
@@ -35,6 +36,7 @@ const ProfilePage = ({
       {currentUser.username !== '' && currentUser.username !== undefined
         && (
           <div className="profile-page">
+            <ParallaxContent />
             <ProfileInfo
               currentUser={currentUser}
               updateInfo={updateInfo}
