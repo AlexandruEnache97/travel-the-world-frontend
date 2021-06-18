@@ -2,11 +2,12 @@
 .dashboard-scroll {
     position: fixed;
     bottom: 2rem;
-    right: 10rem;
+    right: 19%;
     background-color: rgba(0,0,0,0.3);
     border-radius: 1.5rem;
     width: 6.5rem;
     height: 6.5rem;
+    z-index: 22;
 }
 
 
