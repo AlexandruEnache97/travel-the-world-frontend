@@ -4,12 +4,16 @@ import './profileMenu.scss';
 import CreatePost from '../../Dashboard/components/posts/CreatePost';
 
 const ProfileMenu = ({
-  title, createPost, currentUser, createAlert,
+  title, createPost, currentUser, createAlert, showSavedPosts,
 }) => {
   const [createPostModal, setCreatePostModal] = useState(false);
 
   const changeCreatePost = () => {
     setCreatePostModal(!createPostModal);
+  };
+
+  const savedPostsHandler = () => {
+    showSavedPosts('Your posts');
   };
 
   return (
@@ -21,6 +25,11 @@ const ProfileMenu = ({
       >
         {title}
       </button>
+      {title === 'Saved posts' && (
+        <button type="button" className="back-button" onClick={savedPostsHandler}>
+          <img src="https://img.icons8.com/ios-glyphs/90/000000/circled-left-2.png" alt="backIcon" />
+        </button>
+      )}
       <button className="create-post-button" type="button" onClick={changeCreatePost}>Create new post</button>
       {
         createPostModal && (
@@ -52,6 +61,7 @@ ProfileMenu.propTypes = {
   createPost: PropTypes.func.isRequired,
   createAlert: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  showSavedPosts: PropTypes.func.isRequired,
 };
 
 export default ProfileMenu;

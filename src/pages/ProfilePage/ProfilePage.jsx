@@ -26,8 +26,8 @@ const ProfilePage = ({
     setCurrentUser(accountData);
   };
 
-  const showSavedPosts = () => {
-    setCurrentList('Saved posts');
+  const showSavedPosts = (postList) => {
+    setCurrentList(postList);
   };
 
   return (
@@ -47,6 +47,7 @@ const ProfilePage = ({
                 createPost={createPost}
                 currentUser={currentUser}
                 createAlert={createAlert}
+                showSavedPosts={showSavedPosts}
               />
               {currentList === 'Your posts' ? (
                 <ProfileUserPosts createAlert={createAlert} />

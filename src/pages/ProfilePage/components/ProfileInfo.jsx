@@ -16,7 +16,7 @@ const ProfileInfo = ({ currentUser, updateInfo, showSavedPosts }) => {
   };
 
   const savedPostsHandler = () => {
-    showSavedPosts();
+    showSavedPosts('Saved posts');
   };
 
   return (
