@@ -13,6 +13,10 @@ const FirstPage = () => {
   };
 
   useEffect(() => {
+    console.log(offsetY);
+  }, [offsetY]);
+
+  useEffect(() => {
     wrapper.addEventListener('scroll', onScroll);
 
     return () => {

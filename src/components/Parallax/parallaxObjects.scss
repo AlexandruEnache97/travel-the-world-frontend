@@ -1,0 +1,11 @@
+.parallax-object {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+        width: 10rem;
+        margin-left: 20rem;    
+        filter: drop-shadow(2px 4px 12px black);
+    }
+}

@@ -6,6 +6,7 @@ import ScrollButton from '../../components/Buttons/ScrollButton';
 import MenuContainer from './components/menu/MenuContainer';
 import Alert from '../../components/Alerts/ConnectedAlert';
 import PostsContainer from './components/posts/ConnectedPostsContainer';
+import ParallaxContent from '../../components/Parallax/ParallaxContent';
 
 const Dashboard = ({ auth, signOut }) => {
   const { accountData } = auth;
@@ -21,6 +22,7 @@ const Dashboard = ({ auth, signOut }) => {
       {currentUser.username !== '' && currentUser.username !== undefined
         && (
           <div className="dashboard-container">
+            <ParallaxContent />
             <MenuContainer currentUser={currentUser} />
             <PostsContainer currentUser={currentUser} />
           </div>
