@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './profileMenu.scss';
 import CreatePost from '../../Dashboard/components/posts/CreatePost';
+import BackButton from '../../../images/menuButtons/backButton.png';
 
 const ProfileMenu = ({
   title, createPost, currentUser, createAlert, showSavedPosts,
@@ -27,7 +28,7 @@ const ProfileMenu = ({
       </button>
       {title === 'Saved posts' && (
         <button type="button" className="back-button" onClick={savedPostsHandler}>
-          <img src="https://img.icons8.com/ios-glyphs/90/000000/circled-left-2.png" alt="backIcon" />
+          <img src={BackButton} alt="backIcon" />
         </button>
       )}
       <button className="create-post-button" type="button" onClick={changeCreatePost}>Create new post</button>
