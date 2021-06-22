@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './postHeader.scss';
+import { Link } from 'react-router-dom';
 import { deleteSavedPost, savePost } from '../../../../../service/savePostsApi';
 
 const PostHeader = ({
@@ -21,10 +22,20 @@ const PostHeader = ({
 
   return (
     <div className="post-top">
-      <div className="post-user">
+      <Link
+        className="post-user"
+        to={{
+          pathname: `/user/${userData.username}`,
+          state: {
+            userId: userData._id,
+            username: userData.username,
+            profileImage: userData.profileImage,
+          },
+        }}
+      >
         <img className="post-user-icon" src={userData.profileImage} alt="userIcon" />
         <p>{userData.username}</p>
-      </div>
+      </Link>
       <button className="bookmark-button" type="button" onClick={handleSavePost}>
         {postSaved ? (
           <img src="https://img.icons8.com/fluent-systems-filled/96/ffffff/bookmark-ribbon.png" alt="saved-bookmark" />
