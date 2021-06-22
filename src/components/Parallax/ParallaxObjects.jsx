@@ -5,7 +5,7 @@ import './parallaxObjects.scss';
 
 const ParallaxObjects = ({ activeObject, passiveObject, offsetTop }) => {
   const [offsetY, setOffsetY] = useState(0);
-  const [wrapper] = useState(document.getElementById('main-page'));
+  const wrapper = document.getElementById('main-page');
   const handleScroll = () => setOffsetY(wrapper.scrollTop);
 
   useEffect(() => {

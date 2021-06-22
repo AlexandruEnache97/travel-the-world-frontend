@@ -8,6 +8,12 @@ import Passport from '../../images/parallaxObjectives/passport.png';
 import Globe from '../../images/parallaxObjectives/globe.png';
 import Sun from '../../images/parallaxObjectives/sun.png';
 import Beach from '../../images/parallaxObjectives/beach.png';
+import Trees from '../../images/parallaxObjectives/trees.png';
+import Tent from '../../images/parallaxObjectives/tent.png';
+import Mountain from '../../images/parallaxObjectives/mountain.png';
+import Hiking from '../../images/parallaxObjectives/hiking.png';
+import Pyramids from '../../images/parallaxObjectives/pyramids.png';
+import Pharaoh from '../../images/parallaxObjectives/pharaoh.png';
 
 import './parallaxContent.scss';
 
@@ -37,8 +43,8 @@ const ParallaxContent = () => (
       </div>
       <div>
         <ParallaxObjects
-          activeObject={Sun}
-          passiveObject={Beach}
+          activeObject={Pharaoh}
+          passiveObject={Pyramids}
           offsetTop={4200 * 3}
         />
       </div>
@@ -54,15 +60,15 @@ const ParallaxContent = () => (
       </div>
       <div>
         <ParallaxObjects
-          activeObject={Baloon}
-          passiveObject={Clouds}
+          activeObject={Tent}
+          passiveObject={Trees}
           offsetTop={2100 + 4200}
         />
       </div>
       <div>
         <ParallaxObjects
-          activeObject={Airplane}
-          passiveObject={Suitcases}
+          activeObject={Hiking}
+          passiveObject={Mountain}
           offsetTop={2100 + 4200 * 2}
         />
       </div>
