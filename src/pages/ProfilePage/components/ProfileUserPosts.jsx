@@ -5,7 +5,7 @@ import { getUserPosts, getUserLikedPosts } from '../../../service/postsApi';
 import LoadingOverlay from '../../LoadingOverlay/LoadingOverlay';
 import { currentSavedPosts } from '../../../service/savePostsApi';
 
-const ProfileUserPosts = ({ createAlert }) => {
+const ProfileUserPosts = ({ createAlert, userAccountId }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [profilePosts, setProfilePosts] = useState({
     userPosts: [],
@@ -32,10 +32,10 @@ const ProfileUserPosts = ({ createAlert }) => {
 
   useEffect(async () => {
     setLoading('loading');
-    await getUserPosts(currentPage)
+    await getUserPosts(userAccountId, currentPage)
       .then(async (res) => {
         const { data } = res;
-        const likedPosts = await getUserLikedPosts(currentPage);
+        const likedPosts = await getUserLikedPosts(userAccountId, currentPage);
         setProfilePosts({
           userPosts: data.posts,
           totalResults: data.totalResults,
@@ -56,8 +56,8 @@ const ProfileUserPosts = ({ createAlert }) => {
 
   const getMorePosts = async () => {
     setLoading('loading');
-    const { data } = await getUserPosts(currentPage + 1);
-    const likedPosts = await getUserLikedPosts(currentPage + 1);
+    const { data } = await getUserPosts(userAccountId, currentPage + 1);
+    const likedPosts = await getUserLikedPosts(userAccountId, currentPage + 1);
     setCurrentPage(currentPage + 1);
     setProfilePosts({
       userPosts: [...profilePosts.userPosts, ...data.posts],
@@ -84,6 +84,7 @@ const ProfileUserPosts = ({ createAlert }) => {
 
 ProfileUserPosts.propTypes = {
   createAlert: PropTypes.func.isRequired,
+  userAccountId: PropTypes.string.isRequired,
 };
 
 export default ProfileUserPosts;

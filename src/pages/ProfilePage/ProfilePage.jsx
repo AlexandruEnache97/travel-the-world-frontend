@@ -13,12 +13,14 @@ import ParallaxContent from '../../components/Parallax/ParallaxContent';
 const ProfilePage = ({
   auth, createPost, signOut, getAccount, createAlert,
 }) => {
-  const { accountData } = auth;
+  const { accountId, accountData } = auth;
   const [currentUser, setCurrentUser] = useState({});
+  const [userAccountId, setUserAccountId] = useState('');
   const [currentList, setCurrentList] = useState('Your posts');
 
   useEffect(() => {
     setCurrentUser(accountData);
+    setUserAccountId(accountId);
   }, [auth]);
 
   const updateInfo = async () => {
@@ -50,7 +52,10 @@ const ProfilePage = ({
                 showSavedPosts={showSavedPosts}
               />
               {currentList === 'Your posts' ? (
-                <ProfileUserPosts createAlert={createAlert} />
+                <ProfileUserPosts
+                  createAlert={createAlert}
+                  userAccountId={userAccountId}
+                />
               ) : <ProfileSavedPosts createAlert={createAlert} />}
               <ScrollButton refId="profileRef" />
             </div>
