@@ -2,7 +2,7 @@
 
 .profile-page {
     display: flex;
-    min-height: -webkit-fill-available;
+    min-height: calc(100vh - 7.1rem);
     overflow: hidden;
     background-color: $darkGray;
 
