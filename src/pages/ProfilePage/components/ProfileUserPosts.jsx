@@ -5,6 +5,8 @@ import { getUserPosts, getUserLikedPosts } from '../../../service/postsApi';
 import LoadingOverlay from '../../LoadingOverlay/LoadingOverlay';
 import { currentSavedPosts } from '../../../service/savePostsApi';
 
+import './profileUserPosts.scss';
+
 const ProfileUserPosts = ({ createAlert, userAccountId }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [profilePosts, setProfilePosts] = useState({
@@ -68,7 +70,7 @@ const ProfileUserPosts = ({ createAlert, userAccountId }) => {
     setLoading(null);
   };
   return (
-    <div>
+    <div className="user-posts-container">
       <ListPosts
         posts={profilePosts.userPosts}
         likedPosts={profilePosts.likedUserPosts}

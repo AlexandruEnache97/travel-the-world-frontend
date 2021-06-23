@@ -19,38 +19,20 @@
         
 
         .profile-no-posts {
-            margin: 50% 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 40rem;
+            height: 18rem;
+            background-color: $darkGray;
+            border-radius: 3rem;
+            box-shadow: 0rem 0rem 0.9rem 0.1rem #bfbfbf;
 
-            .top {
-                width: 40rem;
-                padding: 0rem 2.5rem;
-                height: 4rem;
-                background-color: #e11f3c;
-                border-radius: 3rem 3rem 0rem 0rem;
-            }
-
-            .content {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                width: 40rem;
-                height: 10rem;
-                background-color: #fff;
-
-                p {
-                    font-size: 1.6rem;
-                    font-weight: 500;
-                    margin: 0.3rem 0rem;
-                }
-            }
-            
-            .bottom {
-                width: 40rem;
-                padding: 0rem 2.5rem;
-                height: 4rem;
-                background-color: #e11f3c;
-                border-radius: 0rem 0rem 3rem 3rem;
+            p {
+                font-size: 1.6rem;
+                font-weight: 500;
+                margin: 0.3rem 0rem;
             }
         }
     }

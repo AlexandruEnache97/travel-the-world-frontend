@@ -46,15 +46,11 @@ export class ListPost extends Component {
 
   render() {
     return (
-      <div>
+      <>
         {this.state.nrOfPosts === 0 ? (
           <div className="profile-no-posts">
-            <div className="top" />
-            <div className="content">
-              <p>There are no posts. </p>
-              <p>Create one!</p>
-            </div>
-            <div className="bottom" />
+            <p>There are no posts. </p>
+            <p>Create one!</p>
           </div>
         ) : this.props.posts.map((post, index) => {
           const checkLikedPost = () => {
@@ -101,7 +97,7 @@ export class ListPost extends Component {
             />
           );
         })}
-      </div>
+      </>
     );
   }
 }
