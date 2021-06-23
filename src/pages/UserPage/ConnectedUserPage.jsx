@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { createAlert as createAlertAction } from '../../redux/actions/alertActions';
 import {
   signOut as signOutAction,
 } from '../../redux/actions/authActions';
@@ -11,6 +12,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   signOut: signOutAction,
+  createAlert: createAlertAction,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserPage);
