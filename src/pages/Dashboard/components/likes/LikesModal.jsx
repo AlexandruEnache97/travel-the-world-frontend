@@ -91,6 +91,7 @@ export class LikesModal extends Component {
               <LikeComponent
                 profileImage={item.profileImage}
                 username={item.username}
+                userId={item._id}
                 key={Math.random()}
               />
             ))}
