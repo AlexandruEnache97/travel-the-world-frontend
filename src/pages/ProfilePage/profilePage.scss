@@ -9,6 +9,7 @@
     .profile-container {
         display: flex;
         width: 45%;
+        height: fit-content;
         flex-direction: column;
         align-items: center;
         background-color: $lightGray;   
