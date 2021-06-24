@@ -95,10 +95,14 @@ const HereMap = ({
           <p>Own posts</p>
         </div>
       </div>
-      {posts.totalResults > posts.pageNumber * 10 && (
+      {posts.totalResults > posts.pageNumber * 10 ? (
         <div className="more-posts-container">
           <p>There are more posts available!</p>
           <button type="button" onClick={getMorePostsHandler}>Load more</button>
+        </div>
+      ) : (
+        <div className="more-posts-container">
+          <p>There are no more posts!</p>
         </div>
       )}
     </div>
