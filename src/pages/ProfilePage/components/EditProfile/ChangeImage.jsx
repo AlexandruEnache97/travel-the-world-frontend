@@ -5,10 +5,12 @@ import { changeProfileImage } from '../../../../service/authApi';
 import { storage } from '../../../../utils/firebase';
 
 import './changeImage.scss';
+import PreviewImage from '../../../../components/PreviewImage/PreviewImage';
 
 const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
+  const [previewModal, setPreviewModal] = useState(false);
 
   useEffect(async () => {
     if (imageUrl !== '') {
@@ -68,6 +70,10 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
     }
   };
 
+  const handlePreviewImage = () => {
+    setPreviewModal(!previewModal);
+  };
+
   return (
     <div className="edit-profile-image">
       <label htmlFor="imageUpload" className="edit-title">Change profile image</label>
@@ -78,7 +84,14 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
         onChange={fileChange}
         accept="image/png, image/jpeg"
       />
+      {fileUpload && <button type="button" onClick={handlePreviewImage}>Preview image</button>}
       <button type="button" onClick={handleChangeImage}>Done</button>
+      {previewModal && (
+        <PreviewImage
+          image={URL.createObjectURL(fileUpload)}
+          closeModal={handlePreviewImage}
+        />
+      )}
     </div>
   );
 };
