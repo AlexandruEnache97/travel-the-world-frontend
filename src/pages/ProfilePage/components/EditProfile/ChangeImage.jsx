@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import imageCompression from 'browser-image-compression';
 import { changeProfileImage } from '../../../../service/authApi';
 import { storage } from '../../../../utils/firebase';
+
 import './changeImage.scss';
 
 const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
   const [fileUpload, setFileUpload] = useState(null);
   const [imageUrl, setImageUrl] = useState('');
-  const [keyFile, setKeyFile] = useState(new Date());
 
   useEffect(async () => {
     if (imageUrl !== '') {
@@ -25,31 +26,44 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
     setFileUpload(e.target.files[0]);
   };
 
-  const handleChangeImage = (e) => {
+  const imageUploadOptions = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1080,
+    useWebWorker: true,
+  };
+
+  const uploadImage = (imageFile) => {
+    const upload = storage.ref(`/profiles/${imageFile.name}`).put(imageFile);
+    upload.on(
+      'state_changed',
+      (snapshot) => {
+        console.log(snapshot._delegate);
+      },
+      (error) => {
+        createAlert(error);
+      },
+      () => {
+        storage
+          .ref('profiles')
+          .child(fileUpload.name)
+          .getDownloadURL()
+          .then((url) => setImageUrl(url));
+      },
+    );
+  };
+
+  const handleChangeImage = async (e) => {
     e.preventDefault();
     if (fileUpload !== null) {
-      if (fileUpload.size > 1024 * 1024 * 5) {
-        createAlert('File too big, upload images under 5Mb', 3);
-        setFileUpload(null);
-        setKeyFile(new Date());
+      if (fileUpload.size > 1024 * 1024 * 2) {
+        try {
+          const compressedFile = await imageCompression(fileUpload, imageUploadOptions);
+          uploadImage(compressedFile);
+        } catch (err) {
+          createAlert(err, 3);
+        }
       } else {
-        const upload = storage.ref(`/profiles/${fileUpload.name}`).put(fileUpload);
-        upload.on(
-          'state_changed',
-          (snapshot) => {
-            console.log(snapshot._delegate);
-          },
-          (error) => {
-            createAlert(error);
-          },
-          () => {
-            storage
-              .ref('profiles')
-              .child(fileUpload.name)
-              .getDownloadURL()
-              .then((url) => setImageUrl(url));
-          },
-        );
+        uploadImage(fileUpload);
       }
     }
   };
@@ -63,7 +77,6 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
         className="input-upload"
         onChange={fileChange}
         accept="image/png, image/jpeg"
-        key={keyFile}
       />
       <button type="button" onClick={handleChangeImage}>Done</button>
     </div>

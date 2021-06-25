@@ -2,6 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import imageCompression from 'browser-image-compression';
 import { storage } from '../../../../utils/firebase';
 import './createPost.scss';
 import CountrySelect from '../../../LandingPage/components/CountrySelect';
@@ -102,34 +103,47 @@ const CreatePost = ({
     });
   };
 
+  const uploadImage = (imageFile) => {
+    const upload = storage.ref(`/images/${imageFile.name}`).put(imageFile);
+    upload.on(
+      'state_changed',
+      (snapshot) => {
+        console.log(snapshot._delegate);
+      },
+      (error) => {
+        createAlert(error.toString(), 3);
+      },
+      () => {
+        storage
+          .ref('images')
+          .child(fileUpload.name)
+          .getDownloadURL()
+          .then((url) => setPostData({
+            ...postData,
+            postImage: url,
+          }));
+      },
+    );
+  };
+
+  const imageUploadOptions = {
+    maxSizeMB: 1,
+    maxWidthOrHeight: 1080,
+    useWebWorker: true,
+  };
+
   const uploadHandler = async (e) => {
     e.preventDefault();
     if (fileUpload !== null) {
-      if (fileUpload.size > 1024 * 1024 * 5) {
-        createAlert('File too big, upload images under 5Mb', 3);
-        setFileUpload(null);
-        setKeyFile(new Date());
+      if (fileUpload.size > 1024 * 1024 * 2) {
+        try {
+          const compressedFile = await imageCompression(fileUpload, imageUploadOptions);
+          uploadImage(compressedFile);
+        } catch (err) {
+          createAlert(err, 3);
+        }
       } else {
-        const upload = storage.ref(`/images/${fileUpload.name}`).put(fileUpload);
-        await upload.on(
-          'state_changed',
-          (snapshot) => {
-            console.log(snapshot._delegate);
-          },
-          (error) => {
-            createAlert(error.toString(), 3);
-          },
-          () => {
-            storage
-              .ref('images')
-              .child(fileUpload.name)
-              .getDownloadURL()
-              .then((url) => setPostData({
-                ...postData,
-                postImage: url,
-              }));
-          },
-        );
+        uploadImage(fileUpload);
       }
     } else if (postData.title !== '' && postData.text !== '' && postData.category !== '' && postData.location !== '') {
       createPostUpload();
