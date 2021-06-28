@@ -8,11 +8,13 @@ import './createPost.scss';
 import CountrySelect from '../../../LandingPage/components/CountrySelect';
 import countryCoordinates from '../../../../utils/countryCoordinates';
 import PostMapLocation from './setPostMap/PostMapLocation';
+import PreviewImage from '../../../../components/PreviewImage/PreviewImage';
 
 const CreatePost = ({
   username, profileImage, createPost, createAlert, closeModal,
 }) => {
   const [fileUpload, setFileUpload] = useState(null);
+  const [previewModal, setPreviewModal] = useState(false);
   const [keyFile, setKeyFile] = useState(new Date());
   // const [previewImage, setPreviewImage] = useState(null);
   const [postData, setPostData] = useState({
@@ -150,6 +152,10 @@ const CreatePost = ({
     }
   };
 
+  const handlePreviewImage = () => {
+    setPreviewModal(!previewModal);
+  };
+
   return (
     <div className="create-container">
       <div className="create-top">
@@ -231,6 +237,7 @@ const CreatePost = ({
             accept="image/png, image/jpeg"
             key={keyFile}
           />
+          {fileUpload && <button className="preview-button" type="button" onClick={handlePreviewImage}>Preview image</button>}
         </div>
         <div className="create-bottom">
           <button type="submit">
@@ -239,6 +246,12 @@ const CreatePost = ({
           </button>
         </div>
       </form>
+      {previewModal && (
+        <PreviewImage
+          image={URL.createObjectURL(fileUpload)}
+          closeModal={handlePreviewImage}
+        />
+      )}
     </div>
   );
 };
