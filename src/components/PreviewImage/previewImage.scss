@@ -6,12 +6,14 @@
     align-items: center;
     justify-content: space-between;
     position: fixed;
-    width: 120%;
-    height: 77%;
+    width: 45vw;
+    height: auto;
     background-color: $darkGray;
     z-index: 106;
     border-radius: 3rem;
-    top: 8%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     .preview-image-top {
         display: flex;
