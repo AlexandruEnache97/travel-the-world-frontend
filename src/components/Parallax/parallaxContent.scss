@@ -31,3 +31,14 @@
         height: 2100px;
     }
 }
+
+
+@media only screen and (max-width: 600px) {
+    .parallax-container {
+        display: none;
+    }
+
+    .parallax-container-right {
+        display: none;
+    }
+}

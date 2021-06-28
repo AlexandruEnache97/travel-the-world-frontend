@@ -30,12 +30,13 @@
 
         .menu {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             width: 100%;
             height: calc(100vh - 8rem);
             margin-top: 5.3rem;
-            margin-left: 0rem;
+            left: 0%;
             background-color: $darkBase;
             border-radius: 0rem 0rem 3rem 3rem;
         }

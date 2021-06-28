@@ -9,3 +9,9 @@
         padding: 0rem 1.8rem;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .search-container {
+        display: none;
+    }
+}
