@@ -6,6 +6,7 @@ import {
 import '@testing-library/jest-dom';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
+import { MemoryRouter } from 'react-router-dom';
 import { NODE_SERVER } from '../../../../../../config';
 import { getUserLikes } from '../../../../../service/postsApi';
 import LikesModalComponent from '../LikesModal';
@@ -33,13 +34,16 @@ describe('LikesModal component tests', () => {
         }],
       });
       render(
-        <LikesModalComponent
-          title="post"
-          likes={23}
-          postId="1"
-          closeHandler={closeHandler}
-          getLikes={getUserLikes}
-        />,
+        <MemoryRouter>
+          <LikesModalComponent
+            title="post"
+            likes={23}
+            postId="1"
+            closeHandler={closeHandler}
+            getLikes={getUserLikes}
+          />
+          ,
+        </MemoryRouter>,
       );
     });
 
@@ -81,13 +85,15 @@ describe('LikesModal component tests', () => {
       });
 
       render(
-        <LikesModalComponent
-          title="post"
-          likes={21}
-          postId="1"
-          closeHandler={closeHandler}
-          getLikes={getUserLikes}
-        />,
+        <MemoryRouter>
+          <LikesModalComponent
+            title="post"
+            likes={21}
+            postId="1"
+            closeHandler={closeHandler}
+            getLikes={getUserLikes}
+          />
+        </MemoryRouter>,
       );
     });
 

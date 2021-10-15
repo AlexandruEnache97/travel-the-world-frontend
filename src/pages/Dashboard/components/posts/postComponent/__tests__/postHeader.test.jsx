@@ -1,35 +1,40 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { MemoryRouter } from 'react-router-dom';
 import PostHeader from '../PostHeader';
 
 describe('PostHeader component tests', () => {
   const createAlert = jest.fn();
   it('Should render component correctly', () => {
     render(
-      <PostHeader
-        userData={{
-          username: 'Alex',
-          profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
-        }}
-        postId="1"
-        saved
-        createAlert={createAlert}
-      />,
+      <MemoryRouter>
+        <PostHeader
+          userData={{
+            username: 'Alex',
+            profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
+          }}
+          postId="1"
+          saved
+          createAlert={createAlert}
+        />
+      </MemoryRouter>,
     );
   });
 
   it('Should save post bookmark', () => {
     render(
-      <PostHeader
-        userData={{
-          username: 'Alex',
-          profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
-        }}
-        postId="1"
-        saved={false}
-        createAlert={createAlert}
-      />,
+      <MemoryRouter>
+        <PostHeader
+          userData={{
+            username: 'Alex',
+            profileImage: 'https://img.icons8.com/carbon-copy/100/000000/map.png',
+          }}
+          postId="1"
+          saved={false}
+          createAlert={createAlert}
+        />
+      </MemoryRouter>,
     );
     const bookmarkImage = screen.getByRole('img', {
       name: 'bookmark',
