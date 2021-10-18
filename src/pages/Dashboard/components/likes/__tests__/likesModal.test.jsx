@@ -22,15 +22,19 @@ describe('LikesModal component tests', () => {
         userLikes: [{
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }],
       });
       render(
@@ -57,30 +61,38 @@ describe('LikesModal component tests', () => {
         userLikes: [{
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }],
       });
       mock.onGet(`${NODE_SERVER.baseUrl}/api/userLikes/1/2`).reply(200, {
         userLikes: [{
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }, {
           username: 'CatUser',
           profileImage: '1',
+          _id: '1',
         }],
       });
 

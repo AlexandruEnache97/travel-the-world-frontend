@@ -38,8 +38,8 @@ const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
     const upload = storage.ref(`/profiles/${imageFile.name}`).put(imageFile);
     upload.on(
       'state_changed',
-      (snapshot) => {
-        console.log(snapshot._delegate);
+      (/* snapshot */) => {
+        // console.log(snapshot._delegate);
       },
       (error) => {
         createAlert(error);

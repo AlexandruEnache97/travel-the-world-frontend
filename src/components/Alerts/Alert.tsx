@@ -1,8 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './alert.scss';
 
-const Alert = ({ removeAlert, alert }) => {
+interface Props {
+  alert: {
+    active: boolean,
+    message: string,
+  },
+  removeAlert: (message: string) => void;
+}
+
+const Alert: React.FC<Props> = ({ removeAlert, alert }) => {
   const cancelAlert = () => {
     removeAlert(alert.message);
   };
@@ -17,14 +24,6 @@ const Alert = ({ removeAlert, alert }) => {
       )}
     </>
   );
-};
-
-Alert.propTypes = {
-  alert: PropTypes.shape({
-    active: PropTypes.bool,
-    message: PropTypes.string,
-  }).isRequired,
-  removeAlert: PropTypes.func.isRequired,
 };
 
 export default Alert;

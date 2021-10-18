@@ -10,7 +10,7 @@ const config = {
     app: `${INPUT_PATH}/index.jsx`,
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   output: {
     path: OUTPUT_PATH,
@@ -30,9 +30,15 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: { loader: 'ts-loader' },
+      },
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'source-map-loader',
       },
       {
         test: /\.css$/i,
@@ -56,6 +62,7 @@ const config = {
       },
     ],
   },
+  devtool: 'source-map',
 };
 
 module.exports = config;
