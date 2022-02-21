@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar.tsx';
 import UserInfo from './components/UserInfo';
-import ScrollButton from '../../components/Buttons/ScrollButton';
+import ScrollButton from '../../components/Buttons/ScrollButton.tsx';
 import ProfileUserPosts from '../ProfilePage/components/ProfileUserPosts';
-import ParallaxContent from '../../components/Parallax/ParallaxContent';
+import ParallaxContent from '../../components/Parallax/ParallaxContent.tsx';
 
 import '../ProfilePage/profilePage.scss';
 

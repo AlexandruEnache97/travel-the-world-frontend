@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './alert.scss';
 
 interface Props {
@@ -9,8 +9,10 @@ interface Props {
   removeAlert: (message: string) => void;
 }
 
+type CancelAlert = (event: React.MouseEvent<HTMLButtonElement>) => void;
+
 const Alert: React.FC<Props> = ({ removeAlert, alert }) => {
-  const cancelAlert = () => {
+  const cancelAlert: CancelAlert = () => {
     removeAlert(alert.message);
   };
 

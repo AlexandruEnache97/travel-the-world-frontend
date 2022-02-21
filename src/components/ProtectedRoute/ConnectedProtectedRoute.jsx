@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from './ProtectedRoute.tsx';
 
 const mapStateToProps = (state) => ({
   auth: state.auth,

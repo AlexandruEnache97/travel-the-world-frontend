@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { likedSavedPosts, userSavedPosts } from '../../../service/savePostsApi';
-import ListPosts from '../../Dashboard/components/posts/ListPost';
+import { likedSavedPosts, userSavedPosts } from '../../../service/savePostsApi.ts';
+import ListPosts from '../../Dashboard/components/posts/ListPost.tsx';
 import LoadingOverlay from '../../LoadingOverlay/LoadingOverlay';
 
 const ProfileSavedPosts = ({ createAlert }) => {

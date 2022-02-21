@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './profileMenu.scss';
-import CreatePost from '../../Dashboard/components/posts/CreatePost';
+import CreatePost from '../../Dashboard/components/posts/CreatePost.tsx';
 import BackButton from '../../../images/menuButtons/backButton.png';
 
 const ProfileMenu = ({

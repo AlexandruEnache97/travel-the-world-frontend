@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ListPosts from '../../Dashboard/components/posts/ListPost';
-import { getUserPosts, getUserLikedPosts } from '../../../service/postsApi';
+import ListPosts from '../../Dashboard/components/posts/ListPost.tsx';
+import { getUserPosts, getUserLikedPosts } from '../../../service/postsApi.ts';
 import LoadingOverlay from '../../LoadingOverlay/LoadingOverlay';
-import { currentSavedPosts } from '../../../service/savePostsApi';
+import { currentSavedPosts } from '../../../service/savePostsApi.ts';
 
 import './profileUserPosts.scss';
 

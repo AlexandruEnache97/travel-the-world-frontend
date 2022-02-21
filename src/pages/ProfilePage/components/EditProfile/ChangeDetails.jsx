@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './changeDetails.scss';
-import { changeProfileDetails } from '../../../../service/authApi';
+import { changeProfileDetails } from '../../../../service/authApi.ts';
 
 const ChangeDetails = ({
   currentUser, closeModal, updateProfile, createAlert,

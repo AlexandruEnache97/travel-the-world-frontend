@@ -4,7 +4,7 @@ import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import Dashboard from '../Dashboard';
 
-jest.mock('../components/menu/MenuButton.jsx', () => () => <p>Menu Button</p>);
+jest.mock('../components/menu/MenuContainer.tsx', () => () => <p>Menu Container</p>);
 jest.mock('../../../components/Buttons/ScrollButton', () => () => <p>Scroll</p>);
 jest.mock('../../../components/Alerts/ConnectedAlert.jsx', () => () => <p>Alert</p>);
 jest.mock('../components/posts/ConnectedPostsContainer.jsx', () => () => <p>Posts Container</p>);

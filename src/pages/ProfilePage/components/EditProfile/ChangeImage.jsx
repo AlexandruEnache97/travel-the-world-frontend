@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import imageCompression from 'browser-image-compression';
-import { changeProfileImage } from '../../../../service/authApi';
+import { changeProfileImage } from '../../../../service/authApi.ts';
 import { storage } from '../../../../utils/firebase';
 
 import './changeImage.scss';
-import PreviewImage from '../../../../components/PreviewImage/PreviewImage';
+import PreviewImage from '../../../../components/PreviewImage/PreviewImage.tsx';
 
 const ChangeImage = ({ closeModal, updateProfile, createAlert }) => {
   const [fileUpload, setFileUpload] = useState(null);

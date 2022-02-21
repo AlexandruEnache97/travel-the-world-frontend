@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './changePassword.scss';
-import { changePassword } from '../../../../service/authApi';
+import { changePassword } from '../../../../service/authApi.ts';
 
 const ChangePassword = ({ updateProfile, closeModal, createAlert }) => {
   const [changedPassword, setChangedPassword] = useState({

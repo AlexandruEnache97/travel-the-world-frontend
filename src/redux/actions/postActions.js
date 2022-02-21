@@ -1,6 +1,9 @@
 import {
-  getAllPosts, getPostsLiked, getSinglePost, makePost,
-} from '../../service/postsApi';
+  getAllPosts,
+  getPostsLiked,
+  getSinglePost,
+  makePost,
+} from '../../service/postsApi.ts';
 import actionTypes from '../actionTypes';
 
 const {

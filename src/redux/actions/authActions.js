@@ -1,8 +1,16 @@
-import { getAccountService, signInService, signUpService } from '../../service/authApi';
-import { setToken } from '../../utils/authUtils';
-import { clearLocalStorage, saveToLocalStorage } from '../../utils/localStorage';
-import actionTypes from '../actionTypes';
-import { createAlert } from './alertActions';
+/* eslint-disable quotes */
+import {
+  getAccountService,
+  signInService,
+  signUpService,
+} from "../../service/authApi.ts";
+import { setToken } from "../../utils/authUtils.ts";
+import {
+  clearLocalStorage,
+  saveToLocalStorage,
+} from "../../utils/localStorage.ts";
+import actionTypes from "../actionTypes";
+import { createAlert } from "./alertActions";
 
 const {
   createActionType,
@@ -48,8 +56,8 @@ export const signIn = (userInfo) => async (dispatch) => {
     });
     const { data } = await signInService(userInfo);
     setToken(data.token);
-    saveToLocalStorage('token', data.token);
-    saveToLocalStorage('accountId', data.accountId);
+    saveToLocalStorage("token", data.token);
+    saveToLocalStorage("accountId", data.accountId);
     dispatch({
       type: createActionType(SIGN_IN, SUCCESS),
       payload: data,
@@ -59,7 +67,7 @@ export const signIn = (userInfo) => async (dispatch) => {
     dispatch({
       type: createActionType(SIGN_IN, ERROR),
     });
-    dispatch(createAlert('Username or password incorrect', 3));
+    dispatch(createAlert("Username or password incorrect", 3));
   }
 };
 
@@ -70,8 +78,8 @@ export const signUp = (userInfo) => async (dispatch) => {
     });
     const { data } = await signUpService(userInfo);
     setToken(data.token);
-    saveToLocalStorage('token', data.token);
-    saveToLocalStorage('accountId', data.accountId);
+    saveToLocalStorage("token", data.token);
+    saveToLocalStorage("accountId", data.accountId);
     dispatch({
       type: createActionType(SIGN_UP, SUCCESS),
       payload: data,

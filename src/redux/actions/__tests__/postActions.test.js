@@ -2,7 +2,7 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { NODE_SERVER } from '../../../../config';
+import { NODE_SERVER } from '../../../../config/index.ts';
 import actionTypes from '../../actionTypes';
 import { GET_LIKED_POSTS } from '../../actionTypes/postTypes';
 import {
