@@ -15,6 +15,7 @@ describe('ProtectedRoute component tests', () => {
         <ProtectedRoute
           component={LandingPage}
           auth={authLogged}
+          path="/"
         />
       </MemoryRouter>,
     );
@@ -25,6 +26,7 @@ describe('ProtectedRoute component tests', () => {
         <ProtectedRoute
           component={LandingPage}
           auth={authLoggedOut}
+          path="/"
         />
       </MemoryRouter>,
     );

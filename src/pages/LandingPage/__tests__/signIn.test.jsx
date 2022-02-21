@@ -4,7 +4,7 @@ import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
 import SignIn from '../components/SignIn';
-import { authLogged, authLoggedOut } from '../../../utils/unitTesting';
+import { authLogged, authLoggedOut } from '../../../utils/unitTesting/index.ts';
 
 jest.mock('../../Dashboard/Dashboard.jsx', () => () => <p>Dashboard</p>);
 

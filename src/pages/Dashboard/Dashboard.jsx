@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './dashboard.scss';
-import Navbar from '../../components/Navbar/Navbar';
-import ScrollButton from '../../components/Buttons/ScrollButton';
-import MenuContainer from './components/menu/MenuContainer';
+import Navbar from '../../components/Navbar/Navbar.tsx';
+import ScrollButton from '../../components/Buttons/ScrollButton.tsx';
+import MenuContainer from './components/menu/MenuContainer.tsx';
 import Alert from '../../components/Alerts/ConnectedAlert';
 import PostsContainer from './components/posts/ConnectedPostsContainer';
-import ParallaxContent from '../../components/Parallax/ParallaxContent';
+import ParallaxContent from '../../components/Parallax/ParallaxContent.tsx';
 
 const Dashboard = ({ auth, signOut }) => {
   const { accountData } = auth;

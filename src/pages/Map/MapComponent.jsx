@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HereMap from './HereMap';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar.tsx';
 
 const MapComponent = ({
   auth, signOut, posts, getPosts,

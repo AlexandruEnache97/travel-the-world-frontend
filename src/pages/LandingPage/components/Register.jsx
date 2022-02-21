@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CountrySelect from './CountrySelect';
 import './register.scss';
-import countryCoordinates from '../../../utils/countryCoordinates';
+import countryCoordinates from '../../../utils/countryCoordinates.ts';
 
 const Register = ({ signUp, auth, history }) => {
   const [registerData, setRegisterData] = useState({

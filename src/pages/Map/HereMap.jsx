@@ -5,7 +5,7 @@ import React, {
 import PropTypes from 'prop-types';
 import './mapComponent.scss';
 import { createMarker } from '../../utils/hereMap';
-import RECOMMENDED_POSTS from '../../utils/recommendedPosts';
+import RECOMMENDED_POSTS from '../../utils/recommendedPosts.ts';
 
 const HereMap = ({
   userData, userLocation, country, posts, getPosts,

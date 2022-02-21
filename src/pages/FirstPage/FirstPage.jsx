@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import backgroundParallax from '../../images/firstPage/backgroundParallax.png';
 import backgroundClouds from '../../images/firstPage/backgroundClouds.jpg';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar.tsx';
 import './firstPage.scss';
 
 const FirstPage = () => {
@@ -11,10 +11,6 @@ const FirstPage = () => {
   const onScroll = () => {
     setOffsetY(wrapper.scrollTop);
   };
-
-  useEffect(() => {
-    console.log(offsetY);
-  }, [offsetY]);
 
   useEffect(() => {
     wrapper.addEventListener('scroll', onScroll);

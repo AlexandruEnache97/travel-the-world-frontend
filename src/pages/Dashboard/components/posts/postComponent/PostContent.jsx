@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import MapModal from '../showPostMap/MapModal';
-import calculateTimePassed from '../../../../../utils/postUtils';
+import calculateTimePassed from '../../../../../utils/postUtils.ts';
 import './postContent.scss';
 
 const PostContent = ({

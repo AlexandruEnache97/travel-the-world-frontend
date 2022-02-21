@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { getUserLikes, likePost, unlikePost } from '../../../../../service/postsApi';
-import LikesModalComponent from '../../likes/LikesModal';
-import CommentsModal from '../../comments/ConnectedCommentsModal';
+import { getUserLikes, likePost, unlikePost } from '../../../../../service/postsApi.ts';
+import LikesModalComponent from '../../likes/LikesModal.tsx';
+import CommentsModal from '../../comments/ConnectedCommentsModal.tsx';
 import './postControls.scss';
 
 const PostControls = ({

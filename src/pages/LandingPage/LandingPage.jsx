@@ -4,8 +4,8 @@ import Header from './components/Header';
 import backgroundGradient from '../../images/BackgroundGradient.svg';
 import './LandingPage.scss';
 import LandingContainer from './LandingContainer';
-import { getFromLocalStorage } from '../../utils/localStorage';
-import { setToken } from '../../utils/authUtils';
+import { getFromLocalStorage } from '../../utils/localStorage.ts';
+import { setToken } from '../../utils/authUtils.ts';
 import Alert from '../../components/Alerts/ConnectedAlert';
 
 const LandingPage = ({ verifyAuth, history, location }) => {

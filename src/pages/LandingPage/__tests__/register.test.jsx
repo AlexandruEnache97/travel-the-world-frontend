@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import '@testing-library/jest-dom';
-import { authLogged, authLoggedOut } from '../../../utils/unitTesting';
+import { authLogged, authLoggedOut } from '../../../utils/unitTesting/index.ts';
 import Register from '../components/Register';
 
 describe('Register tests', () => {

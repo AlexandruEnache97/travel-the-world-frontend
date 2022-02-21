@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Spinner from '../../../../components/Spinner/Spinner';
+import Spinner from '../../../../components/Spinner/Spinner.tsx';
 import ReplyComponent from './ReplyComponent';
 
 const ReplyList = ({

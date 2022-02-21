@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CreateReply from './CreateReply';
 import './repliesContainer.scss';
-import { getLikedReplies, getReplies } from '../../../../service/repliesApi';
+import { getLikedReplies, getReplies } from '../../../../service/repliesApi.ts';
 import ReplyList from './ReplyList';
 
 const RepliesContainer = ({ commentId, currentUser, postUser }) => {

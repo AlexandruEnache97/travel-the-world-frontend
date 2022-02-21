@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './postHeader.scss';
 import { Link } from 'react-router-dom';
-import { deleteSavedPost, savePost } from '../../../../../service/savePostsApi';
+import { deleteSavedPost, savePost } from '../../../../../service/savePostsApi.ts';
 
 const PostHeader = ({
   postId, userData, saved, createAlert,

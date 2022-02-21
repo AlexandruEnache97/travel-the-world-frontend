@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { editReply } from '../../../../service/repliesApi';
+import { editReply } from '../../../../service/repliesApi.ts';
 
 const EditReply = ({
   text, replyId, setEditMode, getEditedText, setLoadingAction,

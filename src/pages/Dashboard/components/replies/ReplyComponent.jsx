@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import calculateTimePassed from '../../../../utils/postUtils';
+import calculateTimePassed from '../../../../utils/postUtils.ts';
 import {
   likeReply, unlikeReply, getReplyLikes, removeReply,
-} from '../../../../service/repliesApi';
-import LikesModalComponent from '../likes/LikesModal';
+} from '../../../../service/repliesApi.ts';
+import LikesModalComponent from '../likes/LikesModal.tsx';
 import EditReply from './EditReply';
-import Spinner from '../../../../components/Spinner/Spinner';
+import Spinner from '../../../../components/Spinner/Spinner.tsx';
 import RepliesControl from './RepliesControl';
 import replyArrow from '../../../../images/reply-arrow.png';
 import './replyComponent.scss';

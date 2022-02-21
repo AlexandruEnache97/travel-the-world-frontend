@@ -6,7 +6,7 @@ import {
   getLikedPosts as getLikedPostsAction,
 } from '../../../../redux/actions/postActions';
 import { createAlert as createAlertAction } from '../../../../redux/actions/alertActions';
-import PostsContainer from './PostsContainer';
+import PostsContainer from './PostsContainer.tsx';
 
 const mapStateToProps = (state) => ({
   posts: state.posts,

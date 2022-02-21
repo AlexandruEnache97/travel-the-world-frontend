@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import Navbar from '../../components/Navbar/Navbar';
+import Navbar from '../../components/Navbar/Navbar.tsx';
 import './profilePage.scss';
-import ScrollButton from '../../components/Buttons/ScrollButton';
+import ScrollButton from '../../components/Buttons/ScrollButton.tsx';
 import ProfileInfo from './components/ProfileInfo';
 import ProfileMenu from './components/ProfileMenu';
 import Alert from '../../components/Alerts/ConnectedAlert';
 import ProfileUserPosts from './components/ProfileUserPosts';
 import ProfileSavedPosts from './components/ProfileSavedPosts';
-import ParallaxContent from '../../components/Parallax/ParallaxContent';
+import ParallaxContent from '../../components/Parallax/ParallaxContent.tsx';
 
 const ProfilePage = ({
   auth, createPost, signOut, getAccount, createAlert,
